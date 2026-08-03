@@ -1,0 +1,129 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Build the Whole Getaway — Resort Stay and Airfare Savings | Honest Vacation Marketing</title><meta name="description" content="Resort accommodations plus a $500 airfare credit and ongoing member benefits, in one clear plan."><style>
+*{box-sizing:border-box;margin:0}
+:root{--ink:#14231c;--muted:#5c6b61;--paper:#f6f1e7;--paper2:#efe7d7;--green:#1e5c44;--green2:#2d7a5a;--deep:#0e2f23;--sun:#f2c85b;--coral:#f2795a;--line:rgba(20,35,28,.12)}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:'Segoe UI',system-ui,Arial,sans-serif;line-height:1.5}
+a{text-decoration:none;color:inherit}
+h1,h2,h3{letter-spacing:-.03em;line-height:1.05}
+.serif{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-weight:400}
+.wrap{max-width:1180px;margin:0 auto;padding:0 5vw}
+/* nav */
+.nav{position:sticky;top:0;z-index:60;background:rgba(246,241,231,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav .in{max-width:1180px;margin:0 auto;padding:16px 5vw;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-.03em}
+.brand .dot{width:26px;height:26px;border-radius:50%;background:var(--green);display:grid;place-content:center;color:var(--sun);font-size:11px;font-weight:800}
+.brand span{color:var(--green)}
+.navlinks{display:flex;gap:26px;align-items:center;font-size:14px;color:var(--muted)}
+.navlinks a:hover{color:var(--green)}
+.navcta{background:var(--ink);color:var(--paper);font-weight:700;font-size:13px;padding:11px 20px;border-radius:999px}
+@media(max-width:820px){.navlinks{display:none}}
+/* hero */
+.hero{position:relative;overflow:hidden;background:var(--deep);color:#fff}
+.hero .art{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(14,47,35,.96) 40%,rgba(14,47,35,.5))}
+.hero .in{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:96px 5vw 100px}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--sun);margin-bottom:22px}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--sun)}
+.hero h1{font-size:clamp(40px,6.4vw,78px);max-width:900px;margin-bottom:22px}
+.hero h1 em{color:var(--sun)}
+.hero p{font-size:clamp(16px,1.7vw,20px);max-width:620px;color:#dce6de;margin-bottom:34px}
+.btns{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.btn{background:var(--coral);color:#fff;font-weight:800;font-size:15px;padding:16px 30px;border-radius:999px;box-shadow:0 14px 34px rgba(242,121,90,.4);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;border:1.5px solid rgba(255,255,255,.55);box-shadow:none}
+.stats{display:flex;flex-wrap:wrap;gap:34px;margin-top:44px;color:#bcd0c2}
+.stats b{display:block;color:#fff;font-size:26px;letter-spacing:-.04em}
+.stats small{font-size:12px}
+/* sections */
+section{padding:86px 0}
+.sec-head{max-width:720px;margin-bottom:48px}
+.sec-head .eyebrow{color:var(--green)}.sec-head .eyebrow::before{background:var(--green)}
+.sec-head h2{font-size:clamp(30px,4vw,50px);margin-bottom:16px}
+.sec-head h2 em{color:var(--green)}
+.sec-head p{color:var(--muted);font-size:17px}
+/* difference cards */
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px;transition:transform .18s,box-shadow .18s}
+.card:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(20,35,28,.1)}
+.card .ic{width:44px;height:44px;border-radius:12px;background:var(--paper2);display:grid;place-content:center;font-size:20px;margin-bottom:16px}
+.card h3{font-size:20px;margin-bottom:8px}.card p{color:var(--muted);font-size:14.5px}
+/* family / doors */
+.doors{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.door{position:relative;border-radius:20px;overflow:hidden;min-height:280px;display:flex;flex-direction:column;justify-content:flex-end;padding:32px;color:#fff}
+.door svg{position:absolute;inset:0;width:100%;height:100%}
+.door::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(14,47,35,.92),rgba(14,47,35,.3))}
+.door>*{position:relative;z-index:2}
+.door .k{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--sun);margin-bottom:8px}
+.door h3{font-size:26px;margin-bottom:8px}.door p{color:#dce6de;font-size:14px;max-width:420px;margin-bottom:14px}
+.door .go{font-weight:800;font-size:13px;color:#fff;border-bottom:2px solid var(--sun);padding-bottom:3px;width:fit-content}
+@media(max-width:760px){.doors{grid-template-columns:1fr}}
+/* founder */
+.founder{background:var(--deep);color:#fff}
+.founder .in{display:grid;grid-template-columns:.85fr 1.15fr;gap:6vw;align-items:center}
+.founder .photo{border-radius:20px;overflow:hidden;min-height:360px;background:linear-gradient(135deg,var(--green),var(--deep));display:grid;place-content:center;position:relative}
+.founder .photo .mono{font-family:Georgia,serif;font-size:120px;color:rgba(242,200,91,.25);font-weight:700}
+.founder .photo .tag{position:absolute;bottom:22px;left:22px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--sun)}
+.founder h2{font-size:clamp(28px,3.6vw,44px);margin-bottom:18px}.founder h2 em{color:var(--sun)}
+.founder p{color:#c8d6cc;font-size:15.5px;margin-bottom:14px;max-width:560px}
+.founder .sign{color:var(--sun);font-weight:800;font-size:14px;margin-top:8px}
+@media(max-width:820px){.founder .in{grid-template-columns:1fr}}
+/* steps */
+.steps4{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px}
+.step i{display:grid;place-content:center;width:38px;height:38px;border-radius:50%;background:var(--green);color:#fff;font-style:normal;font-weight:800;margin-bottom:12px}
+.step b{display:block;font-size:17px;margin-bottom:6px}.step p{color:var(--muted);font-size:14px}
+/* honesty band */
+.band{background:var(--sun);color:var(--deep)}
+.band .in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px}
+.band h2{font-size:clamp(24px,3vw,38px);max-width:640px}
+/* footer */
+.foot{background:var(--deep);color:#aec2b4;padding:60px 0 30px}
+.foot .top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.12)}
+.foot h4{color:#fff;font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+.foot a{display:block;color:#aec2b4;font-size:14px;margin-bottom:9px}.foot a:hover{color:var(--sun)}
+.foot .fbrand{font-weight:800;font-size:19px;color:#fff;margin-bottom:10px}
+.foot .fbrand span{color:var(--sun)}
+.foot .legal{padding-top:24px;font-size:11px;color:#7f978a;line-height:1.7}
+@media(max-width:760px){.foot .top{grid-template-columns:1fr 1fr}}
+/* generic page hero */
+.phero{background:var(--deep);color:#fff;padding:80px 0 70px}
+.phero h1{font-size:clamp(34px,5vw,60px);max-width:820px;margin-bottom:16px}.phero h1 em{color:var(--sun)}
+.phero p{color:#c8d6cc;font-size:18px;max-width:600px}
+.prose{max-width:760px;padding:70px 5vw;margin:0 auto}
+.prose p{font-size:16.5px;color:#33443b;margin-bottom:20px}.prose h3{font-size:24px;margin:36px 0 12px}
+</style></head><body>
+<nav class="nav"><div class="in"><a class="brand" href="index.html"><span class="dot">H</span>The Honest <span>Travel Group</span></a>
+<div class="navlinks"><a href="cruise.html" style="color:var(--green)">Vacations</a><a href="https://honesttimeshareresolutions.com">Timeshare Exit</a><a href="about.html">About</a><a href="partners.html">Partners</a></div>
+<a class="navcta" href="cruise.html">See the offers</a></div></nav>
+<header class="hero"><svg class="art" viewBox="0 0 200 110" preserveAspectRatio="xMidYMid slice"><rect width="200" height="110" fill="#0e2f23"/><circle cx="160" cy="26" r="13" fill="#f2c85b"/><path d="M0 84 Q50 76 100 84 T200 82 V110 H0 Z" fill="#1e5c44"/><path d="M58 84 L92 40 L126 84 Z" fill="#2d7a5a"/></svg><div class="in"><span class="eyebrow">A low resort rate is not a deal when airfare breaks the vacation budget.</span><h1>Build the Whole Getaway — Resort Stay and Airfare Savings</h1><p>Resort accommodations plus a $500 airfare credit and ongoing member benefits, in one clear plan.</p><div class="btns"><a class="btn" href="#qualify">BUILD MY RESORT + AIRFARE PLAN</a></div></div></header>
+<section class="wrap" style="padding-top:56px"><div class="grid3"><div class="card"><div class="ic">1</div><h3>Tell Us How You Travel</h3><p>Destination, dates, party size, preferred offer.</p></div><div class="card"><div class="ic">2</div><h3>Select Your Live Preview</h3><p>Choose a session within the next 72 hours.</p></div><div class="card"><div class="ic">3</div><h3>Review Your Options</h3><p>See qualifying incentives and membership benefits.</p></div></div></section>
+<section class="wrap" style="padding-top:20px"><div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:12px"><span style="color:var(--muted);font-size:18px;text-decoration:line-through;text-decoration-color:var(--coral);text-decoration-thickness:2px">Priced separately ~$2,450</span><span style="font-size:clamp(26px,3.4vw,40px);font-weight:800;color:var(--green)">~$300 out the door, for two</span><span style="background:var(--sun);font-weight:800;padding:8px 14px;border-radius:12px">You keep ~$2,150</span></div>
+<p style="color:var(--muted);font-size:13px;max-width:760px;margin-bottom:20px">Midpoint of 2026 average and high Cabo/Hawaii resort rates plus the $500 airfare credit value. You pay about $150 per person in taxes and fees; the $240 deposit is refundable until travel is confirmed.</p>
+<div style="background:var(--deep);color:#e6ded0;border-radius:16px;padding:24px"><b style="display:block;color:var(--sun);font-size:11px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:12px">Who qualifies, what it takes, every restriction — upfront</b><div style="padding-left:16px;position:relative;margin-bottom:6px;font-size:14px"><span style="position:absolute;left:0;color:var(--coral);font-weight:800">!</span>Couples 35–72 attending the live preview together — one offer per household every 90 days</div><div style="padding-left:16px;position:relative;margin-bottom:6px;font-size:14px"><span style="position:absolute;left:0;color:var(--coral);font-weight:800">!</span>Cabo, Costa Rica, Honolulu, San Juan or Cancún — Sunday–Tuesday check-ins, 45-day notice</div><div style="padding-left:16px;position:relative;margin-bottom:6px;font-size:14px"><span style="position:absolute;left:0;color:var(--coral);font-weight:800">!</span>$500 airfare credit applies through the fulfillment booking desk, base fare only</div><div style="padding-left:16px;position:relative;margin-bottom:6px;font-size:14px"><span style="position:absolute;left:0;color:var(--coral);font-weight:800">!</span>Activation code and full terms disclosed at the live preview</div></div></section>
+<section class="founder" id="qualify"><div class="wrap" style="max-width:620px;text-align:center"><span class="eyebrow" style="color:var(--sun)">See if you qualify</span><h2 style="margin-bottom:10px">Live Vacation Preview seating is limited.</h2><p style="margin:0 auto 24px">Couples 35–72 attending together, no vacation-ownership presentation in the last 90 days.</p>
+<form id="f" onsubmit="return submitLead(event,'exotic-air','resort-air-acquisition')" style="display:grid;gap:12px;text-align:left">
+<input name="firstName" required placeholder="First name" style="padding:15px;border-radius:12px;border:0;font-size:14px">
+<input name="mobile" required type="tel" placeholder="Mobile number" style="padding:15px;border-radius:12px;border:0;font-size:14px">
+<input name="email" required type="email" placeholder="Email" style="padding:15px;border-radius:12px;border:0;font-size:14px">
+<label style="display:flex;gap:10px;font-size:12px;color:#bcd0c2;align-items:flex-start"><input type="checkbox" name="ageConfirmed" style="width:16px;margin-top:2px"> I confirm I'm between 35 and 72 years old.</label>
+<label style="display:flex;gap:10px;font-size:12px;color:#bcd0c2;align-items:flex-start"><input type="checkbox" name="cohabitating" style="width:16px;margin-top:2px"> I'm married or live with my partner, and we'd attend together.</label>
+<label style="display:flex;gap:10px;font-size:12px;color:#bcd0c2;align-items:flex-start"><input type="checkbox" name="touredRecently" style="width:16px;margin-top:2px"> I've attended a vacation-ownership presentation in the last 90 days.</label>
+<label style="display:flex;gap:10px;font-size:12px;color:#bcd0c2;align-items:flex-start"><input type="checkbox" name="consent" required style="width:16px;margin-top:2px"> I agree to receive calls and texts about this offer from Honest Vacation Marketing on behalf of Gateways Unlimited. Consent is not a condition of purchase. Msg &amp; data rates may apply; reply STOP to opt out.</label>
+<button type="submit" class="btn" style="width:100%;margin-top:6px">BUILD MY RESORT + AIRFARE PLAN</button></form>
+<p style="font-size:10px;color:#8fa596;margin-top:16px;line-height:1.6;text-align:left">Presented by Honest Vacation Marketing on behalf of Gateways Unlimited. A live 45–60 minute presentation is required; there is no charge to attend. Certificates fulfilled by CSNG, a registered Seller of Travel; deposits, taxes and fees are stated above and refundable before travel is confirmed. Market comparisons are estimated midpoints of published 2026 pricing. Limit one offer per household per 90 days.</p></div></section>
+<script>
+var WEBHOOK="https://services.leadconnectorhq.com/hooks/yXAOCx6d0NsookMNcPoY/webhook-trigger/8b19bb36-ee8b-48c2-b968-d5022763fd48";
+function submitLead(e,offer,pageId){e.preventDefault();var f=e.target;if(!f.consent.checked){alert('Please confirm the contact permission.');return false;}
+var b=f.querySelector('button');b.disabled=true;b.textContent='Checking...';var p=new URLSearchParams(location.search);
+var body={net:'net1',bucket:f.touredRecently.checked?'mini-vacation':'qualified',offer:offer,page:pageId,firstName:f.firstName.value,email:f.email.value,mobile:f.mobile.value,ageConfirmed:f.ageConfirmed.checked,cohabitating:f.cohabitating.checked,touredWithin90Days:f.touredRecently.checked,consent:true,consentTimestamp:new Date().toISOString(),consentVersion:'gateways-v1',source:'gateways-unlimited',campaign:'gateways-net1',sourceUrl:location.href,attribution:{utm_source:p.get('utm_source')||'',utm_medium:p.get('utm_medium')||'',utm_campaign:p.get('utm_campaign')||'',fbclid:p.get('fbclid')||'',gclid:p.get('gclid')||''}};
+function done(){document.body.innerHTML='<div style="min-height:80vh;display:grid;place-items:center;text-align:center;padding:24px;font-family:system-ui"><div><h1 style="font-size:44px;color:#1e5c44">You\'re on the list.</h1><p style="max-width:540px;color:#5c6b61;margin:14px auto;line-height:1.6">Your seat request is in. Your confirmation with the live Vacation Savings Preview details is on its way to your email and phone. Your activation code is issued at the session. Reply STOP to any text to opt out.</p></div></div>';}
+if(!WEBHOOK){done();return false;}
+fetch(WEBHOOK,{method:'POST',mode:'no-cors',body:JSON.stringify(body)}).then(done).catch(done);setTimeout(done,1200);return false;}
+</script>
+<footer class="foot"><div class="wrap"><div class="top">
+<div><div class="fbrand">The Honest <span>Travel Group</span></div><p style="color:#aec2b4;font-size:14px;max-width:260px">A family of companies built on one rule: everything upfront, everything optional. Founded by Dave Lemmons.</p></div>
+<div><h4>Travel</h4><a href="cruise.html">Cruise getaways</a><a href="all-inclusive.html">All-inclusive</a><a href="resort-air.html">Resort + airfare</a><a href="condo.html">Condo weeks</a></div>
+<div><h4>Company</h4><a href="about.html">About &amp; mission</a><a href="partners.html">White-label partners</a><a href="https://honesttimeshareresolutions.com">Timeshare exit</a><a href="mailto:info@honestvacationmarketing.com">Contact</a></div>
+</div><div class="legal">Honest Travel Group · Honest Vacation Marketing · Honest Timeshare Resolutions — an Elite Marketing Solutions company. Vacation certificate offers are presented by Honest Vacation Marketing on behalf of Gateways Unlimited and fulfilled by Customer Service Network Group (CSNG), a registered Seller of Travel. Attendance at a live presentation is required to receive a certificate offer; there is no charge to attend. Deposits, taxes, and fees are disclosed on each offer page and in the certificate's terms and are refundable before travel is confirmed. Limit one certificate offer per household in any 90-day period. © 2026 Elite Marketing Solutions LLC · TheHonestTravelGroup.com</div></div></footer>
+</body></html>
