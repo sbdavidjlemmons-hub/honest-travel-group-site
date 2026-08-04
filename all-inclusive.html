@@ -177,6 +177,11 @@ section{padding:86px 0}
 <script>
 var WEBHOOK="https://services.leadconnectorhq.com/hooks/yXAOCx6d0NsookMNcPoY/webhook-trigger/8b19bb36-ee8b-48c2-b968-d5022763fd48";
 var WL={"code":"HVM","name":"Honest Vacation Marketing","parent":"Elite Marketing Solutions LLC"};
+function track(ev,data){data=data||{};
+ try{if(window.fbq)fbq('track',ev,data);}catch(e){}
+ try{if(window.gtag)gtag('event',ev.toLowerCase(),data);}catch(e){}
+ }
+var OFFERVAL=538;track('ViewContent',{content_name:"All-Inclusive Beach Escape",content_category:"all-inclusive",currency:'USD',value:OFFERVAL});
 // Post-booking: confirm what they reserved, then introduce the company.
 // This screen is the ONLY moment we have their full attention — so it does the
 // selling for the whole group, not just the one certificate they clicked.
@@ -220,6 +225,7 @@ function makeCert(offerCode){
 function submitLead(e,offer,pageId,offerCode,offerLabel){e.preventDefault();var f=e.target;if(f.company_website&&f.company_website.value){return false;}if(!f.qualify.checked){alert('Please confirm the qualification details so we know the certificate can actually be issued.');return false;}
 var b=f.querySelector('button');b.disabled=true;b.textContent='Checking...';var p=new URLSearchParams(location.search);
 var CERT=makeCert(offerCode);
+var LEADVAL=(typeof OFFERVAL!=="undefined")?OFFERVAL:0;
 var CONSENTED=f.consent.checked;
 var BUCKET=!CONSENTED?'retarget-no-consent':(f.toured90.value==='yes'?'mini-vacation':'qualified');
 var body={net:'net1',bucket:BUCKET,offer:offer,page:pageId,certificateNumber:CERT,whiteLabel:WL.name,whiteLabelCode:WL.code,offerCode:offerCode,firstName:f.firstName.value,email:f.email.value,mobile:f.mobile.value,qualified:f.qualify.checked,qualifyAttestation:'couple-both-attending|age-35-72|hhi-over-75000|major-credit-card',touredWithin90Days:f.toured90.value==='yes',consent:CONSENTED,consentTimestamp:CONSENTED?new Date().toISOString():'',consentVersion:'gateways-v1',retarget:!CONSENTED,emailPermission:'form-submitted',smsPermission:CONSENTED?'express-written':'none',callPermission:CONSENTED?'express-written':'none',source:'gateways-unlimited',campaign:'gateways-net1',sourceUrl:location.href,attribution:{utm_source:p.get('utm_source')||'',utm_medium:p.get('utm_medium')||'',utm_campaign:p.get('utm_campaign')||'',fbclid:p.get('fbclid')||'',gclid:p.get('gclid')||''}};
@@ -230,7 +236,7 @@ var booked=false;
 // could tell — they wait for a Zoom link that will never arrive.
 function failed(){if(booked)return;booked=true;
 document.body.innerHTML='<div style="min-height:100vh;display:grid;place-items:center;padding:28px 18px;font-family:system-ui;background:#f6f9f7"><div style="max-width:560px;text-align:center"><h1 style="font-size:32px;color:#b4462f;margin:0 0 12px">We could not reach our system.</h1><p style="color:#5c6b61;line-height:1.65;margin-bottom:18px">Your details are saved on this device and we will keep trying automatically &mdash; but do not wait on us. <b>Call or text and we will book your seat directly, right now.</b></p><a href="tel:+18056953163" style="display:inline-block;background:#1e5c44;color:#fff;font-weight:800;font-size:20px;padding:16px 30px;border-radius:999px;text-decoration:none">(805) 695-3163</a><p style="color:#8a9a90;font-size:12.5px;margin-top:18px;line-height:1.6">Reference this number when you call: <b style="color:#14231c;font-family:ui-monospace,Menlo,Consolas,monospace">'+CERT+'</b></p></div></div>';}
-function done(){if(booked)return;booked=true;
+function done(){if(booked)return;booked=true;try{track('Schedule',{content_name:offerLabel});}catch(e){}
 var q='?first_name='+encodeURIComponent(f.firstName.value)+'&email='+encodeURIComponent(f.email.value)+'&phone='+encodeURIComponent(f.mobile.value)+'&cert='+encodeURIComponent(CERT);
 document.body.innerHTML='<div style="min-height:100vh;padding:28px 18px;font-family:system-ui;background:#f6f9f7"><div style="max-width:860px;margin:0 auto;text-align:center"><h1 style="font-size:38px;color:#1e5c44;margin:0 0 8px">You\'re in. Now pick your time.</h1><p style="max-width:600px;color:#5c6b61;margin:0 auto 18px;line-height:1.6">Choose any session below and your Zoom link is emailed to you instantly. It\'s 45&ndash;60 minutes, live, and every cost is on the table.</p><div style="max-width:520px;margin:0 auto 20px;background:#0e2f23;border-radius:16px;padding:22px 24px;text-align:left;box-shadow:0 12px 34px rgba(14,47,35,.22)"><div style="font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#f2c85b;margin-bottom:8px">Your certificate number &mdash; save this</div><div style="font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:clamp(20px,4.6vw,30px);font-weight:700;color:#fff;letter-spacing:.06em;word-break:break-all">'+CERT+'</div><div style="color:#9fb8a8;font-size:12px;margin-top:10px;line-height:1.6">Issued by '+WL.name+'. Bring this number to your session &mdash; it\'s how we pull up your file. Your <b style="color:#dce6de">activation code</b> is issued at the session itself.</div></div><p style="max-width:600px;color:#8a9a90;margin:0 auto 20px;font-size:13px;line-height:1.6">Sessions run Monday&ndash;Friday at 1:30, 3:30 and 5:30 PM Pacific.</p><div style="background:#fff;border-radius:18px;box-shadow:0 10px 40px rgba(16,50,36,.10);overflow:hidden"><iframe src="'+BOOKING+q+'" style="width:100%;height:780px;border:0" title="Choose your session time"></iframe></div><p style="color:#8a9a90;font-size:12px;margin:18px auto 0;max-width:600px;line-height:1.6">Can\'t pick a time right now? No problem &mdash; we\'ll text and email you the same link. Reply STOP to any text to opt out.</p></div>'+afterBooking(offerLabel)+'</div>';}
 if(!WEBHOOK){done();return false;}
@@ -242,7 +248,7 @@ try{localStorage.setItem('hvm_pending_'+CERT,JSON.stringify(body));}catch(_){}
 var settled=false;
 function clearPending(){try{localStorage.removeItem('hvm_pending_'+CERT);}catch(_){}}
 fetch(WEBHOOK,{method:'POST',mode:'no-cors',body:JSON.stringify(body)})
- .then(function(){ if(settled)return; settled=true; clearPending(); done(); })
+ .then(function(){ if(settled)return; settled=true; clearPending(); try{track('Lead',{content_name:offerLabel,content_category:offer,currency:'USD',value:LEADVAL});}catch(e){} done(); })
  .catch(function(){ if(settled)return; settled=true; failed(); });   // kept in localStorage for retry
 // If the network stalls, show the booking screen rather than trapping them —
 // but leave the record in localStorage so retryPending() re-sends it later.
