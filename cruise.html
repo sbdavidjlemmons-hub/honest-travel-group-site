@@ -1,5 +1,12 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<script>if(location.protocol==='http:'&&!/^(localhost|127\.|\[)/.test(location.hostname))location.replace('https:'+location.href.substring(location.protocol.length));</script>
+<script>if(location.protocol==='http:'&&!/^(localhost|127\.|\[)/.test(location.hostname))location.replace('https:'+location.href.substring(location.protocol.length));
+// Open certificate pages in a real second WINDOW, leaving this one open.
+// Two live windows = two sessions = the pixel fires again. Falls back to a
+// normal tab if a popup blocker refuses the window.
+function openWin(u){try{var w=Math.min(1280,screen.availWidth-80),h=Math.min(960,screen.availHeight-80);
+var x=Math.max(0,(screen.availWidth-w)/2+40),y=Math.max(0,(screen.availHeight-h)/2+20);
+var p=window.open(u,'_blank','noopener,width='+w+',height='+h+',left='+x+',top='+y+',scrollbars=yes,resizable=yes');
+if(p){p.focus();return false;}}catch(e){}return true;}</script>
 <title>See the Cruise Getaway Options Available to Qualified Travelers | Honest Vacation Marketing</title><meta name="description" content="3–5 night cruise incentives from 9 U.S. ports, plus ongoing member travel benefits — every cost printed below."><style>
 *{box-sizing:border-box;margin:0}
 :root{--ink:#14231c;--muted:#5c6b61;--paper:#f6f1e7;--paper2:#efe7d7;--green:#1e5c44;--green2:#2d7a5a;--deep:#0e2f23;--sun:#f2c85b;--coral:#f2795a;--line:rgba(20,35,28,.12)}

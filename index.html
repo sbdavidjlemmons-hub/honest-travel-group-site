@@ -1,5 +1,12 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<script>if(location.protocol==='http:'&&!/^(localhost|127\.|\[)/.test(location.hostname))location.replace('https:'+location.href.substring(location.protocol.length));</script>
+<script>if(location.protocol==='http:'&&!/^(localhost|127\.|\[)/.test(location.hostname))location.replace('https:'+location.href.substring(location.protocol.length));
+// Open certificate pages in a real second WINDOW, leaving this one open.
+// Two live windows = two sessions = the pixel fires again. Falls back to a
+// normal tab if a popup blocker refuses the window.
+function openWin(u){try{var w=Math.min(1280,screen.availWidth-80),h=Math.min(960,screen.availHeight-80);
+var x=Math.max(0,(screen.availWidth-w)/2+40),y=Math.max(0,(screen.availHeight-h)/2+20);
+var p=window.open(u,'_blank','noopener,width='+w+',height='+h+',left='+x+',top='+y+',scrollbars=yes,resizable=yes');
+if(p){p.focus();return false;}}catch(e){}return true;}</script>
 <title>The Honest Travel Group — Travel honestly. Every cost upfront.</title><meta name="description" content="The honest family of travel companies: transparent vacation offers with every cost printed upfront, and honest timeshare exit help. Founded by Dave Lemmons."><style>
 *{box-sizing:border-box;margin:0}
 :root{--ink:#14231c;--muted:#5c6b61;--paper:#f6f1e7;--paper2:#efe7d7;--green:#1e5c44;--green2:#2d7a5a;--deep:#0e2f23;--sun:#f2c85b;--coral:#f2795a;--line:rgba(20,35,28,.12)}
@@ -128,22 +135,22 @@ section{padding:86px 0}
 
 <section class="wrap" id="certificates" style="padding-bottom:40px"><div class="sec-head"><span class="eyebrow">Today's certificates · real pricing</span><h2>Here's the price. <em>Right here, before anything else.</em></h2><p>Every number below is what you actually pay out the door for two people &mdash; taxes, fees and a refundable deposit included. Nothing is revealed later. Click any certificate for the full cost breakdown and every restriction, printed at the top.</p></div>
 <div class="certs">
-<a class="cert" href="cruise.html">
+<a class="cert" href="cruise.html" target="_blank" rel="noopener" onclick="return openWin(this.href)">
 <div class="shotwrap"><img src="img/cruise-sunset.jpg" alt="Cruise ship at sea during sunset" loading="lazy" class="crop-left"><span class="tag">3–5 nights · 9 US ports</span></div>
 <div class="body"><h3>Cruise Getaway for Two</h3><p class="blurb">Sail 3, 4 or 5 nights from a port near you. Interior stateroom for two, ongoing member travel benefits after.</p>
 <div class="money"><span class="was">Public rate ~$1,240</span><span class="now">$290–$314</span></div>
 <span class="keep">You keep ~$930 &middot; for two</span>
-<span class="go">See every cost &amp; restriction →</span></div></a><a class="cert" href="all-inclusive.html">
+<span class="go">See every cost &amp; restriction →</span></div></a><a class="cert" href="all-inclusive.html" target="_blank" rel="noopener" onclick="return openWin(this.href)">
 <div class="shotwrap"><img src="img/cabo-bluehour.jpg" alt="Beachfront all-inclusive resort pools at dusk in Mexico" loading="lazy"><span class="tag">4 nights · all-inclusive</span></div>
 <div class="body"><h3>All-Inclusive Beach Escape</h3><p class="blurb">Cancún, Dominican Republic or Montego Bay. Meals and drinks genuinely included — we print what "included" means.</p>
 <div class="money"><span class="was">Package market ~$1,500</span><span class="now">$390–$538</span></div>
 <span class="keep">You keep ~$1,000 &middot; for two</span>
-<span class="go">See every cost &amp; restriction →</span></div></a><a class="cert" href="resort-air.html">
+<span class="go">See every cost &amp; restriction →</span></div></a><a class="cert" href="resort-air.html" target="_blank" rel="noopener" onclick="return openWin(this.href)">
 <div class="shotwrap"><img src="img/hawaii-waikiki-sunset.jpg" alt="Palm trees and resort pool at sunset in Hawaii" loading="lazy"><span class="tag">Resort + $500 air credit</span></div>
 <div class="body"><h3>Resort Stay + Airfare Credit</h3><p class="blurb">Cabo, Costa Rica, Honolulu, San Juan or Cancún — resort accommodations plus a $500 airfare credit in one plan.</p>
 <div class="money"><span class="was">Priced separately ~$2,450</span><span class="now">~$300</span></div>
 <span class="keep">You keep ~$2,150 &middot; for two</span>
-<span class="go">See every cost &amp; restriction →</span></div></a><a class="cert" href="condo.html">
+<span class="go">See every cost &amp; restriction →</span></div></a><a class="cert" href="condo.html" target="_blank" rel="noopener" onclick="return openWin(this.href)">
 <div class="shotwrap"><img src="img/hawaii-condo-resort.jpg" alt="Oceanfront condo resort with pools and palm trees" loading="lazy"><span class="tag">7 nights · sleeps 4</span></div>
 <div class="body"><h3>Full Condo Week</h3><p class="blurb">A whole week with a kitchen and room to spread out. 60+ destinations across the US, Canada, Caribbean and Mexico.</p>
 <div class="money"><span class="was">Rental market ~$1,750</span><span class="now">from $210</span></div>
@@ -165,7 +172,7 @@ section{padding:86px 0}
 <section class="wrap"><div class="sec-head"><span class="eyebrow">The family</span><h2>One name behind every honest company</h2><p>Each brand runs its own lane. This is where they all stand together.</p></div>
 <div class="doors">
 <a class="door" href="cruise.html"><svg viewBox="0 0 200 110" preserveAspectRatio="xMidYMid slice"><rect width="200" height="110" fill="#0e2f23"/><circle cx="46" cy="30" r="16" fill="#f2c85b"/><path d="M0 76 Q60 68 120 76 T200 74 V110 H0 Z" fill="#2d7a5a"/><path d="M0 90 Q60 82 120 90 T200 88 V110 H0 Z" fill="#1e5c44"/></svg><span class="k">Want to travel more?</span><h3>Honest Vacation Marketing</h3><p>Cruises, all-inclusives, resort weeks, and condo stays — real certificates with the catch list printed at the top.</p><span class="go">See the offers →</span></a>
-<a class="door" href="https://honesttimeshareresolutions.com"><svg viewBox="0 0 200 110" preserveAspectRatio="xMidYMid slice"><rect width="200" height="110" fill="#14231c"/><path d="M-6 78 L48 30 L102 78 Z" fill="#1e5c44"/><path d="M92 78 L142 38 L192 78 Z" fill="#2d7a5a"/><path d="M62 92 V64 L92 46 L122 64 V92 Z" fill="#f6f1e7"/><path d="M56 66 L92 44 L128 66" fill="none" stroke="#f2795a" stroke-width="4"/></svg><span class="k">Stuck in a timeshare?</span><h3>Honest Timeshare Resolutions</h3><p>Our team walks you out of the timeshare you got pushed into — your pace, your options, your call. No hassle, no haggle.</p><span class="go">Get exit help →</span></a>
+<a class="door" href="https://honesttimeshareresolutions.com" target="_blank" rel="noopener" onclick="return openWin(this.href)"><svg viewBox="0 0 200 110" preserveAspectRatio="xMidYMid slice"><rect width="200" height="110" fill="#14231c"/><path d="M-6 78 L48 30 L102 78 Z" fill="#1e5c44"/><path d="M92 78 L142 38 L192 78 Z" fill="#2d7a5a"/><path d="M62 92 V64 L92 46 L122 64 V92 Z" fill="#f6f1e7"/><path d="M56 66 L92 44 L128 66" fill="none" stroke="#f2795a" stroke-width="4"/></svg><span class="k">Stuck in a timeshare?</span><h3>Honest Timeshare Resolutions</h3><p>Our team walks you out of the timeshare you got pushed into — your pace, your options, your call. No hassle, no haggle.</p><span class="go">Get exit help →</span></a>
 </div></section>
 
 <section class="founder"><div class="wrap in">
