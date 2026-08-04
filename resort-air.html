@@ -138,7 +138,7 @@ section{padding:86px 0}
 <label style="display:flex;gap:11px;font-size:12.5px;color:#dce6de;align-items:flex-start;background:rgba(255,255,255,.06);border:1px solid rgba(242,200,91,.35);border-radius:12px;padding:14px 15px"><input type="checkbox" name="qualify" required style="width:17px;margin-top:2px;flex:none"><span><b style="color:#f2c85b;display:block;margin-bottom:5px">All of this is true.</b>We're a couple and we'll both be on the session together. We're between 35 and 72. Our household income is over $75,000. And we have a major credit card.<span style="display:block;margin-top:7px;color:#8fa596;font-size:11px;line-height:1.55">We ask because the certificate provider requires it &mdash; not to screen you. If any of it isn't true the certificate can't be issued, and we'd rather say so now than after you've given up an hour.</span></span></label>
 <label style="display:block;font-size:12px;color:#bcd0c2"><span style="display:block;margin-bottom:6px">Have you attended a vacation-ownership presentation in the last 90 days?</span><select name="toured90" style="width:100%;padding:11px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.07);color:#fff;font-size:13px"><option value="no">No &mdash; it's been longer than 90 days</option><option value="yes">Yes &mdash; within the last 90 days</option></select><span style="display:block;margin-top:6px;color:#8fa596;font-size:11px;line-height:1.55">Answer honestly. If it's been under 90 days this certificate can't be issued, but we have a separate offer you do qualify for &mdash; we'll show you that one instead.</span></label>
 <label style="display:flex;gap:10px;font-size:12px;color:#bcd0c2;align-items:flex-start"><input type="checkbox" name="consent" style="width:17px;margin-top:2px;flex:none"><span><b style="color:#f2c85b;display:block;margin-bottom:5px">Yes &mdash; I'm serious about travel.</b>I'm interested in membership benefits, and I want you to reach out. Get to know how my family actually travels so you can bring me promotions that genuinely fit us &mdash; not generic blasts.<span style="display:block;margin-top:8px;color:#8fa596;font-size:11px;line-height:1.55">By checking this box I agree to receive marketing and transactional calls and texts from Honest Vacation Marketing, a brand of Elite Marketing Solutions LLC, on behalf of Gateways Unlimited, at the number provided. Consent is not a condition of purchase and this box is optional &mdash; you get your certificate either way. Message frequency varies; message &amp; data rates may apply. Reply HELP for help, STOP to opt out. See our <a href="privacy.html" style="color:#f2c85b" target="_blank">Privacy Policy</a> and <a href="terms.html" style="color:#f2c85b" target="_blank">Terms</a>.</span></span></label>
-<button type="submit" class="btn" style="width:100%;margin-top:6px">BUILD MY RESORT + AIRFARE PLAN</button></form>
+<input type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0"><button type="submit" class="btn" style="width:100%;margin-top:6px">BUILD MY RESORT + AIRFARE PLAN</button><p style="text-align:center;font-size:12.5px;color:#bcd0c2;margin-top:12px">Rather talk to a human first? Call <a href="tel:+18056953163" style="color:#f2c85b;font-weight:800">(805) 695-3163</a></p></form>
 <p style="font-size:10px;color:#8fa596;margin-top:16px;line-height:1.6;text-align:left">Presented by Honest Vacation Marketing on behalf of Gateways Unlimited. A live 45–60 minute presentation is required; there is no charge to attend. Certificates fulfilled by CSNG, a registered Seller of Travel; deposits, taxes and fees are stated above and refundable before travel is confirmed. Market comparisons are estimated midpoints of published 2026 pricing. Limit one offer per household per 90 days.</p></div></section>
 <script>
 var WEBHOOK="https://services.leadconnectorhq.com/hooks/yXAOCx6d0NsookMNcPoY/webhook-trigger/8b19bb36-ee8b-48c2-b968-d5022763fd48";
@@ -183,7 +183,7 @@ function makeCert(offerCode){
   for(var i=0;i<6;i++)r+=A.charAt(Math.floor(Math.random()*A.length));
   return WL.code+'-'+offerCode+'-'+ymd+'-'+r.slice(0,3)+r.slice(3);
 }
-function submitLead(e,offer,pageId,offerCode,offerLabel){e.preventDefault();var f=e.target;if(!f.qualify.checked){alert('Please confirm the qualification details so we know the certificate can actually be issued.');return false;}
+function submitLead(e,offer,pageId,offerCode,offerLabel){e.preventDefault();var f=e.target;if(f.company_website&&f.company_website.value){return false;}if(!f.qualify.checked){alert('Please confirm the qualification details so we know the certificate can actually be issued.');return false;}
 var b=f.querySelector('button');b.disabled=true;b.textContent='Checking...';var p=new URLSearchParams(location.search);
 var CERT=makeCert(offerCode);
 var CONSENTED=f.consent.checked;
@@ -191,11 +191,41 @@ var BUCKET=!CONSENTED?'retarget-no-consent':(f.toured90.value==='yes'?'mini-vaca
 var body={net:'net1',bucket:BUCKET,offer:offer,page:pageId,certificateNumber:CERT,whiteLabel:WL.name,whiteLabelCode:WL.code,offerCode:offerCode,firstName:f.firstName.value,email:f.email.value,mobile:f.mobile.value,qualified:f.qualify.checked,qualifyAttestation:'couple-both-attending|age-35-72|hhi-over-75000|major-credit-card',touredWithin90Days:f.toured90.value==='yes',consent:CONSENTED,consentTimestamp:CONSENTED?new Date().toISOString():'',consentVersion:'gateways-v1',retarget:!CONSENTED,emailPermission:'form-submitted',smsPermission:CONSENTED?'express-written':'none',callPermission:CONSENTED?'express-written':'none',source:'gateways-unlimited',campaign:'gateways-net1',sourceUrl:location.href,attribution:{utm_source:p.get('utm_source')||'',utm_medium:p.get('utm_medium')||'',utm_campaign:p.get('utm_campaign')||'',fbclid:p.get('fbclid')||'',gclid:p.get('gclid')||''}};
 var BOOKING="https://api.leadconnectorhq.com/widget/booking/B2QxN25XAnB9MaD4KukW";
 var booked=false;
+// Shown ONLY when the request provably never reached the server. Telling someone
+// "you're in" when we did not receive them is the most expensive lie the site
+// could tell — they wait for a Zoom link that will never arrive.
+function failed(){if(booked)return;booked=true;
+document.body.innerHTML='<div style="min-height:100vh;display:grid;place-items:center;padding:28px 18px;font-family:system-ui;background:#f6f9f7"><div style="max-width:560px;text-align:center"><h1 style="font-size:32px;color:#b4462f;margin:0 0 12px">We could not reach our system.</h1><p style="color:#5c6b61;line-height:1.65;margin-bottom:18px">Your details are saved on this device and we will keep trying automatically &mdash; but do not wait on us. <b>Call or text and we will book your seat directly, right now.</b></p><a href="tel:+18056953163" style="display:inline-block;background:#1e5c44;color:#fff;font-weight:800;font-size:20px;padding:16px 30px;border-radius:999px;text-decoration:none">(805) 695-3163</a><p style="color:#8a9a90;font-size:12.5px;margin-top:18px;line-height:1.6">Reference this number when you call: <b style="color:#14231c;font-family:ui-monospace,Menlo,Consolas,monospace">'+CERT+'</b></p></div></div>';}
 function done(){if(booked)return;booked=true;
 var q='?first_name='+encodeURIComponent(f.firstName.value)+'&email='+encodeURIComponent(f.email.value)+'&phone='+encodeURIComponent(f.mobile.value)+'&cert='+encodeURIComponent(CERT);
 document.body.innerHTML='<div style="min-height:100vh;padding:28px 18px;font-family:system-ui;background:#f6f9f7"><div style="max-width:860px;margin:0 auto;text-align:center"><h1 style="font-size:38px;color:#1e5c44;margin:0 0 8px">You\'re in. Now pick your time.</h1><p style="max-width:600px;color:#5c6b61;margin:0 auto 18px;line-height:1.6">Choose any session below and your Zoom link is emailed to you instantly. It\'s 45&ndash;60 minutes, live, and every cost is on the table.</p><div style="max-width:520px;margin:0 auto 20px;background:#0e2f23;border-radius:16px;padding:22px 24px;text-align:left;box-shadow:0 12px 34px rgba(14,47,35,.22)"><div style="font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#f2c85b;margin-bottom:8px">Your certificate number &mdash; save this</div><div style="font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:clamp(20px,4.6vw,30px);font-weight:700;color:#fff;letter-spacing:.06em;word-break:break-all">'+CERT+'</div><div style="color:#9fb8a8;font-size:12px;margin-top:10px;line-height:1.6">Issued by '+WL.name+'. Bring this number to your session &mdash; it\'s how we pull up your file. Your <b style="color:#dce6de">activation code</b> is issued at the session itself.</div></div><p style="max-width:600px;color:#8a9a90;margin:0 auto 20px;font-size:13px;line-height:1.6">Sessions run Monday&ndash;Friday at 1:30, 3:30 and 5:30 PM Pacific.</p><div style="background:#fff;border-radius:18px;box-shadow:0 10px 40px rgba(16,50,36,.10);overflow:hidden"><iframe src="'+BOOKING+q+'" style="width:100%;height:780px;border:0" title="Choose your session time"></iframe></div><p style="color:#8a9a90;font-size:12px;margin:18px auto 0;max-width:600px;line-height:1.6">Can\'t pick a time right now? No problem &mdash; we\'ll text and email you the same link. Reply STOP to any text to opt out.</p></div>'+afterBooking(offerLabel)+'</div>';}
 if(!WEBHOOK){done();return false;}
-fetch(WEBHOOK,{method:'POST',mode:'no-cors',body:JSON.stringify(body)}).then(done).catch(done);setTimeout(done,1200);return false;}
+// A lead is money. Persist it BEFORE the network call so a failed/slow POST can
+// never lose it. mode:'no-cors' hides the status code, but the promise still
+// tells us whether the request left the machine: resolve = it reached the
+// server, reject = it never did. Those must NOT be treated the same.
+try{localStorage.setItem('hvm_pending_'+CERT,JSON.stringify(body));}catch(_){}
+var settled=false;
+function clearPending(){try{localStorage.removeItem('hvm_pending_'+CERT);}catch(_){}}
+fetch(WEBHOOK,{method:'POST',mode:'no-cors',body:JSON.stringify(body)})
+ .then(function(){ if(settled)return; settled=true; clearPending(); done(); })
+ .catch(function(){ if(settled)return; settled=true; failed(); });   // kept in localStorage for retry
+// If the network stalls, show the booking screen rather than trapping them —
+// but leave the record in localStorage so retryPending() re-sends it later.
+setTimeout(function(){ if(settled)return; settled=true; done(); },6000);
+return false;}
+// On every page load, re-send anything a previous visit could not deliver.
+(function retryPending(){
+ if(!WEBHOOK||!window.localStorage)return;
+ for(var i=0;i<localStorage.length;i++){
+  var k=localStorage.key(i); if(!k||k.indexOf('hvm_pending_')!==0)continue;
+  (function(key){
+   var payload=localStorage.getItem(key); if(!payload)return;
+   fetch(WEBHOOK,{method:'POST',mode:'no-cors',body:payload})
+    .then(function(){try{localStorage.removeItem(key);}catch(_){}}).catch(function(){});
+  })(k);
+ }
+})();
 </script>
 <footer class="foot"><div class="wrap"><div class="top">
 <div><div class="fbrand">The Honest <span>Travel Group</span></div><p style="color:#aec2b4;font-size:14px;max-width:260px">A family of companies built on one rule: everything upfront, everything optional. Founded by Dave Lemmons.</p></div>
