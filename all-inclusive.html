@@ -9,7 +9,12 @@ var p=window.open(u,'_blank','noopener,width='+w+',height='+h+',left='+x+',top='
 if(p){p.focus();return false;}}catch(e){}return true;}</script>
 <title>See Your All-Inclusive Getaway — Meals, Drinks, and the Real Price | Honest Vacation Marketing</title><meta name="description" content="A 4-night all-inclusive stay in Cancún, the Dominican Republic, or Montego Bay, plus ongoing member travel benefits."><style>
 *{box-sizing:border-box;margin:0}
-:root{--ink:#14231c;--muted:#5c6b61;--paper:#f6f1e7;--paper2:#efe7d7;--green:#1e5c44;--green2:#2d7a5a;--deep:#0e2f23;--sun:#f2c85b;--coral:#f2795a;--line:rgba(20,35,28,.12)}
+/* NAVY + SILVER.
+   --cta is deliberately the lightest token in the set. On the navy heroes and
+   the navy conversion band, a platinum button on deep navy is the highest
+   contrast pairing available inside this palette, so the click target is the
+   brightest object on the page without importing an off-brand accent colour. */
+:root{--ink:#0f1c2b;--muted:#5f6d7e;--paper:#ffffff;--paper2:#eef1f5;--brand:#1b3f6b;--steel:#3a6ea5;--deep:#0a1f38;--silver:#c8d4e0;--cta:#e8eef5;--line:rgba(15,28,43,.12)}
 html{scroll-behavior:smooth}
 body{background:var(--paper);color:var(--ink);font-family:'Segoe UI',system-ui,Arial,sans-serif;line-height:1.5}
 a{text-decoration:none;color:inherit}
@@ -17,163 +22,237 @@ h1,h2,h3{letter-spacing:-.03em;line-height:1.05}
 .serif{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-weight:400}
 .wrap{max-width:1180px;margin:0 auto;padding:0 5vw}
 /* nav */
-.nav{position:sticky;top:0;z-index:60;background:rgba(246,241,231,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav .in{max-width:1180px;margin:0 auto;padding:16px 5vw;display:flex;align-items:center;justify-content:space-between;gap:20px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-.03em}
-.brand .dot{width:26px;height:26px;border-radius:50%;background:var(--green);display:grid;place-content:center;color:var(--sun);font-size:11px;font-weight:800}
-.brand span{color:var(--green)}
+.brand .dot{width:26px;height:26px;border-radius:50%;background:var(--brand);display:grid;place-content:center;color:var(--silver);font-size:11px;font-weight:800}
+.brand span{color:var(--brand)}
 .navlinks{display:flex;gap:26px;align-items:center;font-size:14px;color:var(--muted)}
-.navlinks a:hover{color:var(--green)}
+.navlinks a:hover{color:var(--brand)}
 .navcta{background:var(--ink);color:var(--paper);font-weight:700;font-size:13px;padding:11px 20px;border-radius:999px}
 @media(max-width:820px){.navlinks{display:none}}
 /* hero */
 .hero{position:relative;overflow:hidden;background:var(--deep);color:#fff}
 .hero .art{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(14,47,35,.96) 40%,rgba(14,47,35,.5))}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,31,56,.96) 40%,rgba(10,31,56,.5))}
 .hero .in{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:96px 5vw 100px}
-.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--sun);margin-bottom:22px}
-.eyebrow::before{content:"";width:26px;height:1px;background:var(--sun)}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--silver);margin-bottom:22px}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--silver)}
 .hero h1{font-size:clamp(40px,6.4vw,78px);max-width:900px;margin-bottom:22px}
-.hero h1 em{color:var(--sun)}
-.hero p{font-size:clamp(16px,1.7vw,20px);max-width:620px;color:#dce6de;margin-bottom:34px}
+.hero h1 em{color:var(--silver)}
+.hero p{font-size:clamp(16px,1.7vw,20px);max-width:620px;color:#dbe3ec;margin-bottom:34px}
 .btns{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-.btn{background:var(--coral);color:#fff;font-weight:800;font-size:15px;padding:16px 30px;border-radius:999px;box-shadow:0 14px 34px rgba(242,121,90,.4);transition:transform .15s}
-.btn:hover{transform:translateY(-2px)}
+/* Platinum face, navy type — 14.8:1. The button is the brightest thing in the
+   viewport, which is the whole job of a primary CTA. White-on-platinum would
+   have been invisible, which is what a blind palette swap would have shipped. */
+.btn{background:var(--cta);color:var(--deep);font-weight:800;font-size:15px;padding:16px 30px;border-radius:999px;box-shadow:0 10px 30px rgba(6,18,32,.45),0 0 0 1px rgba(255,255,255,.5) inset;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(6,18,32,.55),0 0 0 1px rgba(255,255,255,.7) inset}
+.btn.ghost{color:#fff}
 .btn.ghost{background:transparent;border:1.5px solid rgba(255,255,255,.55);box-shadow:none}
-.stats{display:flex;flex-wrap:wrap;gap:34px;margin-top:44px;color:#bcd0c2}
+.stats{display:flex;flex-wrap:wrap;gap:34px;margin-top:44px;color:#b8c5d4}
 .stats b{display:block;color:#fff;font-size:26px;letter-spacing:-.04em}
 .stats small{font-size:12px}
 /* sections */
 section{padding:86px 0}
 .sec-head{max-width:720px;margin-bottom:48px}
-.sec-head .eyebrow{color:var(--green)}.sec-head .eyebrow::before{background:var(--green)}
+.sec-head .eyebrow{color:var(--brand)}.sec-head .eyebrow::before{background:var(--brand)}
 .sec-head h2{font-size:clamp(30px,4vw,50px);margin-bottom:16px}
-.sec-head h2 em{color:var(--green)}
+.sec-head h2 em{color:var(--brand)}
 .sec-head p{color:var(--muted);font-size:17px}
 /* difference cards */
 .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
 .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px;transition:transform .18s,box-shadow .18s}
-.card:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(20,35,28,.1)}
+.card:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(15,28,43,.1)}
 .card .ic{width:44px;height:44px;border-radius:12px;background:var(--paper2);display:grid;place-content:center;font-size:20px;margin-bottom:16px}
 .card h3{font-size:20px;margin-bottom:8px}.card p{color:var(--muted);font-size:14.5px}
 /* family / doors */
 .doors{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .door{position:relative;border-radius:20px;overflow:hidden;min-height:280px;display:flex;flex-direction:column;justify-content:flex-end;padding:32px;color:#fff}
 .door svg{position:absolute;inset:0;width:100%;height:100%}
-.door::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(14,47,35,.92),rgba(14,47,35,.3))}
+.door::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,31,56,.92),rgba(10,31,56,.3))}
 .door>*{position:relative;z-index:2}
-.door .k{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--sun);margin-bottom:8px}
-.door h3{font-size:26px;margin-bottom:8px}.door p{color:#dce6de;font-size:14px;max-width:420px;margin-bottom:14px}
-.door .go{font-weight:800;font-size:13px;color:#fff;border-bottom:2px solid var(--sun);padding-bottom:3px;width:fit-content}
+.door .k{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--silver);margin-bottom:8px}
+.door h3{font-size:26px;margin-bottom:8px}.door p{color:#dbe3ec;font-size:14px;max-width:420px;margin-bottom:14px}
+.door .go{font-weight:800;font-size:13px;color:#fff;border-bottom:2px solid var(--silver);padding-bottom:3px;width:fit-content}
 @media(max-width:760px){.doors{grid-template-columns:1fr}}
 /* founder */
 .founder{background:var(--deep);color:#fff}
 .founder .in{display:grid;grid-template-columns:.85fr 1.15fr;gap:6vw;align-items:center}
-.founder .photo{border-radius:20px;overflow:hidden;min-height:360px;background:linear-gradient(135deg,var(--green),var(--deep));display:grid;place-content:center;position:relative}
-.founder .photo .mono{font-family:Georgia,serif;font-size:120px;color:rgba(242,200,91,.25);font-weight:700}
-.founder .photo .tag{position:absolute;bottom:22px;left:22px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--sun)}
-.founder h2{font-size:clamp(28px,3.6vw,44px);margin-bottom:18px}.founder h2 em{color:var(--sun)}
-.founder p{color:#c8d6cc;font-size:15.5px;margin-bottom:14px;max-width:560px}
-.founder .sign{color:var(--sun);font-weight:800;font-size:14px;margin-top:8px}
+.founder .photo{border-radius:20px;overflow:hidden;min-height:360px;background:linear-gradient(135deg,var(--brand),var(--deep));display:grid;place-content:center;position:relative}
+.founder .photo .mono{font-family:Georgia,serif;font-size:120px;color:rgba(200,212,224,.25);font-weight:700}
+.founder .photo .tag{position:absolute;bottom:22px;left:22px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--silver)}
+.founder h2{font-size:clamp(28px,3.6vw,44px);margin-bottom:18px}.founder h2 em{color:var(--silver)}
+.founder p{color:#c4d0de;font-size:15.5px;margin-bottom:14px;max-width:560px}
+.founder .sign{color:var(--silver);font-weight:800;font-size:14px;margin-top:8px}
 @media(max-width:820px){.founder .in{grid-template-columns:1fr}}
 /* ── real photography ── */
+picture{display:contents}
 .hero .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero.shot::after{background:linear-gradient(100deg,rgba(14,47,35,.94) 34%,rgba(14,47,35,.62) 68%,rgba(14,47,35,.42))}
+/* Scrim tuned by measurement, not by eye. The photos are bright (mid-band luma
+   ~132) but the old 94%/62%/42% ramp composited them down to 46/74/88 — a
+   $290 landing page that looked like a flat green rectangle. White text stays
+   above WCAG AA all the way out to 0.30 alpha (5.57:1), so the scrim only needs
+   to be heavy where the copy actually sits: h1 runs to ~71% of the hero, the
+   paragraph to ~52%. Past that the photograph is allowed to be a photograph. */
+.hero.shot::after{background:linear-gradient(100deg,rgba(10,31,56,.90) 0%,rgba(10,31,56,.84) 40%,rgba(10,31,56,.70) 66%,rgba(10,31,56,.34) 86%,rgba(10,31,56,.14) 100%)}
+/* Warm the photo edge with the brand's sun accent so the hero reads as designed
+   rather than as an image with a panel dropped on top. */
+.hero.shot::before{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(120% 90% at 100% 0%,rgba(200,212,224,.16),transparent 58%);pointer-events:none}
+/* Insurance, not decoration. The scrim is measured against each photo's worst
+   pixel, but the crop shifts with viewport and the tightest page (condo) sits
+   at 3.17:1 against a 3.0 floor. A soft shadow holds legibility on bright
+   patches at crops that cannot all be tested. Invisible on dark areas. */
+.hero.shot h1,.hero.shot p,.hero.shot .eyebrow{text-shadow:0 1px 22px rgba(6,18,32,.5),0 1px 3px rgba(6,18,32,.38)}
+/* THE PROMISE BAR — the brand thread.
+   Sits under the nav on all nine pages, legal pages included, so the rule the
+   whole company is built on frames every page before anything else is read.
+   Copy is drawn from the footer's own legal language so it can never drift
+   into a claim the terms do not already make. */
+/* QUICK BOX — the high-position capture.
+   Pulled up over the hero's bottom edge so it is partly visible before any
+   scroll: the offer and the way to accept it occupy the same screen. Navy card
+   on white keeps it the single darkest object below the fold, so the eye lands
+   on it before the supporting copy. */
+.quickbox{background:var(--deep);border-radius:22px;padding:clamp(24px,3.4vw,40px);margin-top:-72px;position:relative;z-index:5;box-shadow:0 26px 70px rgba(6,18,32,.34),0 0 0 1px rgba(200,212,224,.16) inset;display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(22px,3vw,44px);align-items:start}
+.quickbox .qb-head h2{color:#fff;font-size:clamp(24px,2.5vw,34px);line-height:1.15;margin:10px 0 12px}
+.quickbox .qb-head p{color:#b8c5d4;font-size:14px;line-height:1.6;margin:0}
+.quickbox .qb-form{display:grid;gap:12px}
+.quickbox .qb-row{display:grid;gap:10px}
+@media(max-width:900px){.quickbox{grid-template-columns:1fr;margin-top:-40px}}
+@media(max-width:560px){.quickbox{margin-top:-24px;border-radius:18px}}
+.promise{background:var(--deep);border-bottom:1px solid rgba(200,212,224,.22)}
+.promise .in{max-width:1180px;margin:0 auto;padding:11px 5vw;display:flex;gap:8px 24px;flex-wrap:wrap;align-items:center;justify-content:center}
+.promise b{color:var(--silver);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:10.5px;white-space:nowrap}
+.promise span{display:inline-flex;align-items:center;gap:9px;color:#ccd8e5;font-size:12.5px;line-height:1.4}
+.promise span::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--silver);opacity:.75;flex:none}
+/* On a phone the bar wrapped to three lines: 83px on top of a 94px nav ate 22%
+   of the viewport before the hero. Below 700px it keeps the rule itself — the
+   part that IS the brand thread — and drops the two supporting proofs, which
+   both still appear in the page body and the footer. One line, ~34px. */
+@media(max-width:700px){
+  .promise .in{justify-content:flex-start;gap:9px;padding:8px 5vw;flex-wrap:nowrap}
+  .promise span{font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .promise span.sub{display:none}
+}
 /* certificate cards */
 .certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px}
-.cert{position:relative;border-radius:20px;overflow:hidden;background:var(--deep);color:#fff;display:flex;flex-direction:column;min-height:430px;box-shadow:0 14px 40px rgba(20,35,28,.13);transition:transform .2s,box-shadow .2s}
-.cert:hover{transform:translateY(-6px);box-shadow:0 26px 60px rgba(20,35,28,.24)}
+.cert{position:relative;border-radius:20px;overflow:hidden;background:var(--deep);color:#fff;display:flex;flex-direction:column;min-height:430px;box-shadow:0 14px 40px rgba(15,28,43,.13);transition:transform .2s,box-shadow .2s}
+.cert:hover{transform:translateY(-6px);box-shadow:0 26px 60px rgba(15,28,43,.24)}
 .cert .shotwrap{position:relative;height:210px;overflow:hidden}
 .cert .shotwrap img{width:100%;height:100%;object-fit:cover;display:block}
-.cert .shotwrap::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(14,47,35,.96),rgba(14,47,35,.12) 62%)}
+.cert .shotwrap::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,31,56,.96),rgba(10,31,56,.12) 62%)}
 /* crop the branded stern out of the cruise photo */
 .cert .shotwrap img.crop-left{object-position:16% 46%;transform:scale(1.34)}
-.cert .tag{position:absolute;top:14px;left:14px;z-index:3;background:rgba(242,200,91,.95);color:#0e2f23;font-size:10px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;padding:7px 12px;border-radius:999px}
+.cert .tag{position:absolute;top:14px;left:14px;z-index:3;background:rgba(200,212,224,.95);color:#0a1f38;font-size:10px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;padding:7px 12px;border-radius:999px}
 .cert .body{padding:22px 24px 26px;display:flex;flex-direction:column;flex:1}
 .cert h3{font-size:21px;margin-bottom:6px;line-height:1.15}
-.cert .blurb{color:#b9cdc0;font-size:13.5px;margin-bottom:16px;flex:1}
+.cert .blurb{color:#b5c3d3;font-size:13.5px;margin-bottom:16px;flex:1}
 .cert .money{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px}
-.cert .was{color:#8fa596;font-size:14px;text-decoration:line-through;text-decoration-color:var(--coral);text-decoration-thickness:2px}
-.cert .now{font-size:30px;font-weight:800;color:var(--sun);letter-spacing:-.03em}
-.cert .keep{font-size:12px;color:#dce6de;background:rgba(255,255,255,.1);padding:5px 10px;border-radius:999px;width:fit-content;margin-bottom:14px}
-.cert .go{font-weight:800;font-size:13px;color:#0e2f23;background:var(--sun);padding:12px 18px;border-radius:999px;text-align:center}
+.cert .was{color:#8d9cae;font-size:14px;text-decoration:line-through;text-decoration-color:var(--cta);text-decoration-thickness:2px}
+.cert .now{font-size:30px;font-weight:800;color:var(--silver);letter-spacing:-.03em}
+.cert .keep{font-size:12px;color:#dbe3ec;background:rgba(255,255,255,.1);padding:5px 10px;border-radius:999px;width:fit-content;margin-bottom:14px}
+.cert .go{font-weight:800;font-size:13px;color:#0a1f38;background:var(--silver);padding:12px 18px;border-radius:999px;text-align:center}
 /* steps */
 .steps4{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
 .step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px}
-.step i{display:grid;place-content:center;width:38px;height:38px;border-radius:50%;background:var(--green);color:#fff;font-style:normal;font-weight:800;margin-bottom:12px}
+.step i{display:grid;place-content:center;width:38px;height:38px;border-radius:50%;background:var(--brand);color:#fff;font-style:normal;font-weight:800;margin-bottom:12px}
 .step b{display:block;font-size:17px;margin-bottom:6px}.step p{color:var(--muted);font-size:14px}
 /* honesty band */
-.band{background:var(--sun);color:var(--deep)}
+.band{background:var(--silver);color:var(--deep)}
 .band .in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px}
 .band h2{font-size:clamp(24px,3vw,38px);max-width:640px}
 /* footer */
-.foot{background:var(--deep);color:#aec2b4;padding:60px 0 30px}
+.foot{background:var(--deep);color:#a8b6c6;padding:60px 0 30px}
 .foot .top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.12)}
 .foot h4{color:#fff;font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
-.foot a{display:block;color:#aec2b4;font-size:14px;margin-bottom:9px}.foot a:hover{color:var(--sun)}
+.foot a{display:block;color:#a8b6c6;font-size:14px;margin-bottom:9px}.foot a:hover{color:var(--silver)}
 .foot .fbrand{font-weight:800;font-size:19px;color:#fff;margin-bottom:10px}
-.foot .fbrand span{color:var(--sun)}
-.foot .legal{padding-top:24px;font-size:11px;color:#7f978a;line-height:1.7}
+.foot .fbrand span{color:var(--silver)}
+.foot .legal{padding-top:24px;font-size:11px;color:#7d8b9c;line-height:1.7}
 @media(max-width:760px){.foot .top{grid-template-columns:1fr 1fr}}
 /* generic page hero */
 .phero{background:var(--deep);color:#fff;padding:80px 0 70px}
-.phero h1{font-size:clamp(34px,5vw,60px);max-width:820px;margin-bottom:16px}.phero h1 em{color:var(--sun)}
-.phero p{color:#c8d6cc;font-size:18px;max-width:600px}
+.phero h1{font-size:clamp(34px,5vw,60px);max-width:820px;margin-bottom:16px}.phero h1 em{color:var(--silver)}
+.phero p{color:#c4d0de;font-size:18px;max-width:600px}
 .prose{max-width:760px;padding:70px 5vw;margin:0 auto}
-.prose p{font-size:16.5px;color:#33443b;margin-bottom:20px}.prose h3{font-size:24px;margin:36px 0 12px}
+.prose p{font-size:16.5px;color:#303c4a;margin-bottom:20px}.prose h3{font-size:24px;margin:36px 0 12px}
 </style></head><body>
 <nav class="nav"><div class="in"><a class="brand" href="index.html"><span class="dot">H</span>The Honest <span>Travel Group</span></a>
-<div class="navlinks"><a href="cruise.html" style="color:var(--green)">Vacations</a><a href="https://honesttimeshareresolutions.com">Timeshare Exit</a><a href="about.html">About</a><a href="partners.html">Partners</a></div>
+<div class="navlinks"><a href="cruise.html" style="color:var(--brand)">Vacations</a><a href="https://honesttimeshareresolutions.com">Timeshare Exit</a><a href="about.html">About</a><a href="partners.html">Partners</a></div>
 <a class="navcta" href="cruise.html">See the offers</a></div></nav>
-<header class="hero"><svg class="art" viewBox="0 0 200 110" preserveAspectRatio="xMidYMid slice"><rect width="200" height="110" fill="#0e2f23"/><circle cx="46" cy="30" r="15" fill="#f2c85b"/><path d="M0 74 Q60 66 120 74 T200 72 V110 H0 Z" fill="#2d7a5a"/><path d="M0 88 Q60 80 120 88 T200 86 V110 H0 Z" fill="#efd9a7"/></svg><div class="in"><span class="eyebrow">An all-inclusive is only a deal when 'included' actually means included.</span><h1>See Your All-Inclusive Getaway — Meals, Drinks, and the Real Price</h1><p>A 4-night all-inclusive stay in Cancún, the Dominican Republic, or Montego Bay, plus ongoing member travel benefits.</p><div class="btns"><a class="btn" href="#qualify">SHOW ME ALL-INCLUSIVE GETAWAYS</a></div></div></header>
-<section class="wrap" style="padding-top:56px"><div class="grid3"><div class="card"><div class="ic">1</div><h3>Tell Us How You Travel</h3><p>Destination, dates, party size, preferred offer.</p></div><div class="card"><div class="ic">2</div><h3>Select Your Live Preview</h3><p>Choose a session within the next 72 hours.</p></div><div class="card"><div class="ic">3</div><h3>Review Your Options</h3><p>See qualifying incentives and membership benefits.</p></div></div></section>
+<div class="promise"><div class="in"><b>Our one rule</b><span>Everything upfront, everything optional</span><span class="sub">Every cost printed before you give us your name</span><span class="sub">No charge to attend a live session</span></div></div>
+<header class="hero shot"><picture><source type="image/webp" srcset="img/cabo-bluehour-480.webp 480w, img/cabo-bluehour-800.webp 800w, img/cabo-bluehour-1200.webp 1200w, img/cabo-bluehour-1600.webp 1600w" sizes="100vw"><img class="photo" src="img/cabo-bluehour-1200.jpg" alt="Beachfront all-inclusive resort pools at dusk in Mexico" fetchpriority="high" decoding="async"></picture><div class="in"><span class="eyebrow">An all-inclusive is only a deal when 'included' actually means included.</span><h1>See Your All-Inclusive Getaway — Meals, Drinks, and the Real Price</h1><p>A 4-night all-inclusive stay in Cancún, the Dominican Republic, or Montego Bay, plus ongoing member travel benefits.</p><div class="btns"><a class="btn" href="#reserve">SHOW ME ALL-INCLUSIVE GETAWAYS</a></div></div></header>
+<section class="wrap" style="padding-top:38px"><div class="quickbox" id="reserve">
+<div class="qb-head"><span class="eyebrow" style="color:var(--silver)">Reserve a seat</span><h2>Check your seat in about thirty seconds.</h2><p>Seating for the live preview is limited. No charge to attend, and you keep the certificate either way.</p></div>
+<form onsubmit="return submitLead(event,'all-inclusive','all-inclusive-acquisition-quick','ALL',"All-Inclusive Beach Escape")" class="qb-form">
+<div class="qb-row">
+<input name="firstName" required placeholder="First name" style="padding:15px;border-radius:12px;border:0;font-size:14px">
+<input name="mobile" required type="tel" placeholder="Mobile number" style="padding:15px;border-radius:12px;border:0;font-size:14px">
+<input name="email" required type="email" placeholder="Email" style="padding:15px;border-radius:12px;border:0;font-size:14px">
+</div>
+<label style="display:flex;gap:11px;font-size:12.5px;color:#dbe3ec;align-items:flex-start;background:rgba(255,255,255,.06);border:1px solid rgba(200,212,224,.35);border-radius:12px;padding:14px 15px"><input type="checkbox" name="qualify" required style="width:22px;height:22px;margin-top:1px;flex:none;accent-color:#3a6ea5"><span><b style="color:#c8d4e0;display:block;margin-bottom:5px">All of this is true.</b>We're a couple and we'll both be on the session together. We're between 35 and 72. Our household income is over $75,000. And we have a major credit card.</span></label>
+<label style="display:block;font-size:12px;color:#b8c5d4"><span style="display:block;margin-bottom:6px">Have you attended a vacation-ownership presentation in the last 90 days?</span><select name="toured90" style="padding:13px;border-radius:12px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.07);color:#fff;font-size:13.5px;width:100%"><option value="no">No &mdash; it's been longer than 90 days</option><option value="yes">Yes &mdash; within the last 90 days</option></select></label>
+<label style="display:flex;gap:10px;font-size:12px;color:#b8c5d4;align-items:flex-start"><input type="checkbox" name="consent" style="width:22px;height:22px;margin-top:1px;flex:none;accent-color:#3a6ea5"><span><b style="color:#c8d4e0;display:block;margin-bottom:5px">Yes &mdash; I'm serious about travel.</b>I'm interested in membership benefits, and I want you to reach out.<span style="display:block;margin-top:8px;color:#8d9cae;font-size:11px;line-height:1.55">By checking this box I agree to receive marketing and transactional calls and texts from Honest Vacation Marketing, a brand of Elite Marketing Solutions LLC, on behalf of Gateways Unlimited, at the number provided. Consent is not a condition of purchase and this box is optional &mdash; you get your certificate either way. Message frequency varies; message &amp; data rates may apply. Reply HELP for help, STOP to opt out. See our <a href="privacy.html" style="color:#c8d4e0" target="_blank">Privacy Policy</a> and <a href="terms.html" style="color:#c8d4e0" target="_blank">Terms</a>.</span></span></label>
+<input type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+<button type="submit" class="btn" style="width:100%">SHOW ME ALL-INCLUSIVE GETAWAYS</button>
+<p style="text-align:center;font-size:12.5px;color:#b8c5d4;margin:0">Every cost is printed below before you decide. Rather talk to a human? Call <a href="tel:+18056953163" style="color:#c8d4e0;font-weight:800">(805) 695-3163</a></p>
+</form></div></section>
+<section class="wrap" style="padding-top:46px"><div class="grid3"><div class="card"><div class="ic">1</div><h3>Tell Us How You Travel</h3><p>Destination, dates, party size, preferred offer.</p></div><div class="card"><div class="ic">2</div><h3>Select Your Live Preview</h3><p>Choose a session within the next 72 hours.</p></div><div class="card"><div class="ic">3</div><h3>Review Your Options</h3><p>See qualifying incentives and membership benefits.</p></div></div></section>
 <section class="wrap" style="padding-top:20px">
 <div style="background:#fff;border:1px solid var(--line);border-radius:20px;padding:clamp(22px,3vw,34px);margin-bottom:22px">
 <div style="display:flex;gap:26px;align-items:flex-start;flex-wrap:wrap;justify-content:space-between">
 <div style="flex:1;min-width:290px">
-<div style="font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:14px">What this trip costs if you book it yourself</div>
+<div style="font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--brand);margin-bottom:14px">What this trip costs if you book it yourself</div>
 <table style="width:100%;border-collapse:collapse;font-size:14px">
 <tr><td style="padding:9px 0;border-bottom:1px solid var(--line);vertical-align:top">All-inclusive resort · 4 nights for two<span style="display:block;color:var(--muted);font-size:11.5px;margin-top:3px">thecancunsun.com, 2026 (mid-range $900/night, 2 adults)</span></td><td style="padding:9px 0;border-bottom:1px solid var(--line);text-align:right;font-weight:700;white-space:nowrap;vertical-align:top">$3,600</td></tr><tr><td style="padding:9px 0;border-bottom:1px solid var(--line);vertical-align:top">Roundtrip airfare for two<span style="display:block;color:var(--muted);font-size:11.5px;margin-top:3px">U.S. Bureau of Transportation Statistics, Q1 2026</span></td><td style="padding:9px 0;border-bottom:1px solid var(--line);text-align:right;font-weight:700;white-space:nowrap;vertical-align:top">$986</td></tr><tr><td style="padding:9px 0;border-bottom:1px solid var(--line);vertical-align:top">Rental car · 4 days<span style="display:block;color:var(--muted);font-size:11.5px;margin-top:3px">KAYAK, 2026 Cancún ($79/day full-size)</span></td><td style="padding:9px 0;border-bottom:1px solid var(--line);text-align:right;font-weight:700;white-space:nowrap;vertical-align:top">$316</td></tr>
-<tr><td style="padding:14px 0 0;font-weight:800;font-size:16px">Their price</td><td style="padding:14px 0 0;text-align:right"><span style="font-size:clamp(26px,3.6vw,34px);font-weight:800;color:var(--muted);text-decoration:line-through;text-decoration-color:var(--coral);text-decoration-thickness:3px">$4,902</span></td></tr>
+<tr><td style="padding:14px 0 0;font-weight:800;font-size:16px">Their price</td><td style="padding:14px 0 0;text-align:right"><span style="font-size:clamp(26px,3.6vw,34px);font-weight:800;color:var(--muted);text-decoration:line-through;text-decoration-color:var(--cta);text-decoration-thickness:3px">$4,902</span></td></tr>
 </table>
 <p style="color:var(--muted);font-size:11.5px;line-height:1.6;margin-top:12px">Every figure above is the <b>high end of published 2026 rates for two travelers</b>, priced from the sources named beside each line on <b>August 4, 2026</b>. We show the math because nobody else in this business does.</p>
 </div>
 <div style="flex:1;min-width:270px;background:var(--deep);color:#fff;border-radius:16px;padding:26px 24px">
-<div style="font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--sun);margin-bottom:12px">Your price</div>
+<div style="font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--silver);margin-bottom:12px">Your price</div>
 <div style="font-size:clamp(38px,6vw,54px);font-weight:800;letter-spacing:-.04em;line-height:1">$538</div>
-<div style="color:#dce6de;font-size:13.5px;margin:10px 0 18px;line-height:1.6">Out the door, for two. <b style="color:#fff">That is the maximum</b> &mdash; not an estimate, not a starting point. It cannot go up.</div>
+<div style="color:#dbe3ec;font-size:13.5px;margin:10px 0 18px;line-height:1.6">Out the door, for two. <b style="color:#fff">That is the maximum</b> &mdash; not an estimate, not a starting point. It cannot go up.</div>
 <div style="border-top:1px solid rgba(255,255,255,.18);padding-top:16px">
-<div style="font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--sun);margin-bottom:8px">Plus</div>
+<div style="font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--silver);margin-bottom:8px">Plus</div>
 <div style="font-size:20px;font-weight:800;margin-bottom:6px">45&ndash;60 minutes of your time</div>
-<div style="color:#c8d6cc;font-size:13.5px;line-height:1.6">One live session where we show you how to keep travelling at these numbers &mdash; the next cruise, the next resort week, the next family trip. That is the entire ask. No charge to attend, and you keep the certificate either way.</div>
+<div style="color:#c4d0de;font-size:13.5px;line-height:1.6">One live session where we show you how to keep travelling at these numbers &mdash; the next cruise, the next resort week, the next family trip. That is the entire ask. No charge to attend, and you keep the certificate either way.</div>
 </div></div></div></div>
 <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;background:var(--paper2);border-radius:16px;padding:20px 24px;margin-bottom:22px"><svg viewBox="0 0 200 200" width="112" height="112" role="img" aria-label="HONEST TRAVEL GROUP CERTIFIED seal" style="flex:none">
 <defs><path id="seal-vacation-top" d="M100,100 m-74,0 a74,74 0 1,1 148,0" fill="none"/>
 <path id="seal-vacation-bot" d="M100,100 m-64,0 a64,64 0 1,0 128,0" fill="none"/></defs>
-<circle cx="100" cy="100" r="94" fill="none" stroke="#1e5c44" stroke-width="3"/>
-<circle cx="100" cy="100" r="86" fill="none" stroke="#1e5c44" stroke-width="1.2"/>
-<circle cx="100" cy="100" r="58" fill="none" stroke="#1e5c44" stroke-width="1.2"/>
-<text font-family="Georgia,serif" font-size="13.5" font-weight="700" letter-spacing="2.4" fill="#1e5c44">
+<circle cx="100" cy="100" r="94" fill="none" stroke="#1b3f6b" stroke-width="3"/>
+<circle cx="100" cy="100" r="86" fill="none" stroke="#1b3f6b" stroke-width="1.2"/>
+<circle cx="100" cy="100" r="58" fill="none" stroke="#1b3f6b" stroke-width="1.2"/>
+<text font-family="Georgia,serif" font-size="13.5" font-weight="700" letter-spacing="2.4" fill="#1b3f6b">
 <textPath href="#seal-vacation-top" startOffset="50%" text-anchor="middle">HONEST TRAVEL GROUP</textPath></text>
-<text font-family="Georgia,serif" font-size="11" letter-spacing="3.4" fill="#1e5c44">
+<text font-family="Georgia,serif" font-size="11" letter-spacing="3.4" fill="#1b3f6b">
 <textPath href="#seal-vacation-bot" startOffset="50%" text-anchor="middle">EVERY COST UPFRONT</textPath></text>
-<text x="100" y="94" text-anchor="middle" font-family="Georgia,serif" font-size="26" font-weight="700" fill="#1e5c44" letter-spacing="1">VACATION</text>
-<text x="100" y="116" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#1e5c44" letter-spacing="4.5">CERTIFIED</text>
-<line x1="62" y1="126" x2="138" y2="126" stroke="#1e5c44" stroke-width="1"/>
-<text x="100" y="140" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#1e5c44" letter-spacing="1.6">ELITE MARKETING SOLUTIONS LLC</text>
-<circle cx="100" cy="34" r="2.6" fill="#f2c85b"/><circle cx="100" cy="166" r="2.6" fill="#f2c85b"/>
-</svg><div style="flex:1;min-width:260px"><div style="font-weight:800;font-size:16px;margin-bottom:6px">Every certificate we issue carries this seal.</div><div style="color:var(--muted);font-size:13.5px;line-height:1.6">It is how you confirm a certificate actually came from us. If someone offers you a &ldquo;Honest Travel Group&rdquo; certificate <b>without</b> this seal and a matching certificate number, it did not come from us &mdash; call <a href="tel:+18056953163" style="color:var(--green);font-weight:700">(805) 695-3163</a> and we will verify it in a minute.</div></div></div><p style="color:var(--muted);font-size:13px;max-width:760px;margin-bottom:20px">Midpoint of 2026 average and high Cancún all-inclusive package pricing for two, four nights. You pay $195–$269 per person in taxes and resort fees; the $298 deposit is refundable until travel is confirmed.</p>
-<div style="background:var(--deep);color:#e6ded0;border-radius:16px;padding:24px"><b style="display:block;color:var(--sun);font-size:11px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:12px">Who qualifies, what it takes, every restriction — upfront</b><div style="padding-left:16px;position:relative;margin-bottom:6px;font-size:14px"><span style="position:absolute;left:0;color:var(--coral);font-weight:800">!</span>Couples 35–72 attending the live preview together — one offer per household every 90 days</div><div style="padding-left:16px;position:relative;margin-bottom:6px;font-size:14px"><span style="position:absolute;left:0;color:var(--coral);font-weight:800">!</span>5 days / 4 nights all-inclusive — Sunday–Tuesday check-in</div><div style="padding-left:16px;position:relative;margin-bottom:6px;font-size:14px"><span style="position:absolute;left:0;color:var(--coral);font-weight:800">!</span>Limited major-holiday availability, 45-day advance notice</div><div style="padding-left:16px;position:relative;margin-bottom:6px;font-size:14px"><span style="position:absolute;left:0;color:var(--coral);font-weight:800">!</span>Some resorts charge their own incidental fees at check-in — disclosed before you book</div><div style="padding-left:16px;position:relative;margin-bottom:6px;font-size:14px"><span style="position:absolute;left:0;color:var(--coral);font-weight:800">!</span>Activation code and full terms disclosed at the live preview</div></div></section>
-<section class="founder" id="qualify"><div class="wrap" style="max-width:620px;text-align:center"><span class="eyebrow" style="color:var(--sun)">See if you qualify</span><h2 style="margin-bottom:10px">Live Vacation Preview seating is limited.</h2><p style="margin:0 auto 24px">Couples 35–72 attending together, no vacation-ownership presentation in the last 90 days.</p>
-<form id="f" onsubmit="return submitLead(event,'all-inclusive','all-inclusive-acquisition','ALL',"All-Inclusive Beach Escape")" style="display:grid;gap:12px;text-align:left">
+<text x="100" y="94" text-anchor="middle" font-family="Georgia,serif" font-size="26" font-weight="700" fill="#1b3f6b" letter-spacing="1">VACATION</text>
+<text x="100" y="116" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#1b3f6b" letter-spacing="4.5">CERTIFIED</text>
+<line x1="62" y1="126" x2="138" y2="126" stroke="#1b3f6b" stroke-width="1"/>
+<text x="100" y="140" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#1b3f6b" letter-spacing="1.6">ELITE MARKETING SOLUTIONS LLC</text>
+<circle cx="100" cy="34" r="2.6" fill="#c8d4e0"/><circle cx="100" cy="166" r="2.6" fill="#c8d4e0"/>
+</svg><div style="flex:1;min-width:260px"><div style="font-weight:800;font-size:16px;margin-bottom:6px">Every certificate we issue carries this seal.</div><div style="color:var(--muted);font-size:13.5px;line-height:1.6">It is how you confirm a certificate actually came from us. If someone offers you a &ldquo;Honest Travel Group&rdquo; certificate <b>without</b> this seal and a matching certificate number, it did not come from us &mdash; call <a href="tel:+18056953163" style="color:var(--brand);font-weight:700">(805) 695-3163</a> and we will verify it in a minute.</div></div></div><p style="color:var(--muted);font-size:13px;max-width:760px;margin-bottom:20px">Midpoint of 2026 average and high Cancún all-inclusive package pricing for two, four nights. You pay $195–$269 per person in taxes and resort fees; the $298 deposit is refundable until travel is confirmed.</p>
+<div style="background:var(--deep);color:#e4e9ef;border-radius:16px;padding:24px"><b style="display:block;color:var(--silver);font-size:11px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:12px">Who qualifies, what it takes, every restriction — upfront</b><div style="padding-left:16px;position:relative;margin-bottom:6px;font-size:14px"><span style="position:absolute;left:0;color:var(--cta);font-weight:800">!</span>Couples 35–72 attending the live preview together — one offer per household every 90 days</div><div style="padding-left:16px;position:relative;margin-bottom:6px;font-size:14px"><span style="position:absolute;left:0;color:var(--cta);font-weight:800">!</span>5 days / 4 nights all-inclusive — Sunday–Tuesday check-in</div><div style="padding-left:16px;position:relative;margin-bottom:6px;font-size:14px"><span style="position:absolute;left:0;color:var(--cta);font-weight:800">!</span>Limited major-holiday availability, 45-day advance notice</div><div style="padding-left:16px;position:relative;margin-bottom:6px;font-size:14px"><span style="position:absolute;left:0;color:var(--cta);font-weight:800">!</span>Some resorts charge their own incidental fees at check-in — disclosed before you book</div><div style="padding-left:16px;position:relative;margin-bottom:6px;font-size:14px"><span style="position:absolute;left:0;color:var(--cta);font-weight:800">!</span>Activation code and full terms disclosed at the live preview</div></div></section>
+<section class="founder" id="qualify"><div class="wrap" style="max-width:620px;text-align:center"><span class="eyebrow" style="color:var(--silver)">Before you commit an hour</span><h2 style="margin-bottom:10px">Tell us how you actually travel.</h2><p style="margin:0 auto 24px">You've read every cost. These last questions let us bring the right options to your session instead of a generic pitch — and they're the reason the hour is worth your time.</p>
+<form onsubmit="return submitLead(event,'all-inclusive','all-inclusive-acquisition-full','ALL',"All-Inclusive Beach Escape")" style="display:grid;gap:12px;text-align:left">
 <input name="firstName" required placeholder="First name" style="padding:15px;border-radius:12px;border:0;font-size:14px">
 <input name="mobile" required type="tel" placeholder="Mobile number" style="padding:15px;border-radius:12px;border:0;font-size:14px">
 <input name="email" required type="email" placeholder="Email" style="padding:15px;border-radius:12px;border:0;font-size:14px">
-<label style="display:flex;gap:11px;font-size:12.5px;color:#dce6de;align-items:flex-start;background:rgba(255,255,255,.06);border:1px solid rgba(242,200,91,.35);border-radius:12px;padding:14px 15px"><input type="checkbox" name="qualify" required style="width:17px;margin-top:2px;flex:none"><span><b style="color:#f2c85b;display:block;margin-bottom:5px">All of this is true.</b>We're a couple and we'll both be on the session together. We're between 35 and 72. Our household income is over $75,000. And we have a major credit card.<span style="display:block;margin-top:7px;color:#8fa596;font-size:11px;line-height:1.55">We ask because the certificate provider requires it &mdash; not to screen you. If any of it isn't true the certificate can't be issued, and we'd rather say so now than after you've given up an hour.</span></span></label>
-<label style="display:block;font-size:12px;color:#bcd0c2"><span style="display:block;margin-bottom:6px">Have you attended a vacation-ownership presentation in the last 90 days?</span><select name="toured90" style="width:100%;padding:11px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.07);color:#fff;font-size:13px"><option value="no">No &mdash; it's been longer than 90 days</option><option value="yes">Yes &mdash; within the last 90 days</option></select><span style="display:block;margin-top:6px;color:#8fa596;font-size:11px;line-height:1.55">Answer honestly. If it's been under 90 days this certificate can't be issued, but we have a separate offer you do qualify for &mdash; we'll show you that one instead.</span></label>
-<label style="display:flex;gap:10px;font-size:12px;color:#bcd0c2;align-items:flex-start"><input type="checkbox" name="consent" style="width:17px;margin-top:2px;flex:none"><span><b style="color:#f2c85b;display:block;margin-bottom:5px">Yes &mdash; I'm serious about travel.</b>I'm interested in membership benefits, and I want you to reach out. Get to know how my family actually travels so you can bring me promotions that genuinely fit us &mdash; not generic blasts.<span style="display:block;margin-top:8px;color:#8fa596;font-size:11px;line-height:1.55">By checking this box I agree to receive marketing and transactional calls and texts from Honest Vacation Marketing, a brand of Elite Marketing Solutions LLC, on behalf of Gateways Unlimited, at the number provided. Consent is not a condition of purchase and this box is optional &mdash; you get your certificate either way. Message frequency varies; message &amp; data rates may apply. Reply HELP for help, STOP to opt out. See our <a href="privacy.html" style="color:#f2c85b" target="_blank">Privacy Policy</a> and <a href="terms.html" style="color:#f2c85b" target="_blank">Terms</a>.</span></span></label>
-<input type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0"><button type="submit" class="btn" style="width:100%;margin-top:6px">SHOW ME ALL-INCLUSIVE GETAWAYS</button><p style="text-align:center;font-size:12.5px;color:#bcd0c2;margin-top:12px">Rather talk to a human first? Call <a href="tel:+18056953163" style="color:#f2c85b;font-weight:800">(805) 695-3163</a></p></form>
-<p style="font-size:10px;color:#8fa596;margin-top:16px;line-height:1.6;text-align:left">Presented by Honest Vacation Marketing on behalf of Gateways Unlimited. A live 45–60 minute presentation is required; there is no charge to attend. Certificates fulfilled by CSNG, a registered Seller of Travel; deposits, taxes and fees are stated above and refundable before travel is confirmed. Market comparisons are estimated midpoints of published 2026 pricing. Limit one offer per household per 90 days.</p></div></section>
+<div style="display:grid;gap:12px;border-top:1px solid rgba(200,212,224,.22);border-bottom:1px solid rgba(200,212,224,.22);padding:16px 0;margin:2px 0">
+<div style="font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--silver);font-weight:800">So the session is about your trip, not a script</div>
+<label><span style="display:block;font-size:12px;color:#b8c5d4;margin-bottom:5px">Which airport would you fly out of?</span><input name="departureCity" placeholder="e.g. Los Angeles (LAX)" style="padding:13px;border-radius:12px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.07);color:#fff;font-size:13.5px;width:100%"></label>
+<label><span style="display:block;font-size:12px;color:#b8c5d4;margin-bottom:5px">When are you hoping to travel?</span><select name="travelWindow" style="padding:13px;border-radius:12px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.07);color:#fff;font-size:13.5px;width:100%"><option value="">Select…</option><option>Within 3 months</option><option>3–6 months</option><option>6–12 months</option><option>Just exploring for now</option></select></label>
+<label><span style="display:block;font-size:12px;color:#b8c5d4;margin-bottom:5px">Who's travelling?</span><select name="partySize" style="padding:13px;border-radius:12px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.07);color:#fff;font-size:13.5px;width:100%"><option value="">Select…</option><option>Just the two of us</option><option>Us plus our kids</option><option>Us plus friends or family</option></select></label>
+<label><span style="display:block;font-size:12px;color:#b8c5d4;margin-bottom:5px">Have you booked this kind of trip before?</span><select name="priorExperience" style="padding:13px;border-radius:12px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.07);color:#fff;font-size:13.5px;width:100%"><option value="">Select…</option><option>Yes — several times</option><option>Once or twice</option><option>No — this would be our first</option></select></label>
+<label><span style="display:block;font-size:12px;color:#b8c5d4;margin-bottom:5px">Anything we should know before the session?</span><textarea name="notes" rows="2" placeholder="Dates that won't work, somewhere you've always wanted to go, questions you want answered." style="padding:13px;border-radius:12px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.07);color:#fff;font-size:13.5px;width:100%;resize:vertical"></textarea></label>
+</div>
+<label style="display:flex;gap:11px;font-size:12.5px;color:#dbe3ec;align-items:flex-start;background:rgba(255,255,255,.06);border:1px solid rgba(200,212,224,.35);border-radius:12px;padding:14px 15px"><input type="checkbox" name="qualify" required style="width:22px;height:22px;margin-top:1px;flex:none;accent-color:#3a6ea5"><span><b style="color:#c8d4e0;display:block;margin-bottom:5px">All of this is true.</b>We're a couple and we'll both be on the session together. We're between 35 and 72. Our household income is over $75,000. And we have a major credit card.<span style="display:block;margin-top:7px;color:#8d9cae;font-size:11px;line-height:1.55">We ask because the certificate provider requires it &mdash; not to screen you. If any of it isn't true the certificate can't be issued, and we'd rather say so now than after you've given up an hour.</span></span></label>
+<label style="display:block;font-size:12px;color:#b8c5d4"><span style="display:block;margin-bottom:6px">Have you attended a vacation-ownership presentation in the last 90 days?</span><select name="toured90" style="width:100%;padding:11px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.07);color:#fff;font-size:13px"><option value="no">No &mdash; it's been longer than 90 days</option><option value="yes">Yes &mdash; within the last 90 days</option></select><span style="display:block;margin-top:6px;color:#8d9cae;font-size:11px;line-height:1.55">Answer honestly. If it's been under 90 days this certificate can't be issued, but we have a separate offer you do qualify for &mdash; we'll show you that one instead.</span></label>
+<label style="display:flex;gap:10px;font-size:12px;color:#b8c5d4;align-items:flex-start"><input type="checkbox" name="consent" style="width:22px;height:22px;margin-top:1px;flex:none;accent-color:#3a6ea5"><span><b style="color:#c8d4e0;display:block;margin-bottom:5px">Yes &mdash; I'm serious about travel.</b>I'm interested in membership benefits, and I want you to reach out. Get to know how my family actually travels so you can bring me promotions that genuinely fit us &mdash; not generic blasts.<span style="display:block;margin-top:8px;color:#8d9cae;font-size:11px;line-height:1.55">By checking this box I agree to receive marketing and transactional calls and texts from Honest Vacation Marketing, a brand of Elite Marketing Solutions LLC, on behalf of Gateways Unlimited, at the number provided. Consent is not a condition of purchase and this box is optional &mdash; you get your certificate either way. Message frequency varies; message &amp; data rates may apply. Reply HELP for help, STOP to opt out. See our <a href="privacy.html" style="color:#c8d4e0" target="_blank">Privacy Policy</a> and <a href="terms.html" style="color:#c8d4e0" target="_blank">Terms</a>.</span></span></label>
+<input type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0"><button type="submit" class="btn" style="width:100%;margin-top:6px">SHOW ME ALL-INCLUSIVE GETAWAYS</button><p style="text-align:center;font-size:12.5px;color:#b8c5d4;margin-top:12px">Rather talk to a human first? Call <a href="tel:+18056953163" style="color:#c8d4e0;font-weight:800">(805) 695-3163</a></p></form>
+<p style="font-size:10px;color:#8d9cae;margin-top:16px;line-height:1.6;text-align:left">Presented by Honest Vacation Marketing on behalf of Gateways Unlimited. A live 45–60 minute presentation is required; there is no charge to attend. Certificates fulfilled by CSNG, a registered Seller of Travel; deposits, taxes and fees are stated above and refundable before travel is confirmed. Market comparisons are estimated midpoints of published 2026 pricing. Limit one offer per household per 90 days.</p></div></section>
 <script>
 var WEBHOOK="https://services.leadconnectorhq.com/hooks/yXAOCx6d0NsookMNcPoY/webhook-trigger/8b19bb36-ee8b-48c2-b968-d5022763fd48";
 var WL={"code":"HVM","name":"Honest Vacation Marketing","parent":"Elite Marketing Solutions LLC"};
@@ -187,18 +266,18 @@ var OFFERVAL=538;track('ViewContent',{content_name:"All-Inclusive Beach Escape",
 // selling for the whole group, not just the one certificate they clicked.
 function afterBooking(label){
 var S='max-width:900px;margin:44px auto 0;text-align:left';
-var CARD='background:#fff;border:1px solid rgba(20,35,28,.12);border-radius:18px;padding:26px 28px';
-var H='font-size:12px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#1e5c44;margin-bottom:14px';
+var CARD='background:#fff;border:1px solid rgba(15,28,43,.12);border-radius:18px;padding:26px 28px';
+var H='font-size:12px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#1b3f6b;margin-bottom:14px';
 var P='color:#5c6b61;font-size:14.5px;line-height:1.65;margin-bottom:12px';
 return '<div style="'+S+'">'
-+'<div style="'+CARD+';border-left:5px solid #f2c85b;margin-bottom:20px"><div style="'+H+'">What you just reserved</div>'
-+'<div style="font-size:22px;font-weight:800;color:#14231c;margin-bottom:6px">'+(label||'Your vacation certificate')+'</div>'
++'<div style="'+CARD+';border-left:5px solid #c8d4e0;margin-bottom:20px"><div style="'+H+'">What you just reserved</div>'
++'<div style="font-size:22px;font-weight:800;color:#0f1c2b;margin-bottom:6px">'+(label||'Your vacation certificate')+'</div>'
 +'<div style="'+P+'">A live 45&ndash;60 minute session on Zoom, attended as a couple. Every cost was printed on the page before you gave us your name &mdash; nothing new appears later. You receive the certificate whether or not you buy anything at the session.</div></div>'
-+'<div style="'+CARD+';background:#0e2f23;color:#fff;border:0;margin-bottom:20px"><div style="'+H+';color:#f2c85b">Who you are dealing with</div>'
++'<div style="'+CARD+';background:#0a1f38;color:#fff;border:0;margin-bottom:20px"><div style="'+H+';color:#c8d4e0">Who you are dealing with</div>'
 +'<div style="font-size:20px;font-weight:800;margin-bottom:10px">Dave Lemmons &mdash; 20+ years in this industry</div>'
-+'<div style="color:#c8d6cc;font-size:14.5px;line-height:1.65;margin-bottom:10px">I spent two decades watching good travel programs get sold with bad tactics &mdash; hidden fees, pressure tables, fine print that shows up after you have already said yes. That is what earned this whole industry its reputation.</div>'
-+'<div style="color:#c8d6cc;font-size:14.5px;line-height:1.65">The Honest Travel Group is the correction. Every cost upfront, every requirement stated, options instead of pressure. We would rather earn the relationship and have you travel with us for the next twenty years &mdash; you, your kids, your grandkids &mdash; than win one hard close today.</div>'
-+'<div style="color:#f2c85b;font-weight:800;font-size:13.5px;margin-top:14px">&mdash; Dave Lemmons, Founder &middot; Elite Marketing Solutions LLC</div></div>'
++'<div style="color:#c4d0de;font-size:14.5px;line-height:1.65;margin-bottom:10px">I spent two decades watching good travel programs get sold with bad tactics &mdash; hidden fees, pressure tables, fine print that shows up after you have already said yes. That is what earned this whole industry its reputation.</div>'
++'<div style="color:#c4d0de;font-size:14.5px;line-height:1.65">The Honest Travel Group is the correction. Every cost upfront, every requirement stated, options instead of pressure. We would rather earn the relationship and have you travel with us for the next twenty years &mdash; you, your kids, your grandkids &mdash; than win one hard close today.</div>'
++'<div style="color:#c8d4e0;font-weight:800;font-size:13.5px;margin-top:14px">&mdash; Dave Lemmons, Founder &middot; Elite Marketing Solutions LLC</div></div>'
 +'<div style="'+CARD+'"><div style="'+H+'">The rest of what we do</div>'
 +'<div style="'+P+'">One family of companies, each with its own lane:</div>'
 +'<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:6px">'
@@ -208,9 +287,9 @@ return '<div style="'+S+'">'
 + tile('Partner with us','White-label the whole system under your own brand. Built for operators who want the honest model.','partners.html','B2B')
 +'</div></div></div>';}
 function tile(t,d,href,k){
-return '<a href="'+href+'" target="_blank" rel="noopener" onclick="return openWin(this.href)" style="display:block;background:#f6f1e7;border-radius:14px;padding:18px;text-decoration:none">'
-+'<div style="font-size:10px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#2d7a5a;margin-bottom:6px">'+k+'</div>'
-+'<div style="font-weight:800;color:#14231c;font-size:15px;margin-bottom:5px">'+t+'</div>'
+return '<a href="'+href+'" target="_blank" rel="noopener" onclick="return openWin(this.href)" style="display:block;background:#ffffff;border-radius:14px;padding:18px;text-decoration:none">'
++'<div style="font-size:10px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#3a6ea5;margin-bottom:6px">'+k+'</div>'
++'<div style="font-weight:800;color:#0f1c2b;font-size:15px;margin-bottom:5px">'+t+'</div>'
 +'<div style="color:#5c6b61;font-size:13px;line-height:1.55">'+d+'</div></a>';}
 // Certificate number — issued at booking, shown to the traveler, and prefixed
 // with the white label code so numbers never collide across partners.
@@ -235,10 +314,10 @@ var booked=false;
 // "you're in" when we did not receive them is the most expensive lie the site
 // could tell — they wait for a Zoom link that will never arrive.
 function failed(){if(booked)return;booked=true;
-document.body.innerHTML='<div style="min-height:100vh;display:grid;place-items:center;padding:28px 18px;font-family:system-ui;background:#f6f9f7"><div style="max-width:560px;text-align:center"><h1 style="font-size:32px;color:#b4462f;margin:0 0 12px">We could not reach our system.</h1><p style="color:#5c6b61;line-height:1.65;margin-bottom:18px">Your details are saved on this device and we will keep trying automatically &mdash; but do not wait on us. <b>Call or text and we will book your seat directly, right now.</b></p><a href="tel:+18056953163" style="display:inline-block;background:#1e5c44;color:#fff;font-weight:800;font-size:20px;padding:16px 30px;border-radius:999px;text-decoration:none">(805) 695-3163</a><p style="color:#8a9a90;font-size:12.5px;margin-top:18px;line-height:1.6">Reference this number when you call: <b style="color:#14231c;font-family:ui-monospace,Menlo,Consolas,monospace">'+CERT+'</b></p></div></div>';}
+document.body.innerHTML='<div style="min-height:100vh;display:grid;place-items:center;padding:28px 18px;font-family:system-ui;background:#f7f9fb"><div style="max-width:560px;text-align:center"><h1 style="font-size:32px;color:#b4462f;margin:0 0 12px">We could not reach our system.</h1><p style="color:#5c6b61;line-height:1.65;margin-bottom:18px">Your details are saved on this device and we will keep trying automatically &mdash; but do not wait on us. <b>Call or text and we will book your seat directly, right now.</b></p><a href="tel:+18056953163" style="display:inline-block;background:#1b3f6b;color:#fff;font-weight:800;font-size:20px;padding:16px 30px;border-radius:999px;text-decoration:none">(805) 695-3163</a><p style="color:#8794a4;font-size:12.5px;margin-top:18px;line-height:1.6">Reference this number when you call: <b style="color:#0f1c2b;font-family:ui-monospace,Menlo,Consolas,monospace">'+CERT+'</b></p></div></div>';}
 function done(){if(booked)return;booked=true;try{track('Schedule',{content_name:offerLabel});}catch(e){}
 var q='?first_name='+encodeURIComponent(f.firstName.value)+'&email='+encodeURIComponent(f.email.value)+'&phone='+encodeURIComponent(f.mobile.value)+'&cert='+encodeURIComponent(CERT);
-document.body.innerHTML='<div style="min-height:100vh;padding:28px 18px;font-family:system-ui;background:#f6f9f7"><div style="max-width:860px;margin:0 auto;text-align:center"><h1 style="font-size:38px;color:#1e5c44;margin:0 0 8px">You\'re in. Now pick your time.</h1><p style="max-width:600px;color:#5c6b61;margin:0 auto 18px;line-height:1.6">Choose any session below and your Zoom link is emailed to you instantly. It\'s 45&ndash;60 minutes, live, and every cost is on the table.</p><div style="max-width:520px;margin:0 auto 20px;background:#0e2f23;border-radius:16px;padding:22px 24px;text-align:left;box-shadow:0 12px 34px rgba(14,47,35,.22)"><div style="font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#f2c85b;margin-bottom:8px">Your certificate number &mdash; save this</div><div style="font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:clamp(20px,4.6vw,30px);font-weight:700;color:#fff;letter-spacing:.06em;word-break:break-all">'+CERT+'</div><div style="color:#9fb8a8;font-size:12px;margin-top:10px;line-height:1.6">Issued by '+WL.name+'. Bring this number to your session &mdash; it\'s how we pull up your file. Your <b style="color:#dce6de">activation code</b> is issued at the session itself.</div></div><p style="max-width:600px;color:#8a9a90;margin:0 auto 20px;font-size:13px;line-height:1.6">Sessions run Monday&ndash;Friday at 1:30, 3:30 and 5:30 PM Pacific.</p><div style="background:#fff;border-radius:18px;box-shadow:0 10px 40px rgba(16,50,36,.10);overflow:hidden"><iframe src="'+BOOKING+q+'" style="width:100%;height:780px;border:0" title="Choose your session time"></iframe></div><p style="color:#8a9a90;font-size:12px;margin:18px auto 0;max-width:600px;line-height:1.6">Can\'t pick a time right now? No problem &mdash; we\'ll text and email you the same link. Reply STOP to any text to opt out.</p></div>'+afterBooking(offerLabel)+'</div>';}
+document.body.innerHTML='<div style="min-height:100vh;padding:28px 18px;font-family:system-ui;background:#f7f9fb"><div style="max-width:860px;margin:0 auto;text-align:center"><h1 style="font-size:38px;color:#1b3f6b;margin:0 0 8px">You\'re in. Now pick your time.</h1><p style="max-width:600px;color:#5c6b61;margin:0 auto 18px;line-height:1.6">Choose any session below and your Zoom link is emailed to you instantly. It\'s 45&ndash;60 minutes, live, and every cost is on the table.</p><div style="max-width:520px;margin:0 auto 20px;background:#0a1f38;border-radius:16px;padding:22px 24px;text-align:left;box-shadow:0 12px 34px rgba(10,31,56,.22)"><div style="font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#c8d4e0;margin-bottom:8px">Your certificate number &mdash; save this</div><div style="font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:clamp(20px,4.6vw,30px);font-weight:700;color:#fff;letter-spacing:.06em;word-break:break-all">'+CERT+'</div><div style="color:#9dadc0;font-size:12px;margin-top:10px;line-height:1.6">Issued by '+WL.name+'. Bring this number to your session &mdash; it\'s how we pull up your file. Your <b style="color:#dbe3ec">activation code</b> is issued at the session itself.</div></div><p style="max-width:600px;color:#8794a4;margin:0 auto 20px;font-size:13px;line-height:1.6">Sessions run Monday&ndash;Friday at 1:30, 3:30 and 5:30 PM Pacific.</p><div style="background:#fff;border-radius:18px;box-shadow:0 10px 40px rgba(10,31,56,.10);overflow:hidden"><iframe src="'+BOOKING+q+'" style="width:100%;height:780px;border:0" title="Choose your session time"></iframe></div><p style="color:#8794a4;font-size:12px;margin:18px auto 0;max-width:600px;line-height:1.6">Can\'t pick a time right now? No problem &mdash; we\'ll text and email you the same link. Reply STOP to any text to opt out.</p></div>'+afterBooking(offerLabel)+'</div>';}
 if(!WEBHOOK){done();return false;}
 // A lead is money. Persist it BEFORE the network call so a failed/slow POST can
 // never lose it. mode:'no-cors' hides the status code, but the promise still
@@ -268,9 +347,9 @@ return false;}
 })();
 </script>
 <footer class="foot"><div class="wrap"><div class="top">
-<div><div class="fbrand">The Honest <span>Travel Group</span></div><p style="color:#aec2b4;font-size:14px;max-width:260px">A family of companies built on one rule: everything upfront, everything optional. Founded by Dave Lemmons.</p></div>
+<div><div class="fbrand">The Honest <span>Travel Group</span></div><p style="color:#a8b6c6;font-size:14px;max-width:260px">A family of companies built on one rule: everything upfront, everything optional. Founded by Dave Lemmons.</p></div>
 <div><h4>Travel</h4><a href="cruise.html">Cruise getaways</a><a href="all-inclusive.html">All-inclusive</a><a href="resort-air.html">Resort + airfare</a><a href="condo.html">Condo weeks</a></div>
 <div><h4>Company</h4><a href="about.html">About &amp; mission</a><a href="partners.html">White-label partners</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a></div>
-<div><h4>Contact</h4><p style="color:#aec2b4;font-size:14px;line-height:1.7;margin:0">Elite Marketing Solutions LLC<br>421 N Alisos St<br>Santa Barbara, CA 93103<br><a href="mailto:info@honestvacationmarketing.com" style="color:#aec2b4">info@honestvacationmarketing.com</a><br><a href="tel:+18056953163" style="color:#aec2b4">(805) 695-3163</a></p></div>
+<div><h4>Contact</h4><p style="color:#a8b6c6;font-size:14px;line-height:1.7;margin:0">Elite Marketing Solutions LLC<br>421 N Alisos St<br>Santa Barbara, CA 93103<br><a href="mailto:info@honestvacationmarketing.com" style="color:#a8b6c6">info@honestvacationmarketing.com</a><br><a href="tel:+18056953163" style="color:#a8b6c6">(805) 695-3163</a></p></div>
 </div><div class="legal">Honest Travel Group · Honest Vacation Marketing · Honest Timeshare Resolutions — an Elite Marketing Solutions company. Vacation certificate offers are presented by Honest Vacation Marketing on behalf of Gateways Unlimited and fulfilled by Customer Service Network Group (CSNG), a registered Seller of Travel. Attendance at a live presentation is required to receive a certificate offer; there is no charge to attend. Deposits, taxes, and fees are disclosed on each offer page and in the certificate's terms and are refundable before travel is confirmed. Limit one certificate offer per household in any 90-day period. © 2026 Elite Marketing Solutions LLC · TheHonestTravelGroup.com</div></div></footer>
 </body></html>

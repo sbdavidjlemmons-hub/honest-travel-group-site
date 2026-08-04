@@ -9,7 +9,12 @@ var p=window.open(u,'_blank','noopener,width='+w+',height='+h+',left='+x+',top='
 if(p){p.focus();return false;}}catch(e){}return true;}</script>
 <title>Terms &amp; Conditions — Honest Vacation Marketing</title><meta name="description" content="Terms governing use of honestvacationmarketing.com and the promotional vacation offers presented on it."><style>
 *{box-sizing:border-box;margin:0}
-:root{--ink:#14231c;--muted:#5c6b61;--paper:#f6f1e7;--paper2:#efe7d7;--green:#1e5c44;--green2:#2d7a5a;--deep:#0e2f23;--sun:#f2c85b;--coral:#f2795a;--line:rgba(20,35,28,.12)}
+/* NAVY + SILVER.
+   --cta is deliberately the lightest token in the set. On the navy heroes and
+   the navy conversion band, a platinum button on deep navy is the highest
+   contrast pairing available inside this palette, so the click target is the
+   brightest object on the page without importing an off-brand accent colour. */
+:root{--ink:#0f1c2b;--muted:#5f6d7e;--paper:#ffffff;--paper2:#eef1f5;--brand:#1b3f6b;--steel:#3a6ea5;--deep:#0a1f38;--silver:#c8d4e0;--cta:#e8eef5;--line:rgba(15,28,43,.12)}
 html{scroll-behavior:smooth}
 body{background:var(--paper);color:var(--ink);font-family:'Segoe UI',system-ui,Arial,sans-serif;line-height:1.5}
 a{text-decoration:none;color:inherit}
@@ -17,115 +22,166 @@ h1,h2,h3{letter-spacing:-.03em;line-height:1.05}
 .serif{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-weight:400}
 .wrap{max-width:1180px;margin:0 auto;padding:0 5vw}
 /* nav */
-.nav{position:sticky;top:0;z-index:60;background:rgba(246,241,231,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav .in{max-width:1180px;margin:0 auto;padding:16px 5vw;display:flex;align-items:center;justify-content:space-between;gap:20px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-.03em}
-.brand .dot{width:26px;height:26px;border-radius:50%;background:var(--green);display:grid;place-content:center;color:var(--sun);font-size:11px;font-weight:800}
-.brand span{color:var(--green)}
+.brand .dot{width:26px;height:26px;border-radius:50%;background:var(--brand);display:grid;place-content:center;color:var(--silver);font-size:11px;font-weight:800}
+.brand span{color:var(--brand)}
 .navlinks{display:flex;gap:26px;align-items:center;font-size:14px;color:var(--muted)}
-.navlinks a:hover{color:var(--green)}
+.navlinks a:hover{color:var(--brand)}
 .navcta{background:var(--ink);color:var(--paper);font-weight:700;font-size:13px;padding:11px 20px;border-radius:999px}
 @media(max-width:820px){.navlinks{display:none}}
 /* hero */
 .hero{position:relative;overflow:hidden;background:var(--deep);color:#fff}
 .hero .art{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(14,47,35,.96) 40%,rgba(14,47,35,.5))}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,31,56,.96) 40%,rgba(10,31,56,.5))}
 .hero .in{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:96px 5vw 100px}
-.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--sun);margin-bottom:22px}
-.eyebrow::before{content:"";width:26px;height:1px;background:var(--sun)}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--silver);margin-bottom:22px}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--silver)}
 .hero h1{font-size:clamp(40px,6.4vw,78px);max-width:900px;margin-bottom:22px}
-.hero h1 em{color:var(--sun)}
-.hero p{font-size:clamp(16px,1.7vw,20px);max-width:620px;color:#dce6de;margin-bottom:34px}
+.hero h1 em{color:var(--silver)}
+.hero p{font-size:clamp(16px,1.7vw,20px);max-width:620px;color:#dbe3ec;margin-bottom:34px}
 .btns{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-.btn{background:var(--coral);color:#fff;font-weight:800;font-size:15px;padding:16px 30px;border-radius:999px;box-shadow:0 14px 34px rgba(242,121,90,.4);transition:transform .15s}
-.btn:hover{transform:translateY(-2px)}
+/* Platinum face, navy type — 14.8:1. The button is the brightest thing in the
+   viewport, which is the whole job of a primary CTA. White-on-platinum would
+   have been invisible, which is what a blind palette swap would have shipped. */
+.btn{background:var(--cta);color:var(--deep);font-weight:800;font-size:15px;padding:16px 30px;border-radius:999px;box-shadow:0 10px 30px rgba(6,18,32,.45),0 0 0 1px rgba(255,255,255,.5) inset;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(6,18,32,.55),0 0 0 1px rgba(255,255,255,.7) inset}
+.btn.ghost{color:#fff}
 .btn.ghost{background:transparent;border:1.5px solid rgba(255,255,255,.55);box-shadow:none}
-.stats{display:flex;flex-wrap:wrap;gap:34px;margin-top:44px;color:#bcd0c2}
+.stats{display:flex;flex-wrap:wrap;gap:34px;margin-top:44px;color:#b8c5d4}
 .stats b{display:block;color:#fff;font-size:26px;letter-spacing:-.04em}
 .stats small{font-size:12px}
 /* sections */
 section{padding:86px 0}
 .sec-head{max-width:720px;margin-bottom:48px}
-.sec-head .eyebrow{color:var(--green)}.sec-head .eyebrow::before{background:var(--green)}
+.sec-head .eyebrow{color:var(--brand)}.sec-head .eyebrow::before{background:var(--brand)}
 .sec-head h2{font-size:clamp(30px,4vw,50px);margin-bottom:16px}
-.sec-head h2 em{color:var(--green)}
+.sec-head h2 em{color:var(--brand)}
 .sec-head p{color:var(--muted);font-size:17px}
 /* difference cards */
 .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
 .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px;transition:transform .18s,box-shadow .18s}
-.card:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(20,35,28,.1)}
+.card:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(15,28,43,.1)}
 .card .ic{width:44px;height:44px;border-radius:12px;background:var(--paper2);display:grid;place-content:center;font-size:20px;margin-bottom:16px}
 .card h3{font-size:20px;margin-bottom:8px}.card p{color:var(--muted);font-size:14.5px}
 /* family / doors */
 .doors{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .door{position:relative;border-radius:20px;overflow:hidden;min-height:280px;display:flex;flex-direction:column;justify-content:flex-end;padding:32px;color:#fff}
 .door svg{position:absolute;inset:0;width:100%;height:100%}
-.door::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(14,47,35,.92),rgba(14,47,35,.3))}
+.door::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,31,56,.92),rgba(10,31,56,.3))}
 .door>*{position:relative;z-index:2}
-.door .k{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--sun);margin-bottom:8px}
-.door h3{font-size:26px;margin-bottom:8px}.door p{color:#dce6de;font-size:14px;max-width:420px;margin-bottom:14px}
-.door .go{font-weight:800;font-size:13px;color:#fff;border-bottom:2px solid var(--sun);padding-bottom:3px;width:fit-content}
+.door .k{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--silver);margin-bottom:8px}
+.door h3{font-size:26px;margin-bottom:8px}.door p{color:#dbe3ec;font-size:14px;max-width:420px;margin-bottom:14px}
+.door .go{font-weight:800;font-size:13px;color:#fff;border-bottom:2px solid var(--silver);padding-bottom:3px;width:fit-content}
 @media(max-width:760px){.doors{grid-template-columns:1fr}}
 /* founder */
 .founder{background:var(--deep);color:#fff}
 .founder .in{display:grid;grid-template-columns:.85fr 1.15fr;gap:6vw;align-items:center}
-.founder .photo{border-radius:20px;overflow:hidden;min-height:360px;background:linear-gradient(135deg,var(--green),var(--deep));display:grid;place-content:center;position:relative}
-.founder .photo .mono{font-family:Georgia,serif;font-size:120px;color:rgba(242,200,91,.25);font-weight:700}
-.founder .photo .tag{position:absolute;bottom:22px;left:22px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--sun)}
-.founder h2{font-size:clamp(28px,3.6vw,44px);margin-bottom:18px}.founder h2 em{color:var(--sun)}
-.founder p{color:#c8d6cc;font-size:15.5px;margin-bottom:14px;max-width:560px}
-.founder .sign{color:var(--sun);font-weight:800;font-size:14px;margin-top:8px}
+.founder .photo{border-radius:20px;overflow:hidden;min-height:360px;background:linear-gradient(135deg,var(--brand),var(--deep));display:grid;place-content:center;position:relative}
+.founder .photo .mono{font-family:Georgia,serif;font-size:120px;color:rgba(200,212,224,.25);font-weight:700}
+.founder .photo .tag{position:absolute;bottom:22px;left:22px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--silver)}
+.founder h2{font-size:clamp(28px,3.6vw,44px);margin-bottom:18px}.founder h2 em{color:var(--silver)}
+.founder p{color:#c4d0de;font-size:15.5px;margin-bottom:14px;max-width:560px}
+.founder .sign{color:var(--silver);font-weight:800;font-size:14px;margin-top:8px}
 @media(max-width:820px){.founder .in{grid-template-columns:1fr}}
 /* ── real photography ── */
+picture{display:contents}
 .hero .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero.shot::after{background:linear-gradient(100deg,rgba(14,47,35,.94) 34%,rgba(14,47,35,.62) 68%,rgba(14,47,35,.42))}
+/* Scrim tuned by measurement, not by eye. The photos are bright (mid-band luma
+   ~132) but the old 94%/62%/42% ramp composited them down to 46/74/88 — a
+   $290 landing page that looked like a flat green rectangle. White text stays
+   above WCAG AA all the way out to 0.30 alpha (5.57:1), so the scrim only needs
+   to be heavy where the copy actually sits: h1 runs to ~71% of the hero, the
+   paragraph to ~52%. Past that the photograph is allowed to be a photograph. */
+.hero.shot::after{background:linear-gradient(100deg,rgba(10,31,56,.90) 0%,rgba(10,31,56,.84) 40%,rgba(10,31,56,.70) 66%,rgba(10,31,56,.34) 86%,rgba(10,31,56,.14) 100%)}
+/* Warm the photo edge with the brand's sun accent so the hero reads as designed
+   rather than as an image with a panel dropped on top. */
+.hero.shot::before{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(120% 90% at 100% 0%,rgba(200,212,224,.16),transparent 58%);pointer-events:none}
+/* Insurance, not decoration. The scrim is measured against each photo's worst
+   pixel, but the crop shifts with viewport and the tightest page (condo) sits
+   at 3.17:1 against a 3.0 floor. A soft shadow holds legibility on bright
+   patches at crops that cannot all be tested. Invisible on dark areas. */
+.hero.shot h1,.hero.shot p,.hero.shot .eyebrow{text-shadow:0 1px 22px rgba(6,18,32,.5),0 1px 3px rgba(6,18,32,.38)}
+/* THE PROMISE BAR — the brand thread.
+   Sits under the nav on all nine pages, legal pages included, so the rule the
+   whole company is built on frames every page before anything else is read.
+   Copy is drawn from the footer's own legal language so it can never drift
+   into a claim the terms do not already make. */
+/* QUICK BOX — the high-position capture.
+   Pulled up over the hero's bottom edge so it is partly visible before any
+   scroll: the offer and the way to accept it occupy the same screen. Navy card
+   on white keeps it the single darkest object below the fold, so the eye lands
+   on it before the supporting copy. */
+.quickbox{background:var(--deep);border-radius:22px;padding:clamp(24px,3.4vw,40px);margin-top:-72px;position:relative;z-index:5;box-shadow:0 26px 70px rgba(6,18,32,.34),0 0 0 1px rgba(200,212,224,.16) inset;display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(22px,3vw,44px);align-items:start}
+.quickbox .qb-head h2{color:#fff;font-size:clamp(24px,2.5vw,34px);line-height:1.15;margin:10px 0 12px}
+.quickbox .qb-head p{color:#b8c5d4;font-size:14px;line-height:1.6;margin:0}
+.quickbox .qb-form{display:grid;gap:12px}
+.quickbox .qb-row{display:grid;gap:10px}
+@media(max-width:900px){.quickbox{grid-template-columns:1fr;margin-top:-40px}}
+@media(max-width:560px){.quickbox{margin-top:-24px;border-radius:18px}}
+.promise{background:var(--deep);border-bottom:1px solid rgba(200,212,224,.22)}
+.promise .in{max-width:1180px;margin:0 auto;padding:11px 5vw;display:flex;gap:8px 24px;flex-wrap:wrap;align-items:center;justify-content:center}
+.promise b{color:var(--silver);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:10.5px;white-space:nowrap}
+.promise span{display:inline-flex;align-items:center;gap:9px;color:#ccd8e5;font-size:12.5px;line-height:1.4}
+.promise span::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--silver);opacity:.75;flex:none}
+/* On a phone the bar wrapped to three lines: 83px on top of a 94px nav ate 22%
+   of the viewport before the hero. Below 700px it keeps the rule itself — the
+   part that IS the brand thread — and drops the two supporting proofs, which
+   both still appear in the page body and the footer. One line, ~34px. */
+@media(max-width:700px){
+  .promise .in{justify-content:flex-start;gap:9px;padding:8px 5vw;flex-wrap:nowrap}
+  .promise span{font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .promise span.sub{display:none}
+}
 /* certificate cards */
 .certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px}
-.cert{position:relative;border-radius:20px;overflow:hidden;background:var(--deep);color:#fff;display:flex;flex-direction:column;min-height:430px;box-shadow:0 14px 40px rgba(20,35,28,.13);transition:transform .2s,box-shadow .2s}
-.cert:hover{transform:translateY(-6px);box-shadow:0 26px 60px rgba(20,35,28,.24)}
+.cert{position:relative;border-radius:20px;overflow:hidden;background:var(--deep);color:#fff;display:flex;flex-direction:column;min-height:430px;box-shadow:0 14px 40px rgba(15,28,43,.13);transition:transform .2s,box-shadow .2s}
+.cert:hover{transform:translateY(-6px);box-shadow:0 26px 60px rgba(15,28,43,.24)}
 .cert .shotwrap{position:relative;height:210px;overflow:hidden}
 .cert .shotwrap img{width:100%;height:100%;object-fit:cover;display:block}
-.cert .shotwrap::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(14,47,35,.96),rgba(14,47,35,.12) 62%)}
+.cert .shotwrap::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,31,56,.96),rgba(10,31,56,.12) 62%)}
 /* crop the branded stern out of the cruise photo */
 .cert .shotwrap img.crop-left{object-position:16% 46%;transform:scale(1.34)}
-.cert .tag{position:absolute;top:14px;left:14px;z-index:3;background:rgba(242,200,91,.95);color:#0e2f23;font-size:10px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;padding:7px 12px;border-radius:999px}
+.cert .tag{position:absolute;top:14px;left:14px;z-index:3;background:rgba(200,212,224,.95);color:#0a1f38;font-size:10px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;padding:7px 12px;border-radius:999px}
 .cert .body{padding:22px 24px 26px;display:flex;flex-direction:column;flex:1}
 .cert h3{font-size:21px;margin-bottom:6px;line-height:1.15}
-.cert .blurb{color:#b9cdc0;font-size:13.5px;margin-bottom:16px;flex:1}
+.cert .blurb{color:#b5c3d3;font-size:13.5px;margin-bottom:16px;flex:1}
 .cert .money{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px}
-.cert .was{color:#8fa596;font-size:14px;text-decoration:line-through;text-decoration-color:var(--coral);text-decoration-thickness:2px}
-.cert .now{font-size:30px;font-weight:800;color:var(--sun);letter-spacing:-.03em}
-.cert .keep{font-size:12px;color:#dce6de;background:rgba(255,255,255,.1);padding:5px 10px;border-radius:999px;width:fit-content;margin-bottom:14px}
-.cert .go{font-weight:800;font-size:13px;color:#0e2f23;background:var(--sun);padding:12px 18px;border-radius:999px;text-align:center}
+.cert .was{color:#8d9cae;font-size:14px;text-decoration:line-through;text-decoration-color:var(--cta);text-decoration-thickness:2px}
+.cert .now{font-size:30px;font-weight:800;color:var(--silver);letter-spacing:-.03em}
+.cert .keep{font-size:12px;color:#dbe3ec;background:rgba(255,255,255,.1);padding:5px 10px;border-radius:999px;width:fit-content;margin-bottom:14px}
+.cert .go{font-weight:800;font-size:13px;color:#0a1f38;background:var(--silver);padding:12px 18px;border-radius:999px;text-align:center}
 /* steps */
 .steps4{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
 .step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px}
-.step i{display:grid;place-content:center;width:38px;height:38px;border-radius:50%;background:var(--green);color:#fff;font-style:normal;font-weight:800;margin-bottom:12px}
+.step i{display:grid;place-content:center;width:38px;height:38px;border-radius:50%;background:var(--brand);color:#fff;font-style:normal;font-weight:800;margin-bottom:12px}
 .step b{display:block;font-size:17px;margin-bottom:6px}.step p{color:var(--muted);font-size:14px}
 /* honesty band */
-.band{background:var(--sun);color:var(--deep)}
+.band{background:var(--silver);color:var(--deep)}
 .band .in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px}
 .band h2{font-size:clamp(24px,3vw,38px);max-width:640px}
 /* footer */
-.foot{background:var(--deep);color:#aec2b4;padding:60px 0 30px}
+.foot{background:var(--deep);color:#a8b6c6;padding:60px 0 30px}
 .foot .top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.12)}
 .foot h4{color:#fff;font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
-.foot a{display:block;color:#aec2b4;font-size:14px;margin-bottom:9px}.foot a:hover{color:var(--sun)}
+.foot a{display:block;color:#a8b6c6;font-size:14px;margin-bottom:9px}.foot a:hover{color:var(--silver)}
 .foot .fbrand{font-weight:800;font-size:19px;color:#fff;margin-bottom:10px}
-.foot .fbrand span{color:var(--sun)}
-.foot .legal{padding-top:24px;font-size:11px;color:#7f978a;line-height:1.7}
+.foot .fbrand span{color:var(--silver)}
+.foot .legal{padding-top:24px;font-size:11px;color:#7d8b9c;line-height:1.7}
 @media(max-width:760px){.foot .top{grid-template-columns:1fr 1fr}}
 /* generic page hero */
 .phero{background:var(--deep);color:#fff;padding:80px 0 70px}
-.phero h1{font-size:clamp(34px,5vw,60px);max-width:820px;margin-bottom:16px}.phero h1 em{color:var(--sun)}
-.phero p{color:#c8d6cc;font-size:18px;max-width:600px}
+.phero h1{font-size:clamp(34px,5vw,60px);max-width:820px;margin-bottom:16px}.phero h1 em{color:var(--silver)}
+.phero p{color:#c4d0de;font-size:18px;max-width:600px}
 .prose{max-width:760px;padding:70px 5vw;margin:0 auto}
-.prose p{font-size:16.5px;color:#33443b;margin-bottom:20px}.prose h3{font-size:24px;margin:36px 0 12px}
+.prose p{font-size:16.5px;color:#303c4a;margin-bottom:20px}.prose h3{font-size:24px;margin:36px 0 12px}
 </style></head><body>
 <nav class="nav"><div class="in"><a class="brand" href="index.html"><span class="dot">H</span>The Honest <span>Travel Group</span></a>
 <div class="navlinks"><a href="cruise.html">Vacations</a><a href="https://honesttimeshareresolutions.com">Timeshare Exit</a><a href="about.html">About</a><a href="partners.html">Partners</a></div>
 <a class="navcta" href="cruise.html">See the offers</a></div></nav>
-<header class="phero"><div class="wrap"><span class="eyebrow" style="color:var(--sun)">Terms</span><h1>Terms &amp; Conditions</h1><p>The terms for using this site and its offers.</p></div></header>
+<div class="promise"><div class="in"><b>Our one rule</b><span>Everything upfront, everything optional</span><span class="sub">Every cost printed before you give us your name</span><span class="sub">No charge to attend a live session</span></div></div>
+<header class="phero"><div class="wrap"><span class="eyebrow" style="color:var(--silver)">Terms</span><h1>Terms &amp; Conditions</h1><p>The terms for using this site and its offers.</p></div></header>
 <div class="prose">
 <p><strong>Last updated: August 2026.</strong> By using honestvacationmarketing.com you agree to these terms. This site is operated by Honest Vacation Marketing, a brand of Elite Marketing Solutions LLC.</p>
 <h3>The offer</h3>
@@ -136,16 +192,16 @@ section{padding:86px 0}
 <p><strong>Program description &amp; message types.</strong> Honest Vacation Marketing (a brand of Elite Marketing Solutions LLC) operates an SMS program that sends recurring marketing and transactional text messages to individuals who opt in through our website form. Messages include vacation-offer details you requested, appointment confirmations and reminders for your scheduled live presentation, replies to your questions, and related travel offers. This program is intended for individuals <strong>18 years of age or older</strong>; by opting in you confirm you are at least 18.</p>
 <p><strong>Message frequency, rates &amp; opting out.</strong> Message frequency varies based on your activity and the offers you request. <strong>Message and data rates may apply</strong> — these are charged by your mobile carrier and are your responsibility. To stop messages at any time, reply <strong>STOP</strong>; to get help, reply <strong>HELP</strong> or contact us at info@honestvacationmarketing.com or (805) 695-3163. Consent to receive texts is not a condition of any purchase, and the consent checkbox on our form is optional.</p>
 <p><strong>Carrier liability.</strong> Mobile carriers are not liable for delayed or undelivered messages. Delivery of messages is subject to effective transmission from your wireless carrier and is not guaranteed. Supported carriers may change without notice.</p>
-<p>Full details on how we handle the information you provide are in our <a href="privacy.html" style="color:var(--green)">Privacy Policy</a>, which also confirms that SMS opt-in data is never shared with third parties.</p>
+<p>Full details on how we handle the information you provide are in our <a href="privacy.html" style="color:var(--brand)">Privacy Policy</a>, which also confirms that SMS opt-in data is never shared with third parties.</p>
 <h3>No guarantees</h3>
 <p>We make no guarantee of availability for any specific date, destination, or accommodation; all travel is subject to the fulfillment provider's terms and availability. This site does not provide legal, financial, or travel-agent advice.</p>
 <h3>Contact</h3>
-<p>Elite Marketing Solutions LLC · 421 N Alisos St, Santa Barbara, CA 93103 · <a href="mailto:info@honestvacationmarketing.com" style="color:var(--green)">info@honestvacationmarketing.com</a></p>
+<p>Elite Marketing Solutions LLC · 421 N Alisos St, Santa Barbara, CA 93103 · <a href="mailto:info@honestvacationmarketing.com" style="color:var(--brand)">info@honestvacationmarketing.com</a></p>
 </div>
 <footer class="foot"><div class="wrap"><div class="top">
-<div><div class="fbrand">The Honest <span>Travel Group</span></div><p style="color:#aec2b4;font-size:14px;max-width:260px">A family of companies built on one rule: everything upfront, everything optional. Founded by Dave Lemmons.</p></div>
+<div><div class="fbrand">The Honest <span>Travel Group</span></div><p style="color:#a8b6c6;font-size:14px;max-width:260px">A family of companies built on one rule: everything upfront, everything optional. Founded by Dave Lemmons.</p></div>
 <div><h4>Travel</h4><a href="cruise.html">Cruise getaways</a><a href="all-inclusive.html">All-inclusive</a><a href="resort-air.html">Resort + airfare</a><a href="condo.html">Condo weeks</a></div>
 <div><h4>Company</h4><a href="about.html">About &amp; mission</a><a href="partners.html">White-label partners</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a></div>
-<div><h4>Contact</h4><p style="color:#aec2b4;font-size:14px;line-height:1.7;margin:0">Elite Marketing Solutions LLC<br>421 N Alisos St<br>Santa Barbara, CA 93103<br><a href="mailto:info@honestvacationmarketing.com" style="color:#aec2b4">info@honestvacationmarketing.com</a><br><a href="tel:+18056953163" style="color:#aec2b4">(805) 695-3163</a></p></div>
+<div><h4>Contact</h4><p style="color:#a8b6c6;font-size:14px;line-height:1.7;margin:0">Elite Marketing Solutions LLC<br>421 N Alisos St<br>Santa Barbara, CA 93103<br><a href="mailto:info@honestvacationmarketing.com" style="color:#a8b6c6">info@honestvacationmarketing.com</a><br><a href="tel:+18056953163" style="color:#a8b6c6">(805) 695-3163</a></p></div>
 </div><div class="legal">Honest Travel Group · Honest Vacation Marketing · Honest Timeshare Resolutions — an Elite Marketing Solutions company. Vacation certificate offers are presented by Honest Vacation Marketing on behalf of Gateways Unlimited and fulfilled by Customer Service Network Group (CSNG), a registered Seller of Travel. Attendance at a live presentation is required to receive a certificate offer; there is no charge to attend. Deposits, taxes, and fees are disclosed on each offer page and in the certificate's terms and are refundable before travel is confirmed. Limit one certificate offer per household in any 90-day period. © 2026 Elite Marketing Solutions LLC · TheHonestTravelGroup.com</div></div></footer>
 </body></html>
