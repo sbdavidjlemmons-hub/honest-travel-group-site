@@ -1,13 +1,11 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="openai-domain-verification" content="dv-EPG6uqq1iUFETCwQsOLqk5JC">
 <script>if(location.protocol==='http:'&&!/^(localhost|127\.|\[)/.test(location.hostname))location.replace('https:'+location.href.substring(location.protocol.length));
-// Open certificate pages in a real second WINDOW, leaving this one open.
-// Two live windows = two sessions = the pixel fires again. Falls back to a
-// normal tab if a popup blocker refuses the window.
-function openWin(u){try{var w=Math.min(1280,screen.availWidth-80),h=Math.min(960,screen.availHeight-80);
-var x=Math.max(0,(screen.availWidth-w)/2+40),y=Math.max(0,(screen.availHeight-h)/2+20);
-var p=window.open(u,'_blank','noopener,width='+w+',height='+h+',left='+x+',top='+y+',scrollbars=yes,resizable=yes');
-if(p){p.focus();return false;}}catch(e){}return true;}</script>
+// Offer pages open in THIS window. They used to open in a popup so the pixel
+// would fire twice — but that meant the visitor filled the form inside a floating
+// window, and closing it dropped them back on the homepage as if nothing had
+// happened. One window, one journey, one thank-you page at the end.
+</script>
 <title>Terms &amp; Conditions — Honest Vacation Marketing</title><meta name="description" content="Terms governing use of honestvacationmarketing.com and the promotional vacation offers presented on it.">
 <link rel="canonical" href="https://honestvacationmarketing.com/terms.html">
 <meta property="og:type" content="website"><meta property="og:site_name" content="Honest Vacation Marketing">
@@ -207,7 +205,7 @@ picture{display:contents}
 <p>Elite Marketing Solutions LLC · 421 N Alisos St, Santa Barbara, CA 93103 · <a href="mailto:info@honestvacationmarketing.com" style="color:var(--brand)">info@honestvacationmarketing.com</a></p>
 </div>
 <footer class="foot"><div class="wrap"><div class="top">
-<div><div class="fbrand">The Honest <span>Travel Group</span></div><p style="color:#a8b6c6;font-size:14px;max-width:260px">A family of companies built on one rule: everything upfront, everything optional. Founded by Dave Lemmons.</p></div>
+<div><div class="fbrand">The Honest <span>Travel Group</span></div><p style="color:#a8b6c6;font-size:14px;max-width:260px">A family of companies built on one rule: everything upfront, everything optional.</p></div>
 <div><h4>Travel</h4><a href="cruise.html">Cruise getaways</a><a href="all-inclusive.html">All-inclusive</a><a href="resort-air.html">Resort + airfare</a><a href="condo.html">Condo weeks</a></div>
 <div><h4>Company</h4><a href="about.html">About &amp; mission</a><a href="partners.html">White-label partners</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a></div>
 <div><h4>Contact</h4><p style="color:#a8b6c6;font-size:14px;line-height:1.7;margin:0">Elite Marketing Solutions LLC<br>421 N Alisos St<br>Santa Barbara, CA 93103<br><a href="mailto:info@honestvacationmarketing.com" style="color:#a8b6c6">info@honestvacationmarketing.com</a><br><a href="tel:+18554186714" style="color:#a8b6c6">(855) 418-6714</a></p></div>

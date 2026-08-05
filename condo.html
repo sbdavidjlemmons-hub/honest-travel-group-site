@@ -1,13 +1,11 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="openai-domain-verification" content="dv-EPG6uqq1iUFETCwQsOLqk5JC">
 <script>if(location.protocol==='http:'&&!/^(localhost|127\.|\[)/.test(location.hostname))location.replace('https:'+location.href.substring(location.protocol.length));
-// Open certificate pages in a real second WINDOW, leaving this one open.
-// Two live windows = two sessions = the pixel fires again. Falls back to a
-// normal tab if a popup blocker refuses the window.
-function openWin(u){try{var w=Math.min(1280,screen.availWidth-80),h=Math.min(960,screen.availHeight-80);
-var x=Math.max(0,(screen.availWidth-w)/2+40),y=Math.max(0,(screen.availHeight-h)/2+20);
-var p=window.open(u,'_blank','noopener,width='+w+',height='+h+',left='+x+',top='+y+',scrollbars=yes,resizable=yes');
-if(p){p.focus();return false;}}catch(e){}return true;}</script>
+// Offer pages open in THIS window. They used to open in a popup so the pixel
+// would fire twice — but that meant the visitor filled the form inside a floating
+// window, and closing it dropped them back on the homepage as if nothing had
+// happened. One window, one journey, one thank-you page at the end.
+</script>
 <title>Explore a Condo Getaway With Room to Cook, Spread Out, and Relax | Honest Vacation Marketing</title><meta name="description" content="7 nights, sleeps up to 4, across 60+ destinations — then see how membership improves future trips.">
 <link rel="canonical" href="https://honestvacationmarketing.com/condo.html">
 <meta property="og:type" content="website"><meta property="og:site_name" content="Honest Vacation Marketing">
@@ -192,7 +190,7 @@ picture{display:contents}
 <header class="hero shot"><picture><source type="image/webp" srcset="img/hawaii-condo-resort-480.webp 480w, img/hawaii-condo-resort-800.webp 800w, img/hawaii-condo-resort-1200.webp 1200w, img/hawaii-condo-resort-1600.webp 1600w" sizes="100vw"><img class="photo" src="img/hawaii-condo-resort-1200.jpg" alt="Oceanfront condo resort with pools and palm trees" fetchpriority="high" decoding="async"></picture><div class="in"><span class="eyebrow">Families need space — not another hotel room.</span><h1>Explore a Condo Getaway With Room to Cook, Spread Out, and Relax</h1><p>7 nights, sleeps up to 4, across 60+ destinations — then see how membership improves future trips.</p><div class="btns"><a class="btn" href="#reserve">SHOW ME CONDO GETAWAYS</a></div></div></header>
 <section class="wrap" style="padding-top:38px"><div class="quickbox" id="reserve">
 <div class="qb-head"><span class="eyebrow" style="color:var(--silver)">Reserve a seat</span><h2>Check your seat in about thirty seconds.</h2><p>Seating for the live preview is limited. No charge to attend, and you keep the certificate either way.</p></div>
-<form onsubmit="return submitLead(event,'condo','condo-acquisition-quick','CND',"Full Condo Week")" class="qb-form">
+<form onsubmit="return submitLead(event,'condo','condo-acquisition-quick','CND',&quot;Full Condo Week&quot;)" class="qb-form">
 <div class="qb-row">
 <input name="firstName" required autocomplete="given-name" placeholder="First name" style="padding:15px;border-radius:12px;border:0;font-size:14px">
 <input name="mobile" type="tel" autocomplete="tel" placeholder="Mobile number (optional)" style="padding:15px;border-radius:12px;border:0;font-size:14px">
@@ -263,7 +261,7 @@ picture{display:contents}
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px"><div style="background:rgba(255,255,255,.05);border:1px solid rgba(200,212,224,.18);border-radius:14px;padding:16px 18px"><div style="color:var(--silver);font-weight:800;font-size:13px;margin-bottom:6px">A real company, not a landing page</div><div style="color:#b8c5d4;font-size:12.5px;line-height:1.6">Elite Marketing Solutions LLC · EIN 82-3706805 · 421 N Alisos St, Santa Barbara, CA 93103</div></div><div style="background:rgba(255,255,255,.05);border:1px solid rgba(200,212,224,.18);border-radius:14px;padding:16px 18px"><div style="color:var(--silver);font-weight:800;font-size:13px;margin-bottom:6px">A phone a person answers</div><div style="color:#b8c5d4;font-size:12.5px;line-height:1.6"><a href="tel:+18554186714" style="color:var(--silver);font-weight:800">(855) 418-6714</a> — call before you book anything</div></div><div style="background:rgba(255,255,255,.05);border:1px solid rgba(200,212,224,.18);border-radius:14px;padding:16px 18px"><div style="color:var(--silver);font-weight:800;font-size:13px;margin-bottom:6px">Named partners, not vague ones</div><div style="color:#b8c5d4;font-size:12.5px;line-height:1.6">Certificates provided by Gateways Unlimited, fulfilled by Customer Service Network Group (CSNG)</div></div><div style="background:rgba(255,255,255,.05);border:1px solid rgba(200,212,224,.18);border-radius:14px;padding:16px 18px"><div style="color:var(--silver);font-weight:800;font-size:13px;margin-bottom:6px">Your deposit is refundable</div><div style="color:#b8c5d4;font-size:12.5px;line-height:1.6">Refundable until travel is confirmed. No charge to attend the session.</div></div></div>
 </div></section>
 <section class="founder" id="qualify"><div class="wrap" style="max-width:620px;text-align:center"><span class="eyebrow" style="color:var(--silver)">Before you commit an hour</span><h2 style="margin-bottom:10px">Tell us how you actually travel.</h2><p style="margin:0 auto 24px">You've read every cost. These last questions let us bring the right options to your session instead of a generic pitch — and they're the reason the hour is worth your time.</p>
-<form onsubmit="return submitLead(event,'condo','condo-acquisition-full','CND',"Full Condo Week")" style="display:grid;gap:12px;text-align:left">
+<form onsubmit="return submitLead(event,'condo','condo-acquisition-full','CND',&quot;Full Condo Week&quot;)" style="display:grid;gap:12px;text-align:left">
 <input name="firstName" required autocomplete="given-name" placeholder="First name" style="padding:15px;border-radius:12px;border:0;font-size:14px">
 <input name="mobile" type="tel" autocomplete="tel" placeholder="Mobile number (optional)" style="padding:15px;border-radius:12px;border:0;font-size:14px">
 <input name="email" required type="email" autocomplete="email" placeholder="Email" style="padding:15px;border-radius:12px;border:0;font-size:14px">
@@ -282,42 +280,16 @@ picture{display:contents}
 <p style="font-size:10px;color:#8d9cae;margin-top:16px;line-height:1.6;text-align:left">Presented by Honest Vacation Marketing on behalf of Gateways Unlimited. A live 45–60 minute presentation is required; there is no charge to attend. Certificates fulfilled by Customer Service Network Group (CSNG), our fulfillment provider; deposits, taxes and fees are stated above and refundable before travel is confirmed. Market comparisons are estimated midpoints of published 2026 pricing. Limit one offer per household per 90 days.</p></div></section>
 <script>
 var WEBHOOK="https://services.leadconnectorhq.com/hooks/yXAOCx6d0NsookMNcPoY/webhook-trigger/8b19bb36-ee8b-48c2-b968-d5022763fd48";
+var ENDPOINT="";
 var WL={"code":"HVM","name":"Honest Vacation Marketing","parent":"Elite Marketing Solutions LLC"};
 function track(ev,data){data=data||{};
  try{if(window.fbq)fbq('track',ev,data);}catch(e){}
  try{if(window.gtag)gtag('event',ev.toLowerCase(),data);}catch(e){}
  }
 var OFFERVAL=360;track('ViewContent',{content_name:"Full Condo Week",content_category:"condo",currency:'USD',value:OFFERVAL});
-// Post-booking: confirm what they reserved, then introduce the company.
-// This screen is the ONLY moment we have their full attention — so it does the
-// selling for the whole group, not just the one certificate they clicked.
-function afterBooking(label){
-var S='max-width:900px;margin:44px auto 0;text-align:left';
-var CARD='background:#fff;border:1px solid rgba(15,28,43,.12);border-radius:18px;padding:26px 28px';
-var H='font-size:12px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#1b3f6b;margin-bottom:14px';
-var P='color:#5c6b61;font-size:14.5px;line-height:1.65;margin-bottom:12px';
-return '<div style="'+S+'">'
-+'<div style="'+CARD+';border-left:5px solid #c8d4e0;margin-bottom:20px"><div style="'+H+'">What you just reserved</div>'
-+'<div style="font-size:22px;font-weight:800;color:#0f1c2b;margin-bottom:6px">'+(label||'Your vacation certificate')+'</div>'
-+'<div style="'+P+'">A live 45&ndash;60 minute session on Zoom, attended as a couple. Every cost was printed on the page before you gave us your name &mdash; nothing new appears later. You receive the certificate whether or not you buy anything at the session.</div></div>'
-+'<div style="'+CARD+';background:#0a1f38;color:#fff;border:0;margin-bottom:20px"><div style="'+H+';color:#c8d4e0">Who you are dealing with</div>'
-+'<div style="font-size:20px;font-weight:800;margin-bottom:10px">Dave Lemmons &mdash; 20+ years in this industry</div>'
-+'<div style="color:#c4d0de;font-size:14.5px;line-height:1.65;margin-bottom:10px">I spent two decades watching good travel programs get sold with bad tactics &mdash; hidden fees, pressure tables, fine print that shows up after you have already said yes. That is what earned this whole industry its reputation.</div>'
-+'<div style="color:#c4d0de;font-size:14.5px;line-height:1.65">The Honest Travel Group is the correction. Every cost upfront, every requirement stated, options instead of pressure. We would rather earn the relationship and have you travel with us for the next twenty years &mdash; you, your kids, your grandkids &mdash; than win one hard close today.</div>'
-+'<div style="color:#c8d4e0;font-weight:800;font-size:13.5px;margin-top:14px">&mdash; Dave Lemmons, Founder &middot; Elite Marketing Solutions LLC</div></div>'
-+'<div style="'+CARD+'"><div style="'+H+'">The rest of what we do</div>'
-+'<div style="'+P+'">One family of companies, each with its own lane:</div>'
-+'<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:6px">'
-+ tile('Honest Vacation Marketing','Cruises, all-inclusives, resort weeks and condo stays &mdash; every cost printed at the top.','index.html','You are here')
-+ tile('Honest Timeshare Resolutions','Stuck in a timeshare that never fit? We walk you out &mdash; your pace, your options, your call.','https://honesttimeshareresolutions.com','Exit help')
-+ tile('The Honest Travel Group','The hub: our mission, the founder, and every brand that carries the name.','about.html','About us')
-+ tile('Partner with us','White-label the whole system under your own brand. Built for operators who want the honest model.','partners.html','B2B')
-+'</div></div></div>';}
-function tile(t,d,href,k){
-return '<a href="'+href+'" target="_blank" rel="noopener" onclick="return openWin(this.href)" style="display:block;background:#ffffff;border-radius:14px;padding:18px;text-decoration:none">'
-+'<div style="font-size:10px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#3a6ea5;margin-bottom:6px">'+k+'</div>'
-+'<div style="font-weight:800;color:#0f1c2b;font-size:15px;margin-bottom:5px">'+t+'</div>'
-+'<div style="color:#5c6b61;font-size:13px;line-height:1.55">'+d+'</div></a>';}
+// The post-submit experience now lives at thank-you.html as a real page with a
+// real URL — so a refresh doesn't lose it, the back button doesn't land on a
+// half-filled form, and the conversion has a page view to attach to.
 // Certificate number — issued at booking, shown to the traveler, and prefixed
 // with the white label code so numbers never collide across partners.
 // Shape: HVM-CRU-260803-7K4Q   (label · offer · date · random)
@@ -365,39 +337,60 @@ var booked=false;
 // could tell — they wait for a Zoom link that will never arrive.
 function failed(){if(booked)return;booked=true;
 document.body.innerHTML='<div style="min-height:100vh;display:grid;place-items:center;padding:28px 18px;font-family:system-ui;background:#f7f9fb"><div style="max-width:560px;text-align:center"><h1 style="font-size:32px;color:#b4462f;margin:0 0 12px">We could not reach our system.</h1><p style="color:#5c6b61;line-height:1.65;margin-bottom:18px">Your details are saved on this device and we will keep trying automatically &mdash; but do not wait on us. <b>Call or text and we will book your seat directly, right now.</b></p><a href="tel:+18554186714" style="display:inline-block;background:#1b3f6b;color:#fff;font-weight:800;font-size:20px;padding:16px 30px;border-radius:999px;text-decoration:none">(855) 418-6714</a><p style="color:#8794a4;font-size:12.5px;margin-top:18px;line-height:1.6">Reference this number when you call: <b style="color:#0f1c2b;font-family:ui-monospace,Menlo,Consolas,monospace">'+CERT+'</b></p></div></div>';}
+// Hand off to a real page at a real URL. The old version swapped document.body,
+// which meant a refresh wiped the confirmation, the back button returned to a
+// filled-in form, and there was no page view to hang a conversion on.
 function done(){if(booked)return;booked=true;try{track('Schedule',{content_name:offerLabel});}catch(e){}
-var q='?first_name='+encodeURIComponent(f.firstName.value)+'&email='+encodeURIComponent(f.email.value)+'&phone='+encodeURIComponent(MOBILE)+'&cert='+encodeURIComponent(CERT);
-document.body.innerHTML='<div style="min-height:100vh;padding:28px 18px;font-family:system-ui;background:#f7f9fb"><div style="max-width:860px;margin:0 auto;text-align:center"><h1 style="font-size:38px;color:#1b3f6b;margin:0 0 8px">You\'re in. Now pick your time.</h1><p style="max-width:600px;color:#5c6b61;margin:0 auto 18px;line-height:1.6">Choose any session below and your Zoom link is emailed to you instantly. It\'s 45&ndash;60 minutes, live, and every cost is on the table.</p><div style="max-width:520px;margin:0 auto 20px;background:#0a1f38;border-radius:16px;padding:22px 24px;text-align:left;box-shadow:0 12px 34px rgba(10,31,56,.22)"><div style="font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#c8d4e0;margin-bottom:8px">Your certificate number &mdash; save this</div><div style="font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:clamp(20px,4.6vw,30px);font-weight:700;color:#fff;letter-spacing:.06em;word-break:break-all">'+CERT+'</div><div style="color:#9dadc0;font-size:12px;margin-top:10px;line-height:1.6">Issued by '+WL.name+'. Bring this number to your session &mdash; it\'s how we pull up your file. Your <b style="color:#dbe3ec">activation code</b> is issued at the session itself.</div></div><p style="max-width:600px;color:#8794a4;margin:0 auto 20px;font-size:13px;line-height:1.6">Sessions run Monday&ndash;Friday at 1:30, 3:30 and 5:30 PM Pacific.</p><div style="background:#fff;border-radius:18px;box-shadow:0 10px 40px rgba(10,31,56,.10);overflow:hidden"><iframe src="'+BOOKING+q+'" style="width:100%;height:780px;border:0" title="Choose your session time"></iframe></div><p style="color:#8794a4;font-size:12px;margin:18px auto 0;max-width:600px;line-height:1.6">Can\'t pick a time right now? No problem &mdash; we\'ll text and email you the same link. Reply STOP to any text to opt out.</p></div>'+afterBooking(offerLabel)+'</div>';}
-if(!WEBHOOK){done();return false;}
-// A lead is money. Persist it BEFORE the network call so a failed/slow POST can
-// never lose it. mode:'no-cors' hides the status code, but the promise still
-// tells us whether the request left the machine: resolve = it reached the
-// server, reject = it never did. Those must NOT be treated the same.
+var q='?cert='+encodeURIComponent(CERT)
+ +'&first_name='+encodeURIComponent(f.firstName.value)
+ +'&email='+encodeURIComponent(f.email.value)
+ +'&phone='+encodeURIComponent(MOBILE)
+ +'&offer='+encodeURIComponent(offerLabel||'');
+location.replace('thank-you.html'+q);}
+if(!ENDPOINT&&!WEBHOOK){done();return false;}
+// A lead is money. Persist it BEFORE the network call so a failed or slow POST
+// can never lose it.
 try{localStorage.setItem('hvm_pending_'+CERT,JSON.stringify(body));}catch(_){}
 var settled=false;
 function clearPending(){try{localStorage.removeItem('hvm_pending_'+CERT);}catch(_){}}
-fetch(WEBHOOK,{method:'POST',mode:'no-cors',body:JSON.stringify(body)})
- .then(function(){ if(settled)return; settled=true; clearPending(); try{track('Lead',{content_name:offerLabel,content_category:offer,currency:'USD',value:LEADVAL});}catch(e){} done(); })
- .catch(function(){ if(settled)return; settled=true; failed(); });   // kept in localStorage for retry
-// If the network stalls, show the booking screen rather than trapping them —
-// but leave the record in localStorage so retryPending() re-sends it later.
-setTimeout(function(){ if(settled)return; settled=true; done(); },6000);
+function won(){if(settled)return;settled=true;clearPending();try{track('Lead',{content_name:offerLabel,content_category:offer,currency:'USD',value:LEADVAL});}catch(e){} done();}
+function lost(){if(settled)return;settled=true;failed();}   // stays in localStorage for retry
+if(ENDPOINT){
+ // Real CORS endpoint: we get a real status, so success is claimed only on 2xx.
+ fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+  .then(function(r){ return r.ok?won():lost(); })
+  .catch(function(){ lost(); });
+ // A stall is not a success. Keep the visitor moving to the booking step, but
+ // the record stays in localStorage so retryPending() re-sends it.
+ setTimeout(function(){ if(settled)return; settled=true; done(); },8000);
+}else{
+ // Legacy path. mode:'no-cors' returns an opaque response, so resolve only
+ // proves the request LEFT THE MACHINE — not that anything accepted it.
+ fetch(WEBHOOK,{method:'POST',mode:'no-cors',body:JSON.stringify(body)})
+  .then(won).catch(lost);
+ setTimeout(function(){ if(settled)return; settled=true; done(); },6000);
+}
 return false;}
 // On every page load, re-send anything a previous visit could not deliver.
 (function retryPending(){
- if(!WEBHOOK||!window.localStorage)return;
+ var URL_=ENDPOINT||WEBHOOK;
+ if(!URL_||!window.localStorage)return;
  for(var i=0;i<localStorage.length;i++){
   var k=localStorage.key(i); if(!k||k.indexOf('hvm_pending_')!==0)continue;
   (function(key){
    var payload=localStorage.getItem(key); if(!payload)return;
-   fetch(WEBHOOK,{method:'POST',mode:'no-cors',body:payload})
-    .then(function(){try{localStorage.removeItem(key);}catch(_){}}).catch(function(){});
+   var opts=ENDPOINT
+    ?{method:'POST',headers:{'Content-Type':'application/json'},body:payload}
+    :{method:'POST',mode:'no-cors',body:payload};
+   fetch(URL_,opts)
+    .then(function(r){ if(!ENDPOINT||r.ok){try{localStorage.removeItem(key);}catch(_){}} })
+    .catch(function(){});
   })(k);
  }
 })();
 </script>
 <footer class="foot"><div class="wrap"><div class="top">
-<div><div class="fbrand">The Honest <span>Travel Group</span></div><p style="color:#a8b6c6;font-size:14px;max-width:260px">A family of companies built on one rule: everything upfront, everything optional. Founded by Dave Lemmons.</p></div>
+<div><div class="fbrand">The Honest <span>Travel Group</span></div><p style="color:#a8b6c6;font-size:14px;max-width:260px">A family of companies built on one rule: everything upfront, everything optional.</p></div>
 <div><h4>Travel</h4><a href="cruise.html">Cruise getaways</a><a href="all-inclusive.html">All-inclusive</a><a href="resort-air.html">Resort + airfare</a><a href="condo.html">Condo weeks</a></div>
 <div><h4>Company</h4><a href="about.html">About &amp; mission</a><a href="partners.html">White-label partners</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a></div>
 <div><h4>Contact</h4><p style="color:#a8b6c6;font-size:14px;line-height:1.7;margin:0">Elite Marketing Solutions LLC<br>421 N Alisos St<br>Santa Barbara, CA 93103<br><a href="mailto:info@honestvacationmarketing.com" style="color:#a8b6c6">info@honestvacationmarketing.com</a><br><a href="tel:+18554186714" style="color:#a8b6c6">(855) 418-6714</a></p></div>
