@@ -211,7 +211,7 @@ picture{display:contents}
 </div></div></section>
 
 <section class="wrap" style="padding-top:26px"><div class="sec-head"><span class="eyebrow">Step one of one</span><h2>Pick your time. <em>That's the whole to-do list.</em></h2><p>Sessions run Monday&ndash;Friday at 1:30, 3:30 and 5:30 PM Pacific. It's 45&ndash;60 minutes, live, attended together as a couple &mdash; and every cost was already printed before you gave us your name.</p></div>
-<div style="background:#fff;border-radius:18px;box-shadow:0 10px 40px rgba(10,31,56,.10);overflow:hidden"><iframe id="ty-booking" src="" loading="lazy" style="width:100%;height:780px;border:0" title="Choose your session time"></iframe></div>
+<div id="ty-booking-wrap"><div style="background:#fff;border-radius:18px;box-shadow:0 10px 40px rgba(10,31,56,.10);overflow:hidden"><iframe id="ty-booking" src="" loading="lazy" style="width:100%;height:780px;border:0" title="Choose your session time"></iframe></div></div>
 <p style="color:var(--muted);font-size:13px;margin-top:16px;max-width:640px">Can't pick a time right now? No problem &mdash; we'll email you the same link. Or call <a href="tel:+18554186714" style="color:var(--brand);font-weight:800">(855) 418-6714</a> and we'll book it with you on the phone.</p></section>
 
 <section class="wrap"><div class="sec-head"><span class="eyebrow">What happens next</span><h2>No surprises. <em>Here's the whole sequence.</em></h2></div>
@@ -269,6 +269,22 @@ picture{display:contents}
  if(cert){document.getElementById('ty-cert').textContent=cert;}
  else{document.getElementById('ty-cert-wrap').style.display='none';}
  var q='?first_name='+encodeURIComponent(first)+'&email='+encodeURIComponent(email)+'&phone='+encodeURIComponent(phone)+'&cert='+encodeURIComponent(cert);
+ // Spouse gate. Someone who could not confirm their partner does not get the
+ // booking calendar — putting them there burns one of 18 seats on a session that
+ // cannot be completed, and sets them up to be turned away after an hour. They
+ // get a callback instead. Their record still reached GHL; nothing is lost.
+ if(p.get('callback')==='1'){
+  var bw=document.getElementById('ty-booking-wrap');
+  if(bw){bw.innerHTML='<div style="background:#fff;border-radius:18px;box-shadow:0 10px 40px rgba(10,31,56,.10);padding:clamp(24px,4vw,40px);text-align:left">'
+   +'<div style="font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#1b3f6b;margin-bottom:12px">One thing first</div>'
+   +'<h3 style="font-size:clamp(20px,2.6vw,26px);color:#0f1c2b;margin:0 0 14px">We\'ll call you instead of booking a seat.</h3>'
+   +'<p style="color:#5c6b61;font-size:15.5px;line-height:1.7;margin:0 0 14px">You told us your spouse or partner can\'t make the times we run, and I\'m not going to book you into a session you can\'t finish. The certificate can only be issued with both of you on it &mdash; that\'s the provider\'s rule, not mine, and I\'d rather say it now than after you\'ve given up an hour.</p>'
+   +'<p style="color:#5c6b61;font-size:15.5px;line-height:1.7;margin:0 0 20px">So we\'ll find a time that actually works for the two of you. Your certificate number is saved either way.</p>'
+   +'<a class="btn" href="tel:+18554186714" style="display:inline-block">Call us now &mdash; (855) 418-6714</a>'
+   +'<p style="color:#8794a4;font-size:13px;line-height:1.6;margin:16px 0 0">Or sit tight &mdash; we\'ll reach out. Nothing else is needed from you.</p></div>';}
+  var h=document.getElementById('ty-head'); if(h&&first)h.textContent="Thanks, "+first+".";
+  return;
+ }
  document.getElementById('ty-booking').src="https://api.leadconnectorhq.com/widget/booking/B2QxN25XAnB9MaD4KukW"+q;
 })();
 </script>
