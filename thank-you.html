@@ -1,4 +1,5 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
 <meta name="openai-domain-verification" content="dv-EPG6uqq1iUFETCwQsOLqk5JC">
 <script>if(location.protocol==='http:'&&!/^(localhost|127\.|\[)/.test(location.hostname))location.replace('https:'+location.href.substring(location.protocol.length));
 // Offer pages open in THIS window. They used to open in a popup so the pixel
@@ -211,8 +212,14 @@ picture{display:contents}
 </div></div></section>
 
 <section class="wrap" style="padding-top:26px"><div class="sec-head"><span class="eyebrow">Step one of one</span><h2>Pick your time. <em>That's the whole to-do list.</em></h2><p>Sessions run Monday&ndash;Friday at 1:30, 3:30 and 5:30 PM Pacific. It's 45&ndash;60 minutes, live, attended together as a couple &mdash; and every cost was already printed before you gave us your name.</p></div>
-<div id="ty-booking-wrap"><div style="background:#fff;border-radius:18px;box-shadow:0 10px 40px rgba(10,31,56,.10);overflow:hidden"><iframe id="ty-booking" src="" loading="lazy" style="width:100%;height:780px;border:0" title="Choose your session time"></iframe></div></div>
-<p style="color:var(--muted);font-size:13px;margin-top:16px;max-width:640px">Can't pick a time right now? No problem &mdash; we'll email you the same link. Or call <a href="tel:+18554186714" style="color:var(--brand);font-weight:800">(855) 418-6714</a> and we'll book it with you on the phone.</p></section>
+<div id="ty-booking-wrap"><div style="background:#fff;border-radius:18px;box-shadow:0 10px 40px rgba(10,31,56,.10);overflow:hidden"><iframe id="ty-booking" src="" style="width:100%;height:780px;border:0" title="Choose your session time"></iframe></div>
+<!-- The calendar is a third-party iframe on leadconnectorhq.com. A content
+     blocker, a strict corporate network or a privacy browser leaves a blank
+     white box at the single step the entire funnel exists to reach — and the
+     visitor has no idea anything is missing. This link is always present, so
+     there is a working path to book even when the embed never loads. -->
+<p style="text-align:center;margin:14px 0 0;font-size:13.5px;color:var(--muted)">Calendar not loading? <a id="ty-booking-link" href="https://api.leadconnectorhq.com/widget/booking/B2QxN25XAnB9MaD4KukW" target="_blank" rel="noopener" style="color:var(--brand);font-weight:800">Open it in a new tab</a> &mdash; or call <a href="tel:+18554186714" style="color:var(--brand);font-weight:800">(855) 418-6714</a> and we'll book it with you.</p></div>
+<p style="color:var(--muted);font-size:13px;margin-top:16px;max-width:640px">Can't pick a time right now? Bookmark this page &mdash; your certificate number is on it. Or call <a href="tel:+18554186714" style="color:var(--brand);font-weight:800">(855) 418-6714</a> and we'll book it with you on the phone.</p></section>
 
 <section class="wrap"><div class="sec-head"><span class="eyebrow">What happens next</span><h2>No surprises. <em>Here's the whole sequence.</em></h2></div>
 <div class="steps4">
@@ -286,6 +293,10 @@ picture{display:contents}
   return;
  }
  document.getElementById('ty-booking').src="https://api.leadconnectorhq.com/widget/booking/B2QxN25XAnB9MaD4KukW"+q;
+ // Carry the same prefill onto the fallback link, so booking in a new tab is
+ // not a worse experience than booking in the embed.
+ var bl=document.getElementById('ty-booking-link');
+ if(bl)bl.href="https://api.leadconnectorhq.com/widget/booking/B2QxN25XAnB9MaD4KukW"+q;
 })();
 </script>
 <footer class="foot"><div class="wrap"><div class="top">
