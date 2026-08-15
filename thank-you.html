@@ -436,9 +436,13 @@ picture{display:contents}
   }
   var h=document.getElementById('ty-head'); if(h&&first)h.textContent="Thanks, "+first+".";
  }
- // The certificate on this page cannot be issued to this person at all. Two
+ // The certificate on this page cannot be issued to this person at all. Several
  // reasons get here, and they are NOT the same conversation, so they do not get
- // the same words.
+ // the same words. why= is the same string the CRM bucket is built from, so the
+ // screen someone is reading and the record a rep opens always say the same
+ // thing. Only toured and age are named plainly, because those are the two
+ // where we know exactly what happened; everything else stays general rather
+ // than guessing out loud at somebody's income.
  //
  // We deliberately do not name a specific alternative offer on this screen.
  // Nothing is promised on this site that cannot be delivered, and what actually
@@ -451,10 +455,22 @@ picture{display:contents}
     'This certificate can\'t be issued to you &mdash; but you\'re not done.',
     ['You told us you attended a vacation-ownership presentation in the last 90 days, and I\'m taking you at your word. The provider will not issue this certificate inside that window. Booking you into a session would mean an hour of your time and a no at the end of it, and I\'m not going to do that to you.',
      'What I can do is go through what you DO qualify for right now. Your details are saved and your certificate number is on this page either way.']);
+  }else if(p.get('why')==='age'){
+   // AGE IS THE ONE WE CAN NAME OUT LOUD. Everything else about this person
+   // checks out, so "one of those four isn't true" would be vague about a thing
+   // we know exactly — and being coy about it is more awkward than saying it.
+   //
+   // What this screen must NOT do is read like the T4c tap link. "I'll stop
+   // emailing" is a different sentence from "the certificate has an age band",
+   // and only the person who taps that link has asked to be left alone.
+   offPath('Thanks for answering straight',
+    'It\'s the age band &mdash; and that\'s the only thing in the way.',
+    ['This certificate is written for ages 35 to 72. I don\'t set that, the provider does, and it is the one rule I can\'t talk around. You told me everything else is true, so this is the whole of it.',
+     'Which means I am not going to book you into an hour that ends with someone telling you no at the door. You are not the wrong person to travel with &mdash; this is the wrong piece of paperwork for you. Let me get you on the phone and go through what actually fits instead of guessing at it here. Your details are saved and your certificate number is on this page either way.']);
   }else{
    offPath('Thanks for answering straight',
-    'One of those four isn\'t true for you. That\'s useful, not a problem.',
-    ['You could have ticked the box to get through the form. You didn\'t, and I would rather have the honest answer. This certificate carries rules I don\'t set &mdash; both partners on the session, the age band, the income line, a major credit card &mdash; and if one of them misses, it cannot be issued.',
+    'Something in that list isn\'t true for you. That\'s useful, not a problem.',
+    ['You could have ticked the boxes to get through the form. You didn\'t, and I would rather have the honest answer. This certificate carries rules I don\'t set &mdash; both of you on the session, the age band, the income line, a major credit card &mdash; and if one of them misses, it cannot be issued.',
      'That does not mean there is nothing here for you. We run more than one thing. Let me put the right one in front of you instead of the wrong one.']);
   }
   return;
