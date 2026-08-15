@@ -221,9 +221,9 @@ picture{display:contents}
      visitor has no idea anything is missing. This link is always present, so
      there is a working path to book even when the embed never loads. -->
 <p style="text-align:center;margin:14px 0 0;font-size:13.5px;color:var(--muted)">Calendar not loading? <a id="ty-booking-link" href="https://api.leadconnectorhq.com/widget/booking/B2QxN25XAnB9MaD4KukW" target="_blank" rel="noopener" style="color:var(--brand);font-weight:800">Open it in a new tab</a> &mdash; or call <a href="tel:+18554186714" style="color:var(--brand);font-weight:800">(855) 418-6714</a> and we'll book it with you.</p></div>
-<p style="color:var(--muted);font-size:13px;margin-top:16px;max-width:640px">Can't pick a time right now? Bookmark this page &mdash; your certificate number is on it. Or call <a href="tel:+18554186714" style="color:var(--brand);font-weight:800">(855) 418-6714</a> and we'll book it with you on the phone.</p></section>
+<p id="ty-cant-pick" style="color:var(--muted);font-size:13px;margin-top:16px;max-width:640px">Can't pick a time right now? Bookmark this page &mdash; your certificate number is on it. Or call <a href="tel:+18554186714" style="color:var(--brand);font-weight:800">(855) 418-6714</a> and we'll book it with you on the phone.</p></section>
 
-<section class="wrap"><div class="sec-head"><span class="eyebrow">What happens next</span><h2>No surprises. <em>Here's the whole sequence.</em></h2></div>
+<section class="wrap" id="ty-sequence"><div class="sec-head"><span class="eyebrow">What happens next</span><h2>No surprises. <em>Here's the whole sequence.</em></h2></div>
 <div class="steps4">
 <div class="step"><i>1</i><b>Your Zoom link arrives</b><p>Emailed the moment you pick a time. Same link every session &mdash; no codes, no dial-ins, no app to install.</p></div>
 <div class="step"><i>2</i><b>You both attend, 45&ndash;60 minutes</b><p>Live, as a couple, ages 35&ndash;72. There is no charge to attend, and you keep the certificate either way.</p></div>
@@ -364,11 +364,27 @@ picture{display:contents}
   });
  }
  function offPath(eyebrow,head,paras,noteAlt){
+  // THE CONTRADICTION IS BELOW THE PANEL TOO, NOT JUST ABOVE IT.
+  // This was caught on the LIVE page, not in review: the panel correctly said
+  // "we'll call you", and then four inches further down the page still read
+  // "Your Zoom link arrives — emailed the moment you pick a time" and "You both
+  // attend, 45-60 minutes, live, as a couple, ages 35-72."
+  //
+  // That last line restates the age band to someone who has just told us they
+  // fall outside it. It reads as though the page did not listen. The browser
+  // TAB was the same story — "You're in — pick your session time" — which is
+  // what they see in their history a week later.
+  document.title='Thanks — we\'ll be in touch | Honest Vacation Marketing';
   var sh=document.getElementById('ty-step-head');
   if(sh)sh.innerHTML='<span class="eyebrow">What happens now</span>'
    +'<h2>We\'ll pick this up <em>with you.</em></h2>';
   var ld=document.getElementById('ty-lede');
   if(ld)ld.textContent='We have your details, and your certificate number is below. There is nothing you need to do on this page.';
+  // Both of these are about booking and attending a session this person is not
+  // going to. Removed rather than reworded: the panel already tells them what
+  // happens next, and a second, vaguer answer underneath it only muddies that.
+  var cp=document.getElementById('ty-cant-pick'); if(cp)cp.style.display='none';
+  var sq=document.getElementById('ty-sequence'); if(sq)sq.style.display='none';
   var bw=document.getElementById('ty-booking-wrap');
   if(bw){
    var html='<div style="background:#fff;border-radius:18px;box-shadow:0 10px 40px rgba(10,31,56,.10);padding:clamp(24px,4vw,40px);text-align:left">'
