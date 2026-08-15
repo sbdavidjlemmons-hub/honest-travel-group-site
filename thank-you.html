@@ -206,14 +206,14 @@ picture{display:contents}
 <span style="flex:none;width:46px;height:46px;border-radius:50%;background:#1f7a4d;display:grid;place-items:center;font-size:24px" aria-hidden="true">✓</span>
 <div><div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--silver);font-weight:800;margin-bottom:5px">Confirmed &mdash; we have your details</div>
 <h1 id="ty-head" style="font-size:clamp(27px,3.6vw,42px);line-height:1.15;margin:0">You're in.</h1></div></div>
-<p style="color:#c4d0de;font-size:16px;line-height:1.65;max-width:640px;margin-bottom:22px">Nothing else is required from you right now except one thing: pick the session time that suits you. Your Zoom link is emailed the moment you do.</p>
+<p id="ty-lede" style="color:#c4d0de;font-size:16px;line-height:1.65;max-width:640px;margin-bottom:22px">Nothing else is required from you right now except one thing: pick the session time that suits you. Your Zoom link is emailed the moment you do.</p>
 <div id="ty-cert-wrap" style="background:rgba(255,255,255,.06);border:1px solid rgba(200,212,224,.3);border-radius:16px;padding:20px 22px;max-width:520px">
 <div style="font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--silver);margin-bottom:8px">Your certificate number &mdash; save this</div>
 <div id="ty-cert" style="font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:clamp(19px,4.4vw,29px);font-weight:700;letter-spacing:.06em;word-break:break-all">&mdash;</div>
 <div style="color:#9dadc0;font-size:12.5px;margin-top:10px;line-height:1.6">Issued by Honest Vacation Marketing. Bring this number to your session &mdash; it's how we pull up your file. Your <b style="color:#dbe3ec">activation code</b> is a different number, and it's issued at the session itself.</div>
 </div></div></section>
 
-<section class="wrap" style="padding-top:26px"><div class="sec-head"><span class="eyebrow">Step one of one</span><h2>Pick your time. <em>That's the whole to-do list.</em></h2><p>Sessions run Monday&ndash;Friday at 1:30, 3:30 and 5:30 PM Pacific. It's 45&ndash;60 minutes, live, attended together as a couple &mdash; and every cost was already printed before you gave us your name.</p></div>
+<section class="wrap" style="padding-top:26px"><div class="sec-head" id="ty-step-head"><span class="eyebrow">Step one of one</span><h2>Pick your time. <em>That's the whole to-do list.</em></h2><p>Sessions run Monday&ndash;Friday at 1:30, 3:30 and 5:30 PM Pacific. It's 45&ndash;60 minutes, live, attended together as a couple &mdash; and every cost was already printed before you gave us your name.</p></div>
 <div id="ty-booking-wrap"><div style="background:#fff;border-radius:18px;box-shadow:0 10px 40px rgba(10,31,56,.10);overflow:hidden"><iframe id="ty-booking" src="" style="width:100%;height:780px;border:0" title="Choose your session time"></iframe></div>
 <!-- The calendar is a third-party iframe on leadconnectorhq.com. A content
      blocker, a strict corporate network or a privacy browser leaves a blank
@@ -269,6 +269,44 @@ picture{display:contents}
 <div style="text-align:center;margin-top:34px"><a class="btn" href="index.html">Back to the home page</a></div></section>
 
 <script>
+// THE RECOVERY LEG, AND THIS IS THE PAGE THAT MATTERS MOST FOR IT.
+// Every offer page carries a retryPending() that re-sends anything a previous
+// visit could not deliver. This page did not have one — and this page is the
+// single most likely place on the whole site for a pending lead to exist.
+//
+// The reason is the 8-second timer: when the POST stalls, the visitor is moved
+// here anyway and shown "You're in", with the record still sitting in
+// localStorage. They then read this page, pick a time, and leave — and if they
+// never load an offer page again, that lead is never re-sent by anyone. The
+// retry was on every page EXCEPT the one the failing visitor is guaranteed to
+// land on.
+//
+// This runs before the branch logic below and outside it, so it fires on all
+// three paths — calendar, callback and other-offers alike.
+(function retryPending(){
+ var ENDPOINT="https://hvm-lead-intake.lead-intake.workers.dev";
+ var WEBHOOK="https://services.leadconnectorhq.com/hooks/yXAOCx6d0NsookMNcPoY/webhook-trigger/8b19bb36-ee8b-48c2-b968-d5022763fd48";
+ var URL_=ENDPOINT||WEBHOOK;
+ if(!URL_||!window.localStorage)return;
+ // Snapshot the keys BEFORE sending. Removing entries while walking
+ // localStorage by index shifts everything after the removal down one slot and
+ // silently skips the next record — on the exact code path whose only job is to
+ // not lose records.
+ var keys=[];
+ for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k&&k.indexOf('hvm_pending_')===0)keys.push(k);}
+ for(var j=0;j<keys.length;j++){(function(key){
+  var payload=localStorage.getItem(key); if(!payload)return;
+  var opts=ENDPOINT
+   ?{method:'POST',headers:{'Content-Type':'application/json'},body:payload}
+   :{method:'POST',mode:'no-cors',body:payload};
+  // Only a real 2xx clears the record. With the legacy no-cors webhook the
+  // response is opaque and resolve proves only that the request left the
+  // machine, which is the best signal that path can ever give.
+  fetch(URL_,opts)
+   .then(function(r){ if(!ENDPOINT||r.ok){try{localStorage.removeItem(key);}catch(_){}} })
+   .catch(function(){});
+ })(keys[j]);}
+})();
 (function(){
  var p=new URLSearchParams(location.search);
  var cert=p.get('cert')||'', first=(p.get('first_name')||'').trim();
@@ -278,20 +316,142 @@ picture{display:contents}
  if(cert){document.getElementById('ty-cert').textContent=cert;}
  else{document.getElementById('ty-cert-wrap').style.display='none';}
  var q='?first_name='+encodeURIComponent(first)+'&email='+encodeURIComponent(email)+'&phone='+encodeURIComponent(phone)+'&cert='+encodeURIComponent(cert);
+ // NOT EVERYONE GETS THE CALENDAR.
+ // Three different people can land on this page, and they were told three
+ // different things on the way here, so they must not read the same screen. A
+ // seat is one of 18. Seating someone the session cannot serve costs a seat AND
+ // costs that person an hour before they get a no.
+ //
+ // Everything ABOVE the panel has to change too. The hero still read "pick the
+ // session time that suits you" and the section head still read "Step one of
+ // one" — to someone we had just told we would phone instead. That contradiction
+ // was already live on the callback branch; it is fixed here for all three.
+ // Set by the branches that route to "other offers". The spouse-callback branch
+ // deliberately leaves it false: that person WAS qualified and is waiting on a
+ // scheduling call, so asking them to re-pitch their own trip would be strange.
+ var showMiniVac=false;
+ // Posts the mini-vac answers to the SAME lead endpoint under bucket 'mini-vac'.
+ // Failure is silent on purpose — this is a bonus capture on a page that has
+ // already succeeded, and an error banner here would read as "your submission
+ // failed" about the thing that did not fail.
+ function wireMiniVac(){
+  var fm=document.getElementById('mv-form'); if(!fm)return;
+  fm.addEventListener('submit',function(ev){
+   ev.preventDefault();
+   var g=function(n){var el=fm.elements[n];return el&&el.value?String(el.value).trim():'';};
+   var dest=g('mvDest'),when=g('mvWhen'),party=g('mvParty'),intent=g('mvIntent');
+   if(!dest&&!when&&!party&&!intent){
+    document.getElementById('mv-wrap').innerHTML='<p style="color:#5c6b61;font-size:15px;line-height:1.7;margin:0">Nothing to send &mdash; that\'s fine. We\'ll call you and start from scratch.</p>';
+    return;
+   }
+   var btn=fm.querySelector('button[type=submit]');
+   if(btn){btn.disabled=true;btn.textContent='Sending\u2026';}
+   var st=(function(){try{return JSON.parse(sessionStorage.getItem('hvmLead')||'{}');}catch(e){return {};}})();
+   try{
+    fetch("https://hvm-lead-intake.lead-intake.workers.dev",{
+     method:'POST',headers:{'Content-Type':'application/json'},
+     body:JSON.stringify({net:'net1',bucket:'mini-vac',
+      firstName:st.firstName||'',email:st.email||'',mobile:st.mobile||'',
+      certificateNumber:st.certificateNumber||'',offer:st.offer||'',page:st.page||'',
+      miniVac:{destination:dest,timeframe:when,party:party,membershipIntent:intent}})
+    }).catch(function(){});
+   }catch(e){}
+   document.getElementById('mv-wrap').innerHTML=
+    '<div style="font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#1f7a4d;margin-bottom:10px">Got it</div>'
+    +'<p style="color:#5c6b61;font-size:15.5px;line-height:1.7;margin:0">That\'s on your file. When we call, we\'ll open with '
+    +(dest?('<b style="color:#0f1c2b">'+dest.replace(/[<>&]/g,'')+'</b>'):'what you\'re after')
+    +' instead of asking you to explain it again.</p>';
+  });
+ }
+ function offPath(eyebrow,head,paras,noteAlt){
+  var sh=document.getElementById('ty-step-head');
+  if(sh)sh.innerHTML='<span class="eyebrow">What happens now</span>'
+   +'<h2>We\'ll pick this up <em>with you.</em></h2>';
+  var ld=document.getElementById('ty-lede');
+  if(ld)ld.textContent='We have your details, and your certificate number is below. There is nothing you need to do on this page.';
+  var bw=document.getElementById('ty-booking-wrap');
+  if(bw){
+   var html='<div style="background:#fff;border-radius:18px;box-shadow:0 10px 40px rgba(10,31,56,.10);padding:clamp(24px,4vw,40px);text-align:left">'
+    +'<div style="font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#1b3f6b;margin-bottom:12px">'+eyebrow+'</div>'
+    +'<h3 style="font-size:clamp(20px,2.6vw,26px);color:#0f1c2b;margin:0 0 14px">'+head+'</h3>';
+   for(var i=0;i<paras.length;i++){
+    html+='<p style="color:#5c6b61;font-size:15.5px;line-height:1.7;margin:0 0 '+(i===paras.length-1?'20px':'14px')+'">'+paras[i]+'</p>';
+   }
+   html+='<a class="btn" href="tel:+18554186714" style="display:inline-block">Call us now &mdash; (855) 418-6714</a>'
+    +'<p style="color:#8794a4;font-size:13px;line-height:1.6;margin:16px 0 0">'+(noteAlt||'Or sit tight &mdash; we\'ll reach out. Nothing else is needed from you.')+'</p>';
+   // ── MINI VAC CAPTURE ────────────────────────────────────────────────────
+   // This person cannot be issued THIS certificate, but they came here wanting
+   // a vacation and they answered honestly. Sending them away with only a phone
+   // number wastes the one moment they are actually engaged.
+   //
+   // Four questions, all optional, none of them a gate. Three establish what to
+   // offer (where, when, how many) so the callback is a real offer rather than
+   // a cold "so what were you after?". The fourth establishes whether a
+   // membership conversation is even wanted — which is the difference between a
+   // lead worth calling and a name on a list.
+   //
+   // It re-POSTs to the SAME endpoint with bucket 'mini-vac'. /contacts/upsert
+   // dedupes on email so this UPDATES the person already created on submit one,
+   // and tags are written additively in a separate call, so nothing is
+   // overwritten and no duplicate contact is made.
+   if(showMiniVac){
+    html+='<div id="mv-wrap" style="margin-top:26px;border-top:1px solid #e4e9ef;padding-top:24px">'
+     +'<div style="font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#1b3f6b;margin-bottom:10px">So the call is worth your time</div>'
+     +'<p style="color:#5c6b61;font-size:15px;line-height:1.65;margin:0 0 18px">Four quick ones &mdash; all optional. Answer what you like and skip the rest. It just means we ring you with something that actually fits instead of asking you to start over.</p>'
+     +'<form id="mv-form" novalidate>'
+     +'<label style="display:block;font-size:13px;font-weight:700;color:#0f1c2b;margin-bottom:6px">Where do you want to go?</label>'
+     +'<input name="mvDest" type="text" placeholder="Caribbean cruise, Cancun, Orlando, no idea yet&hellip;" style="width:100%;padding:12px 13px;border:1px solid #cfd8e3;border-radius:10px;font-size:15px;margin-bottom:15px">'
+     +'<label style="display:block;font-size:13px;font-weight:700;color:#0f1c2b;margin-bottom:6px">Roughly when?</label>'
+     +'<select name="mvWhen" style="width:100%;padding:12px 13px;border:1px solid #cfd8e3;border-radius:10px;font-size:15px;margin-bottom:15px;background:#fff">'
+     +'<option value="">Pick one</option><option value="3mo">Next 3 months</option><option value="6mo">3 to 6 months</option><option value="12mo">6 to 12 months</option><option value="someday">Just dreaming for now</option></select>'
+     +'<label style="display:block;font-size:13px;font-weight:700;color:#0f1c2b;margin-bottom:6px">How many travelling?</label>'
+     +'<select name="mvParty" style="width:100%;padding:12px 13px;border:1px solid #cfd8e3;border-radius:10px;font-size:15px;margin-bottom:15px;background:#fff">'
+     +'<option value="">Pick one</option><option value="2">Just the two of us</option><option value="family">Family with kids</option><option value="group">Bigger group</option><option value="solo">Just me</option></select>'
+     +'<label style="display:block;font-size:13px;font-weight:700;color:#0f1c2b;margin-bottom:6px">If we could cut what you pay for trips like that, would you want to hear how?</label>'
+     +'<select name="mvIntent" style="width:100%;padding:12px 13px;border:1px solid #cfd8e3;border-radius:10px;font-size:15px;margin-bottom:18px;background:#fff">'
+     +'<option value="">Pick one</option><option value="yes">Yes &mdash; tell me how it works</option><option value="maybe">Maybe, depends what it costs</option><option value="no">No &mdash; just the trip, thanks</option></select>'
+     +'<button type="submit" class="btn" style="border:0;cursor:pointer">Send this over</button>'
+     +'<p style="color:#8794a4;font-size:12.5px;line-height:1.6;margin:14px 0 0">No new sign-up and nothing changes about your certificate number. Straight answers are more useful to us than flattering ones &mdash; &ldquo;just the trip, thanks&rdquo; is a perfectly good answer and it will not get you pestered.</p>'
+     +'</form></div>';
+   }
+   html+='</div>';
+   bw.innerHTML=html;
+   if(showMiniVac)wireMiniVac();
+  }
+  var h=document.getElementById('ty-head'); if(h&&first)h.textContent="Thanks, "+first+".";
+ }
+ // The certificate on this page cannot be issued to this person at all. Two
+ // reasons get here, and they are NOT the same conversation, so they do not get
+ // the same words.
+ //
+ // We deliberately do not name a specific alternative offer on this screen.
+ // Nothing is promised on this site that cannot be delivered, and what actually
+ // fits this person depends on who they are — that is a conversation, not a
+ // product tile bolted onto a confirmation page.
+ if(p.get('other')==='1'){
+  showMiniVac=true;
+  if(p.get('why')==='toured'){
+   offPath('Before you give up an hour',
+    'This certificate can\'t be issued to you &mdash; but you\'re not done.',
+    ['You told us you attended a vacation-ownership presentation in the last 90 days, and I\'m taking you at your word. The provider will not issue this certificate inside that window. Booking you into a session would mean an hour of your time and a no at the end of it, and I\'m not going to do that to you.',
+     'What I can do is go through what you DO qualify for right now. Your details are saved and your certificate number is on this page either way.']);
+  }else{
+   offPath('Thanks for answering straight',
+    'One of those four isn\'t true for you. That\'s useful, not a problem.',
+    ['You could have ticked the box to get through the form. You didn\'t, and I would rather have the honest answer. This certificate carries rules I don\'t set &mdash; both partners on the session, the age band, the income line, a major credit card &mdash; and if one of them misses, it cannot be issued.',
+     'That does not mean there is nothing here for you. We run more than one thing. Let me put the right one in front of you instead of the wrong one.']);
+  }
+  return;
+ }
  // Spouse gate. Someone who could not confirm their partner does not get the
  // booking calendar — putting them there burns one of 18 seats on a session that
  // cannot be completed, and sets them up to be turned away after an hour. They
  // get a callback instead. Their record still reached GHL; nothing is lost.
  if(p.get('callback')==='1'){
-  var bw=document.getElementById('ty-booking-wrap');
-  if(bw){bw.innerHTML='<div style="background:#fff;border-radius:18px;box-shadow:0 10px 40px rgba(10,31,56,.10);padding:clamp(24px,4vw,40px);text-align:left">'
-   +'<div style="font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#1b3f6b;margin-bottom:12px">One thing first</div>'
-   +'<h3 style="font-size:clamp(20px,2.6vw,26px);color:#0f1c2b;margin:0 0 14px">We\'ll call you instead of booking a seat.</h3>'
-   +'<p style="color:#5c6b61;font-size:15.5px;line-height:1.7;margin:0 0 14px">You told us your spouse or partner can\'t make the times we run, and I\'m not going to book you into a session you can\'t finish. The certificate can only be issued with both of you on it &mdash; that\'s the provider\'s rule, not mine, and I\'d rather say it now than after you\'ve given up an hour.</p>'
-   +'<p style="color:#5c6b61;font-size:15.5px;line-height:1.7;margin:0 0 20px">So we\'ll find a time that actually works for the two of you. Your certificate number is saved either way.</p>'
-   +'<a class="btn" href="tel:+18554186714" style="display:inline-block">Call us now &mdash; (855) 418-6714</a>'
-   +'<p style="color:#8794a4;font-size:13px;line-height:1.6;margin:16px 0 0">Or sit tight &mdash; we\'ll reach out. Nothing else is needed from you.</p></div>';}
-  var h=document.getElementById('ty-head'); if(h&&first)h.textContent="Thanks, "+first+".";
+  offPath('One thing first',
+   'We\'ll call you instead of booking a seat.',
+   ['You told us your spouse or partner can\'t make the times we run, and I\'m not going to book you into a session you can\'t finish. The certificate can only be issued with both of you on it &mdash; that\'s the provider\'s rule, not mine, and I\'d rather say it now than after you\'ve given up an hour.',
+    'So we\'ll find a time that actually works for the two of you. Your certificate number is saved either way.']);
   return;
  }
  document.getElementById('ty-booking').src="https://api.leadconnectorhq.com/widget/booking/B2QxN25XAnB9MaD4KukW"+q;
