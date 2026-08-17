@@ -190,17 +190,26 @@ picture{display:contents}
 .foot .legal{padding-top:24px;font-size:11px;color:#7d8b9c;line-height:1.7}
 @media(max-width:760px){.foot .top{grid-template-columns:1fr 1fr}}
 /* ── ONE-CLICK SESSION SLOTS ──────────────────────────────────────────────
-   Replaces the GoHighLevel booking iframe. Three buttons, one tap each. The
-   worker owns which three and which DAY: which days sessions run on, the three
-   Pacific start times and the lead time are all its rules, and this page
-   renders exactly what it hands back. Nothing about a time or a day is
-   computed here, and no day name is hardcoded — the schedule changed twice on
-   the day this was written, and the page did not need a code change either
-   time. A second opinion about "is 1:30 still bookable" is how you end up
-   offering a seat that isn't there. Big navy targets: ~92px tall, full-width
-   on a phone, and the darkest thing in the panel so the eye lands on them and
-   nothing else. */
-.slots{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+   Replaces the GoHighLevel booking iframe. One button per session, one tap
+   each. The worker owns WHICH sessions and WHICH days: the running days, the
+   start times and the lead time are all its rules, and this page renders
+   exactly what it hands back. Nothing about a time, a day or a COUNT is
+   assumed here — Saturday runs two sessions where a weekday runs three, and
+   the schedule changed three times on the day this was written without the
+   page needing a code change. A second opinion about "is 1:30 still bookable"
+   is how you end up offering a seat that isn't there. Big navy targets: ~92px
+   tall, full-width on a phone, and the darkest thing in the panel so the eye
+   lands on them and nothing else. */
+/* THREE COLUMNS, NOT "AS MANY AS FIT".
+   Saturday runs two sessions, not three, so a day group can hold any number.
+   auto-fit stretched a two-slot Saturday into two half-width buttons sitting
+   under three third-width ones on the day above — the same session rendered at
+   two different sizes depending on which day it fell on. A fixed three-column
+   track keeps every button the same size whatever the group holds, and a
+   short group simply leaves its last cell empty. Nothing here assumes three:
+   one, two, four or five all lay out correctly. */
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:680px){.slots{grid-template-columns:1fr}}
 /* Up to three day groups — today, the next session day, and the coming
    Saturday — all on screen at once. No tabs, no accordion, no day selector:
    every time is one tap from booked, which is the entire point. Saturday gets
@@ -256,7 +265,7 @@ picture{display:contents}
 <div style="color:#9dadc0;font-size:12.5px;margin-top:10px;line-height:1.6">Issued by Honest Vacation Marketing. Bring this number to your session &mdash; it's how we pull up your file. Your <b style="color:#dbe3ec">activation code</b> is a different number, and it's issued at the session itself.</div>
 </div></div></section>
 
-<section class="wrap" style="padding-top:26px"><div class="sec-head" id="ty-step-head"><span class="eyebrow">Step one of one</span><h2>Pick your time. <em>That's the whole to-do list.</em></h2><p>Sessions run Monday&ndash;Saturday at 1:30, 3:30 and 5:30 PM Pacific, and the ones below are the next three we can seat you on. It's 45&ndash;60 minutes, live, attended together as a couple &mdash; and every cost was already printed before you gave us your name.</p></div>
+<section class="wrap" style="padding-top:26px"><div class="sec-head" id="ty-step-head"><span class="eyebrow">Step one of one</span><h2>Pick your time. <em>That's the whole to-do list.</em></h2><p>Sessions run 1:30, 3:30 and 5:30 PM Pacific Monday to Friday, and 1:30 and 3:30 on Saturday. Everything we can still seat you on is below. It's 45&ndash;60 minutes, live, attended together as a couple &mdash; and every cost was already printed before you gave us your name.</p></div>
 <div id="ty-booking-wrap">
 <!-- ONE TAP. NOT TWO FORMS.
      This was the GoHighLevel booking iframe until 2026-08-17. That widget is a
@@ -268,12 +277,13 @@ picture{display:contents}
      cheerfully sell a second seat on a scarce session to a person who already
      held one. The 409 from POST /book is what closes that hole, and it is
      rendered as good news, not as an error.
-     One day of slots, and only one — today's remaining sessions, or the next
-     day sessions run if none are left. The worker decides which day that is
-     and which three times, applying the running-days rule, the three Pacific
-     start times and the lead time. This page renders exactly what comes back:
-     the day name on the buttons is d.day/d.dateLabel off the wire, never a
-     weekday this file worked out for itself.
+     The worker decides which days come back and which sessions each one
+     holds, applying the running-days rule, the start times and the lead time.
+     Counts are not fixed and must never be assumed: a weekday carries three
+     sessions, Saturday carries two, and a day part-way through carries
+     whatever is left. This page renders exactly what comes back — the day name
+     on the buttons is d.day/d.dateLabel off the wire, never a weekday this
+     file worked out for itself.
      There is deliberately no date picker and no way to browse to a later day.
      If that day does not work, the phone number is the path, and it is on this
      page twice. -->
