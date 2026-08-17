@@ -442,7 +442,14 @@ picture{display:contents}
   // so this was reachable in ordinary use. The name is a nicety; not
   // contradicting the panel is not.
   var h=document.getElementById('ty-head');
-  if(h)h.textContent = first ? ("Thanks, "+first+" — now book your activation.") : "Now book your activation.";
+  // 🔴 NEUTRAL ON PURPOSE — DO NOT PUT "book your activation" HERE.
+  // This runs inside offPath(), i.e. callback and other-offers visitors, who
+  // are NOT booking anything. It was briefly changed to the activation
+  // headline on 2026-08-16 and produced "Thanks, Test — now book your
+  // activation." sitting directly above "There is nothing you need to do on
+  // this page." The calendar-path headline is set at the top of the page
+  // script; this one only has to not contradict the panel below it.
+  if(h)h.textContent = first ? ("Thanks, "+first+".") : "Thanks for telling us.";
  }
  // The certificate on this page cannot be issued to this person at all. Several
  // reasons get here, and they are NOT the same conversation, so they do not get
