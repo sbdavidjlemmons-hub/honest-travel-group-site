@@ -32,77 +32,146 @@
    --cta is deliberately the lightest token in the set. On the navy heroes and
    the navy conversion band, a platinum button on deep navy is the highest
    contrast pairing available inside this palette, so the click target is the
-   brightest object on the page without importing an off-brand accent colour. */
-:root{--ink:#0f1c2b;--muted:#5f6d7e;--paper:#ffffff;--paper2:#eef1f5;--brand:#1b3f6b;--steel:#3a6ea5;--deep:#0a1f38;--silver:#c8d4e0;--cta:#e8eef5;--line:rgba(15,28,43,.12)}
-html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:'Segoe UI',system-ui,Arial,sans-serif;line-height:1.5}
+   brightest object on the page without importing an off-brand accent colour.
+
+   THE GREY PROBLEM, FIXED. This palette used to carry EIGHT near-identical
+   greys for text on navy (#e3ebf3 #e3ebf3 #e3ebf3 #c2d0e0 #c2d0e0 #c2d0e0
+   #c2d0e0 #9aabc0) chosen one component at a time. Nothing was quite the same
+   as anything else, which is exactly what "looks like an amateur made it"
+   means. They collapse into THREE deliberate tiers below, each measured
+   against --deep: 13.6:1, 10.5:1 and 7.0:1. Same identity, one decision. */
+:root{
+  --ink:#0f1c2b;--ink-soft:#22303f;--muted:#4b596b;
+  --paper:#ffffff;--paper2:#eef2f6;
+  --brand:#1b3f6b;--steel:#3a6ea5;--deep:#0a1f38;--silver:#c8d4e0;--cta:#e8eef5;
+  --on-deep-1:#e3ebf3;--on-deep-2:#c2d0e0;--on-deep-3:#9aabc0;
+  --line:#e2e8ef;--line-2:#ccd6e1;
+  --r-sm:10px;--r-md:14px;--r-lg:20px;--r-pill:999px;
+  --sh-1:0 1px 2px rgba(10,31,56,.05),0 3px 8px rgba(10,31,56,.05);
+  --sh-2:0 1px 2px rgba(10,31,56,.06),0 10px 24px rgba(10,31,56,.09);
+  --sh-3:0 2px 6px rgba(6,18,32,.22),0 16px 40px rgba(6,18,32,.28);
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,system-ui,'Helvetica Neue',Arial,sans-serif;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--font);line-height:1.6;
+-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;font-synthesis-weight:none}
 a{text-decoration:none;color:inherit}
-h1,h2,h3{letter-spacing:-.03em;line-height:1.05}
+/* OPTICAL TRACKING. One blanket -.03em/1.05 was applied to every heading on the
+   site, which crushed the 19px card titles into a solid block and left the 78px
+   hero under-tracked. Tracking now tightens as size grows, and leading opens as
+   size shrinks — the two things that make headings look set rather than typed. */
+h1,h2,h3,h4{text-wrap:balance;font-weight:800}
+h1{letter-spacing:-.035em;line-height:1.03}
+h2{letter-spacing:-.03em;line-height:1.08}
+h3{letter-spacing:-.015em;line-height:1.24}
+h4{letter-spacing:-.005em;line-height:1.3}
+p{line-height:1.65}
+/* Every figure on this site is money. Tabular figures hold price columns in
+   line and stop a row of ones from setting narrower than a row of eights. */
+.money,.stats b,.num,.slash,table td{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
 .serif{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-weight:400}
 .wrap{max-width:1180px;margin:0 auto;padding:0 5vw}
+/* ── THE CROSSED-OUT MARKET PRICE ───────────────────────────────────────────
+   A TRUE diagonal, not text-decoration:line-through. The rule is a pseudo-
+   element carrying a linear-gradient drawn corner to corner of the number's own
+   box: it scales with the type, cannot clip, needs no image, no JS and no
+   webfont, and draws identically at 375px and 1280px.
+   Two background-image declarations on purpose — the flat px one is the
+   fallback, the max() one wins wherever max() parses and keeps the rule
+   proportional at 68px while never thinning below 1.6px at 13px. */
+.slash{position:relative;display:inline-block;white-space:nowrap}
+.slash::after{content:"";position:absolute;inset:-.04em -.09em;pointer-events:none;
+background-image:linear-gradient(to top right,transparent calc(50% - 2px),currentColor calc(50% - 2px),currentColor calc(50% + 2px),transparent calc(50% + 2px));
+background-image:linear-gradient(to top right,transparent calc(50% - max(1.6px,.030em)),currentColor calc(50% - max(1.6px,.030em)),currentColor calc(50% + max(1.6px,.030em)),transparent calc(50% + max(1.6px,.030em)))}
+s.slash,del.slash{text-decoration:none}
+/* THE COMPARISON FIGURE IS THE BIGGEST NUMBER ON THE PAGE. It was set at
+   clamp(26,3.6vw,34) underneath a clamp(38,6vw,54) "your price" — the number
+   being beaten was smaller than the number doing the beating, which throws away
+   the entire argument the table is making. It now leads at up to 68px, struck
+   through on the diagonal, in the muted tone; Dave's price answers it at up to
+   56px in platinum on navy, so size belongs to the comparison and BRIGHTNESS
+   belongs to what you actually pay. Neither figure itself is altered. */
+.pricebig{font-size:clamp(42px,6.6vw,68px);font-weight:800;line-height:1;letter-spacing:-.045em;color:var(--muted);display:inline-block}
+.pricenow{font-size:clamp(38px,5.6vw,56px);font-weight:800;letter-spacing:-.045em;line-height:1;font-variant-numeric:tabular-nums}
+/* Screen-reader-only. The struck figure must never be announced as the price,
+   so every one of them carries a spoken label the sighted layout implies. */
+.vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
 /* nav */
-.nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav .in{max-width:1180px;margin:0 auto;padding:16px 5vw;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-.03em}
-.brand .dot{width:26px;height:26px;border-radius:50%;background:var(--brand);display:grid;place-content:center;color:var(--silver);font-size:11px;font-weight:800}
+.nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
+.nav .in{max-width:1180px;margin:0 auto;padding:15px 5vw;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-.025em}
+.brand .dot{width:26px;height:26px;border-radius:50%;background:var(--brand);display:grid;place-content:center;color:var(--silver);font-size:11px;font-weight:800;letter-spacing:.02em}
 .brand span{color:var(--brand)}
-.navlinks{display:flex;gap:26px;align-items:center;font-size:14px;color:var(--muted)}
+.navlinks{display:flex;gap:26px;align-items:center;font-size:14px;font-weight:600;letter-spacing:-.005em;color:var(--muted)}
+.navlinks a{transition:color .15s}
 .navlinks a:hover{color:var(--brand)}
-.navcta{background:var(--ink);color:var(--paper);font-weight:700;font-size:13px;padding:11px 20px;border-radius:999px}
+.navcta{background:var(--ink);color:var(--paper);font-weight:700;font-size:13px;letter-spacing:.005em;padding:11px 20px;border-radius:var(--r-pill);transition:background .15s}
+.navcta:hover{background:var(--brand)}
 @media(max-width:820px){.navlinks{display:none}}
 /* hero */
 .hero{position:relative;overflow:hidden;background:var(--deep);color:#fff}
 .hero .art{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,31,56,.96) 40%,rgba(10,31,56,.5))}
-.hero .in{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:96px 5vw 100px}
-.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--silver);margin-bottom:22px}
-.eyebrow::before{content:"";width:26px;height:1px;background:var(--silver)}
-.hero h1{font-size:clamp(40px,6.4vw,78px);max-width:900px;margin-bottom:22px}
+.hero .in{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:clamp(62px,8vw,96px) 5vw clamp(66px,8.5vw,100px)}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:var(--silver);margin-bottom:22px;line-height:1.3}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--silver);flex:none}
+.hero h1{font-size:clamp(38px,6.2vw,76px);max-width:21ch;margin-bottom:20px}
 .hero h1 em{color:var(--silver)}
-.hero p{font-size:clamp(16px,1.7vw,20px);max-width:620px;color:#dbe3ec;margin-bottom:34px}
+.hero p{font-size:clamp(16px,1.7vw,20px);max-width:58ch;color:var(--on-deep-1);line-height:1.6;margin-bottom:32px}
 .btns{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
 /* Platinum face, navy type — 14.8:1. The button is the brightest thing in the
    viewport, which is the whole job of a primary CTA. White-on-platinum would
    have been invisible, which is what a blind palette swap would have shipped. */
-.btn{background:var(--cta);color:var(--deep);font-weight:800;font-size:15px;padding:16px 30px;border-radius:999px;box-shadow:0 10px 30px rgba(6,18,32,.45),0 0 0 1px rgba(255,255,255,.5) inset;transition:transform .15s,box-shadow .15s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(6,18,32,.55),0 0 0 1px rgba(255,255,255,.7) inset}
+.btn{background:var(--cta);color:var(--deep);font-weight:800;font-size:15px;letter-spacing:-.005em;padding:16px 30px;border-radius:var(--r-pill);box-shadow:0 2px 6px rgba(6,18,32,.28),0 12px 28px rgba(6,18,32,.34),0 0 0 1px rgba(255,255,255,.55) inset;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 4px 10px rgba(6,18,32,.3),0 18px 38px rgba(6,18,32,.4),0 0 0 1px rgba(255,255,255,.75) inset}
 .btn.ghost{color:#fff}
-.btn.ghost{background:transparent;border:1.5px solid rgba(255,255,255,.55);box-shadow:none}
-.stats{display:flex;flex-wrap:wrap;gap:34px;margin-top:44px;color:#b8c5d4}
-.stats b{display:block;color:#fff;font-size:26px;letter-spacing:-.04em}
-.stats small{font-size:12px}
-/* sections */
-section{padding:86px 0}
-.sec-head{max-width:720px;margin-bottom:48px}
+.btn.ghost{background:transparent;border:1.5px solid rgba(255,255,255,.6);box-shadow:none}
+.btn.ghost:hover{border-color:#fff;background:rgba(255,255,255,.07)}
+/* 🔴 THE INVISIBLE BUTTON. The honesty band's CTA carried an inline
+   style="background:var(--deep)" while .btn still set color:var(--deep) — navy
+   type on a navy pill, measured at 1.00:1. It has been unreadable on the
+   homepage since 2026-08-03. The inverted button is a real variant, so it gets
+   a real class instead of an inline override that can't see its own colour. */
+.btn.solid{background:var(--deep);color:var(--cta);box-shadow:0 2px 6px rgba(6,18,32,.18),0 10px 24px rgba(6,18,32,.2),0 0 0 1px rgba(255,255,255,.08) inset}
+.btn.solid:hover{box-shadow:0 4px 10px rgba(6,18,32,.22),0 16px 34px rgba(6,18,32,.28),0 0 0 1px rgba(255,255,255,.14) inset}
+.stats{display:flex;flex-wrap:wrap;gap:16px 34px;margin-top:42px;color:var(--on-deep-2)}
+.stats b{display:block;color:#fff;font-size:26px;letter-spacing:-.035em;line-height:1.15;margin-bottom:2px}
+.stats small{font-size:12.5px;line-height:1.45;display:block;max-width:22ch}
+/* SECTIONS — one vertical rhythm, not nine. 86px of air above and below every
+   band looked considered on a 1280 desktop and ate a third of a 375 viewport;
+   the scale now moves with the page instead of ignoring it. */
+section{padding:clamp(54px,7vw,90px) 0}
+.sec-head{max-width:66ch;margin-bottom:clamp(30px,3.6vw,46px)}
 .sec-head .eyebrow{color:var(--brand)}.sec-head .eyebrow::before{background:var(--brand)}
-.sec-head h2{font-size:clamp(30px,4vw,50px);margin-bottom:16px}
+.sec-head h2{font-size:clamp(29px,3.9vw,48px);margin-bottom:14px}
 .sec-head h2 em{color:var(--brand)}
-.sec-head p{color:var(--muted);font-size:17px}
+.sec-head p{color:var(--muted);font-size:17px;line-height:1.7;max-width:62ch}
 /* difference cards */
 .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px;transition:transform .18s,box-shadow .18s}
-.card:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(15,28,43,.1)}
-.card .ic{width:44px;height:44px;border-radius:12px;background:var(--paper2);display:grid;place-content:center;font-size:20px;margin-bottom:16px}
-.card h3{font-size:20px;margin-bottom:8px}.card p{color:var(--muted);font-size:14.5px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(24px,2.4vw,30px);box-shadow:var(--sh-1);transition:transform .18s,box-shadow .18s,border-color .18s}
+.card:hover{transform:translateY(-4px);box-shadow:var(--sh-2);border-color:var(--line-2)}
+.card .ic{width:44px;height:44px;border-radius:var(--r-md);background:var(--paper2);border:1px solid var(--line);display:grid;place-content:center;font-size:20px;margin-bottom:16px}
+.card h3{font-size:19px;margin-bottom:7px}.card p{color:var(--muted);font-size:15px;line-height:1.65;max-width:48ch}
 /* family / doors */
 .doors{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.door{position:relative;border-radius:20px;overflow:hidden;min-height:280px;display:flex;flex-direction:column;justify-content:flex-end;padding:32px;color:#fff}
+.door{position:relative;border-radius:var(--r-lg);overflow:hidden;min-height:280px;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(24px,2.6vw,32px);color:#fff;box-shadow:var(--sh-2)}
 .door svg{position:absolute;inset:0;width:100%;height:100%}
-.door::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,31,56,.92),rgba(10,31,56,.3))}
+.door::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,31,56,.94),rgba(10,31,56,.28))}
 .door>*{position:relative;z-index:2}
-.door .k{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--silver);margin-bottom:8px}
-.door h3{font-size:26px;margin-bottom:8px}.door p{color:#dbe3ec;font-size:14px;max-width:420px;margin-bottom:14px}
-.door .go{font-weight:800;font-size:13px;color:#fff;border-bottom:2px solid var(--silver);padding-bottom:3px;width:fit-content}
+.door .k{font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--silver);margin-bottom:8px}
+.door h3{font-size:clamp(22px,2.2vw,26px);margin-bottom:8px;letter-spacing:-.025em;line-height:1.14}
+.door p{color:var(--on-deep-1);font-size:14.5px;line-height:1.6;max-width:46ch;margin-bottom:14px}
+.door .go{font-weight:800;font-size:13px;letter-spacing:.005em;color:#fff;border-bottom:2px solid var(--silver);padding-bottom:3px;width:fit-content}
 @media(max-width:760px){.doors{grid-template-columns:1fr}}
 /* founder */
 .founder{background:var(--deep);color:#fff}
 .founder .in{display:grid;grid-template-columns:.85fr 1.15fr;gap:6vw;align-items:center}
-.founder .photo{border-radius:20px;overflow:hidden;min-height:360px;background:linear-gradient(135deg,var(--brand),var(--deep));display:grid;place-content:center;position:relative}
+.founder .photo{border-radius:var(--r-lg);overflow:hidden;min-height:360px;background:linear-gradient(135deg,var(--brand),var(--deep));display:grid;place-content:center;position:relative}
 .founder .photo .mono{font-family:Georgia,serif;font-size:120px;color:rgba(200,212,224,.25);font-weight:700}
-.founder .photo .tag{position:absolute;bottom:22px;left:22px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--silver)}
+.founder .photo .tag{position:absolute;bottom:22px;left:22px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--silver)}
 .founder h2{font-size:clamp(28px,3.6vw,44px);margin-bottom:18px}.founder h2 em{color:var(--silver)}
-.founder p{color:#c4d0de;font-size:15.5px;margin-bottom:14px;max-width:560px}
-.founder .sign{color:var(--silver);font-weight:800;font-size:14px;margin-top:8px}
+.founder p{color:var(--on-deep-1);font-size:16px;line-height:1.7;margin-bottom:14px;max-width:60ch}
+.founder .sign{color:var(--silver);font-weight:800;font-size:14px;letter-spacing:.005em;margin-top:8px}
 @media(max-width:820px){.founder .in{grid-template-columns:1fr}}
 /* ── real photography ── */
 picture{display:contents}
@@ -132,17 +201,17 @@ picture{display:contents}
    scroll: the offer and the way to accept it occupy the same screen. Navy card
    on white keeps it the single darkest object below the fold, so the eye lands
    on it before the supporting copy. */
-.quickbox{background:var(--deep);border-radius:22px;padding:clamp(24px,3.4vw,40px);margin-top:-72px;position:relative;z-index:5;box-shadow:0 26px 70px rgba(6,18,32,.34),0 0 0 1px rgba(200,212,224,.16) inset;display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(22px,3vw,44px);align-items:start}
-.quickbox .qb-head h2{color:#fff;font-size:clamp(24px,2.5vw,34px);line-height:1.15;margin:10px 0 12px}
-.quickbox .qb-head p{color:#b8c5d4;font-size:14px;line-height:1.6;margin:0}
+.quickbox{background:var(--deep);border-radius:var(--r-lg);padding:clamp(24px,3.4vw,40px);margin-top:-72px;position:relative;z-index:5;box-shadow:var(--sh-3),0 0 0 1px rgba(200,212,224,.18) inset;display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(22px,3vw,44px);align-items:start}
+.quickbox .qb-head h2{color:#fff;font-size:clamp(24px,2.5vw,34px);line-height:1.14;letter-spacing:-.03em;margin:10px 0 12px}
+.quickbox .qb-head p{color:var(--on-deep-2);font-size:14.5px;line-height:1.65;margin:0;max-width:44ch}
 .quickbox .qb-form{display:grid;gap:12px}
 .quickbox .qb-row{display:grid;gap:10px}
 @media(max-width:900px){.quickbox{grid-template-columns:1fr;margin-top:-40px}}
-@media(max-width:560px){.quickbox{margin-top:-24px;border-radius:18px}}
+@media(max-width:560px){.quickbox{margin-top:-24px;border-radius:var(--r-md)}}
 .promise{background:var(--deep);border-bottom:1px solid rgba(200,212,224,.22)}
 .promise .in{max-width:1180px;margin:0 auto;padding:11px 5vw;display:flex;gap:8px 24px;flex-wrap:wrap;align-items:center;justify-content:center}
-.promise b{color:var(--silver);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:10.5px;white-space:nowrap}
-.promise span{display:inline-flex;align-items:center;gap:9px;color:#ccd8e5;font-size:12.5px;line-height:1.4}
+.promise b{color:var(--silver);font-weight:800;letter-spacing:.15em;text-transform:uppercase;font-size:10.5px;white-space:nowrap}
+.promise span{display:inline-flex;align-items:center;gap:9px;color:var(--on-deep-1);font-size:12.5px;line-height:1.45}
 .promise span::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--silver);opacity:.75;flex:none}
 /* On a phone the bar wrapped to three lines: 83px on top of a 94px nav ate 22%
    of the viewport before the hero. Below 700px it keeps the rule itself — the
@@ -155,46 +224,66 @@ picture{display:contents}
 }
 /* certificate cards */
 .certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px}
-.cert{position:relative;border-radius:20px;overflow:hidden;background:var(--deep);color:#fff;display:flex;flex-direction:column;min-height:430px;box-shadow:0 14px 40px rgba(15,28,43,.13);transition:transform .2s,box-shadow .2s}
-.cert:hover{transform:translateY(-6px);box-shadow:0 26px 60px rgba(15,28,43,.24)}
+.cert{position:relative;border-radius:var(--r-lg);overflow:hidden;background:var(--deep);color:#fff;display:flex;flex-direction:column;min-height:430px;box-shadow:var(--sh-2);transition:transform .2s,box-shadow .2s}
+.cert:hover{transform:translateY(-6px);box-shadow:var(--sh-3)}
 .cert .shotwrap{position:relative;height:210px;overflow:hidden}
 .cert .shotwrap img{width:100%;height:100%;object-fit:cover;display:block}
 .cert .shotwrap::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,31,56,.96),rgba(10,31,56,.12) 62%)}
 /* crop the branded stern out of the cruise photo */
 .cert .shotwrap img.crop-left{object-position:16% 46%;transform:scale(1.34)}
-.cert .tag{position:absolute;top:14px;left:14px;z-index:3;background:rgba(200,212,224,.95);color:#0a1f38;font-size:10px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;padding:7px 12px;border-radius:999px}
+.cert .tag{position:absolute;top:14px;left:14px;z-index:3;background:rgba(200,212,224,.95);color:#0a1f38;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:7px 12px;border-radius:var(--r-pill)}
 .cert .body{padding:22px 24px 26px;display:flex;flex-direction:column;flex:1}
-.cert h3{font-size:21px;margin-bottom:6px;line-height:1.15}
-.cert .blurb{color:#b5c3d3;font-size:13.5px;margin-bottom:16px;flex:1}
-.cert .money{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px}
-.cert .was{color:#8d9cae;font-size:14px;text-decoration:line-through;text-decoration-color:var(--cta);text-decoration-thickness:2px}
-.cert .now{font-size:30px;font-weight:800;color:var(--silver);letter-spacing:-.03em}
-.cert .keep{font-size:12px;color:#dbe3ec;background:rgba(255,255,255,.1);padding:5px 10px;border-radius:999px;width:fit-content;margin-bottom:14px}
-.cert .go{font-weight:800;font-size:13px;color:#0a1f38;background:var(--silver);padding:12px 18px;border-radius:999px;text-align:center}
+.cert h3{font-size:20px;margin-bottom:6px;line-height:1.18;letter-spacing:-.022em}
+.cert .blurb{color:var(--on-deep-2);font-size:14px;line-height:1.6;margin-bottom:18px;flex:1}
+/* ── WAS / NOW ON THE CARD ──────────────────────────────────────────────────
+   Dave's call: the highest number on the page is the one set biggest, with a
+   diagonal through it. It used to be the smallest thing in the block (14px,
+   under a 30px price) which is backwards — the number you are beating is the
+   whole argument. Stacked rather than inline so neither figure can wrap into
+   the other at 375px, and the market figure is separated from its own label so
+   the LABEL stays small while the FIGURE carries the size. No wording changes:
+   the two halves are split out of the same string the card already showed. */
+.cert .money{display:block;margin-bottom:12px}
+.cert .was{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 9px;color:var(--on-deep-3);font-size:12.5px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;margin-bottom:2px}
+.cert .was .fig{font-size:34px;font-weight:700;line-height:1.05;letter-spacing:-.035em;text-transform:none;color:#a3b4c8}
+.cert .now{display:block;font-size:30px;font-weight:800;color:var(--silver);letter-spacing:-.035em;line-height:1.1}
+.cert .keep{font-size:12px;font-weight:600;color:var(--on-deep-1);background:rgba(255,255,255,.1);padding:6px 11px;border-radius:var(--r-pill);width:fit-content;margin:10px 0 16px}
+.cert .go{font-weight:800;font-size:13px;letter-spacing:.005em;color:#0a1f38;background:var(--silver);padding:12px 18px;border-radius:var(--r-pill);text-align:center}
 /* steps */
 .steps4{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-.step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px}
+.step{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:26px;box-shadow:var(--sh-1)}
 .step i{display:grid;place-content:center;width:38px;height:38px;border-radius:50%;background:var(--brand);color:#fff;font-style:normal;font-weight:800;margin-bottom:12px}
-.step b{display:block;font-size:17px;margin-bottom:6px}.step p{color:var(--muted);font-size:14px}
+.step b{display:block;font-size:17px;letter-spacing:-.015em;line-height:1.25;margin-bottom:6px}
+.step p{color:var(--muted);font-size:14.5px;line-height:1.65}
 /* honesty band */
 .band{background:var(--silver);color:var(--deep)}
 .band .in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px}
-.band h2{font-size:clamp(24px,3vw,38px);max-width:640px}
+.band h2{font-size:clamp(24px,3vw,38px);max-width:26ch}
 /* footer */
-.foot{background:var(--deep);color:#a8b6c6;padding:60px 0 30px}
-.foot .top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.12)}
-.foot h4{color:#fff;font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
-.foot a{display:block;color:#a8b6c6;font-size:14px;margin-bottom:9px}.foot a:hover{color:var(--silver)}
-.foot .fbrand{font-weight:800;font-size:19px;color:#fff;margin-bottom:10px}
+.foot{background:var(--deep);color:var(--on-deep-2);padding:60px 0 30px}
+.foot .top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.14)}
+.foot h4{color:#fff;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+.foot a{display:block;color:var(--on-deep-2);font-size:14px;margin-bottom:9px;transition:color .15s}.foot a:hover{color:#fff}
+.foot .fbrand{font-weight:800;font-size:19px;letter-spacing:-.025em;color:#fff;margin-bottom:10px}
 .foot .fbrand span{color:var(--silver)}
-.foot .legal{padding-top:24px;font-size:11px;color:#7d8b9c;line-height:1.7}
+.foot .legal{padding-top:24px;font-size:11.5px;color:var(--on-deep-3);line-height:1.75;max-width:110ch}
 @media(max-width:760px){.foot .top{grid-template-columns:1fr 1fr}}
 /* generic page hero */
-.phero{background:var(--deep);color:#fff;padding:80px 0 70px}
-.phero h1{font-size:clamp(34px,5vw,60px);max-width:820px;margin-bottom:16px}.phero h1 em{color:var(--silver)}
-.phero p{color:#c4d0de;font-size:18px;max-width:600px}
-.prose{max-width:760px;padding:70px 5vw;margin:0 auto}
-.prose p{font-size:16.5px;color:#303c4a;margin-bottom:20px}.prose h3{font-size:24px;margin:36px 0 12px}
+.phero{background:var(--deep);color:#fff;padding:clamp(56px,7vw,84px) 0 clamp(48px,6vw,72px)}
+.phero h1{font-size:clamp(33px,4.9vw,58px);max-width:20ch;margin-bottom:16px}.phero h1 em{color:var(--silver)}
+.phero p{color:var(--on-deep-1);font-size:18px;line-height:1.6;max-width:56ch}
+/* LONG-FORM MEASURE. 760px of 16.5px copy runs ~88 characters a line, which is
+   where the eye starts losing its place on the return sweep. 68ch lands at
+   ~66–70, and the leading opens to match. */
+/* The compliance pages print verbatim URLs, and an unbreakable 46-character
+   string pushed optin.html 126px wider than a 375px viewport — a real sideways
+   scroll on a page a carrier reviewer opens on a phone. break-word (not
+   anywhere) wraps the overlong token without touching min-content sizing, so
+   no other layout on the site moves. The URL text itself is unchanged. */
+.prose{max-width:68ch;padding:clamp(48px,6vw,68px) 5vw;margin:0 auto;overflow-wrap:break-word}
+.prose a{overflow-wrap:break-word}
+.prose p{font-size:17px;line-height:1.75;color:var(--ink-soft);margin-bottom:20px}
+.prose h3{font-size:23px;letter-spacing:-.02em;line-height:1.25;margin:38px 0 12px}
 </style></head><body>
 <nav class="nav"><div class="in"><a class="brand" href="index.html"><span class="dot">H</span>The Honest <span>Travel Group</span></a>
 <div class="navlinks"><a href="cruise.html">Vacations</a><a href="https://honesttimeshareresolutions.com">Timeshare Exit</a><a href="about.html">About</a><a href="partners.html">Partners</a></div>
@@ -212,15 +301,15 @@ Offers are presented on behalf of Gateways Unlimited and fulfilled by Customer S
 
 <h3>2. Where the opt-in appears</h3>
 <p>Opt-in is collected by <strong>web form</strong> only. The form appears twice on each of these four pages — once near the top, once in full at the bottom. Both instances carry the identical consent language shown below.</p>
-<ul style="margin:0 0 20px 18px;color:#303c4a;font-size:16.5px;line-height:1.9">
+<ul style="margin:0 0 20px 20px;color:var(--ink-soft);font-size:17px;line-height:1.8">
 <li><a href="cruise.html" style="color:var(--brand);font-weight:700">https://honestvacationmarketing.com/cruise.html</a></li><li><a href="all-inclusive.html" style="color:var(--brand);font-weight:700">https://honestvacationmarketing.com/all-inclusive.html</a></li><li><a href="resort-air.html" style="color:var(--brand);font-weight:700">https://honestvacationmarketing.com/resort-air.html</a></li><li><a href="condo.html" style="color:var(--brand);font-weight:700">https://honestvacationmarketing.com/condo.html</a></li>
 </ul>
 
 <h3>3. The exact controls the consumer sees</h3>
 <p>Reproduced here from the same code that renders the live form. The first box is required to request a certificate. <strong>The SMS consent box is separate, optional, and unchecked by default</strong> — the certificate is issued either way, so consent is never a condition of purchase.</p>
 <div style="background:var(--deep);border-radius:14px;padding:18px 20px">
-<label style="display:flex;gap:10px;font-size:12px;color:#b8c5d4;align-items:flex-start;margin-bottom:16px"><input type="checkbox" checked disabled style="width:22px;height:22px;margin-top:1px;flex:none;accent-color:#3a6ea5"><span><b style="color:#c8d4e0;display:block;margin-bottom:5px">All of this is true.</b>We're a couple and we'll both be on the session together. We're between 35 and 72. Our household income is over $75,000. And we have a major credit card.</span></label>
-<label style="display:flex;gap:10px;font-size:12px;color:#b8c5d4;align-items:flex-start"><input type="checkbox" disabled style="width:22px;height:22px;margin-top:1px;flex:none;accent-color:#3a6ea5"><span><b style="color:#c8d4e0;display:block;margin-bottom:5px">Yes &mdash; I'm serious about travel.</b>I'm interested in membership benefits, and I want you to reach out. Get to know how my family actually travels so you can bring me promotions that genuinely fit us &mdash; not generic blasts.<span style="display:block;margin-top:8px;color:#8d9cae;font-size:11px;line-height:1.55">By checking this box I agree to receive marketing and transactional calls and texts from Honest Vacation Marketing, a brand of Elite Marketing Solutions LLC, on behalf of Gateways Unlimited, at the number provided. Consent is not a condition of purchase and this box is optional &mdash; you get your certificate either way. Message frequency varies; message &amp; data rates may apply. Reply HELP for help, STOP to opt out. See our <a href="privacy.html" style="color:#c8d4e0">Privacy Policy</a> and <a href="terms.html" style="color:#c8d4e0">Terms</a>.</span></span></label>
+<label style="display:flex;gap:10px;font-size:12px;color:#c2d0e0;align-items:flex-start;margin-bottom:16px"><input type="checkbox" checked disabled style="width:22px;height:22px;margin-top:1px;flex:none;accent-color:#3a6ea5"><span><b style="color:#c8d4e0;display:block;margin-bottom:5px">All of this is true.</b>We're a couple and we'll both be on the session together. We're between 35 and 72. Our household income is over $75,000. And we have a major credit card.</span></label>
+<label style="display:flex;gap:10px;font-size:12px;color:#c2d0e0;align-items:flex-start"><input type="checkbox" disabled style="width:22px;height:22px;margin-top:1px;flex:none;accent-color:#3a6ea5"><span><b style="color:#c8d4e0;display:block;margin-bottom:5px">Yes &mdash; I'm serious about travel.</b>I'm interested in membership benefits, and I want you to reach out. Get to know how my family actually travels so you can bring me promotions that genuinely fit us &mdash; not generic blasts.<span style="display:block;margin-top:8px;color:#9aabc0;font-size:11px;line-height:1.55">By checking this box I agree to receive marketing and transactional calls and texts from Honest Vacation Marketing, a brand of Elite Marketing Solutions LLC, on behalf of Gateways Unlimited, at the number provided. Consent is not a condition of purchase and this box is optional &mdash; you get your certificate either way. Message frequency varies; message &amp; data rates may apply. Reply HELP for help, STOP to opt out. See our <a href="privacy.html" style="color:#c8d4e0">Privacy Policy</a> and <a href="terms.html" style="color:#c8d4e0">Terms</a>.</span></span></label>
 </div>
 <p style="margin-top:16px">A mobile number is optional on the form. If the consent box is ticked, the phone field becomes required — consent is only ever recorded against an actual number, never against a blank field.</p>
 
@@ -239,9 +328,9 @@ Offers are presented on behalf of Gateways Unlimited and fulfilled by Customer S
 <p>We hold a purchased marketing audience used strictly for advertising targeting and email. <strong>No SMS is ever sent to those records.</strong> An appended phone number is not consent. The only numbers that receive text messages are those where a person entered their own number on the form above and ticked the optional consent box.</p>
 </div></section>
 <footer class="foot"><div class="wrap"><div class="top">
-<div><div class="fbrand">The Honest <span>Travel Group</span></div><p style="color:#a8b6c6;font-size:14px;max-width:260px">A family of companies built on one rule: everything upfront, everything optional.</p></div>
+<div><div class="fbrand">The Honest <span>Travel Group</span></div><p style="color:#c2d0e0;font-size:14px;max-width:260px">A family of companies built on one rule: everything upfront, everything optional.</p></div>
 <div><h4>Travel</h4><a href="cruise.html">Cruise getaways</a><a href="all-inclusive.html">All-inclusive</a><a href="resort-air.html">Resort + airfare</a><a href="condo.html">Condo weeks</a></div>
 <div><h4>Company</h4><a href="about.html">About &amp; mission</a><a href="partners.html">White-label partners</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a></div>
-<div><h4>Contact</h4><p style="color:#a8b6c6;font-size:14px;line-height:1.7;margin:0">Elite Marketing Solutions LLC<br>421 N Alisos St<br>Santa Barbara, CA 93103<br><a href="mailto:info@honestvacationmarketing.com" style="color:#a8b6c6">info@honestvacationmarketing.com</a><br><a href="tel:+18554186714" style="color:#a8b6c6">(855) 418-6714</a></p></div>
+<div><h4>Contact</h4><p style="color:#c2d0e0;font-size:14px;line-height:1.7;margin:0">Elite Marketing Solutions LLC<br>421 N Alisos St<br>Santa Barbara, CA 93103<br><a href="mailto:info@honestvacationmarketing.com" style="color:#c2d0e0">info@honestvacationmarketing.com</a><br><a href="tel:+18554186714" style="color:#c2d0e0">(855) 418-6714</a></p></div>
 </div><div class="legal">Honest Travel Group · Honest Vacation Marketing · Honest Timeshare Resolutions — an Elite Marketing Solutions company. Vacation certificate offers are presented by Honest Vacation Marketing on behalf of Gateways Unlimited and fulfilled by Customer Service Network Group (CSNG), our fulfillment provider. Attendance at a live presentation is required to receive a certificate offer; there is no charge to attend. Deposits, taxes, and fees are disclosed on each offer page and in the certificate's terms and are refundable before travel is confirmed. Limit one certificate offer per household in any 90-day period. © 2026 Elite Marketing Solutions LLC · TheHonestTravelGroup.com</div></div></footer>
 </body></html>
