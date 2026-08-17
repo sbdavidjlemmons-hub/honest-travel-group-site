@@ -25,7 +25,7 @@
 <meta property="og:description" content="7 nights, sleeps up to 4, across 60+ destinations — then see how membership improves future trips."><meta property="og:image" content="https://honestvacationmarketing.com/img/hawaii-waikiki-sunset-1200.jpg">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Explore a Condo Getaway With Room to Cook, Spread Out, and Relax | Honest Vacation Marketing">
 <meta name="twitter:description" content="7 nights, sleeps up to 4, across 60+ destinations — then see how membership improves future trips."><meta name="twitter:image" content="https://honestvacationmarketing.com/img/hawaii-waikiki-sunset-1200.jpg">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Full Condo Week","image":"https://honestvacationmarketing.com/img/hawaii-condo-resort.jpg","description":"A whole week with a kitchen and room to spread out. 60+ destinations across the US, Canada, Caribbean and Mexico. Requires attendance at one live 45-60 minute presentation as a couple aged 35-72. There is no charge to attend, and every cost is printed before you sign up.","brand":{"@type":"Brand","name":"Honest Vacation Marketing"},"offers":{"@type":"AggregateOffer","url":"https://honestvacationmarketing.com/condo.html","priceCurrency":"USD","lowPrice":210,"highPrice":360,"offerCount":1,"availability":"https://schema.org/LimitedAvailability","seller":{"@type":"Organization","name":"Honest Vacation Marketing"}}}</script><style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Full Condo Week","image":"https://honestvacationmarketing.com/img/hawaii-condo-resort.jpg","description":"A whole week with a kitchen and room to spread out. 60+ destinations across the US, Canada, Caribbean and Mexico. Requires attendance at one live 45-60 minute presentation as a couple aged 35-72. There is no charge to attend, and every cost is printed before you sign up.","brand":{"@type":"Brand","name":"Honest Vacation Marketing"},"offers":{"@type":"AggregateOffer","url":"https://honestvacationmarketing.com/condo.html","priceCurrency":"USD","lowPrice":510,"highPrice":510,"offerCount":1,"availability":"https://schema.org/LimitedAvailability","seller":{"@type":"Organization","name":"Honest Vacation Marketing"}}}</script><style>
 *{box-sizing:border-box;margin:0}
 /* NAVY + SILVER.
    --cta is deliberately the lightest token in the set. On the navy heroes and
@@ -92,6 +92,40 @@ s.slash,del.slash{text-decoration:none}
    belongs to what you actually pay. Neither figure itself is altered. */
 .pricebig{font-size:clamp(42px,6.6vw,68px);font-weight:800;line-height:1;letter-spacing:-.045em;color:var(--muted);display:inline-block}
 .pricenow{font-size:clamp(38px,5.6vw,56px);font-weight:800;letter-spacing:-.045em;line-height:1;font-variant-numeric:tabular-nums}
+/* ── THE PAYMENT TIMELINE ───────────────────────────────────────────────────
+   Three moments and a total, on the navy panel. Built from the tokens already
+   in this file — the three on-navy text tiers, the tabular figures, the
+   tracking ladder — so it reads as part of the same page and not a second
+   design bolted on.
+   The figures are the hero and the labels are the whisper: amounts set in the
+   -.04em/-.05em range at 28–64px in white, stage names at 11px/.15em in the
+   quietest tier. The first stage — nothing due today — is set LARGEST of the
+   four, larger even than the total, because it is the single claim most likely
+   to be disbelieved on a page like this, and a claim that size is harder to
+   disbelieve.
+   No dollar figure is written into these comments on purpose: the stylesheet
+   is inlined on all eleven pages, and a price in a comment is a price on a page
+   that does not sell it.
+   Grid, not flex, so the note wraps under the pair instead of squeezing the
+   number — at 375px the amount keeps its full size and the label reflows. */
+.paysched{list-style:none;margin:16px 0 0;padding:0}
+.paystage{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:6px 16px;padding:15px 0;border-top:1px solid rgba(255,255,255,.16)}
+.paystage:first-child{border-top:0;padding-top:2px}
+.paystage .when{font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--on-deep-3);line-height:1.35}
+.paystage .amt{font-size:clamp(28px,3.4vw,38px);font-weight:800;letter-spacing:-.04em;line-height:1;color:#fff;text-align:right;font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+.paystage .amt.pricenow{font-size:clamp(46px,6.4vw,64px);letter-spacing:-.05em}
+.paystage:first-child .when{font-size:12px;color:var(--silver)}
+.paystage .note{grid-column:1/-1;font-size:12.5px;line-height:1.6;color:var(--on-deep-2);margin:2px 0 0}
+.paytotal{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:6px 16px;padding:17px 0 0;margin-top:1px;border-top:2px solid rgba(255,255,255,.36)}
+.paytotal .when{font-size:12px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--silver);line-height:1.35}
+.paytotal .amt{font-size:clamp(34px,4.6vw,48px);font-weight:800;letter-spacing:-.045em;line-height:1;color:#fff;text-align:right;font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+.paytotal .note{grid-column:1/-1;font-size:12.5px;line-height:1.6;color:var(--on-deep-2);margin:8px 0 0}
+/* The second-vacation add-on. An aside, not a banner — it is the one exception
+   to "nothing today", so it sits with the schedule and is styled quieter than
+   it, deliberately. Nothing here counts down. */
+.payexcept{margin:18px 0 20px;padding:14px 16px;background:rgba(255,255,255,.07);border:1px solid rgba(200,212,224,.2);border-radius:var(--r-md)}
+.payexcept b{display:block;font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--silver);margin-bottom:6px}
+.payexcept p{font-size:12.5px;line-height:1.6;color:var(--on-deep-2);margin:0}
 /* Screen-reader-only. The struck figure must never be announced as the price,
    so every one of them carries a spoken label the sighted layout implies. */
 .vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
@@ -339,15 +373,12 @@ picture{display:contents}
 <p style="color:var(--muted);font-size:11.5px;line-height:1.6;margin-top:12px">Every figure above is the <b>high end of published 2026 rates for two travelers</b>, priced from the sources named beside each line on <b>August 4, 2026</b>. We show the math because nobody else in this business does.</p>
 </div>
 <div style="flex:1;min-width:270px;background:var(--deep);color:#fff;border-radius:16px;padding:26px 24px">
-<div style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--silver);margin-bottom:12px">Your price</div>
-<div class="pricenow">$360</div>
-<div style="color:#e3ebf3;font-size:13.5px;margin:10px 0 14px;line-height:1.6">Out the door, for two. <b style="color:#fff">That is the ceiling on what we charge</b> &mdash; not an estimate, not a starting point.</div>
-<div style="background:rgba(255,255,255,.09);border-radius:12px;padding:13px 15px;margin-bottom:16px">
-<div style="display:flex;justify-content:space-between;gap:12px;font-size:13.5px;color:#e3ebf3;margin-bottom:5px"><span>Your price</span><span style="font-weight:800;color:#fff">$360</span></div>
-<div style="display:flex;justify-content:space-between;gap:12px;font-size:13.5px;color:#e3ebf3;margin-bottom:5px"><span>Refundable deposit</span><span style="font-weight:800;color:#fff">$150</span></div>
-<div style="display:flex;justify-content:space-between;gap:12px;font-size:15px;color:#fff;font-weight:800;border-top:1px solid rgba(255,255,255,.2);padding-top:8px;margin-top:8px"><span>Charged today</span><span>$510</span></div>
-<div style="color:#c2d0e0;font-size:11.5px;line-height:1.55;margin-top:9px">You get the $150 back before travel is confirmed. We are showing you the bigger number because that is what actually hits your card.</div>
-</div><div style="color:#c2d0e0;font-size:11.5px;line-height:1.55;margin-bottom:16px">Some resorts charge their own incidental fee at check-in. That one is theirs, not ours &mdash; we can't waive it and we won't pretend it isn't there. It's in the restrictions below.</div>
+<div style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--silver);margin-bottom:4px">What you pay, and when</div>
+<ol class="paysched"><li class="paystage"><span class="when">Today</span><span class="amt pricenow"><span class="vh">Today: </span>$0</span><span class="note">Nothing today but your time &mdash; the 45&ndash;60 minute session. Booking it costs nothing, and there is no charge to attend.</span></li><li class="paystage"><span class="when">To save the date</span><span class="amt"><span class="vh">To save the date: </span>$150</span><span class="note">The refundable deposit, paid when you lock in your travel dates. It stays refundable until travel is confirmed.</span></li><li class="paystage"><span class="when">At booking</span><span class="amt"><span class="vh">At booking: </span>$360</span><span class="note">The remainder, in full, when you book the trip &mdash; taxes and fees.</span></li></ol>
+<div class="paytotal"><span class="when">Out the door, for two</span><span class="amt">$510</span>
+<p class="note">That is the whole number for this trip and the ceiling on what we charge for it &mdash; not an estimate, not a starting point. Nothing appears later that is not printed here.</p></div>
+<p style="color:var(--on-deep-2);font-size:12.5px;line-height:1.6;margin:12px 0 0">Some resorts charge their own incidental fee at check-in. That one is theirs, not ours &mdash; we can't waive it and we won't pretend it isn't there. It's in the restrictions below.</p>
+
 <div style="border-top:1px solid rgba(255,255,255,.18);padding-top:16px">
 <div style="font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--silver);margin-bottom:8px">Plus</div>
 <div style="font-size:20px;font-weight:800;margin-bottom:6px">45&ndash;60 minutes of your time</div>
@@ -438,8 +469,9 @@ picture{display:contents}
       <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:flex-end;justify-content:space-between">
         <div><div style="font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#9aabc0;margin-bottom:5px">Certificate number</div>
         <div style="font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:19px;font-weight:700;color:#9aabc0;letter-spacing:.05em">issued at booking</div></div>
-        <div style="text-align:right"><div style="font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#9aabc0;margin-bottom:5px">Your price</div>
-        <div style="font-size:22px;font-weight:800;color:#fff">$360</div></div>
+        <div style="text-align:right"><div style="font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#9aabc0;margin-bottom:5px">Out the door, for two</div>
+        <div style="font-size:22px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums">$510</div>
+        <div style="font-size:11px;font-weight:700;color:#9aabc0;margin-top:4px">$0 of it today</div></div>
       </div>
       <div style="margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.16);font-size:12px;color:#9aabc0;line-height:1.55">Your <span style="color:#e3ebf3">activation code</span> &mdash; the one that turns this into a booked trip &mdash; is issued at the session itself. Two different numbers, and we never blur them.</div>
     </div>
@@ -455,7 +487,8 @@ picture{display:contents}
 </div>
 <div style="font-size:13.5px;font-weight:800;color:#0a1f38;margin-bottom:9px">Your offer</div>
 <div style="font-size:14.5px;line-height:1.65;color:#0f1c2b;margin-bottom:6px"><b>Full Condo Week</b> &mdash; 60+ destinations &mdash; U.S., Canada, Caribbean &amp; Mexico</div>
-<div style="font-size:14.5px;line-height:1.65;color:#0f1c2b">$360 out the door for two, including the $150 deposit you get back before travel is confirmed. One live 45&ndash;60 minute session with Gateways Unlimited. There is a membership offer at the end &mdash; say no and this certificate is still yours.</div>
+<div style="font-size:14.5px;line-height:1.65;color:#0f1c2b"><b>$510 out the door for two.</b> Nothing today &mdash; $150 to save the date, $360 at booking. The $150 is refundable until travel is confirmed.</div>
+<div style="font-size:14.5px;line-height:1.65;color:#0f1c2b;margin-top:6px">One live 45&ndash;60 minute session with Gateways Unlimited. There is a membership offer at the end &mdash; say no and this certificate is still yours.</div>
 <div style="margin-top:18px;padding-top:14px;border-top:1px solid #d9e1ea;font-size:12.5px;line-height:1.65;color:#4b596b">No certificate number and no seal means it did not come from us. Call <a href="tel:8554186714" style="color:#1b3f6b;font-weight:700">(855) 418-6714</a> and we will verify one in a minute.</div>
 </div>
 </div></section>
