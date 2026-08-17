@@ -677,7 +677,64 @@ picture{display:contents}
    return;
   }
 
-  loadSlots();
+  checkExisting();
+
+  // ── ASK BEFORE OFFERING. ───────────────────────────────────────────────────
+  // THIS is the fix for what Dave actually hit: he already had a session booked
+  // for that day, and the page still greeted him with "DAVID, now book your
+  // activation" and handed him a calendar. The 409 on POST /book caught it, but
+  // only AFTER he tapped — by which point the page had already told him to do
+  // the thing he did not need to do.
+  //
+  // POST, not GET, and deliberately so: the identifiers are an email and a
+  // phone number, and those do not belong in a URL, a browser history entry or
+  // a referer header. The endpoint refuses GET for the same reason.
+  //
+  // It shares its lookup with POST /book, so this answer and the 409 cannot
+  // disagree about what the person is booked for.
+  function checkExisting(){
+   say('Checking your booking…');
+   var settled=false;
+   function proceed(){
+    if(settled)return;
+    settled=true;
+    loadSlots();
+   }
+   // A read that hangs must never leave a spinner sitting on the last step of
+   // the funnel. If the answer has not arrived, show the slots — a guess the
+   // 409 can correct beats a page that never resolves.
+   var t=setTimeout(proceed,6000);
+   fetch(BOOK_API+'/book/status',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({email:email,phone:phone})
+   })
+   .then(function(r){
+    return r.json().then(
+     function(j){ return {code:r.status,body:j||{}}; },
+     function(){ return {code:r.status,body:{}}; });
+   })
+   .then(function(res){
+    if(settled)return;
+    var b=res.body||{};
+    if(res.code===200&&b.ok&&b.booked===true){
+     settled=true; clearTimeout(t);
+     // Same calm panel the 409 produces. No buttons are ever built, so there
+     // is nothing to rebook with and nothing to double-tap.
+     confirmed(b.sessionTimeLabel||'',true);
+     return;
+    }
+    // EVERYTHING ELSE SHOWS THE SLOTS — including 503.
+    // A 503 means the calendar could not be read, NOT that the person is free.
+    // The backend refuses to claim booked:false in that case, and the page must
+    // not launder that silence into a confident "you have no booking" either.
+    // Rendering the slots is the recoverable wrong guess: if they are in fact
+    // booked, the 409 says so the moment they tap. An unresolvable contact
+    // comes back {ok:true,booked:false} by design and lands here too — offer
+    // them the slots, do not show them an error.
+    clearTimeout(t); proceed();
+   })
+   .catch(function(){ clearTimeout(t); proceed(); });
+  }
 
   function loadSlots(note){
    grid.style.display='';
