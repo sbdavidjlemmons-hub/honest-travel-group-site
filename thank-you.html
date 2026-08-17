@@ -189,6 +189,49 @@ picture{display:contents}
 .foot .fbrand span{color:var(--silver)}
 .foot .legal{padding-top:24px;font-size:11px;color:#7d8b9c;line-height:1.7}
 @media(max-width:760px){.foot .top{grid-template-columns:1fr 1fr}}
+/* ── ONE-CLICK SESSION SLOTS ──────────────────────────────────────────────
+   Replaces the GoHighLevel booking iframe. Three buttons, one tap each. The
+   worker owns which three and which DAY: which days sessions run on, the three
+   Pacific start times and the lead time are all its rules, and this page
+   renders exactly what it hands back. Nothing about a time or a day is
+   computed here, and no day name is hardcoded — the schedule changed twice on
+   the day this was written, and the page did not need a code change either
+   time. A second opinion about "is 1:30 still bookable" is how you end up
+   offering a seat that isn't there. Big navy targets: ~92px tall, full-width
+   on a phone, and the darkest thing in the panel so the eye lands on them and
+   nothing else. */
+.slots{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+/* Up to three day groups — today, the next session day, and the coming
+   Saturday — all on screen at once. No tabs, no accordion, no day selector:
+   every time is one tap from booked, which is the entire point. Saturday gets
+   exactly the same heading, grid and button treatment as any other day; for a
+   chunk of this audience it is the only day both halves of a couple are free,
+   so it is not a footnote. */
+.daygroup+.daygroup{margin-top:22px;padding-top:22px;border-top:1px solid var(--line)}
+.dayhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:3px 10px;margin-bottom:12px}
+.dayhead b{font-size:17px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+.dayhead span{font-size:13px;color:var(--muted)}
+.slot{appearance:none;-webkit-appearance:none;font:inherit;text-align:left;cursor:pointer;background:var(--deep);color:#fff;border:1px solid rgba(200,212,224,.28);border-radius:16px;padding:18px 20px;min-height:92px;display:flex;flex-direction:column;justify-content:center;gap:5px;transition:transform .15s,box-shadow .15s}
+.slot .d{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--silver)}
+.slot .t{font-size:clamp(20px,2.6vw,26px);font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.slot .note{font-size:12.5px;color:#9dadc0}
+.slot:hover:not(:disabled){transform:translateY(-3px);box-shadow:0 18px 44px rgba(10,31,56,.28)}
+.slot:focus-visible{outline:3px solid var(--steel);outline-offset:3px}
+/* Greyed, not hidden. A slot that has passed its lead time is information —
+   removing it silently makes the panel look like it never had three. */
+.slot:disabled{cursor:not-allowed;background:var(--paper2);color:#7e8b9b;border-color:var(--line);box-shadow:none;transform:none}
+.slot:disabled .d,.slot:disabled .note{color:#8794a4}
+@keyframes hvmspin{to{transform:rotate(360deg)}}
+.spin{display:inline-block;width:12px;height:12px;margin-right:7px;vertical-align:-1px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:hvmspin .7s linear infinite}
+@media(prefers-reduced-motion:reduce){.spin{animation-duration:2.6s}}
+.slots-status{margin-top:16px}
+.slots-status .msg{color:var(--muted);font-size:13.5px;margin:0}
+.slots-status .msg.warn{color:#8a4b1f}
+.booked{border:1px solid rgba(31,122,77,.32);background:#f2f9f5;border-radius:16px;padding:22px 24px}
+.booked .k{font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#1f7a4d;margin-bottom:10px}
+.booked .when{font-size:clamp(19px,2.4vw,24px);font-weight:800;color:var(--ink);letter-spacing:-.02em;line-height:1.2;margin-bottom:12px}
+.booked p{color:#4a5a52;font-size:15px;line-height:1.7;margin:0 0 10px}
+.booked p:last-child{margin-bottom:0}
 /* generic page hero */
 .phero{background:var(--deep);color:#fff;padding:80px 0 70px}
 .phero h1{font-size:clamp(34px,5vw,60px);max-width:820px;margin-bottom:16px}.phero h1 em{color:var(--silver)}
@@ -213,15 +256,41 @@ picture{display:contents}
 <div style="color:#9dadc0;font-size:12.5px;margin-top:10px;line-height:1.6">Issued by Honest Vacation Marketing. Bring this number to your session &mdash; it's how we pull up your file. Your <b style="color:#dbe3ec">activation code</b> is a different number, and it's issued at the session itself.</div>
 </div></div></section>
 
-<section class="wrap" style="padding-top:26px"><div class="sec-head" id="ty-step-head"><span class="eyebrow">Step one of one</span><h2>Pick your time. <em>That's the whole to-do list.</em></h2><p>Sessions run Monday&ndash;Friday at 1:30, 3:30 and 5:30 PM Pacific. It's 45&ndash;60 minutes, live, attended together as a couple &mdash; and every cost was already printed before you gave us your name.</p></div>
-<div id="ty-booking-wrap"><div style="background:#fff;border-radius:18px;box-shadow:0 10px 40px rgba(10,31,56,.10);overflow:hidden"><iframe id="ty-booking" src="" style="width:100%;height:780px;border:0" title="Choose your session time"></iframe></div>
-<!-- The calendar is a third-party iframe on leadconnectorhq.com. A content
-     blocker, a strict corporate network or a privacy browser leaves a blank
-     white box at the single step the entire funnel exists to reach — and the
-     visitor has no idea anything is missing. This link is always present, so
-     there is a working path to book even when the embed never loads. -->
-<p style="text-align:center;margin:14px 0 0;font-size:13.5px;color:var(--muted)">Calendar not loading? <a id="ty-booking-link" href="https://api.leadconnectorhq.com/widget/booking/B2QxN25XAnB9MaD4KukW" target="_blank" rel="noopener" style="color:var(--brand);font-weight:800">Open it in a new tab</a> &mdash; or call <a href="tel:+18554186714" style="color:var(--brand);font-weight:800">(855) 418-6714</a> and we'll book it with you.</p></div>
-<p id="ty-cant-pick" style="color:var(--muted);font-size:13px;margin-top:16px;max-width:640px">Can't pick a time right now? Bookmark this page &mdash; your certificate number is on it. Or call <a href="tel:+18554186714" style="color:var(--brand);font-weight:800">(855) 418-6714</a> and we'll book it with you on the phone.</p></section>
+<section class="wrap" style="padding-top:26px"><div class="sec-head" id="ty-step-head"><span class="eyebrow">Step one of one</span><h2>Pick your time. <em>That's the whole to-do list.</em></h2><p>Sessions run Monday&ndash;Saturday at 1:30, 3:30 and 5:30 PM Pacific, and the ones below are the next three we can seat you on. It's 45&ndash;60 minutes, live, attended together as a couple &mdash; and every cost was already printed before you gave us your name.</p></div>
+<div id="ty-booking-wrap">
+<!-- ONE TAP. NOT TWO FORMS.
+     This was the GoHighLevel booking iframe until 2026-08-17. That widget is a
+     five-step flow — pick a date, pick a time, "Select Date", re-type your
+     name/email/phone, confirm — aimed at somebody who typed all three on the
+     offer form thirty seconds earlier. That is the "it makes you book twice"
+     complaint, and it was the last step of the funnel.
+     It also had no idea whether the visitor already had a session, so it would
+     cheerfully sell a second seat on a scarce session to a person who already
+     held one. The 409 from POST /book is what closes that hole, and it is
+     rendered as good news, not as an error.
+     One day of slots, and only one — today's remaining sessions, or the next
+     day sessions run if none are left. The worker decides which day that is
+     and which three times, applying the running-days rule, the three Pacific
+     start times and the lead time. This page renders exactly what comes back:
+     the day name on the buttons is d.day/d.dateLabel off the wire, never a
+     weekday this file worked out for itself.
+     There is deliberately no date picker and no way to browse to a later day.
+     If that day does not work, the phone number is the path, and it is on this
+     page twice. -->
+<div id="ty-slots-panel" style="background:#fff;border-radius:18px;box-shadow:0 10px 40px rgba(10,31,56,.10);padding:clamp(22px,3.2vw,34px)">
+<div id="ty-slots-head" style="margin-bottom:18px">
+<div id="ty-slots-day" style="font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--brand)">Your session times</div>
+<p id="ty-slots-sub" style="color:var(--muted);font-size:14.5px;margin:7px 0 0">One tap and it's booked. Your name, email and phone are already on file &mdash; you don't type anything again.</p>
+</div>
+<div id="ty-slots"></div>
+<div id="ty-slots-status" class="slots-status" role="status" aria-live="polite"><p class="msg">Loading the session times&hellip;</p></div>
+</div>
+<!-- Hidden unless the slot list genuinely cannot be loaded or a booking fails.
+     In that state the visitor is one step from the end of the funnel with no
+     way through, so they get the phone number first and the old third-party
+     widget second — never a blank box and never a dead end. -->
+<p id="ty-booking-fallback" style="display:none;text-align:center;margin:14px 0 0;font-size:13.5px;color:var(--muted)">Call <a href="tel:+18554186714" style="color:var(--brand);font-weight:800">(855) 418-6714</a> and we'll book it with you in a minute &mdash; or <a id="ty-booking-link" href="https://api.leadconnectorhq.com/widget/booking/B2QxN25XAnB9MaD4KukW" target="_blank" rel="noopener" style="color:var(--brand);font-weight:800">open the booking page in a new tab</a>.</p></div>
+<p id="ty-cant-pick" style="color:var(--muted);font-size:13px;margin-top:16px;max-width:640px">None of those work? Call <a href="tel:+18554186714" style="color:var(--brand);font-weight:800">(855) 418-6714</a> and we'll find you a day that does. Either way, bookmark this page: your certificate number is on it.</p></section>
 
 <section class="wrap" id="ty-sequence"><div class="sec-head"><span class="eyebrow">What happens next</span><h2>No surprises. <em>Here's the whole sequence.</em></h2></div>
 <div class="steps4">
@@ -308,6 +377,17 @@ picture{display:contents}
  })(keys[j]);}
 })();
 (function(){
+ // The worker is the only authority on session times AND on which days
+ // sessions run. It holds the schedule, the three Pacific start times and the
+ // lead time, and it is the thing that actually writes the appointment — so
+ // the page asks it what is bookable and never works it out locally. Do not
+ // reintroduce a weekday list here; that is exactly the duplicate rule that
+ // goes stale the next time Dave changes the schedule.
+ var BOOK_API="https://hvm-lead-intake.lead-intake.workers.dev";
+ // Kept only as the emergency route when /book/slots or /book cannot be
+ // reached. It is the old multi-step GHL widget: never shown while one-click
+ // is working, and never offered as a way to shop for a different day.
+ var GHL_WIDGET="https://api.leadconnectorhq.com/widget/booking/B2QxN25XAnB9MaD4KukW";
  var p=new URLSearchParams(location.search);
  var cert=p.get('cert')||'', first=(p.get('first_name')||'').trim();
  var email=p.get('email')||'', phone=p.get('phone')||'';
@@ -501,11 +581,348 @@ picture{display:contents}
     'So we\'ll find a time that actually works for the two of you. Your certificate number is saved either way.']);
   return;
  }
- document.getElementById('ty-booking').src="https://api.leadconnectorhq.com/widget/booking/B2QxN25XAnB9MaD4KukW"+q;
- // Carry the same prefill onto the fallback link, so booking in a new tab is
- // not a worse experience than booking in the embed.
+ // Carry the same prefill onto the emergency link, so the new-tab path is not a
+ // worse experience than the one-click panel on the rare occasion it is needed.
  var bl=document.getElementById('ty-booking-link');
- if(bl)bl.href="https://api.leadconnectorhq.com/widget/booking/B2QxN25XAnB9MaD4KukW"+q;
+ if(bl)bl.href=GHL_WIDGET+q;
+ // A DEAD END IS THE ONLY OUTCOME THAT CANNOT SHIP.
+ // This is the last step of the funnel. If anything in the booking module
+ // throws — a DOM node that moved, a browser without something it expects, a
+ // shape from the API nobody predicted — the visitor must still end up looking
+ // at a phone number, not at "Loading the session times…" forever. The catch
+ // is the floor under every other error path in this file.
+ try{ initBooking(email,phone,first); }
+ catch(err){ hardFallback(); }
+
+ // Deliberately depends on almost nothing: no closure state, no helpers that
+ // could themselves be the thing that broke. It reveals the fallback line that
+ // is already in the markup and, if even that is missing, writes a phone
+ // number into the panel by hand.
+ function hardFallback(){
+  try{
+   var fb=document.getElementById('ty-booking-fallback');
+   if(fb){fb.style.display='';}
+   var grid=document.getElementById('ty-slots');
+   if(grid){grid.style.display='none';}
+   var st=document.getElementById('ty-slots-status');
+   if(st){
+    st.textContent='';
+    var pp=document.createElement('p');
+    pp.className='msg warn';
+    pp.appendChild(document.createTextNode('We can\'t load the session times right now. Call '));
+    var aa=document.createElement('a');
+    aa.href='tel:+18554186714'; aa.textContent='(855) 418-6714';
+    aa.style.color='var(--brand)'; aa.style.fontWeight='800';
+    pp.appendChild(aa);
+    pp.appendChild(document.createTextNode(' and we\'ll book it with you — your certificate number is at the top of this page.'));
+    st.appendChild(pp);
+   }else if(!fb){
+    var bw=document.getElementById('ty-booking-wrap');
+    if(bw){
+     var d=document.createElement('p');
+     d.style.textAlign='center';
+     d.textContent='Call (855) 418-6714 and we\'ll book your session with you.';
+     bw.appendChild(d);
+    }
+   }
+  }catch(_){}
+ }
+
+ // ── ONE-CLICK BOOKING ─────────────────────────────────────────────────────
+ // Reached only on the calendar path: both branches above return before here,
+ // so callback and other-offers visitors never get within a mile of a booking
+ // button. The panel they see is built by offPath(), which replaces the whole
+ // of #ty-booking-wrap.
+ function el(tag,cls,text){
+  var n=document.createElement(tag);
+  if(cls)n.className=cls;
+  // textContent, always. Slot labels and confirmation strings come off the
+  // wire and the visitor's name comes off the query string. Neither is markup.
+  if(text!=null)n.textContent=text;
+  return n;
+ }
+ function telLink(){
+  var a=document.createElement('a');
+  a.href='tel:+18554186714'; a.textContent='(855) 418-6714';
+  a.style.color='var(--brand)'; a.style.fontWeight='800';
+  return a;
+ }
+ function initBooking(email,phone,first){
+  var panel=document.getElementById('ty-slots-panel');
+  var head=document.getElementById('ty-slots-head');
+  var dayEl=document.getElementById('ty-slots-day');
+  var grid=document.getElementById('ty-slots');
+  var status=document.getElementById('ty-slots-status');
+  var fb=document.getElementById('ty-booking-fallback');
+  if(!panel||!grid||!status)return;
+  // One in-flight booking at a time. A double-tap on a phone is one gesture and
+  // two click events, and two POSTs is two seats — so the flag is set before
+  // anything async starts, and every button is disabled in the same tick.
+  var busy=false;
+
+  function say(text,tone){
+   status.innerHTML='';
+   status.appendChild(el('p','msg'+(tone?' '+tone:''),text));
+  }
+  function showFallback(){ if(fb)fb.style.display=''; }
+
+  // No email and no phone means this page was forwarded, or bookmarked and
+  // reopened without its query string. The booking endpoint identifies people
+  // by exactly those two fields, so one-click cannot work and guessing would
+  // book somebody else.
+  if(!email&&!phone){
+   grid.style.display='none';
+   say('Open this page from your own confirmation link to book in one tap.');
+   showFallback();
+   return;
+  }
+
+  loadSlots();
+
+  function loadSlots(note){
+   grid.style.display='';
+   grid.innerHTML='';
+   say('Loading the session times…');
+   fetch(BOOK_API+'/book/slots',{headers:{'Accept':'application/json'}})
+    .then(function(r){ return r.json().then(function(j){return j;},function(){return null;}); })
+    .then(function(d){
+     // Covers the condition that is live right now: the endpoint does not
+     // exist yet. A 404 that returns JSON lands on !d.ok; a 404 that returns
+     // an HTML error page makes r.json() reject, which the handler above turns
+     // into null. Both end up here, and here is a phone number.
+     // Deliberately does NOT test d.slots — the grouped shape has no top-level
+     // slots array, and testing for one here is what made the first grouped
+     // build show "we can't pull up the session times" against a perfectly
+     // good response. Whether there is anything to render is normalizeDays'
+     // question, and render() asks it.
+     if(!d||!d.ok){ cannotLoad(); return; }
+     try{ render(d,note); }catch(err){ cannotLoad(); }
+    })
+    .catch(function(){ cannotLoad(); });
+  }
+  function cannotLoad(){
+   grid.style.display='none';
+   say('We can\'t pull up the session times right now — that\'s on us, not you.','warn');
+   showFallback();
+  }
+  function dayWord(day){
+   if(!day)return '';
+   if(day==='today')return 'Today';
+   if(day==='tomorrow')return 'Tomorrow';
+   return String(day).charAt(0).toUpperCase()+String(day).slice(1);
+  }
+  // THE RESPONSE SHAPE IS NOT MINE TO ASSUME.
+  // The endpoint grew from one day to three day-groups while this page was
+  // being written, so the page accepts either and does not care which it gets:
+  // {days:[…]} / {groups:[…]}, a flat {day,dateLabel,slots:[…]}, or a flat
+  // slots list where each slot carries its own day. All three normalise to the
+  // same array of groups. Nothing here decides WHICH days exist — if Saturday
+  // is pulled from the backend, Saturday stops appearing and no code changes.
+  function normalizeDays(d){
+   var out=[],seen={},i;
+   function push(day,dateLabel,slots){
+    if(!slots||!slots.length)return;
+    // Duplicates collapse: on a Friday the "next session day" and "the coming
+    // Saturday" are the same day, and it must not be drawn twice.
+    var key=(dateLabel||day||'').toLowerCase();
+    if(key&&seen[key])return;
+    if(key)seen[key]=1;
+    out.push({day:day||'',dateLabel:dateLabel||'',slots:slots});
+   }
+   var raw=(d.days&&d.days.length)?d.days:((d.groups&&d.groups.length)?d.groups:null);
+   if(raw){
+    for(i=0;i<raw.length;i++){ var g=raw[i]||{}; push(g.day,g.dateLabel,g.slots); }
+    return out;
+   }
+   var slots=d.slots||[];
+   if(!slots.length)return out;
+   var carries=false;
+   for(i=0;i<slots.length;i++){ if(slots[i].day||slots[i].dateLabel){carries=true;break;} }
+   if(!carries){ push(d.day,d.dateLabel,slots); return out; }
+   var byKey={},order=[];
+   for(i=0;i<slots.length;i++){
+    var s=slots[i], k=(s.dateLabel||s.day||'').toLowerCase();
+    if(!byKey[k]){ byKey[k]={day:s.day||d.day||'',dateLabel:s.dateLabel||d.dateLabel||'',slots:[]}; order.push(k); }
+    byKey[k].slots.push(s);
+   }
+   for(i=0;i<order.length;i++){ var gg=byKey[order[i]]; push(gg.day,gg.dateLabel,gg.slots); }
+   return out;
+  }
+  // "Today — Monday, August 17" reads well. "Saturday — Saturday, August 22"
+  // does not, and that is what you get the moment a group is a named weekday
+  // rather than today/tomorrow. If dateLabel already opens with the day word,
+  // dateLabel is the whole heading.
+  function headingFor(word,dl){
+   if(word&&dl)return (dl.toLowerCase().indexOf(word.toLowerCase())===0)?dl:(word+' — '+dl);
+   return word||dl||'';
+  }
+  function render(d,note){
+   var groups=normalizeDays(d);
+   grid.innerHTML='';
+   if(!groups.length){ cannotLoad(); return; }
+   var open=0,sawSaturday=false;
+   for(var gi=0;gi<groups.length;gi++){
+    var grp=groups[gi];
+    var word=dayWord(grp.day), dl=grp.dateLabel||'';
+    if(/saturday/i.test(word+' '+dl))sawSaturday=true;
+    var sec=el('div','daygroup');
+    var hd=el('div','dayhead');
+    // The bold half is the word a person scans for — "Today", "Saturday" — and
+    // the muted half is the date. When dateLabel already begins with the day
+    // word ("Saturday, August 22") the word is not printed twice; the date is
+    // just the remainder.
+    hd.appendChild(el('b','',word||dl||''));
+    var rest='';
+    if(dl&&word&&dl.toLowerCase().indexOf(word.toLowerCase())===0)rest=dl.slice(word.length).replace(/^[\s,·—-]+/,'');
+    else if(dl&&word)rest=dl;
+    if(rest)hd.appendChild(el('span','',rest));
+    sec.appendChild(hd);
+    var row=el('div','slots');
+    for(var i=0;i<grp.slots.length;i++){(function(slot,dayName){
+     var label=slot.label||'';
+     var b=el('button','slot'); b.type='button';
+     b.appendChild(el('span','d',dayName));
+     b.appendChild(el('span','t',label));
+     var noteEl=el('span','note','');
+     b.appendChild(noteEl);
+     if(slot.available===false||!slot.startTime){
+      // Greyed and unclickable, but still on screen. It already started, or it
+      // is inside the lead time the session needs.
+      b.disabled=true;
+      b.setAttribute('data-locked','1');
+      noteEl.textContent='No longer available';
+      b.setAttribute('aria-label',(dayName?dayName+' ':'')+label+', no longer available');
+     }else{
+      open++;
+      noteEl.textContent='Tap to book';
+      b.setAttribute('aria-label','Book '+(dayName?dayName+' ':'')+label);
+      b.addEventListener('click',function(){ book(b,noteEl,slot); });
+     }
+     row.appendChild(b);
+    })(grp.slots[i],word||dl);}
+    sec.appendChild(row);
+    grid.appendChild(sec);
+   }
+   // The eyebrow above the groups is generic now — each group names its own
+   // day, so repeating one of them up here would be wrong for the other two.
+   if(dayEl)dayEl.textContent=(groups.length>1)?'Your session times':(headingFor(dayWord(groups[0].day),groups[0].dateLabel)||'Your session times');
+   // Dave's own reason for putting Saturday on here, in his words: some couples
+   // are only together at night or at weekends. Written only when a Saturday is
+   // actually on offer, so it disappears by itself if Saturday is pulled.
+   var sub=document.getElementById('ty-slots-sub');
+   if(sub&&sawSaturday){
+    sub.textContent='One tap and it\'s booked. Your name, email and phone are already on file — you don\'t type anything again. Saturdays are on here because plenty of couples are only free at the weekend.';
+   }
+   if(!open){
+    say('Every one of these has already started. Give us a call and we\'ll put you on the next session.','warn');
+    showFallback();
+   }else{
+    say(note||'One tap books it. Nothing else to fill in.');
+   }
+  }
+  function book(btn,noteEl,slot){
+   if(busy)return;
+   busy=true;
+   var all=grid.querySelectorAll('button.slot');
+   for(var i=0;i<all.length;i++){ all[i].disabled=true; }
+   noteEl.innerHTML='';
+   noteEl.appendChild(el('span','spin'));
+   noteEl.appendChild(document.createTextNode('Booking…'));
+   say('Booking your seat…');
+   fetch(BOOK_API+'/book',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({email:email,phone:phone,startTime:slot.startTime})
+   })
+   .then(function(r){
+    return r.json().then(
+     function(j){ return {code:r.status,body:j||{}}; },
+     function(){ return {code:r.status,body:{}}; });
+   })
+   .then(function(res){
+    try{ settle(res); }catch(err){ failed('render',noteEl); }
+   })
+   .catch(function(){ failed('network',noteEl); });
+
+   function settle(res){
+    var b=res.body||{};
+    if(res.code===200&&b.ok){ confirmed(b.sessionTimeLabel||slot.label||'',false); return; }
+    // 409 IS NOT AN ERROR. This person already has a session, which is exactly
+    // what they came here to get. Telling them "booking failed" would be a lie
+    // and would push them to try again — which is the double-booking this whole
+    // rewrite exists to stop. They are done. Say so and offer nothing else.
+    if(res.code===409&&b.error==='already-booked'){ confirmed(b.sessionTimeLabel||'',true); return; }
+    failed(b.error||('http-'+res.code),noteEl);
+   }
+  }
+  function failed(code,noteEl){
+   busy=false;
+   noteEl.innerHTML='';
+   noteEl.textContent='Tap to book';
+   // The times moved under them — someone else took the seat, or the hour of
+   // lead time ran out while the page was open. Pull the current list rather
+   // than leave a button that will fail the same way again.
+   if(code==='slot-not-offered'||code==='slot-too-soon'||code==='slot-too-far'||code==='slot-weekend'){
+    loadSlots('That time isn\'t bookable any more. These are the current ones.');
+    return;
+   }
+   var i,all=grid.querySelectorAll('button.slot');
+   for(i=0;i<all.length;i++){ if(!all[i].getAttribute('data-locked')) all[i].disabled=false; }
+   status.innerHTML='';
+   var p=el('p','msg warn','');
+   p.appendChild(document.createTextNode(
+    code==='contact-not-found'
+     ? 'We couldn\'t match this page to your file, so we can\'t book it from here. Call '
+     : 'That didn\'t go through, and it\'s our end. Try again, or call '));
+   p.appendChild(telLink());
+   p.appendChild(document.createTextNode(
+    ' and we\'ll book it with you — have your certificate number from the top of this page handy.'));
+   status.appendChild(p);
+   showFallback();
+  }
+  function confirmed(label,already){
+   // Terminal state. busy stays true so nothing can be tapped again even if a
+   // stray event arrives, and every other route to booking is taken off screen.
+   busy=true;
+   if(head)head.style.display='none';
+   grid.style.display='none';
+   if(fb)fb.style.display='none';
+   var cp=document.getElementById('ty-cant-pick'); if(cp)cp.style.display='none';
+   // THE PAGE MUST NOT CONTRADICT ITSELF. The headline, the lede and the
+   // section head above this panel all say "pick a time" — which, four inches
+   // above "you're booked", reads as though the tap did nothing. This is the
+   // same failure mode the callback branch was fixed for.
+   var h=document.getElementById('ty-head');
+   var line=already?'you\'re already booked.':'you\'re booked.';
+   if(h)h.textContent=first?(first+', '+line):(line.charAt(0).toUpperCase()+line.slice(1));
+   var ld=document.getElementById('ty-lede');
+   if(ld)ld.textContent='Your certificate still isn\'t active — you activate it at the session, and that\'s also where we show you the travel membership and what it costs. There is nothing else to do on this page.';
+   var sh=document.getElementById('ty-step-head');
+   if(sh){
+    sh.innerHTML='';
+    sh.appendChild(el('span','eyebrow','Nothing left to do'));
+    var h2=el('h2','','You\'re on the list. ');
+    var em=el('em','','That was the whole to-do list.');
+    h2.appendChild(em); sh.appendChild(h2);
+    sh.appendChild(el('p','','It runs 45–60 minutes, live, and you attend it together as a couple. Every cost was printed before you gave us your name, and there is no charge to attend.'));
+   }
+   status.innerHTML='';
+   var box=el('div','booked');
+   box.appendChild(el('div','k',already?'Already booked 👍':'Booked 🎉'));
+   box.appendChild(el('div','when',
+    label
+     ? ((already?'You\'re already booked for ':'You\'re booked for ')+label+'.')
+     : (already?'You already have a session booked.':'Your session is booked.')));
+   box.appendChild(el('p','',already
+    ? 'Nothing else to do — you\'re not booking a second one. Your Zoom link is already in your email: same link every session, no codes, no dial-ins, no app to install.'
+    : 'Nothing else to do. Your Zoom link is on its way to your email now — same link every session, no codes, no dial-ins, no app to install.'));
+   var p2=el('p','','');
+   p2.appendChild(document.createTextNode('Bring the certificate number from the top of this page — it\'s how we pull up your file. Need to move it or cancel? Call '));
+   p2.appendChild(telLink());
+   p2.appendChild(document.createTextNode(' and we\'ll sort it out. No charge either way.'));
+   box.appendChild(p2);
+   status.appendChild(box);
+  }
+ }
 })();
 </script>
 <footer class="foot"><div class="wrap"><div class="top">
