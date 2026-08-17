@@ -284,6 +284,44 @@ picture{display:contents}
 .prose a{overflow-wrap:break-word}
 .prose p{font-size:17px;line-height:1.75;color:var(--ink-soft);margin-bottom:20px}
 .prose h3{font-size:23px;letter-spacing:-.02em;line-height:1.25;margin:38px 0 12px}
+
+/* ── ONE-CLICK SESSION SLOTS ──────────────────────────────────────────────
+   The booking panel on thank-you.html. One button per session, one tap each.
+   Counts are never assumed: a weekday runs three sessions, Saturday runs two,
+   and a day part-way through runs whatever is left — so this is a fixed
+   three-column track, not auto-fit. auto-fit stretched a two-slot Saturday
+   into two half-width buttons sitting under three third-width ones, i.e. the
+   same session rendered at a different size depending on the day it fell on.
+   A short group now simply leaves its last cell empty. */
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:680px){.slots{grid-template-columns:1fr}}
+.daygroup+.daygroup{margin-top:22px;padding-top:22px;border-top:1px solid var(--line)}
+.dayhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:3px 10px;margin-bottom:12px}
+.dayhead b{font-size:17px;font-weight:800;letter-spacing:-.02em;line-height:1.25;color:var(--ink)}
+.dayhead span{font-size:13px;color:var(--muted)}
+/* Big navy targets: the darkest object in the panel, so the eye lands on the
+   click and nothing else. Full width on a phone, ~92px tall everywhere. */
+.slot{appearance:none;-webkit-appearance:none;font:inherit;text-align:left;cursor:pointer;background:var(--deep);color:#fff;border:1px solid rgba(200,212,224,.28);border-radius:var(--r-md);padding:18px 20px;min-height:92px;display:flex;flex-direction:column;justify-content:center;gap:5px;transition:transform .15s,box-shadow .15s}
+.slot .d{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--on-deep-2)}
+.slot .t{font-size:clamp(20px,2.6vw,26px);font-weight:800;letter-spacing:-.02em;line-height:1.1;font-variant-numeric:tabular-nums}
+.slot .note{font-size:12.5px;color:var(--on-deep-3)}
+.slot:hover:not(:disabled){transform:translateY(-3px);box-shadow:var(--sh-3)}
+.slot:focus-visible{outline:3px solid var(--steel);outline-offset:3px}
+/* Greyed, not hidden. A session that has passed its lead time is information;
+   removing it silently makes the panel look like it never offered it. */
+.slot:disabled{cursor:not-allowed;background:var(--paper2);color:var(--muted);border-color:var(--line);box-shadow:none;transform:none}
+.slot:disabled .d,.slot:disabled .note{color:var(--muted)}
+@keyframes hvmspin{to{transform:rotate(360deg)}}
+.spin{display:inline-block;width:12px;height:12px;margin-right:7px;vertical-align:-1px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:hvmspin .7s linear infinite}
+@media(prefers-reduced-motion:reduce){.spin{animation-duration:2.6s}}
+.slots-status{margin-top:16px}
+.slots-status .msg{color:var(--muted);font-size:13.5px;line-height:1.6;margin:0}
+.slots-status .msg.warn{color:#7a3d12}
+.booked{border:1px solid rgba(31,122,77,.32);background:#f2f9f5;border-radius:var(--r-md);padding:22px 24px}
+.booked .k{font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#166139;margin-bottom:10px}
+.booked .when{font-size:clamp(19px,2.4vw,24px);font-weight:800;color:var(--ink);letter-spacing:-.02em;line-height:1.2;margin-bottom:12px}
+.booked p{color:var(--ink-soft);font-size:15px;line-height:1.7;margin:0 0 10px}
+.booked p:last-child{margin-bottom:0}
 </style></head><body>
 <nav class="nav"><div class="in"><a class="brand" href="index.html"><span class="dot">H</span>The Honest <span>Travel Group</span></a>
 <div class="navlinks"><a href="cruise.html">Vacations</a><a href="https://honesttimeshareresolutions.com">Timeshare Exit</a><a href="about.html">About</a><a href="partners.html">Partners</a></div>
