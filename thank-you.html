@@ -7,7 +7,7 @@
 // window, and closing it dropped them back on the homepage as if nothing had
 // happened. One window, one journey, one thank-you page at the end.
 </script>
-<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1284937561029384');fbq('track','PageView');</script>
+<script>(function(){try{var p=window.__hvmParams?new URLSearchParams(window.__hvmParams):new URLSearchParams(location.search);if(!p.toString())return;var o={};p.forEach(function(v,k){o[k]=v});window.__hvmParams=o;if(history.replaceState)history.replaceState(null,'',location.pathname);}catch(e){}})();</script><script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1284937561029384');fbq('track','PageView');</script>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1284937561029384&ev=PageView&noscript=1"></noscript><script async src="https://www.googletagmanager.com/gtag/js?id=G-8XR4QN2LMP"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-8XR4QN2LMP');</script><script type="text/javascript">
 (function(s, p, i, c, e) {
@@ -473,7 +473,7 @@ picture{display:contents}
 // three paths — calendar, callback and other-offers alike.
 (function retryPending(){
  var ENDPOINT="https://hvm-lead-intake.lead-intake.workers.dev";
- var WEBHOOK="https://services.leadconnectorhq.com/hooks/yXAOCx6d0NsookMNcPoY/webhook-trigger/8b19bb36-ee8b-48c2-b968-d5022763fd48";
+ var WEBHOOK="";/* see PUBLISHED_WEBHOOK note */
  var URL_=ENDPOINT||WEBHOOK;
  if(!URL_||!window.localStorage)return;
  // Snapshot the keys BEFORE sending. Removing entries while walking
@@ -507,7 +507,7 @@ picture{display:contents}
  // reached. It is the old multi-step GHL widget: never shown while one-click
  // is working, and never offered as a way to shop for a different day.
  var GHL_WIDGET="https://api.leadconnectorhq.com/widget/booking/B2QxN25XAnB9MaD4KukW";
- var p=new URLSearchParams(location.search);
+ var p=window.__hvmParams?new URLSearchParams(window.__hvmParams):new URLSearchParams(location.search);
  var cert=p.get('cert')||'', first=(p.get('first_name')||'').trim();
  var email=p.get('email')||'', phone=p.get('phone')||'';
  // textContent, never innerHTML — these values come off the query string.
