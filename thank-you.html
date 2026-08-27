@@ -510,11 +510,15 @@ picture{display:contents}
  var p=window.__hvmParams?new URLSearchParams(window.__hvmParams):new URLSearchParams(location.search);
  var cert=p.get('cert')||'', first=(p.get('first_name')||'').trim();
  var email=p.get('email')||'', phone=p.get('phone')||'';
+ // The partner's address, forwarded from the offer page. Never rendered into
+ // the DOM — it exists only to travel to /book, so the confirmation and the
+ // reminders reach the second person the session actually requires.
+ var spouseEmail=p.get('spouse_email')||'';
  // textContent, never innerHTML — these values come off the query string.
  if(first) document.getElementById('ty-head').textContent=first+", now book your activation.";
  if(cert){document.getElementById('ty-cert').textContent=cert;}
  else{document.getElementById('ty-cert-wrap').style.display='none';}
- var q='?first_name='+encodeURIComponent(first)+'&email='+encodeURIComponent(email)+'&phone='+encodeURIComponent(phone)+'&cert='+encodeURIComponent(cert);
+ var q='?first_name='+encodeURIComponent(first)+'&email='+encodeURIComponent(email)+'&phone='+encodeURIComponent(phone)+'&cert='+encodeURIComponent(cert)+'&spouse_email='+encodeURIComponent(spouseEmail);
  // NOT EVERYONE GETS THE CALENDAR.
  // Three different people can land on this page, and they were told three
  // different things on the way here, so they must not read the same screen. A
@@ -710,7 +714,7 @@ picture{display:contents}
  // shape from the API nobody predicted — the visitor must still end up looking
  // at a phone number, not at "Loading the session times…" forever. The catch
  // is the floor under every other error path in this file.
- try{ initBooking(email,phone,first); }
+ try{ initBooking(email,phone,first,spouseEmail); }
  catch(err){ hardFallback(); }
 
  // Deliberately depends on almost nothing: no closure state, no helpers that
@@ -766,7 +770,7 @@ picture{display:contents}
   a.style.color='var(--brand)'; a.style.fontWeight='800';
   return a;
  }
- function initBooking(email,phone,first){
+ function initBooking(email,phone,first,spouseEmail){
   var panel=document.getElementById('ty-slots-panel');
   var head=document.getElementById('ty-slots-head');
   var dayEl=document.getElementById('ty-slots-day');
@@ -1007,7 +1011,10 @@ picture{display:contents}
    say('Booking your seat…');
    fetch(BOOK_API+'/book',{
     method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:email,phone:phone,startTime:slot.startTime})
+    // spouseEmail rides along so the appointment is created with both
+    // attendees on it. The endpoint ignores the field until it is taught to
+    // read it — sending it now means the day it is, no page has to change.
+    body:JSON.stringify({email:email,phone:phone,startTime:slot.startTime,spouseEmail:spouseEmail})
    })
    .then(function(r){
     return r.json().then(
