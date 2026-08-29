@@ -30,6 +30,14 @@ Everything upfront, everything optional. Every offer page prints its taxes, fees
 refundable deposit and the sourced market price being beaten, above the signup form,
 along with every restriction. Prices researched August 4, 2026.
 
+## Certificate destinations
+Forty destination pages, one per place a certificate can take you, each printing the traveler-paid charges, deposit mechanics, and availability rules before anything else. Index: https://honestvacationmarketing.com/certificates/
+- **Resort Condominium** (20 destinations) — https://honestvacationmarketing.com/certificates/index.html#condo
+- **All-Inclusive** (3 destinations) — https://honestvacationmarketing.com/certificates/index.html#all-inclusive
+- **Cruise** (12 ports and regions) — https://honestvacationmarketing.com/certificates/index.html#cruise
+- **Stay + $500 Airfare Credit** (5 destinations) — https://honestvacationmarketing.com/certificates/index.html#airfare
+Certificate terms: https://honestvacationmarketing.com/certificates/terms.html
+
 ## Pages
 - https://honestvacationmarketing.com/
 - https://honestvacationmarketing.com/cruise.html
