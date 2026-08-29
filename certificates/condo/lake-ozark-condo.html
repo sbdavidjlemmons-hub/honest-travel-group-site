@@ -2,7 +2,7 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <script>(function(){try{var p=window.__hvmParams?new URLSearchParams(window.__hvmParams):new URLSearchParams(location.search);if(!p.toString())return;var o={};p.forEach(function(v,k){o[k]=v});window.__hvmParams=o;if(history.replaceState)history.replaceState(null,'',location.pathname);}catch(e){}})();</script><script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1284937561029384');fbq('track','PageView');</script>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1284937561029384&ev=PageView&noscript=1"></noscript><script async src="https://www.googletagmanager.com/gtag/js?id=G-8XR4QN2LMP"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-8XR4QN2LMP');</script><script type="text/javascript">
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());var hvmSafeLoc=(function(){try{var w=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'],p=new URLSearchParams(window.__hvmParams||location.search),s=new URLSearchParams();for(var i=0;i<w.length;i++){var v=p.get(w[i]);if(v)s.append(w[i],v);}var q=s.toString();return location.origin+location.pathname+(q?'?'+q:'');}catch(e){return location.origin+location.pathname}})();gtag('config','G-8XR4QN2LMP',{page_location:hvmSafeLoc});</script><script type="text/javascript">
 (function(s, p, i, c, e) {
     s[e] = s[e] || function() { (s[e].a = s[e].a || []).push(arguments); };
     s[e].l = 1 * new Date();
@@ -108,7 +108,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-si
   </div>
 </div>
 
-<p><a class="funnel-cta" href="../../condo.html?dest=lake-ozark-condo">Book the Full Condo Week — $360 out the door for two</a></p>
+<p><a class="funnel-cta" href="../../condo.html?utm_source=certificate&amp;utm_campaign=cert-lake-ozark-condo&amp;dest=lake-ozark-condo">Book the Full Condo Week — $360 out the door for two</a></p>
 
 <div class="intent" id="intent">
 <h2>Where have you always wanted to go?</h2>
@@ -139,7 +139,7 @@ function consentPhone(cb){var f=cb.form;if(!f||!f.mobile)return;
 var HVM_ATTR_KEY='hvm_attr';
 function hvmAttr(){
  var keys=['utm_source','utm_medium','utm_campaign','utm_content','fbclid','gclid'];
- var url={},seen=false,p=new URLSearchParams(location.search);
+ var url={},seen=false,p=new URLSearchParams(window.__hvmParams||location.search);
  for(var i=0;i<keys.length;i++){var v=p.get(keys[i])||'';url[keys[i]]=v;if(v)seen=true;}
  var saved={};
  try{saved=JSON.parse(localStorage.getItem(HVM_ATTR_KEY)||'{}')||{};}catch(_){}
