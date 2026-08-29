@@ -374,7 +374,7 @@ picture{display:contents}
 </div>
 <div style="flex:1;min-width:270px;background:var(--deep);color:#fff;border-radius:16px;padding:26px 24px">
 <div style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--silver);margin-bottom:4px">What you pay, and when</div>
-<ol class="paysched"><li class="paystage"><span class="when">Today</span><span class="amt pricenow"><span class="vh">Today: </span>$0</span><span class="note">Nothing today but your time &mdash; the 45&ndash;60 minute session. Booking it costs nothing, and there is no charge to attend.</span></li><li class="paystage"><span class="when">To save the date</span><span class="amt"><span class="vh">To save the date: </span>$150</span><span class="note">The refundable deposit, paid when you lock in your travel dates. This $150 is part of the $360 above, not added to it. It stays refundable until travel is confirmed.</span></li><li class="paystage"><span class="when">At booking</span><span class="amt"><span class="vh">At booking: </span>$210</span><span class="note">The remainder, in full, when you book the trip itself &mdash; not today, and not when you book your session. taxes and fees.</span></li></ol>
+<ol class="paysched" data-hvm="price"><li class="paystage"><span class="when">Today</span><span class="amt pricenow"><span class="vh">Today: </span>$0</span><span class="note">Nothing today but your time &mdash; the 45&ndash;60 minute session. Booking it costs nothing, and there is no charge to attend.</span></li><li class="paystage"><span class="when">To save the date</span><span class="amt"><span class="vh">To save the date: </span>$150</span><span class="note">The refundable deposit, paid when you lock in your travel dates. This $150 is part of the $360 above, not added to it. It stays refundable until travel is confirmed.</span></li><li class="paystage"><span class="when">At booking</span><span class="amt"><span class="vh">At booking: </span>$210</span><span class="note">The remainder, in full, when you book the trip itself &mdash; not today, and not when you book your session. taxes and fees.</span></li></ol>
 <div class="paytotal"><span class="when">Out the door, for two</span><span class="amt">$360</span>
 <p class="note">That is the whole number for this trip and the ceiling on what we charge for it &mdash; not an estimate, not a starting point. Nothing appears later that is not printed here.</p></div>
 <p style="color:var(--on-deep-2);font-size:12.5px;line-height:1.6;margin:12px 0 0">Some resorts charge their own incidental fee at check-in. That one is theirs, not ours &mdash; we can't waive it and we won't pretend it isn't there. It's in the restrictions below.</p>
@@ -529,6 +529,7 @@ picture{display:contents}
 var WEBHOOK="";/* see PUBLISHED_WEBHOOK note */
 var ENDPOINT="https://hvm-lead-intake.lead-intake.workers.dev";
 var WL={"code":"HVM","name":"Honest Vacation Marketing","parent":"Elite Marketing Solutions LLC"};
+window.HVM_PAGE={kind:"offer",family:"condo"};
 function track(ev,data){data=data||{};
  try{if(window.fbq)fbq('track',ev,data);}catch(e){}
  try{if(window.gtag)gtag('event',ev.toLowerCase(),data);}catch(e){}
@@ -807,4 +808,5 @@ return false;}
 <div><h4>Company</h4><a href="about.html">About &amp; mission</a><a href="partners.html">White-label partners</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a></div>
 <div><h4>Contact</h4><p style="color:#c2d0e0;font-size:14px;line-height:1.7;margin:0">Elite Marketing Solutions LLC<br>421 N Alisos St<br>Santa Barbara, CA 93103<br><a href="mailto:info@honestvacationmarketing.com" style="color:#c2d0e0">info@honestvacationmarketing.com</a><br><a href="tel:+18554186714" style="color:#c2d0e0">(855) 418-6714</a></p></div>
 </div><div class="legal">Honest Travel Group · Honest Vacation Marketing · Honest Timeshare Resolutions — an Elite Marketing Solutions company. Vacation certificate offers are presented by Honest Vacation Marketing on behalf of Gateways Unlimited and fulfilled by Customer Service Network Group (CSNG), our fulfillment provider. Attendance at a live presentation is required to receive a certificate offer; there is no charge to attend. Deposits, taxes, and fees are disclosed on each offer page and in the certificate's terms and are refundable until travel is confirmed. Limit one certificate offer per household in any 90-day period. © 2026 Elite Marketing Solutions LLC · TheHonestTravelGroup.com</div></div></footer>
+<script src="js/visit.js"></script>
 </body></html>
