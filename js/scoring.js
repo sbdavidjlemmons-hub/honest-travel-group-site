@@ -29,8 +29,10 @@
        }, …],
        resolved:         {email, name} | null,   // from DataMoon
        suppressed:       bool,                   // unsubscribed or complained
-       consentedContact: bool,                   // already on the real ladder
-       lastColdSendAt:   ISO8601 | null,
+       consentedContact:   bool,   // gave us an address on a form
+       touredWithin90Days: bool,   // -> mini-vacation-seeker, warm stream
+       attendedSession:    bool,   // -> membership-prospect,  warm stream
+       lastSentAt:       ISO8601 | null,
        complaints:       int,
        bounces:          int
      }
@@ -88,6 +90,39 @@
     'referral': 6, 'email': 6,
     'paid-search': 5, 'paid-social': 2
   };
+
+  // ── THE FOUR SEGMENTS, AND THE TWO STREAMS THEY SPLIT INTO ────────
+  // Dave named four. They are not four of the same thing: two are read off
+  // BEHAVIOUR (what an anonymous visitor did on the site) and two are CRM
+  // FACTS (something that already happened between us and a real contact).
+  // That difference decides which domain the mail goes out from, so it is
+  // modelled here rather than left to whoever writes the send job.
+  //
+  //   COLD  — no relationship. Resolved from anonymous traffic, never gave us
+  //           an address. Goes out from the cold subdomain, tier-gated,
+  //           because these are the sends that earn complaints.
+  //     presentation-seeker   worked the offer pages: price, form, booking path
+  //     certificate-seeker    worked the certificate pages: destinations, terms
+  //
+  //   WARM  — a real relationship already exists. These people gave us an
+  //           address, or sat through a session. They are NOT cold-stream
+  //           targets: mailing them from the sacrificial subdomain would put
+  //           our best contacts behind our worst reputation, and they convert
+  //           far better than cold traffic anyway. Root domain, always.
+  //     mini-vacation-seeker  toured inside 90 days; this certificate cannot
+  //                           be issued to them and the site already promised
+  //                           them a different conversation
+  //     membership-prospect   attended a session; the membership pitch is the
+  //                           one thing they have actually already heard
+  var SEGMENTS = ['presentation-seeker', 'certificate-seeker',
+                  'mini-vacation-seeker', 'membership-prospect'];
+
+  // Relationship decides the stream. Never the score — a hot browse score does
+  // not make someone a stranger, and a cold one does not cancel a relationship.
+  function route(p) {
+    return (p.consentedContact || p.attendedSession || p.touredWithin90Days)
+      ? 'warm' : 'cold';
+  }
 
   // THE DEPTH LADDER. Ordered hardest-earned first. An offer page is the
   // booking path and a certificate page is the catalogue, so the same gesture
@@ -212,9 +247,19 @@
              : out.score >= W.tierB ? 'B'
              : out.score >= W.tierC ? 'C' : 'D';
 
-    // ── Archetype ───────────────────────────────────────────────────
+    // ── Segment and stream ──────────────────────────────────────────
+    // A CRM fact outranks a behavioural guess. Someone who sat through a
+    // session is a membership prospect no matter what they browsed afterwards,
+    // and confidence is 1 because it is not an inference.
+    out.stream = route(profile);
     var total = offerPts + certPts;
-    if (total > 0) {
+    if (profile.attendedSession) {
+      out.archetype = 'membership-prospect';
+      out.archetypeConfidence = 1;
+    } else if (profile.touredWithin90Days) {
+      out.archetype = 'mini-vacation-seeker';
+      out.archetypeConfidence = 1;
+    } else if (total > 0) {
       out.archetype = offerPts >= certPts ? 'presentation-seeker' : 'certificate-seeker';
       out.archetypeConfidence = Math.round(Math.abs(offerPts - certPts) / total * 100) / 100;
     }
@@ -248,30 +293,29 @@
   function gate(profile, scored, nowMs) {
     profile = profile || {};
     var now = num(nowMs) || Date.now();
+    var stream = (scored && scored.stream) || route(profile);
     var blocked = [];
 
+    // UNIVERSAL. True of any stream, any score, any segment.
     if (scored && scored.flags && scored.flags.indexOf('non-human') !== -1)
       blocked.push('non-human');
     if (profile.suppressed) blocked.push('suppressed');
     if (num(profile.complaints) > 0) blocked.push('prior-complaint');
-
-    // NOT A REJECTION — A REROUTE. Someone who filled in a form and ticked the
-    // box, or who confirmed on partner.html, has a real relationship with us.
-    // They get the consented ladder, which is warmer and better. Dropping them
-    // into the cold stream would be a downgrade and would double-mail them.
-    if (profile.consentedContact) blocked.push('already-a-consented-contact');
-
-    if (!profile.resolved || !profile.resolved.email) blocked.push('no-resolved-address');
     if (num(profile.bounces) >= 2) blocked.push('repeat-bounces');
+    if (!profile.resolved || !profile.resolved.email) blocked.push('no-resolved-address');
 
-    var last = ts(profile.lastColdSendAt);
+    var last = ts(profile.lastSentAt || profile.lastColdSendAt);
     if (last && (now - last) < W.freqCapDays * DAY)
       blocked.push('frequency-cap-' + W.freqCapDays + 'd');
 
-    if (scored && scored.tier !== 'A' && scored.tier !== 'B')
+    // COLD ONLY. The tier floor exists because a cold send to a lukewarm
+    // stranger is the send that earns a complaint, and complaints are the
+    // whole cost of this programme. A warm contact has already raised their
+    // hand, so their browse score decides the CONTENT, never the permission.
+    if (stream === 'cold' && scored && scored.tier !== 'A' && scored.tier !== 'B')
       blocked.push('below-sendable-tier');
 
-    return { ok: blocked.length === 0, blockedBy: blocked };
+    return { ok: blocked.length === 0, stream: stream, blockedBy: blocked };
   }
 
   function evaluate(profile, nowMs) {
@@ -279,21 +323,29 @@
     var g = gate(profile, s, nowMs);
     s.gate = g;
     s.sendable = g.ok;
-    // The archetype picks the template; the score picks the position in the
-    // queue. That is the whole job.
+    // The segment picks the template, the stream picks the sending domain, and
+    // the score picks the position in the queue. That is the whole job.
     s.template = s.sendable ? s.archetype : '';
+    s.sendFrom = s.sendable ? (s.stream === 'warm' ? 'root-domain' : 'cold-subdomain') : '';
     return s;
   }
 
   // Score a list, drop everything the gate refuses, and hand back the rest
   // highest-first. `limit` is the day's send budget.
+  // opts: {now, limit, stream:'cold'|'warm', segment:'presentation-seeker'|…}
+  // The two streams go out from different domains on different schedules, so a
+  // send job pulls one queue at a time rather than filtering a mixed list and
+  // risking a warm contact going out over the sacrificial subdomain.
   function rank(profiles, opts) {
     opts = opts || {};
     var now = num(opts.now) || Date.now();
     var out = [], i, r;
     for (i = 0; i < arr(profiles).length; i++) {
       r = evaluate(profiles[i], now);
-      if (r.sendable) out.push(r);
+      if (!r.sendable) continue;
+      if (opts.stream && r.stream !== opts.stream) continue;
+      if (opts.segment && r.archetype !== opts.segment) continue;
+      out.push(r);
     }
     out.sort(function (a, b) {
       if (b.score !== a.score) return b.score - a.score;
@@ -304,5 +356,6 @@
     return opts.limit > 0 ? out.slice(0, opts.limit) : out;
   }
 
-  return { score: score, gate: gate, evaluate: evaluate, rank: rank, weights: W, RAW_MAX: RAW_MAX };
+  return { score: score, gate: gate, evaluate: evaluate, rank: rank, route: route,
+           SEGMENTS: SEGMENTS, weights: W, RAW_MAX: RAW_MAX };
 });
