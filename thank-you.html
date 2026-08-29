@@ -356,6 +356,21 @@ picture{display:contents}
 .booked .when{font-size:clamp(19px,2.4vw,24px);font-weight:800;color:var(--ink);letter-spacing:-.02em;line-height:1.2;margin-bottom:12px}
 .booked p{color:var(--ink-soft);font-size:15px;line-height:1.7;margin:0 0 10px}
 .booked p:last-child{margin-bottom:0}
+/* THE PARTNER HAND-OFF. The offer cannot be redeemed unless both people are on
+   the session, but we deliberately do not collect the partner's address — it
+   belongs to someone who never filled in this form and never consented to
+   hear from us. So the person who booked forwards it themselves. */
+.handoff{margin-top:14px;border:1px solid var(--line);background:#fff;border-radius:var(--r-md);padding:20px 22px}
+.handoff .k{font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--brand);margin-bottom:8px}
+.handoff h3{font-size:clamp(17px,2vw,20px);font-weight:800;letter-spacing:-.015em;color:var(--ink);margin:0 0 8px;line-height:1.3}
+.handoff p{color:var(--ink-soft);font-size:14.5px;line-height:1.65;margin:0 0 14px}
+.handoff .acts{display:flex;flex-wrap:wrap;gap:9px}
+.handoff button{font:inherit;font-size:14.5px;font-weight:700;cursor:pointer;padding:12px 20px;border-radius:999px;border:1px solid var(--brand);background:var(--brand);color:#fff}
+.handoff button.alt{background:transparent;color:var(--brand)}
+.handoff button:hover{opacity:.9}
+.handoff button:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.handoff .said{font-size:13.5px;color:#166139;font-weight:700;margin:12px 0 0}
+.handoff textarea{width:100%;margin-top:12px;font:inherit;font-size:13.5px;line-height:1.6;padding:12px;border:1px solid var(--line);border-radius:10px;color:var(--ink);background:#fbfcfd}
 </style></head><body>
 <nav class="nav"><div class="in"><a class="brand" href="index.html"><span class="dot">H</span>The Honest <span>Travel Group</span></a>
 <div class="navlinks"><a href="cruise.html">Vacations</a><a href="https://honesttimeshareresolutions.com">Timeshare Exit</a><a href="about.html">About</a><a href="partners.html">Partners</a></div>
@@ -839,7 +854,7 @@ picture{display:contents}
      settled=true; clearTimeout(t);
      // Same calm panel the 409 produces. No buttons are ever built, so there
      // is nothing to rebook with and nothing to double-tap.
-     confirmed(b.sessionTimeLabel||'',true);
+     confirmed(b.sessionTimeLabel||'',true,b.startTime||'');
      return;
     }
     // EVERYTHING ELSE SHOWS THE SLOTS — including 503.
@@ -1021,12 +1036,12 @@ picture{display:contents}
 
    function settle(res){
     var b=res.body||{};
-    if(res.code===200&&b.ok){ confirmed(b.sessionTimeLabel||slot.label||'',false); return; }
+    if(res.code===200&&b.ok){ confirmed(b.sessionTimeLabel||slot.label||'',false,slot.startTime||b.startTime||''); return; }
     // 409 IS NOT AN ERROR. This person already has a session, which is exactly
     // what they came here to get. Telling them "booking failed" would be a lie
     // and would push them to try again — which is the double-booking this whole
     // rewrite exists to stop. They are done. Say so and offer nothing else.
-    if(res.code===409&&b.error==='already-booked'){ confirmed(b.sessionTimeLabel||'',true); return; }
+    if(res.code===409&&b.error==='already-booked'){ confirmed(b.sessionTimeLabel||'',true,b.startTime||''); return; }
     failed(b.error||('http-'+res.code),noteEl);
    }
   }
@@ -1055,7 +1070,7 @@ picture{display:contents}
    status.appendChild(p);
    showFallback();
   }
-  function confirmed(label,already){
+  function confirmed(label,already,startISO){
    // Terminal state. busy stays true so nothing can be tapped again even if a
    // stray event arrives, and every other route to booking is taken off screen.
    busy=true;
@@ -1097,6 +1112,98 @@ picture{display:contents}
    p2.appendChild(document.createTextNode(' and we\'ll sort it out. No charge either way.'));
    box.appendChild(p2);
    status.appendChild(box);
+   try{ handoff(label,startISO); }catch(e){}
+  }
+
+  // Builds the partner hand-off. Everything here happens on this device: the
+  // calendar file is generated locally and the share text is copied to the
+  // clipboard. No second address is ever collected, stored or sent.
+  function handoff(label,startISO){
+   var wrap=el('div','handoff');
+   wrap.appendChild(el('div','k','One thing left'));
+   wrap.appendChild(el('h3','','Make sure the other half of your household has this.'));
+   wrap.appendChild(el('p','','The certificate can only be issued to the two of you together, so they need to be on the call. Put it on your calendar and invite them, or send them the details — whichever is easier.'));
+
+   var acts=el('div','acts');
+   var said=el('p','said','');
+   said.style.display='none';
+
+   // Calendar file — only when we actually know the start time. A .ics with a
+   // guessed time is worse than no .ics at all.
+   if(startISO){
+    var d=new Date(startISO);
+    if(!isNaN(d.getTime())){
+     var cal=el('button','','Add to my calendar');
+     cal.type='button';
+     cal.addEventListener('click',function(){
+      var pad=function(n){return (n<10?'0':'')+n;};
+      var z=function(dt){return dt.getUTCFullYear()+pad(dt.getUTCMonth()+1)+pad(dt.getUTCDate())+'T'+
+        pad(dt.getUTCHours())+pad(dt.getUTCMinutes())+'00Z';};
+      var end=new Date(d.getTime()+60*60*1000);
+      var ics=[
+       'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Honest Vacation Marketing//EN',
+       'BEGIN:VEVENT',
+       'UID:'+(cert||('hvm-'+d.getTime()))+'@honestvacationmarketing.com',
+       'DTSTAMP:'+z(new Date()),
+       'DTSTART:'+z(d),
+       'DTEND:'+z(end),
+       'SUMMARY:Vacation certificate session (both of us)',
+       'DESCRIPTION:45-60 minutes, live. Both of us need to be on it - the '+
+         'certificate can only be issued to us together. The Zoom link is in '+
+         'the confirmation email.'+(cert?(' Certificate number: '+cert+'.'):''),
+       'END:VEVENT','END:VCALENDAR'
+      ].join('\r\n');
+      var blob=new Blob([ics],{type:'text/calendar;charset=utf-8'});
+      var url=URL.createObjectURL(blob);
+      var a=document.createElement('a');
+      a.href=url; a.download='vacation-session.ics';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      setTimeout(function(){URL.revokeObjectURL(url);},1000);
+      said.textContent='Calendar file downloaded — open it, then invite them from your calendar.';
+      said.style.display='';
+     });
+     acts.appendChild(cal);
+    }
+   }
+
+   var msg='We\u2019re booked for '+(label||'our vacation certificate session')+'. '+
+     'We both need to be on the Zoom \u2014 it\u2019s 45\u201360 minutes and the certificate '+
+     'can only be issued to us together. There\u2019s no charge to attend. '+
+     (cert?('Certificate number: '+cert+'. '):'')+
+     'I\u2019ll forward you the Zoom link from my email.';
+
+   var send=el('button','alt','Send them the details');
+   send.type='button';
+   send.addEventListener('click',function(){
+    // navigator.share is the good path on a phone, which is where most people
+    // read this. Clipboard is the desktop fallback. A visible textarea is the
+    // last resort so the text is never unreachable.
+    if(navigator.share){
+     navigator.share({text:msg}).catch(function(){});
+     return;
+    }
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+     navigator.clipboard.writeText(msg).then(function(){
+      said.textContent='Copied \u2014 paste it into a text or an email to them.';
+      said.style.display='';
+     },function(){ showBox(); });
+     return;
+    }
+    showBox();
+    function showBox(){
+     if(wrap.querySelector('textarea'))return;
+     var ta=document.createElement('textarea');
+     ta.rows=5; ta.readOnly=true; ta.value=msg;
+     wrap.appendChild(ta); ta.focus(); ta.select();
+     said.textContent='Copy this and send it to them.';
+     said.style.display='';
+    }
+   });
+   acts.appendChild(send);
+
+   wrap.appendChild(acts);
+   wrap.appendChild(said);
+   status.appendChild(wrap);
   }
  }
 })();
