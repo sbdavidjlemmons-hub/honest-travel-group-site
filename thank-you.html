@@ -1122,7 +1122,7 @@ picture{display:contents}
    var wrap=el('div','handoff');
    wrap.appendChild(el('div','k','One thing left'));
    wrap.appendChild(el('h3','','Make sure the other half of your household has this.'));
-   wrap.appendChild(el('p','','The certificate can only be issued to the two of you together, so they need to be on the call. Put it on your calendar and invite them, or send them the details — whichever is easier.'));
+   wrap.appendChild(el('p','','The certificate can only be issued to the two of you together, so they need to be on the call. Put it on your calendar and invite them, or send them the link — they confirm on their own end and we email them the Zoom link directly, so you are not left forwarding it.'));
 
    var acts=el('div','acts');
    var said=el('p','said','');
@@ -1166,13 +1166,35 @@ picture{display:contents}
     }
    }
 
+   // THE LINK IS THE WHOLE POINT OF THIS BUILD.
+   // We do not take the partner's address from this form — it belongs to
+   // someone who never filled it in. Instead the forward carries a token, and
+   // the page it lands on asks THEM for their address, with the disclosure in
+   // front of them. That is an affirmative act by the person themselves, which
+   // is what consent actually is. A click on a forwarded link is not consent
+   // and this token does not pretend otherwise: it only tells partner.html who
+   // sent it and which session, so the page can address them like a human and
+   // attach their confirmation to the right household.
+   // It is not a secret and not a credential. It carries nothing the sender did
+   // not just type into a message to that person themselves, it grants no
+   // access, and the page treats every field in it as untrusted text.
+   function ptoken(){
+    try{
+     var o={f:first||'',c:cert||'',t:startISO||'',l:label||''};
+     var b=btoa(unescape(encodeURIComponent(JSON.stringify(o))));
+     return b.replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+    }catch(e){ return ''; }
+   }
+   var tk=ptoken();
+   var plink=location.origin+location.pathname.replace(/[^\/]*$/,'')+'partner.html'+(tk?('?p='+tk):'');
+
    var msg='We\u2019re booked for '+(label||'our vacation certificate session')+'. '+
      'We both need to be on the Zoom \u2014 it\u2019s 45\u201360 minutes and the certificate '+
      'can only be issued to us together. There\u2019s no charge to attend. '+
      (cert?('Certificate number: '+cert+'. '):'')+
-     'I\u2019ll forward you the Zoom link from my email.';
+     'Confirm you\u2019ll be on it here and they\u2019ll email you the Zoom link: '+plink;
 
-   var send=el('button','alt','Send them the details');
+   var send=el('button','alt','Send them the link');
    send.type='button';
    send.addEventListener('click',function(){
     // navigator.share is the good path on a phone, which is where most people
@@ -1184,7 +1206,7 @@ picture{display:contents}
     }
     if(navigator.clipboard&&navigator.clipboard.writeText){
      navigator.clipboard.writeText(msg).then(function(){
-      said.textContent='Copied \u2014 paste it into a text or an email to them.';
+      said.textContent='Copied \u2014 paste it into a text or an email to them. The link lets them confirm themselves.';
       said.style.display='';
      },function(){ showBox(); });
      return;
