@@ -37,11 +37,15 @@
        bounces:          int
      }
 */
+// UMD. `globalThis` FIRST, and that is not cosmetic: under ESM the module-level
+// `this` is undefined, so the old `self : this` fallback threw
+// "Cannot set properties of undefined" the moment anything imported this file
+// as a module — which is exactly what the Cloudflare Worker runtime is.
 (function (root, factory) {
   var api = factory();
   if (typeof module === 'object' && module.exports) module.exports = api;
   else root.HVMScore = api;
-})(typeof self !== 'undefined' ? self : this, function () {
+})(typeof globalThis !== 'undefined' ? globalThis : typeof self !== 'undefined' ? self : this, function () {
   'use strict';
 
   // ── Tunables, in one place ────────────────────────────────────────
