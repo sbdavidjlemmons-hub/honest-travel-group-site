@@ -9,7 +9,7 @@
 </script>
 <script>(function(){try{var p=window.__hvmParams?new URLSearchParams(window.__hvmParams):new URLSearchParams(location.search);if(!p.toString())return;var o={};p.forEach(function(v,k){o[k]=v});window.__hvmParams=o;if(history.replaceState)history.replaceState(null,'',location.pathname);}catch(e){}})();</script><script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1284937561029384');fbq('track','PageView');</script>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1284937561029384&ev=PageView&noscript=1"></noscript><script async src="https://www.googletagmanager.com/gtag/js?id=G-8XR4QN2LMP"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-8XR4QN2LMP');</script><script type="text/javascript">
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());var hvmSafeLoc=(function(){try{var w=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'],p=new URLSearchParams(window.__hvmParams||location.search),s=new URLSearchParams();for(var i=0;i<w.length;i++){var v=p.get(w[i]);if(v)s.append(w[i],v);}var q=s.toString();return location.origin+location.pathname+(q?'?'+q:'');}catch(e){return location.origin+location.pathname}})();gtag('config','G-8XR4QN2LMP',{page_location:hvmSafeLoc});</script><script type="text/javascript">
 (function(s, p, i, c, e) {
     s[e] = s[e] || function() { (s[e].a = s[e].a || []).push(arguments); };
     s[e].l = 1 * new Date();
@@ -374,7 +374,7 @@ picture{display:contents}
 </div>
 <div style="flex:1;min-width:270px;background:var(--deep);color:#fff;border-radius:16px;padding:26px 24px">
 <div style="font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--silver);margin-bottom:4px">What you pay, and when</div>
-<ol class="paysched" data-hvm="price"><li class="paystage"><span class="when">Today</span><span class="amt pricenow"><span class="vh">Today: </span>$0</span><span class="note">Nothing today but your time &mdash; the 45&ndash;60 minute session. Booking it costs nothing, and there is no charge to attend.</span></li><li class="paystage"><span class="when">To save the date</span><span class="amt"><span class="vh">To save the date: </span>$150</span><span class="note">The refundable deposit, paid when you lock in your travel dates. This $150 is part of the $360 above, not added to it. It stays refundable until travel is confirmed.</span></li><li class="paystage"><span class="when">At booking</span><span class="amt"><span class="vh">At booking: </span>$210</span><span class="note">The remainder, in full, when you book the trip itself &mdash; not today, and not when you book your session. taxes and fees.</span></li></ol>
+<ol class="paysched" data-hvm="price"><li class="paystage"><span class="when">Today</span><span class="amt pricenow"><span class="vh">Today: </span>$0</span><span class="note">Nothing today but your time &mdash; the 45&ndash;60 minute session. Booking it costs nothing, and there is no charge to attend.</span></li><li class="paystage"><span class="when">To save the date</span><span class="amt"><span class="vh">To save the date: </span>$150</span><span class="note">The refundable deposit, paid when you lock in your travel dates. This $150 is part of the $360 above, not added to it. It stays refundable until travel is confirmed.</span></li><li class="paystage"><span class="when">At booking</span><span class="amt"><span class="vh">At booking: </span>$210</span><span class="note">The remainder, in full, when you book the trip itself &mdash; not today, and not when you book your session. This covers taxes and fees.</span></li></ol>
 <div class="paytotal"><span class="when">Out the door, for two</span><span class="amt">$360</span>
 <p class="note">That is the whole number for this trip and the ceiling on what we charge for it &mdash; not an estimate, not a starting point. Nothing appears later that is not printed here.</p></div>
 <p style="color:var(--on-deep-2);font-size:12.5px;line-height:1.6;margin:12px 0 0">Some resorts charge their own incidental fee at check-in. That one is theirs, not ours &mdash; we can't waive it and we won't pretend it isn't there. It's in the restrictions below.</p>
@@ -604,7 +604,7 @@ function consentPhone(cb){var f=cb.form;if(!f||!f.mobile)return;
 var HVM_ATTR_KEY='hvm_attr';
 function hvmAttr(){
  var keys=['utm_source','utm_medium','utm_campaign','utm_content','fbclid','gclid'];
- var url={},seen=false,p=new URLSearchParams(location.search);
+ var url={},seen=false,p=new URLSearchParams(window.__hvmParams||location.search);
  for(var i=0;i<keys.length;i++){var v=p.get(keys[i])||'';url[keys[i]]=v;if(v)seen=true;}
  var saved={};
  try{saved=JSON.parse(localStorage.getItem(HVM_ATTR_KEY)||'{}')||{};}catch(_){}
@@ -801,6 +801,27 @@ return false;}
   })(k);
  }
 })();
+</script>
+<script>
+// ── HOMEPAGE CAROUSEL HANDOFF (q=) ──────────────────────────────────────────
+// The homepage certificate carousel lets a visitor tick their self-check boxes
+// there and carries the answers here as q=<miss-words> (e.g. q=couple,income,
+// card). This pre-ticks the SAME attestation boxes on both forms and scrolls
+// to the top form, so a person who already answered is not asked to answer
+// again from zero. It touches NOTHING else: no posting logic, no consent, no
+// copy — the boxes stay optional and editable, and the existing routing ladder
+// handles every combination exactly as before. PII_SCRUB has already moved the
+// query string into window.__hvmParams, so read that first.
+(function(){try{
+ var p=window.__hvmParams?new URLSearchParams(window.__hvmParams):new URLSearchParams(location.search);
+ var q=p.get('q'); if(!q)return;
+ var map={"couple":"q_couple","age":"q_age","income":"q_income","card":"q_card"};
+ var parts=String(q).split(','),forms=document.querySelectorAll('form'),i,j;
+ for(i=0;i<parts.length;i++){var n=map[parts[i]];if(!n)continue;
+  for(j=0;j<forms.length;j++){var el=forms[j][n];if(el&&el.type==='checkbox')el.checked=true;}}
+ var s=document.getElementById('signup');
+ if(s&&s.scrollIntoView)s.scrollIntoView();
+}catch(e){}})();
 </script>
 <footer class="foot"><div class="wrap"><div class="top">
 <div><div class="fbrand">The Honest <span>Travel Group</span></div><p style="color:#c2d0e0;font-size:14px;max-width:260px">A family of companies built on one rule: everything upfront, everything optional.</p></div>
