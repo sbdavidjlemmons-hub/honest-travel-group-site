@@ -87,7 +87,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="answer"><h2>What the Cabo San Lucas Stay + $500 Airfare Credit Stay + $500 Airfare Credit certificate costs and includes</h2>
 <p>The Cabo San Lucas Stay + $500 Airfare Credit certificate (Stay + $500 Airfare Credit, 32020.AL) covers 5 days / 4 nights of standard accommodations for 2 adults plus a $500 credit toward base airfare purchased through CSNG. Traveler-paid certificate charges: Approximately $150 per person; airfare taxes/fees and base fare above $500 remain traveler-paid. Deposit mechanics: $240 reservation deposit under the source terms. Subject to availability. One of two named example properties per destination. Sunday-Tuesday check-in; 45+ days' notice; two dates 30+ days apart. Room-only unless CSNG confirms otherwise.</p></div>
 <div class="flip">
-  <input type="checkbox" id="flip">
+  <input type="checkbox" id="flip" data-hvm="price-toggle">
   <div class="card">
     <div class="face front" style="background:linear-gradient(135deg,#5b2333,#a4573f 55%,#f3cb68)">
       <div class="fam">Stay + $500 Airfare Credit Certificate — 32020.AL</div>
@@ -129,6 +129,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-si
 <script>
 var ENDPOINT="https://hvm-lead-intake.lead-intake.workers.dev";
 var DEST="cabo-san-lucas-airfare-credit",FAMILY="resort-air",DESTNAME="Cabo San Lucas, Mexico";
+window.HVM_PAGE={kind:"cert",family:FAMILY,dest:DEST};
 // Consent and the phone field are coupled — an A2P requirement, not UX. Same
 // behavior as the live funnel forms: mobile is optional until consent is
 // ticked, then required, because SMS consent must be recorded against a number.
@@ -205,4 +206,5 @@ function certIntent(e){e.preventDefault();var f=e.target;
 </script>
 </div>
 <footer class="wrap">Retail comparisons are dated research context only — not the certificate charge, cash value, or guaranteed savings. Complete certificate terms control. <a href="../terms.html">Certificate terms</a></footer>
+<script src="../../js/visit.js"></script>
 </body></html>

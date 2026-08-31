@@ -87,7 +87,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="answer"><h2>What the 7 Nights in South Lake Tahoe Resort Condominium certificate costs and includes</h2>
 <p>The 7 Nights in South Lake Tahoe certificate (Resort Condominium, 60117.RC) covers 7 nights in a resort condominium for up to 4 travelers, subject to availability. Traveler-paid certificate charges: Start at $15 per night per traveler; resort fees may be additional. Deposit mechanics: $150 reservation deposit; two dates required, 45+ days ahead and 30+ days apart. Subject to availability. Exact resort condominium is assigned at confirmation from the listed destinations.</p></div>
 <div class="flip">
-  <input type="checkbox" id="flip">
+  <input type="checkbox" id="flip" data-hvm="price-toggle">
   <div class="card">
     <div class="face front" style="background:linear-gradient(135deg,#1e5c44,#3f8f6b 55%,#a8c9a1)">
       <div class="fam">Resort Condominium Certificate — 60117.RC</div>
@@ -129,6 +129,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-si
 <script>
 var ENDPOINT="https://hvm-lead-intake.lead-intake.workers.dev";
 var DEST="south-lake-tahoe-condo",FAMILY="condo",DESTNAME="South Lake Tahoe, California";
+window.HVM_PAGE={kind:"cert",family:FAMILY,dest:DEST};
 // Consent and the phone field are coupled — an A2P requirement, not UX. Same
 // behavior as the live funnel forms: mobile is optional until consent is
 // ticked, then required, because SMS consent must be recorded against a number.
@@ -205,4 +206,5 @@ function certIntent(e){e.preventDefault();var f=e.target;
 </script>
 </div>
 <footer class="wrap">Retail comparisons are dated research context only — not the certificate charge, cash value, or guaranteed savings. Complete certificate terms control. <a href="../terms.html">Certificate terms</a></footer>
+<script src="../../js/visit.js"></script>
 </body></html>
