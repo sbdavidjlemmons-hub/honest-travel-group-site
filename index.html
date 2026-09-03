@@ -251,6 +251,8 @@ picture{display:contents}
    part that IS the brand thread — and drops the two supporting proofs, which
    both still appear in the page body and the footer. One line, ~34px. */
 @media(max-width:700px){
+  .brand{white-space:nowrap;font-size:16px;gap:8px}
+  .navcta{white-space:nowrap;padding:10px 14px;font-size:12.5px}
   .promise .in{justify-content:flex-start;gap:9px;padding:8px 5vw;flex-wrap:nowrap}
   .promise span{font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .promise span.sub{display:none}
@@ -367,6 +369,7 @@ picture{display:contents}
 #hm-splash.skip{animation:hmwipe .3s ease forwards}
 @keyframes hmword{from{opacity:0;transform:translateY(.4em) scale(.96)}to{opacity:1;transform:none}}
 @keyframes hmwipe{to{clip-path:inset(0 0 100% 0);visibility:hidden}}
+.hero h1 .wd{display:inline-block;white-space:nowrap}
 .hero h1 .w{display:inline-block;white-space:pre}
 @media (prefers-reduced-motion:no-preference){
   .hero h1 .w{animation:hmvibrate 2s linear infinite;animation-delay:calc(var(--i)*-37ms)}
@@ -418,7 +421,7 @@ picture{display:contents}
 <div id="hm-splash" hidden aria-hidden="true"><b>Honest Vacation Marketing</b></div>
 <header class="hero"><svg class="art" viewBox="0 0 200 110" preserveAspectRatio="xMidYMid slice"><rect width="200" height="110" fill="#0a1f38"/><circle cx="158" cy="26" r="20" fill="#3a6ea5"/><path d="M0 80 Q40 72 80 80 T160 80 T240 80 V110 H0 Z" fill="#1b3f6b"/><path d="M0 92 Q50 84 100 92 T200 92 V110 H0 Z" fill="#0f1c2b" opacity=".6"/></svg><div class="in">
 <span class="eyebrow">Everything upfront &middot; Everything optional</span>
-<h1 aria-label="Honest Vacation Marketing"><span class="w" style="--i:0" aria-hidden="true">H</span><span class="w" style="--i:1" aria-hidden="true">o</span><span class="w" style="--i:2" aria-hidden="true">n</span><span class="w" style="--i:3" aria-hidden="true">e</span><span class="w" style="--i:4" aria-hidden="true">s</span><span class="w" style="--i:5" aria-hidden="true">t</span><span class="w" style="--i:6" aria-hidden="true"> </span><span class="w" style="--i:7" aria-hidden="true">V</span><span class="w" style="--i:8" aria-hidden="true">a</span><span class="w" style="--i:9" aria-hidden="true">c</span><span class="w" style="--i:10" aria-hidden="true">a</span><span class="w" style="--i:11" aria-hidden="true">t</span><span class="w" style="--i:12" aria-hidden="true">i</span><span class="w" style="--i:13" aria-hidden="true">o</span><span class="w" style="--i:14" aria-hidden="true">n</span><span class="w" style="--i:15" aria-hidden="true"> </span><span class="w" style="--i:16" aria-hidden="true">M</span><span class="w" style="--i:17" aria-hidden="true">a</span><span class="w" style="--i:18" aria-hidden="true">r</span><span class="w" style="--i:19" aria-hidden="true">k</span><span class="w" style="--i:20" aria-hidden="true">e</span><span class="w" style="--i:21" aria-hidden="true">t</span><span class="w" style="--i:22" aria-hidden="true">i</span><span class="w" style="--i:23" aria-hidden="true">n</span><span class="w" style="--i:24" aria-hidden="true">g</span></h1>
+<h1 aria-label="Honest Vacation Marketing"><span class="wd"><span class="w" style="--i:0" aria-hidden="true">H</span><span class="w" style="--i:1" aria-hidden="true">o</span><span class="w" style="--i:2" aria-hidden="true">n</span><span class="w" style="--i:3" aria-hidden="true">e</span><span class="w" style="--i:4" aria-hidden="true">s</span><span class="w" style="--i:5" aria-hidden="true">t</span><span class="w" style="--i:6" aria-hidden="true"> </span></span><span class="wd"><span class="w" style="--i:7" aria-hidden="true">V</span><span class="w" style="--i:8" aria-hidden="true">a</span><span class="w" style="--i:9" aria-hidden="true">c</span><span class="w" style="--i:10" aria-hidden="true">a</span><span class="w" style="--i:11" aria-hidden="true">t</span><span class="w" style="--i:12" aria-hidden="true">i</span><span class="w" style="--i:13" aria-hidden="true">o</span><span class="w" style="--i:14" aria-hidden="true">n</span><span class="w" style="--i:15" aria-hidden="true"> </span></span><span class="wd"><span class="w" style="--i:16" aria-hidden="true">M</span><span class="w" style="--i:17" aria-hidden="true">a</span><span class="w" style="--i:18" aria-hidden="true">r</span><span class="w" style="--i:19" aria-hidden="true">k</span><span class="w" style="--i:20" aria-hidden="true">e</span><span class="w" style="--i:21" aria-hidden="true">t</span><span class="w" style="--i:22" aria-hidden="true">i</span><span class="w" style="--i:23" aria-hidden="true">n</span><span class="w" style="--i:24" aria-hidden="true">g</span></span></h1>
 <p>We qualify membership programs and run their certificate offers &mdash; honestly. Every cost upfront. Every traveler pre-qualified. Everything optional.</p>
 <div class="btns"><a class="btn mag" href="#certificates">See the current certificate offers</a><a class="btn ghost mag" href="#programs">For membership programs</a></div>
 </div></header>
