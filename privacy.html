@@ -97,15 +97,9 @@ s.slash,del.slash{text-decoration:none}
    in this file — the three on-navy text tiers, the tabular figures, the
    tracking ladder — so it reads as part of the same page and not a second
    design bolted on.
-   The figures are the hero and the labels are the whisper: amounts set in the
-   -.04em/-.05em range at 28–64px in white, stage names at 11px/.15em in the
-   quietest tier. The first stage — nothing due today — is set LARGEST of the
-   four, larger even than the total, because it is the single claim most likely
-   to be disbelieved on a page like this, and a claim that size is harder to
-   disbelieve.
-   No dollar figure is written into these comments on purpose: the stylesheet
-   is inlined on all eleven pages, and a price in a comment is a price on a page
-   that does not sell it.
+   Amounts are set larger than their labels for legibility; the payment
+   stages read top-to-bottom in plain order. No dollar figure is written into
+   these comments on purpose.
    Grid, not flex, so the note wraps under the pair instead of squeezing the
    number — at 375px the amount keeps its full size and the label reflows. */
 .paysched{list-style:none;margin:16px 0 0;padding:0}
@@ -355,10 +349,70 @@ picture{display:contents}
 .booked .when{font-size:clamp(19px,2.4vw,24px);font-weight:800;color:var(--ink);letter-spacing:-.02em;line-height:1.2;margin-bottom:12px}
 .booked p{color:var(--ink-soft);font-size:15px;line-height:1.7;margin:0 0 10px}
 .booked p:last-child{margin-bottom:0}
+
+/* --- mobile hamburger --- */
+.navtog{display:none;background:transparent;border:0;cursor:pointer;padding:8px;margin-left:auto}
+.navdrawer{display:none}
+.navtog span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0;border-radius:2px;transition:.25s}
+.navtog.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.navtog.open span:nth-child(2){opacity:0}
+.navtog.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:820px){
+  .navtog{display:block}
+  .navdrawer{position:fixed;inset:56px 0 auto 0;z-index:70;background:#fff;border-bottom:1px solid var(--line,#e6ebf1);box-shadow:0 20px 40px rgba(10,31,56,.16);padding:10px 18px 18px;display:none;flex-direction:column;gap:2px}
+  .navdrawer.open{display:flex}
+  .navdrawer a{padding:13px 6px;font-size:16px;font-weight:600;color:var(--ink,#0f1c2b);text-decoration:none;border-bottom:1px solid var(--paper2,#eef2f6)}
+  .navdrawer .grp{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted,#4b596b);padding:12px 6px 4px}
+}
+
+/* --- phone-style swipe carousel (offers) --- */
+.swx{position:relative;max-width:520px;margin:0 auto}
+.swtrack{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:0;border-radius:20px}
+.swtrack::-webkit-scrollbar{display:none}
+.swcard{min-width:100%;scroll-snap-align:center;scroll-snap-stop:always;position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:420px;padding:26px 24px;border-radius:20px;color:#fff;text-decoration:none;background:var(--g);overflow:hidden;isolation:isolate}
+.swcard::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(6,16,30,.12),rgba(6,16,30,.55));border-radius:20px}
+.swk{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;opacity:.9}
+.swh{font-size:26px;line-height:1.12;font-weight:800;margin:8px 0 8px}
+.swp{font-size:14.5px;line-height:1.55;opacity:.96}
+.swpr{margin-top:14px;font-size:20px;font-weight:800;font-variant-numeric:tabular-nums}
+.swpr em{font-size:13.5px;font-weight:600;font-style:normal;opacity:.9}
+.swcta{margin-top:16px;display:inline-block;background:#fff;color:var(--deep);font-weight:800;font-size:15px;border-radius:13px;padding:13px 18px;text-align:center}
+.swarr{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:40px;height:40px;border-radius:50%;border:0;background:rgba(8,20,38,.55);color:#fff;font-size:22px;line-height:1;cursor:pointer;backdrop-filter:blur(4px)}
+.swarr.l{left:-6px}.swarr.r{right:-6px}
+.swarr[disabled]{opacity:0;pointer-events:none}
+.swdots{display:flex;gap:7px;justify-content:center;margin-top:16px}
+.swdot{width:7px;height:7px;border-radius:99px;background:var(--silver);opacity:.5;transition:.25s}
+.swdot.on{opacity:1;width:22px;background:var(--brand)}
+@media (prefers-reduced-motion:no-preference){
+  .swcard.land>*{animation:swRise .5s cubic-bezier(.16,.9,.3,1) both}
+  @keyframes swRise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+  .swcta{transition:transform .12s}.swcard:active .swcta{transform:translateY(-3px) scale(.98)}
+}
+@media (max-width:560px){.swarr.l{left:2px}.swarr.r{right:2px}}
+
+/* --- cert family dropdown (homepage nav) --- */
+.navlinks .dd{position:relative}
+.navlinks .dd>a::after{content:"";display:inline-block;width:5px;height:5px;margin-left:6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(45deg);opacity:.7}
+.dd-menu{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(6px);min-width:240px;background:#fff;border:1px solid var(--line,#e6ebf1);border-radius:14px;box-shadow:0 18px 44px rgba(10,31,56,.16);padding:8px;opacity:0;visibility:hidden;transition:opacity .18s ease,transform .18s cubic-bezier(.2,.9,.3,1);z-index:60}
+.dd:hover .dd-menu,.dd:focus-within .dd-menu,.dd-menu.open{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.dd-menu a{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:10px;font-size:14.5px;font-weight:600;color:var(--ink,#0f1c2b);text-decoration:none;white-space:nowrap}
+.dd-menu a:hover{background:var(--paper2,#eef2f6)}
+.dd-menu a .sw{width:12px;height:12px;border-radius:4px;flex:none}
+.dd-menu a small{display:block;font-weight:500;color:var(--muted,#4b596b);font-size:12px}
+.dd-menu .dd-all{border-top:1px solid var(--line,#e6ebf1);margin-top:4px;padding-top:11px;color:var(--brand,#1b3f6b)}
+@media (max-width:820px){.navlinks .dd{display:none}}
+/* --- scroll reveal (smooth-feel), reduced-motion safe --- */
+@media (prefers-reduced-motion:no-preference){
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+}
 </style></head><body>
 <nav class="nav"><div class="in"><a class="brand" href="index.html"><span class="dot">H</span>The Honest <span>Travel Group</span></a>
-<div class="navlinks"><a href="cruise.html">Vacations</a><a href="https://honesttimeshareresolutions.com">Timeshare Exit</a><a href="about.html">About</a><a href="partners.html">Partners</a></div>
-<a class="navcta" href="cruise.html">See the offers</a></div></nav>
+<div class="navlinks"><a href="cruise.html">Vacations</a><a href="index.html#exit">Timeshare Exit</a><a href="about.html">About</a><a href="partners.html">Partners</a></div>
+<a class="navcta" href="#offers">See the offers</a>
+<button class="navtog" id="navtog" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button></div>
+<div class="navdrawer" id="navdrawer"><a href="cruise.html">Vacations</a><a href="index.html#exit">Timeshare Exit</a><a href="about.html">About</a><a href="partners.html">Partners</a><div class="grp">Vacation offers</div><a href="cruise.html">Cruise Getaways</a><a href="condo.html">Condo Weeks</a><a href="all-inclusive.html">All-Inclusive</a><a href="resort-air.html">Resort + $500 Air</a><a href="certificates/">See all 40 destinations</a></div></nav>
 <div class="promise"><div class="in"><b>Our one rule</b><span>Everything upfront, everything optional</span><span class="sub">Every cost printed before you give us your name</span><span class="sub">No charge to attend a live session</span></div></div>
 <header class="phero"><div class="wrap"><span class="eyebrow" style="color:var(--silver)">Privacy</span><h1>Privacy Policy</h1><p>How we handle your information — plainly.</p></div></header>
 <div class="prose">
@@ -385,5 +439,22 @@ picture{display:contents}
 <div><h4>Travel</h4><a href="cruise.html">Cruise getaways</a><a href="all-inclusive.html">All-inclusive</a><a href="resort-air.html">Resort + airfare</a><a href="condo.html">Condo weeks</a></div>
 <div><h4>Company</h4><a href="about.html">About &amp; mission</a><a href="partners.html">White-label partners</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a></div>
 <div><h4>Contact</h4><p style="color:#c2d0e0;font-size:14px;line-height:1.7;margin:0">Elite Marketing Solutions LLC<br>421 N Alisos St<br>Santa Barbara, CA 93103<br><a href="mailto:info@honestvacationmarketing.com" style="color:#c2d0e0">info@honestvacationmarketing.com</a><br><a href="tel:+18554186714" style="color:#c2d0e0">(855) 418-6714</a></p></div>
-</div><div class="legal">Honest Travel Group · Honest Vacation Marketing · Honest Timeshare Resolutions — an Elite Marketing Solutions company. Vacation certificate offers are presented by Honest Vacation Marketing on behalf of Gateways Unlimited and fulfilled by Customer Service Network Group (CSNG), our fulfillment provider. Attendance at a live presentation is required to receive a certificate offer; there is no charge to attend. Deposits, taxes, and fees are disclosed on each offer page and in the certificate's terms and are refundable until travel is confirmed. Limit one certificate offer per household in any 90-day period. © 2026 Elite Marketing Solutions LLC · TheHonestTravelGroup.com</div></div></footer>
+</div><div class="legal">Honest Travel Group · Honest Vacation Marketing · Honest Timeshare Resolutions — an Elite Marketing Solutions company. Vacation certificate offers are presented by Honest Vacation Marketing on behalf of Gateways Unlimited and fulfilled by Customer Service Network Group (CSNG), our fulfillment provider. Attendance at a live presentation is required to receive a certificate offer; there is no charge to attend. Deposits, taxes, and fees are disclosed on each offer page and in the certificate's terms and are fully refundable until your travel is confirmed — to cancel and request your refund, contact us at the phone or email above and we return it to your original payment method; if we cannot confirm your travel, your deposit is refunded in full. Limit one certificate offer per household in any 90-day period. © 2026 Elite Marketing Solutions LLC · TheHonestTravelGroup.com</div></div></footer>
+<script>(function(){
+"use strict";
+var t=document.getElementById('swtrack'),dz=document.getElementById('swdots'),L=document.getElementById('swL'),R=document.getElementById('swR');
+if(!t)return;var reduced=matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+function buzz(m){try{if(navigator.vibrate)navigator.vibrate(m)}catch(e){}}
+var n=t.children.length;for(var i=0;i<n;i++){var d=document.createElement('span');d.className='swdot'+(i?'':' on');dz.appendChild(d);}
+function cur(){return Math.round(t.scrollLeft/t.clientWidth);}
+function land(){var i=cur();for(var k=0;k<t.children.length;k++){var c=t.children[k];c.classList.remove('land');if(k===i){void c.offsetWidth;c.classList.add('land');}}}
+function upd(){var i=cur();for(var k=0;k<dz.children.length;k++)dz.children[k].classList.toggle('on',k===i);L.disabled=i<=0;R.disabled=i>=n-1;land();}
+function go(dir){var i=Math.max(0,Math.min(n-1,cur()+dir));t.scrollTo({left:i*t.clientWidth,behavior:'smooth'});buzz(9);setTimeout(upd,60);}
+L.onclick=function(){go(-1);};R.onclick=function(){go(1);};
+t.addEventListener('scroll',function(){clearTimeout(t._t);t._t=setTimeout(upd,90);});
+document.addEventListener('keydown',function(e){if(e.key==='ArrowLeft')go(-1);if(e.key==='ArrowRight')go(1);});
+t.addEventListener('pointerdown',function(){buzz(6);},{passive:true});
+upd();
+})();</script>
+<script>(function(){var b=document.getElementById('navtog'),d=document.getElementById('navdrawer');if(!b||!d)return;function buzz(m){try{if(navigator.vibrate)navigator.vibrate(m)}catch(e){}}b.addEventListener('click',function(){var o=d.classList.toggle('open');b.classList.toggle('open',o);b.setAttribute('aria-expanded',o?'true':'false');buzz(8);});d.addEventListener('click',function(e){if(e.target.tagName==='A'){d.classList.remove('open');b.classList.remove('open');}});document.addEventListener('keydown',function(e){if(e.key==='Escape'){d.classList.remove('open');b.classList.remove('open');}});})();</script>
 </body></html>
