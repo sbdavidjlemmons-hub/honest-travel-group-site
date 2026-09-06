@@ -541,7 +541,7 @@ picture{display:contents}
 // This runs before the branch logic below and outside it, so it fires on all
 // three paths — calendar, callback and other-offers alike.
 (function retryPending(){
- var ENDPOINT="";
+ var ENDPOINT="https://hvm-lead-intake.lead-intake.workers.dev";
  var WEBHOOK="";/* see PUBLISHED_WEBHOOK note */
  var URL_=ENDPOINT||WEBHOOK;
  if(!URL_||!window.localStorage)return;
@@ -571,7 +571,7 @@ picture{display:contents}
  // the page asks it what is bookable and never works it out locally. Do not
  // reintroduce a weekday list here; that is exactly the duplicate rule that
  // goes stale the next time Dave changes the schedule.
- var BOOK_API="";
+ var BOOK_API="https://hvm-lead-intake.lead-intake.workers.dev";
  // Kept only as the emergency route when /book/slots or /book cannot be
  // reached. It is the old multi-step GHL widget: never shown while one-click
  // is working, and never offered as a way to shop for a different day.
@@ -616,7 +616,7 @@ picture{display:contents}
    if(btn){btn.disabled=true;btn.textContent='Sending\u2026';}
    var st=(function(){try{return JSON.parse(sessionStorage.getItem('hvmLead')||'{}');}catch(e){return {};}})();
    try{
-    fetch("",{
+    fetch("https://hvm-lead-intake.lead-intake.workers.dev",{
      method:'POST',headers:{'Content-Type':'application/json'},
      body:JSON.stringify({net:'net1',bucket:'mini-vac',
       firstName:st.firstName||'',email:st.email||'',mobile:st.mobile||'',
