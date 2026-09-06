@@ -434,9 +434,9 @@ picture{display:contents}
 <div style="background:var(--deep);border-radius:20px;padding:clamp(24px,3.2vw,40px);color:#fff">
 <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:18px">
 <span style="flex:none;width:46px;height:46px;border-radius:50%;background:#1f7a4d;display:grid;place-items:center;font-size:24px" aria-hidden="true">✓</span>
-<div><div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--silver);font-weight:800;margin-bottom:5px">Your details are saved</div>
-<h1 id="ty-head" style="font-size:clamp(27px,3.6vw,42px);line-height:1.15;margin:0">Now book your activation.</h1></div></div>
-<p id="ty-lede" style="color:#c2d0e0;font-size:16px;line-height:1.65;max-width:640px;margin-bottom:22px">Your certificate is issued &mdash; but it isn't active yet. <b style="color:#e3ebf3">You activate it at the session</b>, and that's also where we show you the travel membership and what it costs. Pick a time below and your Zoom link goes out straight away.</p>
+<div><div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--silver);font-weight:800;margin-bottom:5px">You're in</div>
+<h1 id="ty-head" style="font-size:clamp(27px,3.6vw,42px);line-height:1.15;margin:0">Congratulations &mdash; choose your appointment time.</h1></div></div>
+<p id="ty-lede" style="color:#c2d0e0;font-size:16px;line-height:1.65;max-width:640px;margin-bottom:22px">Your details and certificate number are saved. The questions you answered help us shape the session around how you actually travel &mdash; not a generic pitch. Pick a time below and your Zoom link goes out straight away.</p>
 <div id="ty-cert-wrap" style="background:rgba(255,255,255,.06);border:1px solid rgba(200,212,224,.3);border-radius:16px;padding:20px 22px;max-width:520px">
 <div style="font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--silver);margin-bottom:8px">Your certificate number &mdash; save this</div>
 <div id="ty-cert" style="font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:clamp(19px,4.4vw,29px);font-weight:700;letter-spacing:.06em;word-break:break-all">&mdash;</div>
@@ -580,7 +580,7 @@ picture{display:contents}
  var cert=p.get('cert')||'', first=(p.get('first_name')||'').trim();
  var email=p.get('email')||'', phone=p.get('phone')||'';
  // textContent, never innerHTML — these values come off the query string.
- if(first) document.getElementById('ty-head').textContent=first+", now book your activation.";
+ if(first) document.getElementById('ty-head').textContent="Congratulations, "+first+" — you're in. Choose your appointment time.";
  if(cert){document.getElementById('ty-cert').textContent=cert;}
  else{document.getElementById('ty-cert-wrap').style.display='none';}
  var q='?first_name='+encodeURIComponent(first)+'&email='+encodeURIComponent(email)+'&phone='+encodeURIComponent(phone)+'&cert='+encodeURIComponent(cert);
@@ -642,7 +642,7 @@ picture{display:contents}
   // fall outside it. It reads as though the page did not listen. The browser
   // TAB was the same story — "You're in — pick your session time" — which is
   // what they see in their history a week later.
-  document.title='Thanks — we\'ll be in touch | Honest Vacation Marketing';
+  document.title='Your details are in — we\'ll be in touch | Honest Vacation Marketing';
   var sh=document.getElementById('ty-step-head');
   if(sh)sh.innerHTML='<span class="eyebrow">What happens now</span>'
    +'<h2>We\'ll pick this up <em>with you.</em></h2>';
@@ -693,9 +693,9 @@ picture{display:contents}
      +'<option value="">Pick one</option><option value="2">Just the two of us</option><option value="family">Family with kids</option><option value="group">Bigger group</option><option value="solo">Just me</option></select>'
      +'<label style="display:block;font-size:13px;font-weight:700;color:#0f1c2b;margin-bottom:6px">If we could cut what you pay for trips like that, would you want to hear how?</label>'
      +'<select name="mvIntent" style="width:100%;padding:12px 13px;border:1px solid #cfd8e3;border-radius:10px;font-size:15px;margin-bottom:18px;background:#fff">'
-     +'<option value="">Pick one</option><option value="yes">Yes &mdash; tell me how it works</option><option value="maybe">Maybe, depends what it costs</option><option value="no">No &mdash; just the trip, thanks</option></select>'
+     +'<option value="">Pick one</option><option value="yes">Yes &mdash; tell me how it works</option><option value="maybe">Maybe, depends what it costs</option><option value="no">No &mdash; just the trip</option></select>'
      +'<button type="submit" class="btn" style="border:0;cursor:pointer">Send this over</button>'
-     +'<p style="color:#8794a4;font-size:12.5px;line-height:1.6;margin:14px 0 0">No new sign-up and nothing changes about your certificate number. Straight answers are more useful to us than flattering ones &mdash; &ldquo;just the trip, thanks&rdquo; is a perfectly good answer and it will not get you pestered.</p>'
+     +'<p style="color:#8794a4;font-size:12.5px;line-height:1.6;margin:14px 0 0">No new sign-up and nothing changes about your certificate number. Straight answers are more useful to us than flattering ones &mdash; &ldquo;just the trip&rdquo; is a perfectly good answer and it will not get you pestered.</p>'
      +'</form></div>';
    }
    html+='</div>';
@@ -746,12 +746,12 @@ picture{display:contents}
    // What this screen must NOT do is read like the T4c tap link. "I'll stop
    // emailing" is a different sentence from "the certificate has an age band",
    // and only the person who taps that link has asked to be left alone.
-   offPath('Thanks for answering straight',
+   offPath('You gave us a straight answer',
     'It\'s the age band &mdash; and that\'s the only thing in the way.',
     ['This certificate is written for ages 35 to 72. I don\'t set that, the provider does, and it is the one rule I can\'t talk around. You told me everything else is true, so this is the whole of it.',
      'Which means I am not going to book you into an hour that ends with someone telling you no at the door. You are not the wrong person to travel with &mdash; this is the wrong piece of paperwork for you. Let me get you on the phone and go through what actually fits instead of guessing at it here. Your details are saved and your certificate number is on this page either way.']);
   }else{
-   offPath('Thanks for answering straight',
+   offPath('You gave us a straight answer',
     'Something in that list isn\'t true for you. That\'s useful, not a problem.',
     ['You could have ticked the boxes to get through the form. You didn\'t, and I would rather have the honest answer. This certificate carries rules I don\'t set &mdash; both of you on the session, the age band, the income line, a major credit card &mdash; and if one of them misses, it cannot be issued.',
      'That does not mean there is nothing here for you. We run more than one thing. Let me put the right one in front of you instead of the wrong one.']);
@@ -1137,26 +1137,27 @@ picture{display:contents}
    // above "you're booked", reads as though the tap did nothing. This is the
    // same failure mode the callback branch was fixed for.
    var h=document.getElementById('ty-head');
-   var line=already?'you\'re already booked.':'you\'re booked.';
-   if(h)h.textContent=first?(first+', '+line):(line.charAt(0).toUpperCase()+line.slice(1));
+   if(h)h.textContent=already
+    ? (first?(first+', you\'re already in.'):'You\'re already in.')
+    : (first?('Congratulations, '+first+' — you\'re in.'):'Congratulations — you\'re in.');
    var ld=document.getElementById('ty-lede');
-   if(ld)ld.textContent='Your certificate still isn\'t active — you activate it at the session, and that\'s also where we show you the travel membership and what it costs. There is nothing else to do on this page.';
+   if(ld)ld.textContent='Your appointment is confirmed. The questions you answered help us make the session about how you actually travel — not a generic pitch. There is nothing else to do on this page.';
    var sh=document.getElementById('ty-step-head');
    if(sh){
     sh.innerHTML='';
-    sh.appendChild(el('span','eyebrow','Nothing left to do'));
-    var h2=el('h2','','You\'re on the list. ');
+    sh.appendChild(el('span','eyebrow','Your appointment is set'));
+    var h2=el('h2','','Congratulations — you\'re in. ');
     var em=el('em','','That was the whole to-do list.');
     h2.appendChild(em); sh.appendChild(h2);
     sh.appendChild(el('p','','It runs 45–60 minutes, live, and you attend it together as a couple. Every cost was printed before you gave us your name, and there is no charge to attend.'));
    }
    status.innerHTML='';
    var box=el('div','booked');
-   box.appendChild(el('div','k',already?'Already booked 👍':'Booked 🎉'));
+   box.appendChild(el('div','k',already?'Already booked 👍':'Congratulations — you\'re in 🎉'));
    box.appendChild(el('div','when',
     label
-     ? ((already?'You\'re already booked for ':'You\'re booked for ')+label+'.')
-     : (already?'You already have a session booked.':'Your session is booked.')));
+     ? ((already?'Your appointment is already set for ':'Your appointment is set for ')+label+'.')
+     : (already?'Your appointment is already set.':'Your appointment is set.')));
    box.appendChild(el('p','',already
     ? 'Nothing else to do — you\'re not booking a second one. Your Zoom link is already in your email: same link every session, no codes, no dial-ins, no app to install.'
     : 'Nothing else to do. Your Zoom link is on its way to your email now — same link every session, no codes, no dial-ins, no app to install.'));
