@@ -188,7 +188,7 @@ function certIntent(e){e.preventDefault();var f=e.target;
  fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
   .then(function(r){return r.ok?ok():fail();})
   .catch(fail);
- setTimeout(slow,8000);
+ setTimeout(fail,8000);
  return false;}
 // Re-send anything a previous visit could not deliver — same pattern as the
 // funnel pages, so a lead saved here is also retried there and vice versa.

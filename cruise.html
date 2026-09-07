@@ -536,6 +536,8 @@ function tick(names){var parts=names.split(','),forms=document.querySelectorAll(
 function calUrl(){var base="https://api.leadconnectorhq.com/widget/booking/B2QxN25XAnB9MaD4KukW";
  try{var a=(typeof hvmAttr==='function')?hvmAttr():{},s=[],k;
   for(k in a)if(a[k])s.push(encodeURIComponent(k)+'='+encodeURIComponent(a[k]));
+  var dp=new URLSearchParams(window.__hvmParams||location.search),dest=dp.get('dest');
+  if(dest)s.push('dest='+encodeURIComponent(dest));
   return s.length?base+(base.indexOf('?')<0?'?':'&')+s.join('&'):base;
  }catch(e){return base;}}
 function book(){var f=document.getElementById('tf-cal');
@@ -885,7 +887,7 @@ var BUCKET=!QUALIFIES?(QREASON==='qualify'?'other-offers':'other-offers-'+QREASO
           :TOURED?'mini-vacation'
           :!CONSENTED?'retarget-no-consent'
           :'qualified';
-var body={net:'net1',bucket:BUCKET,offer:offer,page:pageId,certificateNumber:CERT,whiteLabel:WL.name,whiteLabelCode:WL.code,offerCode:offerCode,firstName:f.firstName.value,email:f.email.value,mobile:MOBILE,needsPhone:!HASPHONE,qualified:QUALIFIES&&SPOUSEQUAL,
+var body={net:'net1',bucket:BUCKET,offer:offer,page:pageId,destination:p.get('dest')||'',miniVac:{destination:p.get('dest')||''},certificateNumber:CERT,whiteLabel:WL.name,whiteLabelCode:WL.code,offerCode:offerCode,firstName:f.firstName.value,email:f.email.value,mobile:MOBILE,needsPhone:!HASPHONE,qualified:QUALIFIES&&SPOUSEQUAL,
 // The attestation string is EVIDENCE — it is the record of what this person
 // affirmed. It used to be sent unconditionally, which meant an unticked box
 // still produced a record saying they had attested to all four criteria. Now
@@ -915,7 +917,8 @@ var q='?cert='+encodeURIComponent(CERT)
  +'&email='+encodeURIComponent(f.email.value)
  +'&phone='+encodeURIComponent(MOBILE)
  +'&offer='+encodeURIComponent(offerLabel||'')
- +'&window='+encodeURIComponent(SPOUSEWIN);
+ +'&window='+encodeURIComponent(SPOUSEWIN)
+ +'&dest='+encodeURIComponent(p.get('dest')||'');
 // THREE DESTINATIONS, AND ONLY ONE OF THEM IS THE CALENDAR.
 // A seat is the scarcest thing in this business. Nobody
 // reaches the booking step unless the session can actually be completed AND the
