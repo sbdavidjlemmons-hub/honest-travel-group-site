@@ -108,7 +108,7 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-si
   </div>
 </div>
 <div class="disc"><ul><li>Never promise a particular ship, cruise line, sailing, itinerary, or port of call.</li><li>Line, ship, itinerary, ports, duration, and departure date are not guaranteed.</li><li>Gratuities, transportation, excursions, beverages, upgrades, and optional purchases are additional.</li></ul></div>
-<p><a class="funnel-cta" href="../../cruise.html?utm_source=certificate&amp;utm_campaign=cert-fort-lauderdale-cruise&amp;dest=fort-lauderdale-cruise">Book the Cruise Getaway for Two — $464 out the door for two</a></p>
+<p><a class="funnel-cta" href="../../cruise.html?utm_source=certificate&amp;utm_campaign=cert-fort-lauderdale-cruise&amp;dest=fort-lauderdale-cruise">Explore the Cruise Getaway for Two — approximately $290–$314 in certificate charges; extras additional</a></p>
 
 <div class="intent" id="intent">
 <h2>Where have you always wanted to go?</h2>
@@ -129,7 +129,6 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-si
 <script>
 var ENDPOINT="https://hvm-lead-intake.lead-intake.workers.dev";
 var DEST="fort-lauderdale-cruise",FAMILY="cruise",DESTNAME="Port Everglades, Fort Lauderdale";
-window.HVM_PAGE={kind:"cert",family:FAMILY,dest:DEST};
 // Consent and the phone field are coupled — an A2P requirement, not UX. Same
 // behavior as the live funnel forms: mobile is optional until consent is
 // ticked, then required, because SMS consent must be recorded against a number.
@@ -144,12 +143,14 @@ function hvmAttr(){
  for(var i=0;i<keys.length;i++){var v=p.get(keys[i])||'';url[keys[i]]=v;if(v)seen=true;}
  var saved={};
  try{saved=JSON.parse(localStorage.getItem(HVM_ATTR_KEY)||'{}')||{};}catch(_){}
- if(seen&&!saved.utm_content&&!saved.utm_source){
+ var hasSaved=keys.some(function(k){return !!saved[k];});
+ if(seen&&!hasSaved){
   try{localStorage.setItem(HVM_ATTR_KEY,JSON.stringify(url));}catch(_){}
   saved=url;
  }
  var out={};
- for(var j=0;j<keys.length;j++)out[keys[j]]=url[keys[j]]||saved[keys[j]]||'';
+ var first=hasSaved?saved:(seen?url:saved);
+ for(var j=0;j<keys.length;j++)out[keys[j]]=first[keys[j]]||'';
  return out;
 }
 try{hvmAttr();}catch(_){}
@@ -185,9 +186,9 @@ function certIntent(e){e.preventDefault();var f=e.target;
   if(err){err.hidden=false;err.textContent='We could not reach our system. Your details are saved on this device and we will retry automatically — or call (855) 418-6714 and a person will take it down.';}
   b.disabled=false;b.textContent='TRY AGAIN';}
  fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
-  .then(function(r){return r.ok?ok():fail();})
+  .then(function(r){if(!r.ok)return fail();return r.json().then(function(data){return data.ok===true&&data.tagged===true?ok():fail();});})
   .catch(fail);
- setTimeout(slow,8000);
+ setTimeout(fail,8000);
  return false;}
 // Re-send anything a previous visit could not deliver — same pattern as the
 // funnel pages, so a lead saved here is also retried there and vice versa.
@@ -198,7 +199,7 @@ function certIntent(e){e.preventDefault();var f=e.target;
   (function(key){
    var payload=localStorage.getItem(key); if(!payload)return;
    fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:payload})
-    .then(function(r){ if(r.ok){try{localStorage.removeItem(key);}catch(_){}} })
+    .then(function(r){if(!r.ok)return;return r.json().then(function(data){if(data.ok===true&&data.tagged===true){try{localStorage.removeItem(key);}catch(_){}}});})
     .catch(function(){});
   })(k);
  }
@@ -206,5 +207,6 @@ function certIntent(e){e.preventDefault();var f=e.target;
 </script>
 </div>
 <footer class="wrap">Retail comparisons are dated research context only — not the certificate charge, cash value, or guaranteed savings. Complete certificate terms control. <a href="../terms.html">Certificate terms</a></footer>
+<script>window.HVM_PAGE={kind:"cert",family:FAMILY,dest:DEST};</script>
 <script src="../../js/visit.js"></script>
 </body></html>
