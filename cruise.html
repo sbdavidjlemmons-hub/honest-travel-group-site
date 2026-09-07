@@ -950,7 +950,7 @@ function lost(){if(settled)return;settled=true;failed();}   // stays in localSto
 if(ENDPOINT){
  // Real CORS endpoint: we get a real status, so success is claimed only on 2xx.
  fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
-  .then(function(r){ return r.ok?won():lost(); })
+  .then(function(r){ if(!r.ok)return lost(); return r.json().then(function(data){return data.ok===true&&data.tagged===true?won():lost();}); })
   .catch(function(){ lost(); });
  // A stall is not a success. Keep the visitor moving to the booking step, but
  // the record stays in localStorage so retryPending() re-sends it.
@@ -980,7 +980,7 @@ return false;}
     ?{method:'POST',headers:{'Content-Type':'application/json'},body:payload}
     :{method:'POST',mode:'no-cors',body:payload};
    fetch(URL_,opts)
-    .then(function(r){ if(!ENDPOINT||r.ok){try{localStorage.removeItem(key);}catch(_){}} })
+    .then(function(r){ if(!ENDPOINT)return; if(!r.ok)return; return r.json().then(function(data){if(data.ok===true&&data.tagged===true){try{localStorage.removeItem(key);}catch(_){}}}); })
     .catch(function(){});
   })(k);
  }

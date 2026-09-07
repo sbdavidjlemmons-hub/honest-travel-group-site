@@ -186,7 +186,7 @@ function certIntent(e){e.preventDefault();var f=e.target;
   if(err){err.hidden=false;err.textContent='We could not reach our system. Your details are saved on this device and we will retry automatically — or call (855) 418-6714 and a person will take it down.';}
   b.disabled=false;b.textContent='TRY AGAIN';}
  fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
-  .then(function(r){return r.ok?ok():fail();})
+  .then(function(r){if(!r.ok)return fail();return r.json().then(function(data){return data.ok===true&&data.tagged===true?ok():fail();});})
   .catch(fail);
  setTimeout(fail,8000);
  return false;}
@@ -199,7 +199,7 @@ function certIntent(e){e.preventDefault();var f=e.target;
   (function(key){
    var payload=localStorage.getItem(key); if(!payload)return;
    fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:payload})
-    .then(function(r){ if(r.ok){try{localStorage.removeItem(key);}catch(_){}} })
+    .then(function(r){if(!r.ok)return;return r.json().then(function(data){if(data.ok===true&&data.tagged===true){try{localStorage.removeItem(key);}catch(_){}}});})
     .catch(function(){});
   })(k);
  }
