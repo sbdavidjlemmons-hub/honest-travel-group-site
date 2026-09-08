@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-08T09:03:24.427Z",
+  "generated_at_utc": "2026-09-08T09:27:34.316Z",
   "totals": {
     "pages": 40,
     "unique_images": 40,
@@ -10,281 +10,281 @@
       "family": "condo",
       "slug": "aruba-condo",
       "destination": "Aruba",
-      "bytes": 281173,
-      "hash": "ad2091e39aa7"
+      "bytes": 269210,
+      "hash": "501fc9ad7d15"
     },
     {
       "family": "condo",
       "slug": "branson-condo",
       "destination": "Branson, Missouri",
-      "bytes": 283929,
-      "hash": "ec23f8bdda9f"
+      "bytes": 262353,
+      "hash": "5a61a024117b"
     },
     {
       "family": "condo",
       "slug": "breckenridge-condo",
       "destination": "Breckenridge, Colorado",
-      "bytes": 286100,
-      "hash": "56b5fb02ce13"
+      "bytes": 263418,
+      "hash": "443d6c636225"
     },
     {
       "family": "condo",
       "slug": "cancun-condo",
       "destination": "Cancun, Mexico",
-      "bytes": 283528,
-      "hash": "322abb9863e9"
+      "bytes": 270668,
+      "hash": "69c447d38cbe"
     },
     {
       "family": "condo",
       "slug": "catskill-condo",
       "destination": "Catskill, New York",
-      "bytes": 284288,
-      "hash": "2d5ac8540b1b"
+      "bytes": 262553,
+      "hash": "458bc6eb5de0"
     },
     {
       "family": "condo",
       "slug": "kitty-hawk-condo",
       "destination": "Kitty Hawk, North Carolina",
-      "bytes": 286922,
-      "hash": "6a44d3766926"
+      "bytes": 271835,
+      "hash": "7da6c19609e7"
     },
     {
       "family": "condo",
       "slug": "lake-ozark-condo",
       "destination": "Lake Ozark, Missouri",
-      "bytes": 284852,
-      "hash": "da8930350116"
+      "bytes": 262744,
+      "hash": "1dafb4e32b4d"
     },
     {
       "family": "condo",
       "slug": "myrtle-beach-condo",
       "destination": "Myrtle Beach, South Carolina",
-      "bytes": 287546,
-      "hash": "61cbccdd7643"
+      "bytes": 272147,
+      "hash": "92f88e5be109"
     },
     {
       "family": "condo",
       "slug": "orlando-condo",
       "destination": "Orlando, Florida",
-      "bytes": 283743,
-      "hash": "ecb207788a83"
+      "bytes": 270819,
+      "hash": "0feafd766636"
     },
     {
       "family": "condo",
       "slug": "park-city-condo",
       "destination": "Park City, Utah",
-      "bytes": 283078,
-      "hash": "be857e607ef5"
+      "bytes": 261910,
+      "hash": "9da574fdea5b"
     },
     {
       "family": "condo",
       "slug": "pigeon-forge-condo",
       "destination": "Pigeon Forge, Tennessee",
-      "bytes": 286150,
-      "hash": "699e3b4508e0"
+      "bytes": 263448,
+      "hash": "e7d0c26f79ea"
     },
     {
       "family": "condo",
       "slug": "scottsdale-condo",
       "destination": "Scottsdale, Arizona",
-      "bytes": 284773,
-      "hash": "86cd39885e32"
+      "bytes": 271438,
+      "hash": "5ed275e39eac"
     },
     {
       "family": "condo",
       "slug": "sedona-condo",
       "destination": "Sedona, Arizona",
-      "bytes": 283697,
-      "hash": "d0917e7b07da"
+      "bytes": 270879,
+      "hash": "ca9b2c8c996d"
     },
     {
       "family": "condo",
       "slug": "sevierville-condo",
       "destination": "Sevierville, Tennessee",
-      "bytes": 285378,
-      "hash": "f4ffb2c59e49"
+      "bytes": 262980,
+      "hash": "36a7ae77fe16"
     },
     {
       "family": "condo",
       "slug": "south-lake-tahoe-condo",
       "destination": "South Lake Tahoe, California",
-      "bytes": 287595,
-      "hash": "7a33c647f795"
+      "bytes": 263356,
+      "hash": "3044003c3a4f"
     },
     {
       "family": "condo",
       "slug": "st-maarten-condo",
       "destination": "St. Maarten",
-      "bytes": 282420,
-      "hash": "5d0c681b30b2"
+      "bytes": 270180,
+      "hash": "266f3bbcc459"
     },
     {
       "family": "condo",
       "slug": "virginia-beach-condo",
       "destination": "Virginia Beach, Virginia",
-      "bytes": 286023,
-      "hash": "dba8e75c12a3"
+      "bytes": 272113,
+      "hash": "180a38994fd2"
     },
     {
       "family": "condo",
       "slug": "whitefish-condo",
       "destination": "Whitefish, Montana",
-      "bytes": 284832,
-      "hash": "ccbd4ee1165c"
+      "bytes": 262752,
+      "hash": "74822263f28d"
     },
     {
       "family": "condo",
       "slug": "williamsburg-condo",
       "destination": "Williamsburg, Virginia",
-      "bytes": 285747,
-      "hash": "672e17fb435b"
+      "bytes": 271868,
+      "hash": "e57600a4683c"
     },
     {
       "family": "condo",
       "slug": "wisconsin-dells-condo",
       "destination": "Wisconsin Dells, Wisconsin",
-      "bytes": 287354,
-      "hash": "03a550fc88ab"
+      "bytes": 263071,
+      "hash": "58b374392b29"
     },
     {
       "family": "cruise",
       "slug": "bahamas-cruise-region",
       "destination": "Bahamas region",
-      "bytes": 144266,
-      "hash": "23869aa373bb"
+      "bytes": 126620,
+      "hash": "5ecf9e908461"
     },
     {
       "family": "cruise",
       "slug": "charleston-cruise",
       "destination": "Charleston, South Carolina",
-      "bytes": 147819,
-      "hash": "a95d7a81a148"
+      "bytes": 127674,
+      "hash": "7f4fc86a99b6"
     },
     {
       "family": "cruise",
       "slug": "fort-lauderdale-cruise",
       "destination": "Port Everglades, Fort Lauderdale",
-      "bytes": 149662,
-      "hash": "77c4ea8cb272"
+      "bytes": 128744,
+      "hash": "b12207bd1a73"
     },
     {
       "family": "cruise",
       "slug": "galveston-cruise",
       "destination": "Galveston, Texas",
-      "bytes": 144630,
-      "hash": "018a1abd4a2a"
+      "bytes": 126804,
+      "hash": "ecaf35a3b24a"
     },
     {
       "family": "cruise",
       "slug": "jacksonville-cruise",
       "destination": "Jacksonville, Florida",
-      "bytes": 145652,
-      "hash": "4866e252a231"
+      "bytes": 127342,
+      "hash": "e5decf1e36cf"
     },
     {
       "family": "cruise",
       "slug": "los-angeles-cruise",
       "destination": "Los Angeles / Long Beach, California",
-      "bytes": 150460,
-      "hash": "93ad00eebf31"
+      "bytes": 127531,
+      "hash": "396b73887dc1"
     },
     {
       "family": "cruise",
       "slug": "mexico-cruise-region",
       "destination": "Mexico cruise region",
-      "bytes": 145796,
-      "hash": "4c677f8e9e4f"
+      "bytes": 127405,
+      "hash": "1990955b0a94"
     },
     {
       "family": "cruise",
       "slug": "miami-cruise",
       "destination": "Miami, Florida",
-      "bytes": 143737,
-      "hash": "d28f19d5124c"
+      "bytes": 126145,
+      "hash": "5f8b5cb41cdc"
     },
     {
       "family": "cruise",
       "slug": "new-orleans-cruise",
       "destination": "New Orleans, Louisiana",
-      "bytes": 146589,
-      "hash": "de105e23ee54"
+      "bytes": 127831,
+      "hash": "22c02c71d92b"
     },
     {
       "family": "cruise",
       "slug": "port-canaveral-cruise",
       "destination": "Port Canaveral, Florida",
-      "bytes": 146415,
-      "hash": "436ddeb916a8"
+      "bytes": 127807,
+      "hash": "26c9bd4a64d6"
     },
     {
       "family": "cruise",
       "slug": "tampa-cruise",
       "destination": "Tampa, Florida",
-      "bytes": 143868,
-      "hash": "3582dd0d769d"
+      "bytes": 126341,
+      "hash": "b0d5fad1aaf7"
     },
     {
       "family": "cruise",
       "slug": "western-caribbean-cruise-region",
       "destination": "Western Caribbean region",
-      "bytes": 147676,
-      "hash": "58f3ab9a8946"
+      "bytes": 128428,
+      "hash": "17c7d61f9a93"
     },
     {
       "family": "all-inclusive",
       "slug": "cancun-all-inclusive",
       "destination": "Cancun, Mexico",
-      "bytes": 281044,
-      "hash": "7ce598fffa30"
+      "bytes": 270900,
+      "hash": "95f06d97d7a6"
     },
     {
       "family": "all-inclusive",
       "slug": "dominican-republic-all-inclusive",
       "destination": "Dominican Republic",
-      "bytes": 282363,
-      "hash": "fe2bc09d7489"
+      "bytes": 271562,
+      "hash": "a62e3f2ba8d9"
     },
     {
       "family": "all-inclusive",
       "slug": "montego-bay-all-inclusive",
       "destination": "Montego Bay, Jamaica",
-      "bytes": 282944,
-      "hash": "a4ed2a496c68"
+      "bytes": 272151,
+      "hash": "7b7903bbe29d"
     },
     {
       "family": "airfare",
       "slug": "cabo-san-lucas-airfare-credit",
       "destination": "Cabo San Lucas, Mexico",
-      "bytes": 113904,
-      "hash": "3a07fd2053e7"
+      "bytes": 97257,
+      "hash": "5225af569dbe"
     },
     {
       "family": "airfare",
       "slug": "cancun-airfare-credit",
       "destination": "Cancun, Mexico",
-      "bytes": 111744,
-      "hash": "bc0e1976c926"
+      "bytes": 95706,
+      "hash": "ed3e657b4229"
     },
     {
       "family": "airfare",
       "slug": "costa-rica-airfare-credit",
       "destination": "Guanacaste, Costa Rica",
-      "bytes": 113957,
-      "hash": "5d73a1b20436"
+      "bytes": 97211,
+      "hash": "5a5c046e2faa"
     },
     {
       "family": "airfare",
       "slug": "honolulu-airfare-credit",
       "destination": "Honolulu, Hawaii",
-      "bytes": 111944,
-      "hash": "cacb0f3413fa"
+      "bytes": 95900,
+      "hash": "55539104c934"
     },
     {
       "family": "airfare",
       "slug": "san-juan-airfare-credit",
       "destination": "San Juan area, Puerto Rico",
-      "bytes": 114434,
-      "hash": "478dd4cb87ba"
+      "bytes": 96820,
+      "hash": "6182c0558d06"
     }
   ],
   "failures": []
