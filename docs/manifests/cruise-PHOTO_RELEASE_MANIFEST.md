@@ -3,7 +3,7 @@
 Release date: September 8, 2026
 Count: 12 production images
 
-Every file is a 1600×900 JPEG built from a real passenger-ship photograph by Marc Fanelli-Isla. No synthetic or AI-generated imagery is used. The readable vessel-name area is covered by HVM-owned artwork; no third-party cruise-line logo or vessel name remains visible. Each image states its exact certificate destination and says the ship, line, and itinerary vary.
+Every file is a 1600×900 JPEG built from a real passenger-ship photograph by Marc Fanelli-Isla. No synthetic or AI-generated imagery is used. The small vessel-name area is precisely blurred; no third-party cruise-line logo or vessel name remains readable. Each image states its exact certificate destination and says the ship, line, and itinerary vary.
 
 Source: [original photograph and Unsplash License record](https://unsplash.com/photos/a-cruise-ship-in-the-middle-of-the-ocean-GGH3oVUj8cM).
 
