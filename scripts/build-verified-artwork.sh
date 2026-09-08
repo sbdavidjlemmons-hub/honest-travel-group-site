@@ -28,11 +28,10 @@ prepare_base "$resort_source" "$work_dir/resort-base.png"
 prepare_base "$airfare_source" "$work_dir/airfare-base.png"
 prepare_base "$mountain_source" "$work_dir/mountain-base.png"
 
-# Cover the small vessel-name area with HVM-owned artwork. This keeps the real
-# ship visible while ensuring no readable third-party vessel or line name ships.
+# Blur only the small vessel-name area. The ship remains real and recognizable,
+# while no readable third-party vessel or line name ships.
 convert "$work_dir/cruise-base.png" \
-  -fill '#0a2940dd' -draw 'roundrectangle 430,590 710,670 28,28' \
-  -font DejaVu-Sans-Bold -fill white -pointsize 24 -gravity northwest -annotate +475+618 'HVM • CRUISE' \
+  -region 240x70+420+590 -blur 0x11 +region \
   "$work_dir/cruise-base-clean.png"
 
 mountain_slugs='^(branson|breckenridge|catskill|lake-ozark|park-city|pigeon-forge|sevierville|south-lake-tahoe|whitefish|wisconsin-dells)-condo$'
@@ -83,12 +82,21 @@ while IFS= read -r -d '' page; do
   esac
 
   target="$output_dir/$slug.jpg"
+  destination_length="${#destination}"
+  destination_size=23
+  if (( destination_length > 32 )); then
+    destination_size=16
+  elif (( destination_length > 24 )); then
+    destination_size=19
+  fi
+  destination_label="$work_dir/label-$slug.png"
+  convert -size 360x64 xc:none \
+    -fill "$accent" -draw 'roundrectangle 0,0 359,63 22,22' \
+    -font DejaVu-Sans-Bold -fill white -pointsize "$destination_size" -gravity center -annotate +0+0 "$destination" \
+    "$destination_label"
   convert "$base" \
     \( -size 1600x370 gradient:'#00000000-#061713e8' \) -gravity south -composite \
-    -fill "$accent" -draw 'roundrectangle 54,52 620,116 32,32' \
-    -font DejaVu-Sans-Bold -fill white -pointsize 27 -gravity northwest -annotate +82+70 "$label" \
-    -undercolor '#061713d6' -font DejaVu-Sans-Bold -pointsize 34 -gravity northeast -annotate +54+60 "  $destination  " \
-    -undercolor none -font DejaVu-Sans -fill '#f0f7f3' -pointsize 25 -gravity southeast -annotate +54+42 "$note" \
+    "$destination_label" -gravity north -geometry +0+52 -composite \
     -strip -sampling-factor 4:2:0 -interlace Plane -quality 88 "$target"
 done
 

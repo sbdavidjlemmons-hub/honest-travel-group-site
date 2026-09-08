@@ -39,5 +39,6 @@ Google Drive deletions were permanent. The repository deletion removes the old f
 - 40/40 local page routes returned HTTP 200.
 - 40/40 local image routes returned HTTP 200.
 - 40/40 certificate booking click-through targets returned HTTP 200 in the static release test.
+- Representative cruise, tropical-resort, mountain-resort, and airfare files passed 560×400 desktop and 320×760 mobile center-crop simulations. Destination labels remain fully visible in both layouts.
 
 The machine-readable row-level report is `audit/artwork-verification.json`.
