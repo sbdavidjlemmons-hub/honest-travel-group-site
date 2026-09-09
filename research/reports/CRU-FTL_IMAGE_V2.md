@@ -14,7 +14,9 @@ structure in frame.**
 - **PRIMARY:** *Port Everglades – panoramio – Alistair Cunningham* — CC BY 3.0 — visually verified
 - **ALTERNATE:** *Prendre la mer avant que la noirceur vienne… / Leaving the port before the night falls…* — CC BY 3.0 — visually verified
 
-25 candidates were located, downloaded and opened. 23 were rejected on sight. The two previously
+26 candidates were located, downloaded and opened; 24 of those were rejected on sight. One further
+file (row Q) is listed for the record but was **never downloaded and never opened** — Wikimedia
+rate-limiting defeated every retry — so it is marked `NOT VISUALLY VERIFIED` and does not count. The two previously
 nominated Fort Lauderdale files (Celebrity Equinox primary; aerial alternate) were not re-tested —
 the coordinator's pixel check already confirmed both fail — but the third file from the earlier
 report, the "Sunset behind the cruiser" alternate, **was** tested here and also fails (see rejection
@@ -135,10 +137,11 @@ that satisfies every criterion without qualification, and there is no second one
 
 ---
 
-## Rejection list — all 25 candidates downloaded and opened
+## Rejection list — 26 candidates downloaded and opened, plus 1 unverified
 
-Every row below was fetched to scratch with `User-Agent: HVM-image-verification/1.0 (rights and
-suitability check)` and opened with the Read tool. Nothing here was judged from metadata.
+Every row below **except row Q** was fetched to scratch with `User-Agent: HVM-image-verification/1.0
+(rights and suitability check)` and opened with the Read tool. Nothing carrying a verdict here was
+judged from metadata. Row Q was never retrieved and is flagged accordingly.
 
 | # | File | Licence | What I actually saw | Verdict |
 | --- | --- | --- | --- | --- |
@@ -158,7 +161,7 @@ suitability check)` and opened with the Read tool. Nothing here was judged from 
 | N | Island Princess in Port Everglades (Jean-Philippe Boulet) | CC BY 3.0 | **"ISLAND PRINCESS" legible twice** (bow and stern nameboard) plus a large seawitch on the funnel. Ship ~75 % of frame. | **REJECT — visually verified** |
 | O | Ft Lauderdale Port Everglades (Paul Harrison) | CC BY-SA 4.0 | The industrial face of the port: **container gantry, cement silos reading "CEMEX" and "CONTINENTAL", tank farm, bulk carrier**, plus "ALLU…" partly legible at far left. Textbook freight. | **REJECT — visually verified** |
 | P | SunsetOverPortEverglades-LandingFLL-Apr2013 (formulanone) | CC BY-SA 2.0 | Severely underexposed night aerial. The port is a murky dark mass with scattered lights; the ship is barely discernible; cranes visible. No vacation read, no usable overlay contrast. | **REJECT — visually verified** |
-| Q | Sunset – Flying Beaver Cloud (formulanone) | CC BY-SA 2.0 | Same aerial series, same darkness problem; not a Port Everglades berth view. | **REJECT — not nominated** |
+| Q | Sunset – Flying Beaver Cloud (formulanone) | CC BY-SA 2.0 | **Not downloaded and not opened** — repeated HTTP 429 from Wikimedia. I have seen nothing of this file and make no claim about its content. Listed only because it is the adjacent frame to row P in the same aerial series, shot 7 minutes earlier from the same landing approach. Not nominated, and not eligible to be nominated without a visual check. | **NOT VISUALLY VERIFIED** |
 | R | Port Everglades (12121806624) (Jonathan Palombo) | CC BY 2.0 | **"Westerdam" and "Holland America Line" both legible** on the hull, plus roadside **"PORT EVERGLADES" wayfinding signage** in the foreground. | **REJECT — visually verified** |
 | S | Port Everglades, Miami (8645259887) (Jonathan Palombo) | CC BY 2.0 | **Carnival whale-tail funnel prominent at left; "Westerdam" legible** on the dark hull. Attractive terminal-and-palms composition otherwise. | **REJECT — visually verified** |
 | T | Port Everglades, Miami (8645260535) (Jonathan Palombo) | CC BY 2.0 | **"Westerdam" legible**, HAL funnel emblem, and an **"ESCOT" coach** parked in the foreground. | **REJECT — visually verified** |
