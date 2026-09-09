@@ -22,11 +22,14 @@ Standard: `research/IMAGE_BRIEF_V2.md`.
 | CRU-FTL | Leaving the port before night falls (CC BY 3.0, 2304x1728) | APPROVED (alternate) | Agent-verified. Dusk at the inlet, ship backlit behind the jetty, no readable branding. Two disclosed deviations: ship at ~48% frame width (over the 40% target) and port evidence is a channel jetty rather than berth infrastructure. Neither affects the brand test. |
 | CRU-FTL | Sunset behind the cruiser (CC BY 3.0) | REJECTED | Previously approved on metadata as "low logo risk, backlit silhouette." Opened: "CONSTELLATION" legible in dark type across the hull, bow fills the frame. Backlighting did not wash it out. |
 
+| **CRU-MIA** | **Pexels 8530566 "Drone shot of the Miami port at sunset" — Brendon Spring, Pexels License, 6240x4160** | **APPROVED — best in set** | Double-verified. Dusk on Dodge Island looking north up Biscayne Bay. Ship at berth bow-on at roughly 7-13% of frame width, backlit. PortMiami's illuminated sail-mast terminal canopy, boarding gantries, bollards and fenders establish the berth; Miami skyline behind. Pink-gold-violet sky across the top half, clean channel water across the right. No legible ship name, no funnel mark, no third-party signage. Agent zoomed the bow to 3x native and rendered a real 1600x900 crop with 100% tiles: nothing resolves as text. Pexels License is free commercial use with no attribution obligation. |
+| CRU-MIA | Miamicruiseships20071208 — Marc Averette, CC BY-SA 1.0, 2560x1920 | APPROVED WITH CAUTION (alternate) | No name or wordmark resolves even at 240% of delivery pixels, but three or four Carnival whale-tail funnels are recognisable as shapes. No text, so it does not breach the letter of the rule, but it is the same trade dress that disqualified Carnival Glory. Coordinator call: the primary is strong enough that Miami does not need this to carry weight. Treat as reserve only. |
+
 ## Needs new candidates — zero usable artwork today
 
-`CRU-MIA`, `CRU-NOL` — every nominated candidate rejected on sight. Replacement agents running.
+`CRU-NOL` — every nominated candidate rejected on sight. Replacement agent running.
 
-`CRU-FTL` is **RESOLVED** — see the approved primary and alternate above.
+`CRU-FTL` and `CRU-MIA` are **RESOLVED** — see approvals above.
 
 ## Not yet verified
 

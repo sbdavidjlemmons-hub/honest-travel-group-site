@@ -55,6 +55,21 @@ that resolves it:
    A candidate that was not opened is marked `NOT VISUALLY VERIFIED` and does not count.
 6. Nominate a primary and an alternate that both passed step 3.
 
+## Fetch mechanics — learned the hard way, do not rediscover these
+
+- Wikimedia returns **403** without a User-Agent, on the API call as well as the file fetch.
+- It now returns **429** on full-resolution originals. Download **serially with pauses**;
+  parallel requests trip the limit within seconds. Use exponential backoff.
+- Only these thumbnail widths are served: **320 / 640 / 800 / 1024 / 1280 / 1920 / 3840**.
+  Requests for 1600 or 2560 are rejected with 400.
+- The API's `thumburl` points at `thumb.wikimedia.org`, which 400s. Rewrite it to
+  `upload.wikimedia.org/.../thumb/<a>/<ab>/<name>/<w>px-<name>` using the hash prefix from the
+  returned original URL.
+- **Openverse** is a useful CC-only aggregator. Anonymous `page_size` maxes at 20; percent-encode spaces.
+- **Pexels and Unsplash are often better sources than Commons for this brief** — their travel
+  photography is composed to sell a destination, which is exactly the "shoot the port" framing
+  the rule wants, and their licences carry no attribution or share-alike obligation.
+
 ## Licence preference
 
 Plain CC BY, CC0, public domain, or Unsplash License. Flag CC BY-SA as a caution — share-alike
