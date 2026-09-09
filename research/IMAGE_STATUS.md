@@ -90,6 +90,11 @@ prospect.
 **19 opened, 15 rejected (79%).** Every suspected wordmark or tail-logo region was re-cropped at
 5-8x native before ruling.
 
+| **AIR-HNL** | **"Flying Over the Sun", ELLK Photo, CC BY 2.0, 5191x3894** | **APPROVED** | Double-verified. Telephoto sunset from Tantalus Heights: palm frond in silhouette, Ala Moana towers, Magic Island peninsula, ocean, half-set sun, and a twin-engine widebody climbing away above it. At 4x native the aircraft is uniform pale grey with no wordmark, tail logo, cheatline, or registration. No legible signage on any building. Full EXIF (Fujifilm X-T20, 120.6mm, f/5.8, 1/160, ISO 1000, Feb 2024) on a non-round dimension. The hazy sea/sky band across the middle is the best overlay canvas in the whole set. |
+| AIR-HNL | "Golden Palm Trees", Edmund Garman, CC BY 2.0, 4875x2742 | APPROVED (alternate) | Magic Island, Oahu: six coconut palms in silhouette against a blue-to-gold gradient, winglet-equipped narrowbody climbing out at right, flat backlit silhouette with zero markings. Nikon D7000 EXIF. Disclosed weakness: the aircraft is only ~2.7% of frame width. |
+
+**24 opened, 22 rejected.** Both nominations plain CC BY 2.0 — no share-alike, no NoDerivatives.
+
 ### The trade-off, decided
 
 **There is no usable free-licence aircraft photograph at or over San Juan.** Pexels' "san juan
@@ -97,10 +102,14 @@ puerto rico airplane" query returns 23 results with zero aircraft exteriors. Fre
 Caribbean aviation photography is concentrated at Maho Beach, Sint Maarten — a genre built to
 show the airline; all three Maho frames opened carried a fully legible wordmark or registration.
 
-**Coordinator call: brand-clean beats destination-specific for the airfare family.** A legible
-carrier livery on a certificate that guarantees no carrier is a legal problem; a generic sunset
-approach is merely generic, and the certificates already disclose that carrier, flight and
-routing vary. The approved images are not Puerto Rico and should not be captioned as such.
+**SUPERSEDED — the Honolulu sweep disproved this.** Both HNL approvals are unmistakably Oahu AND
+completely anonymous, achieved by shooting the *destination* and letting a jet be incidental in
+the sky. Destination-specificity is achievable; the San Juan sweep searched for aircraft rather
+than for Puerto Rico.
+
+**AIR-SJU is being re-run under the corrected rule.** Its current approvals stand as a fallback
+only, and must not be captioned or alt-tagged as Puerto Rico while they do. A legible carrier
+livery remains disqualifying regardless — that part of the earlier call was right.
 
 ## Not yet verified
 

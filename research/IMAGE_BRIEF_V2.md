@@ -87,6 +87,17 @@ defeat. Their **image CDNs** do not. The working method is a two-step:
 **Method: WebFetch the search page to harvest photo IDs / `photo-<hash>` filenames, then curl the
 CDN directly.**
 
+### Beating Wikimedia's 429 via Flickr
+
+- `WebFetch` on `commons.wikimedia.org/wiki/Category:...` is **never rate-limited** and returns
+  full category listings.
+- Most Commons aviation and travel files are **Flickr imports with the Flickr ID in the filename**.
+- The Openverse API returns the `live.staticflickr.com` URL, which **downloads fine while
+  Wikimedia is 429ing**, and often holds larger sizes than Commons serves.
+- Flickr's `_k` / `_h` / `_o` size suffixes use a **different secret** than `_b` — guessing returns
+  410. Fetch `https://www.flickr.com/photos/<user>/<id>/sizes/o/` to get the real URL.
+  This is how the Honolulu nominations went from 1024px to 5191px and 4875px.
+
 ### Watch for paywalled tiers
 
 Unsplash's best travel imagery is increasingly **Unsplash+ / Getty** — a paid licence, NOT the
@@ -122,11 +133,24 @@ unexamined pass.
   2. **Directly underneath.** Airline titles live on the *upper* fuselage and the fin. A belly
      view from below shows neither. This is structurally the safest angle in aviation photography.
 
-  **Destination-specificity is not achievable here and should not be chased.** Free-licence
-  Caribbean aviation photography is concentrated almost entirely at Maho Beach, Sint Maarten —
-  a genre built specifically to show the airline, so every frame carries a legible wordmark or
-  registration. Searching for a destination geotag forces you to accept branding. Take the clean
-  silhouette instead: the certificates already disclose that carrier, flight and routing vary.
+  **THE GOVERNING RULE — shoot the destination, not the aeroplane.**
+  Every frame where the aircraft is the *subject* fails on livery. That was six for six on the
+  Honolulu sweep: Hawaiian at OGG, Delta at HNL, US Airways, Cathay, Virgin, American Trans Air.
+  The frames that pass are ones where a photographer was shooting the **place** and a jet
+  happened to be in the sky. This is the exact analogue of the cruise rule.
+
+  So search for the destination, not for aircraft: "Honolulu sunset", "Diamond Head dusk",
+  "Waikiki from Tantalus" — then check the sky. Do **not** search "Hawaiian Airlines 787".
+
+  **Destination-specificity IS achievable this way.** An earlier sweep concluded otherwise and
+  settled for a generic silhouette; the Honolulu sweep disproved it by finding two frames that
+  are both unmistakably Oahu and completely anonymous. Chase both. Only fall back to a generic
+  silhouette after a destination-led search has actually failed.
+
+  **The three-way tension, stated plainly:** destination + anonymous forces a *small* aircraft;
+  prominent + anonymous forces a *generic* location; destination + prominent always yields a
+  legible livery. Take the first. A small aeroplane over the right place beats a large anonymous
+  one over the wrong place.
 - **Condo (20):** authentic destination-specific resort or condominium exterior/grounds. No named
   resort. No theme-park branding or recognisable park landmarks for Orlando.
 - **All-inclusive (3):** authentic destination-specific resort photography. No named resort.
