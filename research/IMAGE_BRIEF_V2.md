@@ -103,6 +103,14 @@ defeat. Their **image CDNs** do not. The working method is a two-step:
 **Method: WebFetch the search page to harvest photo IDs / `photo-<hash>` filenames, then curl the
 CDN directly.**
 
+### Flickr IS enumerable (corrects an earlier note)
+
+WebFetch on a Flickr CC search exposes full `live.staticflickr.com/<server>/<id>_<secret>_n.jpg`
+URLs. **Swapping `_n` for `_b` gives the 1024px version on the same secret** — only `_k`, `_h` and
+`_o` need the `/sizes/o/` lookup. That turns a CC search into a 20-image triage in two calls.
+
+**Openverse anonymous `page_size=100` now returns 401.** Use 20; it pages cleanly to page 10+.
+
 ### Beating Wikimedia's 429 via Flickr
 
 - `WebFetch` on `commons.wikimedia.org/wiki/Category:...` is **never rate-limited** and returns
@@ -183,4 +191,7 @@ unexamined pass.
   one over the wrong place.
 - **Condo (20):** authentic destination-specific resort or condominium exterior/grounds. No named
   resort. No theme-park branding or recognisable park landmarks for Orlando.
+  **Resort signage is the live risk in this family** — verified cases include "LIVE AQUA" and
+  "Occidental Costa Cancun" both legible at 4x in Cancun hotel-zone frames. Magnify every
+  building facade and every sign-shaped object before approving.
 - **All-inclusive (3):** authentic destination-specific resort photography. No named resort.

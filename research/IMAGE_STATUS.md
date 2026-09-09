@@ -149,6 +149,35 @@ than for Puerto Rico.
 only, and must not be captioned or alt-tagged as Puerto Rico while they do. A legible carrier
 livery remains disqualifying regardless — that part of the earlier call was right.
 
+## AIR-CUN — resolved with non-Cancun imagery; the destination gap is proven exhaustive
+
+**173 Cancun / Quintana Roo frames downloaded and opened** (108 Pexels, 25 Flickr CC, 20 Unsplash,
+plus Commons and Openverse). Every dark sky anomaly was machine-detected, cropped at ~4x native and
+opened as labelled tiles — **316 tiles across three sheets**. All resolved as cloud, gull,
+parasail, swimmer, boat, palapa or noise. **Zero aircraft.**
+
+The aircraft-first check went **20 for 20 rejected** — Continental, Condor x2, AeroMexico, Orbest,
+Spirit, Interjet x2, American, Livingston, Air Transat, Cubana, Copa, Air Canada, all with legible
+titles, plus two wing-out-of-window shots and a cabin interior. The governing rule reproduced exactly.
+
+**The paywall was checked too:** Unsplash+/Getty Cancun items are palms, cenotes and umbrellas.
+No purchasable asset exists either, so this is a real gap in the photographic record, not a
+licensing gap. Nothing to buy even with budget.
+
+| Code | Candidate | Verdict | Note |
+| --- | --- | --- | --- |
+| **AIR-CUN** | **Pexels 33975086, ViRaL Bokha, Pexels License, 3024x4032** | **APPROVED** | Belly view from directly underneath through coconut-palm fronds. Aircraft 8.4% of frame width, uniform dark underside at 4.1x — no titles, logo, registration or cheatline. Foreground pole and cable fall outside the recommended crop. |
+| AIR-CUN | Pexels 19716840, Artem Makarov, Pexels License, 2981x3976 | APPROVED (alternate, portrait only) | Full black silhouette over a fiery sunset coast, 11.8% of frame width, zero markings at 3x and again at 5x delivery density. Best overlay space tested — but the jet sits at 13% height and the sunset at 65-74%, so **no 16:9 crop holds both.** Portrait or square hero only. |
+
+**Neither is Cancun.** Consistent with the AIR-SJU decision: brand-clean beats destination-specific
+for the airfare family. These must never be captioned, alt-tagged or described as Cancun.
+
+**Coordinator call on the flagged file:** Pexels 35696781 is the most beautiful frame in the sweep
+and is **refused**. 4096x3072 with no camera data fails the AI screen; the agent named it so the
+call could be made knowingly rather than silently. Same failure, worse, for 36959832/33 at
+8000x12000. Holding the line — an unexplained round-number geometry with no capture chain is
+exactly what the screen exists to catch.
+
 ## Not yet verified
 
 All remaining 37 certificates. Wave-1 agents nominated their candidates under the original
