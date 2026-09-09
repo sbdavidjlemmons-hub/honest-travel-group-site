@@ -16,7 +16,7 @@ No certificate is combined, dropped, or shared between agents.
 | 6 | CRU-LAX | los-angeles-cruise | Cruise | RUNNING |
 | 7 | CRU-MEX | mexico-cruise-region | Cruise | **DONE** |
 | 8 | CRU-MIA | miami-cruise | Cruise | **DONE** |
-| 9 | CRU-NOL | new-orleans-cruise | Cruise | RUNNING |
+| 9 | CRU-NOL | new-orleans-cruise | Cruise | **DONE** |
 | 10 | CRU-PCV | port-canaveral-cruise | Cruise | **DONE** |
 | 11 | CRU-TPA | tampa-cruise | Cruise | RUNNING |
 | 12 | CRU-WCB | western-caribbean-cruise-region | Cruise | RUNNING |
@@ -38,7 +38,7 @@ No certificate is combined, dropped, or shared between agents.
 | 23 | CON-BRE (LAUNCHED) | breckenridge-condo | Condo | **Peak ski season in window — report peak + shoulder** |
 | 24 | CON-CUN (LAUNCHED) | cancun-condo | Condo | Cancun — **condo/room-only, NOT all-inclusive** |
 | 25 | CON-CAT (LAUNCHED) | catskill-condo | Condo | Catskills NY |
-| 26 | CON-KTH | kitty-hawk-condo | Condo | Outer Banks NC — **deep off-season, thin inventory** |
+| 26 | CON-KTH (LAUNCHED) | kitty-hawk-condo | Condo | Outer Banks NC — **deep off-season, thin inventory** |
 | 27 | CON-LOZ | lake-ozark-condo | Condo | Lake of the Ozarks MO — **off-season** |
 | 28 | CON-MYR | myrtle-beach-condo | Condo | Myrtle Beach SC — **off-season** |
 | 29 | CON-ORL | orlando-condo | Condo | Orlando/Kissimmee — **no theme-park brands or landmarks** |
@@ -71,6 +71,17 @@ no named resort (assigned at confirmation), resort fees may be additional, $15/n
    agents do not re-walk dead ends; cap confidence at Medium on single-engine evidence.
 4. **License preference.** Plain CC BY / CC0 / public domain over CC BY-SA; share-alike
    obligations attach to any crop.
+5a. **CONFIRMED — advertised lengths are not available at every port.** New Orleans has NO
+   3-night product at all (Carnival returns only 4- and 5-day; RCI and NCL are 7+; Disney has
+   no 2027 season). The certificate advertises "3, 4, or 5 nights" and prices the 3-night tier
+   at the lowest charge ($145 pp) — a tier that cannot be delivered from MSY. Every cruise
+   agent must now report **which of the three advertised lengths actually exist at its port.**
+
+5b. **CONFIRMED — oceanview is the scarce class.** New Orleans returned oceanview SOLD OUT on
+   three in-window sailings while interior and balcony remained available. The certificate
+   promises specifically a lower-deck outside stateroom on 45 days' notice. Availability risk
+   on the promised category, not just on price.
+
 5. **OPEN — cruise trip-length basis.** Cruise certificates cover 3, 4, OR 5 nights. Verified
    3-night comparables run far below 4-5 night ones (Mexico: $884-$954 vs $1,432-$1,464).
    If certificates are routinely fulfilled at 3 nights, any 4-5 night comparison overstates.
