@@ -57,6 +57,16 @@ that resolves it:
    downscaled look. **If you cannot fetch the original, the candidate is UNVERIFIED, not passing.**
 4. Write down what you actually see: is the ship name legible? the line wordmark? any third-party
    sign? is it attractive?
+4a. **BEFORE REJECTING, TRY REFRAMING. This is the highest-value move available at zero budget.**
+   The deliverable is 1600x900. Sources run 4000-6000px. A branded region does **not** have to be
+   in the shipped frame. If a candidate fails only because of a wordmark in one part of the image,
+   crop a different 16:9 region and re-test — the licence already covers it and it costs nothing.
+   Port Canaveral was recovered exactly this way: the full frame carried a large "MSC" on the
+   stern, but a left-weighted crop drops the stern entirely, keeps the ship at berth, the terminal,
+   a distant second vessel and the whole sunset, and leaves only faint bow text that resolves at 3x.
+   Reframing fails when the mark is central or repeated — the Cozumel reframe put "CARNIVAL DREAM"
+   in twice plus the funnel, which is worse than the original. Test, do not assume.
+
 5. Only then mark APPROVE or REJECT, and say **"visually verified"** in the approval column.
    A candidate that was not opened is marked `NOT VISUALLY VERIFIED` and does not count.
 6. Nominate a primary and an alternate that both passed step 3.
@@ -113,6 +123,20 @@ purchasable answer is a real deliverable, not a failure.
 - **Pexels and Unsplash are often better sources than Commons for this brief** — their travel
   photography is composed to sell a destination, which is exactly the "shoot the port" framing
   the rule wants, and their licences carry no attribution or share-alike obligation.
+
+## Standing constraint: ZERO BUDGET
+
+No paid stock. No Unsplash+, no Getty, no premium_photo-. If the only compliant frame is
+paywalled, the certificate is unresolved — say so and move on; do not propose a purchase.
+
+This makes **reframing** (step 4a) and **source selection** the two levers that matter. Roughly
+120 candidates have already been rejected across the sweeps; a meaningful share of them failed on
+a *region*, not on the whole image, and are recoverable by crop at no cost. Re-testing a
+previously rejected high-resolution candidate by reframe is usually cheaper than finding a new one.
+
+Retouching to remove a mark is **not** authorised, including on CC0 files where the licence
+permits it. The client brand is "Honest Travel Group"; editing evidence photography to make a
+compliance problem disappear is off the table.
 
 ## Licence preference
 
