@@ -10,7 +10,7 @@ No certificate is combined, dropped, or shared between agents.
 |---:|---|---|---|---|
 | 1 | CRU-BAH | bahamas-cruise-region | Cruise | RUNNING |
 | 2 | CRU-CHA | charleston-cruise | Cruise | **DONE - BLOCKED** |
-| 3 | CRU-FTL | fort-lauderdale-cruise | Cruise | RUNNING |
+| 3 | CRU-FTL | fort-lauderdale-cruise | Cruise | **DONE** |
 | 4 | CRU-GAL | galveston-cruise | Cruise | RUNNING |
 | 5 | CRU-JAX | jacksonville-cruise | Cruise | RUNNING |
 | 6 | CRU-LAX | los-angeles-cruise | Cruise | RUNNING |
@@ -37,7 +37,7 @@ No certificate is combined, dropped, or shared between agents.
 | 22 | CON-BRA (LAUNCHED) | branson-condo | Condo | Branson MO |
 | 23 | CON-BRE (LAUNCHED) | breckenridge-condo | Condo | **Peak ski season in window — report peak + shoulder** |
 | 24 | CON-CUN (LAUNCHED) | cancun-condo | Condo | Cancun — **condo/room-only, NOT all-inclusive** |
-| 25 | CON-CAT | catskill-condo | Condo | Catskills NY |
+| 25 | CON-CAT (LAUNCHED) | catskill-condo | Condo | Catskills NY |
 | 26 | CON-KTH | kitty-hawk-condo | Condo | Outer Banks NC — **deep off-season, thin inventory** |
 | 27 | CON-LOZ | lake-ozark-condo | Condo | Lake of the Ozarks MO — **off-season** |
 | 28 | CON-MYR | myrtle-beach-condo | Condo | Myrtle Beach SC — **off-season** |
