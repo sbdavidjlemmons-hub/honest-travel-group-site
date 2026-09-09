@@ -14,7 +14,7 @@ No certificate is combined, dropped, or shared between agents.
 | 4 | CRU-GAL | galveston-cruise | Cruise | RUNNING |
 | 5 | CRU-JAX | jacksonville-cruise | Cruise | RUNNING |
 | 6 | CRU-LAX | los-angeles-cruise | Cruise | RUNNING |
-| 7 | CRU-MEX | mexico-cruise-region | Cruise | RUNNING |
+| 7 | CRU-MEX | mexico-cruise-region | Cruise | **DONE** |
 | 8 | CRU-MIA | miami-cruise | Cruise | **DONE** |
 | 9 | CRU-NOL | new-orleans-cruise | Cruise | RUNNING |
 | 10 | CRU-PCV | port-canaveral-cruise | Cruise | **DONE** |
@@ -36,7 +36,7 @@ No certificate is combined, dropped, or shared between agents.
 | 21 | CON-ARU (LAUNCHED) | aruba-condo | Condo | Aruba |
 | 22 | CON-BRA (LAUNCHED) | branson-condo | Condo | Branson MO |
 | 23 | CON-BRE (LAUNCHED) | breckenridge-condo | Condo | **Peak ski season in window — report peak + shoulder** |
-| 24 | CON-CUN | cancun-condo | Condo | Cancun — **condo/room-only, NOT all-inclusive** |
+| 24 | CON-CUN (LAUNCHED) | cancun-condo | Condo | Cancun — **condo/room-only, NOT all-inclusive** |
 | 25 | CON-CAT | catskill-condo | Condo | Catskills NY |
 | 26 | CON-KTH | kitty-hawk-condo | Condo | Outer Banks NC — **deep off-season, thin inventory** |
 | 27 | CON-LOZ | lake-ozark-condo | Condo | Lake of the Ozarks MO — **off-season** |
@@ -60,3 +60,22 @@ no named resort (assigned at confirmation), resort fees may be additional, $15/n
 
 ## Reconciliation
 12 cruise + 20 condo + 3 all-inclusive + 5 airfare = 40. Each code appears exactly once.
+
+## Coordinator QA rules added mid-run (from agent findings)
+
+1. **Verify the product exists before pricing it.** CRU-CHA had no bookable product at all.
+   Every agent must confirm live inventory in the certificate's own window first.
+2. **Beware stale SEO pages.** Third-party marketing pages describe inventory their own
+   booking engines no longer carry. Verify against a live search.
+3. **Source diversity.** At least 3 independent sources; document blocked sellers so other
+   agents do not re-walk dead ends; cap confidence at Medium on single-engine evidence.
+4. **License preference.** Plain CC BY / CC0 / public domain over CC BY-SA; share-alike
+   obligations attach to any crop.
+5. **OPEN — cruise trip-length basis.** Cruise certificates cover 3, 4, OR 5 nights. Verified
+   3-night comparables run far below 4-5 night ones (Mexico: $884-$954 vs $1,432-$1,464).
+   If certificates are routinely fulfilled at 3 nights, any 4-5 night comparison overstates.
+   **Needs the actual fulfillment mix from CSNG before any cruise display price is final.**
+6. **OPEN — cruise logo tension.** "Real ship at a real port" and "no visible third-party
+   logos" are in direct conflict: every ship at a real berth wears its operator's livery.
+   Current resolution is a high-resolution source cropped so branding is sub-legible.
+   Needs owner sign-off, or one of the two rules relaxes.
