@@ -103,11 +103,30 @@ Plain CC BY, CC0, public domain, or Unsplash License. Flag CC BY-SA as a caution
 attaches to any crop you publish. Never approve a file whose EXIF carries no camera make, model,
 or exposure data on a suspiciously round pixel dimension: AI cannot be positively ruled out.
 
+**Exception — Pexels strips EXIF from everything it serves.** The camera-metadata half of the
+AI screen cannot be run on any Pexels file, including un-resized originals. Run the second half
+instead: check whether the native pixel geometry corresponds to a real sensor (e.g. 4256x2392 is
+a Nikon D3-generation frame cropped to 16:9; 4032x3024 is a native 12 MP handset frame) rather
+than to generator output. Document that reasoning explicitly as a reasoned call — never as an
+unexamined pass.
+
 ## Per-family subject rules
 
 - **Cruise (12):** real passenger ship at a berth in the assigned port or region, per the formula above.
 - **Airfare (5):** a **real aircraft exterior** — on stand, taxiing, or in flight. A cabin-window
-  or wing-only shot FAILS. No identifiable livery or airline wordmark. Same distance/backlight logic.
+  or wing-only shot FAILS. No identifiable livery or airline wordmark.
+
+  **The two framings that work — proven, use these first:**
+  1. **Full silhouette against a sunset.** A backlit aircraft on short final is a solid black
+     shape: no fin mark, no titles, no registration, no colour break.
+  2. **Directly underneath.** Airline titles live on the *upper* fuselage and the fin. A belly
+     view from below shows neither. This is structurally the safest angle in aviation photography.
+
+  **Destination-specificity is not achievable here and should not be chased.** Free-licence
+  Caribbean aviation photography is concentrated almost entirely at Maho Beach, Sint Maarten —
+  a genre built specifically to show the airline, so every frame carries a legible wordmark or
+  registration. Searching for a destination geotag forces you to accept branding. Take the clean
+  silhouette instead: the certificates already disclose that carrier, flight and routing vary.
 - **Condo (20):** authentic destination-specific resort or condominium exterior/grounds. No named
   resort. No theme-park branding or recognisable park landmarks for Orlando.
 - **All-inclusive (3):** authentic destination-specific resort photography. No named resort.

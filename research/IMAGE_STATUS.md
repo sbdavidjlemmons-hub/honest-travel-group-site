@@ -80,6 +80,28 @@ prospect.
 
 `CRU-FTL` and `CRU-MIA` are **RESOLVED** — see approvals above.
 
+## Airfare — AIR-SJU resolved, and the recipe generalises
+
+| Code | Candidate | Verdict | Note |
+| --- | --- | --- | --- |
+| **AIR-SJU** | **Pexels 1076033, George Desipris, Pexels License, 4256x2392 native 16:9** | **APPROVED** | Double-verified. Sunset with a hard fan of crepuscular rays; twin-engine narrowbody on short final in complete black silhouette; a second aircraft parked on the ridge, terminal structures and airfield lights, open sea across the bottom third. At 7x on the delivery crop the aircraft is a solid black shape — no fin mark, no titles, no registration, no colour break. Two separate overlay zones. |
+| AIR-SJU | Pexels 2990971, Tom Cattini, Pexels License, 4032x3024 | APPROVED (alternate) | A320 from directly underneath at dusk, warm-lit belly, two palm crowns in silhouette lower right, ~60% unbroken blue gradient sky. Faint tail texture is present but resolves as pattern, not as a wordmark. Palms supply the tropical cue the primary lacks. |
+
+**19 opened, 15 rejected (79%).** Every suspected wordmark or tail-logo region was re-cropped at
+5-8x native before ruling.
+
+### The trade-off, decided
+
+**There is no usable free-licence aircraft photograph at or over San Juan.** Pexels' "san juan
+puerto rico airplane" query returns 23 results with zero aircraft exteriors. Free-licence
+Caribbean aviation photography is concentrated at Maho Beach, Sint Maarten — a genre built to
+show the airline; all three Maho frames opened carried a fully legible wordmark or registration.
+
+**Coordinator call: brand-clean beats destination-specific for the airfare family.** A legible
+carrier livery on a certificate that guarantees no carrier is a legal problem; a generic sunset
+approach is merely generic, and the certificates already disclose that carrier, flight and
+routing vary. The approved images are not Puerto Rico and should not be captioned as such.
+
 ## Not yet verified
 
 All remaining 37 certificates. Wave-1 agents nominated their candidates under the original
