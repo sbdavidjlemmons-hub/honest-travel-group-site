@@ -202,6 +202,25 @@ ship photograph.
 
 Two leads recorded for other ports: the best composition in the sweep (dusk harbour, cruise bow at 13% of frame, the tall ship *Elissa* in frame) is **CC BY-NC-ND — dead twice over**; and a Coast Guard wharf shot tagged NC-ND is **likely a mislabel on PD-USGov work**, which may be worth challenging on other ports.
 
+| **CRU-WCB** | **Pexels 35783406 "Sunset Cruise Ship View at Cayman Islands Beach", Tetyana Kovyrina, Pexels License, 5464x8192** | **APPROVED — best image in the project** | Double-verified. Grand Cayman at sunset: palms silhouetted left, two figures walking the sand, ship at anchor offshore, glassy water, a full pink-orange sky. Ship at 20.4% of frame width (measured by luminance threshold on the rendered file, not eyeballed). Delivery crop `(0,3900,5464,6974)` at **0.293x — a 3.42x downscale.** Pexels License: commercial use, no attribution, no share-alike. AI screen: 5464x8192 is exactly a Canon EOS R5 portrait frame, with a coherent same-body Cayman series from the photographer. |
+
+**The 100% rule, applied with margin.** At native the frame IS branded — "NORWEGIAN ENCORE" on the bow superstructure and "NCL" on the funnel are both legible. Cropped 1:1 from the *rendered* 1600x900 file and opened at 4x: the name is ~29px wide with ~2px cap height and resolves to an undifferentiated light band; "NCL" is ~7px. Same standard that approved Port Canaveral and rejected Cozumel, with more headroom than either.
+
+**Qualification accepted:** no berth infrastructure — the ship is at anchor, which is the only geometry Grand Cayman offers. **Coordinator call: fine.** This is a REGION certificate with no assigned port, and the governing standard asks for a real passenger ship in the assigned port **or relevant cruise region**. Beach, palms, Caribbean sunset and an anchored ship establish the region unambiguously.
+
+### Why Grand Cayman was the only Western Caribbean port that could work
+
+47 candidates opened across all six acceptable ports. Two structural patterns:
+
+1. **Carnival's funnel killed three otherwise-excellent frames**, including a Coxen Hole twilight shot with two lit ships at berth both wearing whale-tails, centrally and duplicated — the Cozumel failure mode exactly.
+2. **Cozumel's Punta Langosta, Roatan's Town Center, Ocho Rios' Island Village and Falmouth's Historic District are purpose-built RETAIL developments.** Every frame with real berth infrastructure also carried Rolex, Diamonds International, a Rolling Stones logo, or "MONKEY LA LA ZIP". **Port evidence and no-third-party-signage are in direct conflict at these ports** in a way they are not at Port Canaveral or Galveston.
+
+Grand Cayman resolves it precisely *because* it has no berth: tendered calls put ships a mile offshore against open water, so there are no shops to photograph.
+
+Two data-quality warnings: Commons `High-view_Ocho_Rios_Jamaica.jpg` is **badly mislabelled — it is the Marin Headlands and the Golden Gate Bridge**, and `Mahogany_Bay,_Roatan` is a photograph of a tree.
+
+Mechanics: Wikimedia's 429 now hits `upload.wikimedia.org` originals too — check `stat -c%s` before opening, since errors arrive as 2,256-byte HTML. `Special:MediaSearch` is near-useless where an `api.php` generator search filtered to >=2400px finds the same files in one call.
+
 ## CRU-MIA re-confirmed at true native
 
 The earlier Miami check used a `?w=4000` fetch, which Pexels silently capped below the 6240x4160
