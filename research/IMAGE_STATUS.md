@@ -234,6 +234,27 @@ Mechanics: Wikimedia's 429 now hits `upload.wikimedia.org` originals too — che
 
 A stalled parallel fetch in the Tampa sweep had independently completed its download of the primary's source before dying. The two files are byte-identical (md5 `753b96d549ae8be3ab4c9b7c7f459511`, 9,118,310 bytes, 6016x4016), so every brand judgement on that primary rests on a native file confirmed by two independent fetches. The brief's "if you cannot fetch the original, the candidate is UNVERIFIED" clause is satisfied with room to spare.
 
+## Condo family — CON-SED probe resolved, and it rewrote the family plan
+
+| Code | Candidate | Verdict | Note |
+| --- | --- | --- | --- |
+| **CON-SED** | **Pexels 6604588, Quintin Gellar, Pexels License, 6016x4016** | **APPROVED** | Double-verified. Two-storey condominium villas — sand brick, red barrel-tile roofs, timber balconies, lawns, cypress and willows — with the Sedona red rock escarpment behind and blue sky above. Exactly the multi-room condo product the certificate sells. Delivery crop `(0,300,6016,3684)` at **0.266x downscale**; that framing also crops an HVAC condenser and utility box off the bottom edge. 100% check: 9 native tiles across every facade plus 4 magnifications at 2x-7x. Only sign-shaped objects were a unit-number door plaque (~15px, no letterforms at 6x), a utility box, and two private hillside houses. **No resort name, logo or third-party signage at native.** |
+| CON-SED | Pexels 26867471, Allen Boguslavsky, 4032x3024 | APPROVED (alternate) | Sedona at sunset from above town: dramatic sky, full red rock skyline, southwestern tile roofs below. 0.4215x downscale, crop drops a driveway, SUV and trailer. A convincing "wordmark" resolved at 7x with brightness boost to **JPEG noise over a hedge** — a false positive, cropped out anyway. |
+
+**The probe overturned my pre-registered risk.** I expected legible property branding to be the
+dominant condo failure. It fired **once in fourteen**, and was a third-party product brand, not a
+resort name. The real number-one cause is **"not premium / not vacation-selling"** — 6 of 13
+rejections were car parks, abandoned houses, snow, gravel driveways and ruins.
+
+**And it surfaced a compliance issue I had not considered.** The approved file's Pexels title is
+"Villas of Arroyo Roble resort". The pixels name no property, but the *caption* does. Since the
+certificate names no resort and assigns the unit at confirmation, source metadata must never reach
+the site — title, filename or alt text. Now rule C1 in the brief.
+
+All seven probe rules are encoded in `IMAGE_BRIEF_V2.md` under the condo family, including the
+search vocabulary finding: `<destination> hotel` on Pexels is the best query, and "villa", "condo"
+and "vacation rental" are actively counterproductive.
+
 ## CRU-MIA re-confirmed at true native
 
 The earlier Miami check used a `?w=4000` fetch, which Pexels silently capped below the 6240x4160

@@ -198,7 +198,40 @@ unexamined pass.
   one over the wrong place.
 - **Condo (20):** authentic destination-specific resort or condominium exterior/grounds. No named
   resort. No theme-park branding or recognisable park landmarks for Orlando.
-  **Resort signage is the live risk in this family** — verified cases include "LIVE AQUA" and
-  "Occidental Costa Cancun" both legible at 4x in Cancun hotel-zone frames. Magnify every
-  building facade and every sign-shaped object before approving.
+  ### Condo family rules — from the Sedona probe (14 opened), supersede assumptions
+
+  **C1. THE CAPTION NAMES THE PROPERTY EVEN WHEN THE PIXELS DO NOT.** The approved Sedona file is
+  titled "Villas of Arroyo Roble resort" on Pexels. The certificate names no resort and assigns the
+  unit at confirmation, so **re-caption generically and never carry source metadata — title,
+  filename, alt text — through to the site.** This is a compliance rule, not a workflow note: a
+  filename naming a specific property implies a property the certificate does not guarantee.
+
+  **C2. Supply is SINGULAR, not scarce.** Sedona had exactly **one** usable resort exterior, and it
+  surfaced in all eight queries. Unsplash `sedona-hotel` returns an empty state; Openverse returns
+  1 result for "sedona resort" and 0 for condominium/villas/hotel-pool. Expect one-or-none on every
+  inland or small destination. Expect the opposite — abundance plus high signage risk — on
+  Cancun, Orlando and Punta Cana.
+
+  **C3. Shoot the destination, not the building.** The condo analogue of "shoot the port, not the
+  ship". Aerials and elevated vantages are the highest-yield framing: they put the destination's
+  signature landscape behind the roofline and push any signage below resolution.
+
+  **C4. Reject identifiable private residences.** Not a trademark problem, so the checklist waved
+  it through — and it cost the probe the best sky in its set. Add it.
+
+  **C5. The dominant rejection cause is NOT branding.** Legible property names fired **once in
+  fourteen**, and it was a third-party product brand, not a resort. The number-one cause is
+  **"not premium / not vacation-selling"** — 6 of 13 rejections: car parks, abandoned houses,
+  snow, gravel driveways, ruins. Same failure that killed Upper Algiers and the Port Canaveral
+  panorama. Judge saleability first, branding second.
+
+  **C6. Search vocabulary — this matters more than effort.**
+  - **BEST: `<destination> hotel` on Pexels.** It returns the human-written title, which is how the
+    probe identified its primary as a resort rather than housing.
+  - **NEVER "villa"** — returns Turkiye and Egypt regardless of the place name.
+  - **NEVER "condo" or "vacation rental"** — listing-site vocabulary, not photographer vocabulary.
+  - **Never search interiors.** They could be anywhere and prove no destination.
+
+  **C7. Signage still gets magnified.** "LIVE AQUA" and "Occidental Costa Cancun" were both legible
+  at 4x in Cancun hotel-zone frames. Check every facade — but expect C5 to reject the frame first.
 - **All-inclusive (3):** authentic destination-specific resort photography. No named resort.
