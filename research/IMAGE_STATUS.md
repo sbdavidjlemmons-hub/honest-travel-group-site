@@ -192,6 +192,16 @@ Tampa/Skyway results are Unsplash+). Commons produced both nominations — the f
 has beaten the commercial libraries, because the winning frame is a landscape photograph, not a
 ship photograph.
 
+| **CRU-GAL** | **"A fisherman on a pier overlooking a cruise ship", Gower Brown, Unsplash License, 6016x4016** | **APPROVED** | Double-verified. Long lens from Seawolf Park pier on Pelican Island, directly across the ship channel from the cruise berths — destination-correct, not a stand-in. Oasis-class ship at a Port of Galveston berth, tug alongside, quay, sheds, light masts, second vessel; angler and rods in the foreground give it human warmth. Bow name is an unreadable grey smear at 3x native; **no funnel logo at all**. Unsplash License: commercial use, no attribution, no share-alike. Delivery crop E `(0,250,4960,3040)` at **0.323x downscale**. |
+
+**The crop boundary is the whole result.** The full frame carries **three legible consumer brands** at native — "Coleman", "Academy SPORTS+OUTDOORS", "FISH ID CHART" — all at x >= 5140. Every recommended crop stops at **x = 4960** and drops all three. Never crop past x = 4980.
+
+**One honest defect, flagged not buried:** the ship is 45% of native width and **55% of the delivery crop**, against the ~40% guideline. It is unimprovable — the bow sits only 965px from the left edge, and widening right re-admits the brands. Coordinator call: **approve.** The 40% rule is a means to the end of illegible branding, and that end is achieved here despite the means being exceeded. The agent published its measurements so the call is reversible.
+
+**No second independent Galveston image exists.** The alternate is the same source at a different framing, stated plainly rather than padded. 28 opened plus ~44 triaged across contact sheets; ~150 results enumerated over 16 queries. **Pexels has no cruise ship at a Galveston berth at all; Unsplash has exactly one, and it is the primary.**
+
+Two leads recorded for other ports: the best composition in the sweep (dusk harbour, cruise bow at 13% of frame, the tall ship *Elissa* in frame) is **CC BY-NC-ND — dead twice over**; and a Coast Guard wharf shot tagged NC-ND is **likely a mislabel on PD-USGov work**, which may be worth challenging on other ports.
+
 ## CRU-MIA re-confirmed at true native
 
 The earlier Miami check used a `?w=4000` fetch, which Pexels silently capped below the 6240x4160
