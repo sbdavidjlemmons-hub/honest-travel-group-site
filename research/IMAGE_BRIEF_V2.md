@@ -159,6 +159,11 @@ Plain CC BY, CC0, public domain, or Unsplash License. Flag CC BY-SA as a caution
 attaches to any crop you publish. Never approve a file whose EXIF carries no camera make, model,
 or exposure data on a suspiciously round pixel dimension: AI cannot be positively ruled out.
 
+**Unsplash strips EXIF too** — the exception below is not Pexels-only. But Unsplash gives you a
+free substitute: the numeric prefix of `photo-<n>-<hash>` is a **Unix upload timestamp**
+(`1543511670` -> 2018-11-29, cross-checked against a third file's stated publish date). That is a
+positive, zero-cost pre-generative provenance check available on every Unsplash file.
+
 **Exception — Pexels strips EXIF from everything it serves.** The camera-metadata half of the
 AI screen cannot be run on any Pexels file, including un-resized originals. Run the second half
 instead: check whether the native pixel geometry corresponds to a real sensor (e.g. 4256x2392 is
@@ -212,7 +217,24 @@ unexamined pass.
   inland or small destination. Expect the opposite — abundance plus high signage risk — on
   Cancun, Orlando and Punta Cana.
 
-  **C3. Shoot the destination, not the building.** The condo analogue of "shoot the port, not the
+  **C3. SHOOT THE STRIP, NOT THE RESORT — the governing rule, 100% predictive across 15 candidates.**
+  Elevate until **no single building is the subject**. Every ground-level or single-building frame
+  in the Myrtle Beach probe failed; every elevated multi-building frame passed. It is also the
+  stronger *compliance* test: a many-property frame cannot imply a guarantee even when the one
+  property in it carries no name. Aerials and elevated vantages are the highest-yield framing.
+
+  **C3b. MAGNIFY THE LOW BUILDINGS, NOT THE TALL ONES.** Resort nameplates failed only 1 of 15.
+  **Street-level retail signage failed 5 of 15** — one frame carried six legible brands at once
+  (DIRTY DON'S, FUN PLAZA, BOARDWALK Paradise, ATM, N.Y. STYLE PIZZA, plus the SkyWheel). An agent
+  who magnifies the towers finds nothing and ships a frame branded along its bottom edge.
+
+  **C3c. CONVERT A HIGH-ZOOM FIND INTO DELIVERED PIXELS BEFORE REJECTING ON IT.** The Myrtle Beach
+  SkyWheel is 36px at native and found at 7x — but **14px in the delivered file, no colour, no
+  wordmark, unresolvable as a ferris wheel at 1:1.** The 100% rule cuts both ways: it catches
+  false positives from downscaled looks AND false negatives from over-magnified ones. Measure in
+  the shipped file.
+
+  **C3d. Shoot the destination, not the building.** The condo analogue of "shoot the port, not the
   ship". Aerials and elevated vantages are the highest-yield framing: they put the destination's
   signature landscape behind the roofline and push any signage below resolution.
 
@@ -226,8 +248,14 @@ unexamined pass.
   panorama. Judge saleability first, branding second.
 
   **C6. Search vocabulary — this matters more than effort.**
-  - **BEST: `<destination> hotel` on Pexels.** It returns the human-written title, which is how the
-    probe identified its primary as a resort rather than housing.
+  - **Destination-dependent — run both.** On a small inland destination, **`<destination> hotel`
+    on Pexels** is best: it returns the human-written title, which is how the Sedona probe
+    identified its primary as a resort rather than housing. On a dense resort strip,
+    **`<destination>` ALONE on Unsplash** is best: bare "myrtle beach" returned both winners.
+  - **Every amenity word is a "destination solvent".** `north myrtle beach condo` pulled in Orange
+    Beach Alabama; `oceanfront condo` returned zero Myrtle Beach across 24 results and produced a
+    flawless unbranded frame from the wrong coastline. **Adding the state name is pure waste** and
+    promotes paywalled Unsplash+ items. Roughly half of one probe's search calls were lost this way.
   - **NEVER "villa"** — returns Turkiye and Egypt regardless of the place name.
   - **NEVER "condo" or "vacation rental"** — listing-site vocabulary, not photographer vocabulary.
   - **Never search interiors.** They could be anywhere and prove no destination.
