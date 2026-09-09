@@ -1,0 +1,62 @@
+# Agent queue — 40 certificates
+
+Platform cap: **20 concurrent subagents** (`CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS`).
+Assignment requires 40. Running a persistent queue: launch to the cap, refill as slots free.
+No certificate is combined, dropped, or shared between agents.
+
+## Wave 1 — LAUNCHED (20/20 slots)
+
+| # | Code | Slug | Family | Status |
+|---:|---|---|---|---|
+| 1 | CRU-BAH | bahamas-cruise-region | Cruise | RUNNING |
+| 2 | CRU-CHA | charleston-cruise | Cruise | RUNNING |
+| 3 | CRU-FTL | fort-lauderdale-cruise | Cruise | RUNNING |
+| 4 | CRU-GAL | galveston-cruise | Cruise | RUNNING |
+| 5 | CRU-JAX | jacksonville-cruise | Cruise | RUNNING |
+| 6 | CRU-LAX | los-angeles-cruise | Cruise | RUNNING |
+| 7 | CRU-MEX | mexico-cruise-region | Cruise | RUNNING |
+| 8 | CRU-MIA | miami-cruise | Cruise | RUNNING |
+| 9 | CRU-NOL | new-orleans-cruise | Cruise | RUNNING |
+| 10 | CRU-PCV | port-canaveral-cruise | Cruise | RUNNING |
+| 11 | CRU-TPA | tampa-cruise | Cruise | RUNNING |
+| 12 | CRU-WCB | western-caribbean-cruise-region | Cruise | RUNNING |
+| 13 | AIN-CUN | cancun-all-inclusive | All-inclusive | RUNNING |
+| 14 | AIN-DOM | dominican-republic-all-inclusive | All-inclusive | RUNNING |
+| 15 | AIN-MBJ | montego-bay-all-inclusive | All-inclusive | RUNNING |
+| 16 | AIR-SJD | cabo-san-lucas-airfare-credit | Airfare | RUNNING |
+| 17 | AIR-CUN | cancun-airfare-credit | Airfare | RUNNING |
+| 18 | AIR-CRI | costa-rica-airfare-credit | Airfare | RUNNING |
+| 19 | AIR-HNL | honolulu-airfare-credit | Airfare | RUNNING |
+| 20 | AIR-SJU | san-juan-airfare-credit | Airfare | RUNNING |
+
+## Wave 2 — QUEUED (launch as slots free)
+
+| # | Code | Slug | Family | Destination note for the agent |
+|---:|---|---|---|---|
+| 21 | CON-ARU | aruba-condo | Condo | Aruba |
+| 22 | CON-BRA | branson-condo | Condo | Branson MO |
+| 23 | CON-BRE | breckenridge-condo | Condo | **Peak ski season in window — report peak + shoulder** |
+| 24 | CON-CUN | cancun-condo | Condo | Cancun — **condo/room-only, NOT all-inclusive** |
+| 25 | CON-CAT | catskill-condo | Condo | Catskills NY |
+| 26 | CON-KTH | kitty-hawk-condo | Condo | Outer Banks NC — **deep off-season, thin inventory** |
+| 27 | CON-LOZ | lake-ozark-condo | Condo | Lake of the Ozarks MO — **off-season** |
+| 28 | CON-MYR | myrtle-beach-condo | Condo | Myrtle Beach SC — **off-season** |
+| 29 | CON-ORL | orlando-condo | Condo | Orlando/Kissimmee — **no theme-park brands or landmarks** |
+| 30 | CON-PKC | park-city-condo | Condo | **Peak ski season in window — report peak + shoulder** |
+| 31 | CON-PFG | pigeon-forge-condo | Condo | Pigeon Forge TN |
+| 32 | CON-SCO | scottsdale-condo | Condo | Scottsdale AZ — **peak season in window** |
+| 33 | CON-SED | sedona-condo | Condo | Sedona AZ |
+| 34 | CON-SEV | sevierville-condo | Condo | Sevierville TN |
+| 35 | CON-SLT | south-lake-tahoe-condo | Condo | **Peak ski season in window** |
+| 36 | CON-STM | st-maarten-condo | Condo | St. Maarten — **peak Caribbean season in window** |
+| 37 | CON-VAB | virginia-beach-condo | Condo | Virginia Beach VA — **off-season** |
+| 38 | CON-WHI | whitefish-condo | Condo | Whitefish MT — **ski season** |
+| 39 | CON-WBG | williamsburg-condo | Condo | Williamsburg VA |
+| 40 | CON-WID | wisconsin-dells-condo | Condo | Wisconsin Dells WI — **indoor-waterpark season** |
+
+All 20 wave-2 certificates share one term set: 7 nights, resort condominium, up to 4 travelers,
+no named resort (assigned at confirmation), resort fees may be additional, $15/night/traveler
++ $150 deposit. Only the destination comparable set and imagery differ.
+
+## Reconciliation
+12 cruise + 20 condo + 3 all-inclusive + 5 airfare = 40. Each code appears exactly once.
