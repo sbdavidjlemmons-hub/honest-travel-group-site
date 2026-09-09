@@ -10,8 +10,8 @@ Standard: `research/IMAGE_BRIEF_V2.md`.
 
 | Code | Candidate | Verdict | Note |
 | --- | --- | --- | --- |
-| CRU-PCV | Sunset — Port Canaveral (CC BY 2.0, 6050x3058) | **APPROVED** | Best in set. Backlit ship at berth, terminal + parking structure in frame, small MSC mark only, large clean sky for overlay. Needs a 1600x900 crop check at 100%. |
-| CRU-MEX | Mega Cruise Ships, Cozumel (CC BY 2.0, 5065x2804) | **APPROVED** | Mooring dolphins and gangway prove the berth. Bow name small and low-contrast. Needs a 1600x900 crop check at 100%. |
+| CRU-PCV | Sunset — Port Canaveral (CC BY 2.0, 6050x3058) | **REVERSED — REJECTED** | Passed a 1600px look, failed the native check. Cropped from the 3840px file: **"MSC" in large letters on the stern, the MSC crest beside it, "MSC MERAVIGLIA" legible on the bow, and the MSC compass mark on the funnel.** What read as "a small MSC mark" downscaled is a full wordmark at native. Port Canaveral has no artwork. |
+| CRU-MEX | Mega Cruise Ships, Cozumel (CC BY 2.0, 5065x2804) | **REVERSED — REJECTED** | Passed a 1600px look, failed the native check. Cropped from the 3840px file: **"FREEDOM OF THE SEAS" fully legible across the bow.** What read as "small and low-contrast" downscaled is plainly readable at native. Mexico has no artwork. |
 | CRU-PCV | Port Canaveral Panorama (CC BY-SA 4.0) | REJECTED | Industrial: gantry cranes, cement silos, tanker, car parks. Ships are specks. |
 | CRU-MIA | Carnival Glory, PortMiami (CC BY 2.0) | REJECTED | "Carnival Glory" legible across the hull; whale-tail funnel centre frame. Uncroppable. |
 | CRU-FTL | Celebrity Equinox, Port Everglades (CC BY 2.0) | REJECTED | "Celebrity EQUINOX" and "Celebrity X Cruises" legible; Crowley containers. |
@@ -79,6 +79,23 @@ prospect.
   not an ocean ship, so it fails the rule as written.
 
 `CRU-FTL` and `CRU-MIA` are **RESOLVED** — see approvals above.
+
+## Native-resolution re-check of all coordinator approvals (2026-09-09)
+
+Prompted by an agent that caught itself nearly approving a file after measuring a suspect mark on
+a 1920px copy and computing it unreadable — then fetching the original and finding "Sheraton"
+legible on a 300px rooftop sign. The same check was run against every coordinator approval.
+
+| Code | Native check | Result |
+| --- | --- | --- |
+| CRU-MIA | 4000px crop of the bow region | **HOLDS.** Bow markings remain unresolvable smudges; no wordmark, no funnel logo. |
+| CRU-FTL | 2048px native, ship band cropped and 2x upscaled | **HOLDS.** All three ship names remain illegible. The modest native resolution actively helps: there is not enough detail to resolve a name. |
+| CRU-PCV | 3840px crop of the ship | **FAILS.** Large "MSC" on the stern plus crest, "MSC MERAVIGLIA" on the bow, MSC compass on the funnel. |
+| CRU-MEX | 3840px crop of the bow | **FAILS.** "FREEDOM OF THE SEAS" fully legible. |
+
+**Two of four reversed.** The downscaled look is not a substitute for the published-resolution
+check, and this failure mode is more dangerous than the metadata one because it feels like
+verification.
 
 ## Airfare — AIR-SJU resolved, and the recipe generalises
 

@@ -49,6 +49,12 @@ that resolves it:
    `{"User-Agent":"HVM-image-verification/1.0 (rights and suitability check)"}`
    Commons direct URL: `https://commons.wikimedia.org/w/api.php?action=query&titles=File:NAME&prop=imageinfo&iiprop=url|size|extmetadata&iiurlwidth=1600&format=json`
 3. **Open it with the Read tool and look at it.** This is not optional.
+3a. **THE 100% RULE — check the brand on the file that will be published, at full resolution.**
+   Looking at a downscaled copy is NOT verification. It produces *false positives*, which are the
+   expensive kind: a wordmark that reads as a faint smudge at 1600px can be a 300px sign at native.
+   Crop the suspect region out of the **native-resolution** file (PIL is available) and open the
+   crop. Two coordinator approvals were reversed by exactly this check after passing a
+   downscaled look. **If you cannot fetch the original, the candidate is UNVERIFIED, not passing.**
 4. Write down what you actually see: is the ship name legible? the line wordmark? any third-party
    sign? is it attractive?
 5. Only then mark APPROVE or REJECT, and say **"visually verified"** in the approval column.
