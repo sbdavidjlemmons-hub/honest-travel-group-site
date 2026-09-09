@@ -17,7 +17,7 @@ No certificate is combined, dropped, or shared between agents.
 | 7 | CRU-MEX | mexico-cruise-region | Cruise | RUNNING |
 | 8 | CRU-MIA | miami-cruise | Cruise | RUNNING |
 | 9 | CRU-NOL | new-orleans-cruise | Cruise | RUNNING |
-| 10 | CRU-PCV | port-canaveral-cruise | Cruise | RUNNING |
+| 10 | CRU-PCV | port-canaveral-cruise | Cruise | **DONE** |
 | 11 | CRU-TPA | tampa-cruise | Cruise | RUNNING |
 | 12 | CRU-WCB | western-caribbean-cruise-region | Cruise | RUNNING |
 | 13 | AIN-CUN | cancun-all-inclusive | All-inclusive | RUNNING |
@@ -33,7 +33,7 @@ No certificate is combined, dropped, or shared between agents.
 
 | # | Code | Slug | Family | Destination note for the agent |
 |---:|---|---|---|---|
-| 21 | CON-ARU | aruba-condo | Condo | Aruba |
+| 21 | CON-ARU (LAUNCHED) | aruba-condo | Condo | Aruba |
 | 22 | CON-BRA | branson-condo | Condo | Branson MO |
 | 23 | CON-BRE | breckenridge-condo | Condo | **Peak ski season in window — report peak + shoulder** |
 | 24 | CON-CUN | cancun-condo | Condo | Cancun — **condo/room-only, NOT all-inclusive** |
