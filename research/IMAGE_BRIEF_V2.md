@@ -65,7 +65,34 @@ that resolves it:
 - The API's `thumburl` points at `thumb.wikimedia.org`, which 400s. Rewrite it to
   `upload.wikimedia.org/.../thumb/<a>/<ab>/<name>/<w>px-<name>` using the hash prefix from the
   returned original URL.
-- **Openverse** is a useful CC-only aggregator. Anonymous `page_size` maxes at 20; percent-encode spaces.
+- **Openverse** anonymous search works (no longer 401). Accepts `license=by,cc0,pdm,by-sa` and
+  `size=large`. But its results are almost entirely Wikimedia files you have already seen — it
+  adds little beyond Commons.
+
+### Defeating the bot walls — use WebFetch, not curl
+
+Pexels and Unsplash **search pages** sit behind bot protection that a browser User-Agent does not
+defeat. Their **image CDNs** do not. The working method is a two-step:
+
+| Endpoint | plain curl | works via |
+| --- | --- | --- |
+| `www.pexels.com/search/...` | 403 Cloudflare interstitial | **WebFetch** renders it fully |
+| `unsplash.com/s/photos/...` | 401 Anubis bot wall | **WebFetch** renders it fully |
+| `unsplash.com/napi/search/photos` | 401 | — |
+| `images.pexels.com/photos/<ID>/pexels-photo-<ID>.jpeg?...&w=1920` | **200** | plain curl, any UA |
+| `images.unsplash.com/photo-<HASH>?w=2400&q=85` | **200** | plain curl, any UA |
+| `source.unsplash.com/<id>/1920x1080` | 503, endpoint retired | do not use |
+| `www.flickr.com/search/` | 200 but thumbnails carry no titles or attribution | unusable for enumeration |
+
+**Method: WebFetch the search page to harvest photo IDs / `photo-<hash>` filenames, then curl the
+CDN directly.**
+
+### Watch for paywalled tiers
+
+Unsplash's best travel imagery is increasingly **Unsplash+ / Getty** — a paid licence, NOT the
+Unsplash License this brief permits. A `premium_photo-` prefix in the filename marks it. If the
+only compliant frame for a destination is paywalled, **say so and name the exact asset** — a
+purchasable answer is a real deliverable, not a failure.
 - **Pexels and Unsplash are often better sources than Commons for this brief** — their travel
   photography is composed to sell a destination, which is exactly the "shoot the port" framing
   the rule wants, and their licences carry no attribution or share-alike obligation.

@@ -48,7 +48,28 @@ image**. The agent declined to nominate rather than pass a fourth failure throug
 4. The homeport lines are Carnival and NCL, and Carnival's red funnel is a high-contrast mark
    that survives exactly the silhouetting and distance the V2 rule relies on.
 
-**Unblocks available:**
+### V3 RESOLUTION — buy stock. 78 candidates opened across two sweeps.
+
+The V2 blockage was broken: Unsplash, Openverse, Pexels and Flickr were all reached and their
+complete New Orleans river inventories enumerated. 40 further candidates downloaded and opened.
+**Nothing passes, and the reason is now precise rather than speculative:**
+
+1. Unsplash's good New Orleans river/dusk imagery is **Getty / Unsplash+ — a paid licence**, not
+   the Unsplash License. The free tier contains **no ocean cruise ship at New Orleans at all.**
+2. Exactly **one image in 40** held a real ocean cruise ship at berth in good light — a Carnival
+   ship whose red whale-tail funnel and orange hull artwork are unmistakable at 4x, with "WESTIN"
+   and "Marriott" legible in the same frame.
+3. Pexels' entire New Orleans cruise-ship inventory is **two photographs**, both already rejected in V2.
+
+**The frame that solved Miami does exist for New Orleans — it is simply purchasable, not free:**
+`premium_photo-1733281223460-9ad20c22960c` — "Telephoto Drone Shot of Downtown New Orleans at
+Sunset", Getty via Unsplash+, and its siblings.
+
+**Coordinator recommendation: buy it.** One licensed image resolves the certificate that two full
+sweeps and 78 opened candidates could not. Further free-source searching here is spend without
+prospect.
+
+**Other unblocks (now largely superseded):**
 - A **Flickr API key** would reach substantial CC BY New Orleans riverfront work this sweep
   could not: Unsplash's API, Openverse's API and openverse.org all returned 401/403 this session.
 - **Paid stock with a commercial release** for this one certificate.
