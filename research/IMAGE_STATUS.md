@@ -27,7 +27,35 @@ Standard: `research/IMAGE_BRIEF_V2.md`.
 
 ## Needs new candidates — zero usable artwork today
 
-`CRU-NOL` — every nominated candidate rejected on sight. Replacement agent running.
+### CRU-NOL — 38 candidates opened, zero pass. Escalating.
+
+A full re-sweep (34 Wikimedia + 4 Pexels, all downloaded and opened) produced **no compliant
+image**. The agent declined to nominate rather than pass a fourth failure through. Near-misses:
+
+- *Norwegian Sun at berth, blue hour* — the only NOLA frame that genuinely looks like a vacation.
+  Magnified 3x: "NORWEGIAN SUN" unambiguously legible on the bow, plus legible "Sheraton" and
+  "Hilton" rooftop signs. Name sits at the bow, so no crop rescues it.
+- *CBD from the Crescent City Connection* — structurally right, but the red Carnival whale-tail
+  funnel is the brightest object in frame, "Sheraton" and "RIVERWALK" are legible, and a rusted
+  bridge guardrail crosses the bottom edge.
+
+**Why this is structural, not bad luck:**
+1. The berths sit directly under the Riverwalk outlet mall, so any frame containing the berth
+   contains the mall sign.
+2. The only elevated viewpoints are hotels, and the New Orleans skyline *is* hotel signage.
+3. The river is a working freight channel, so backlit distance shots reliably contain barges
+   and gantries.
+4. The homeport lines are Carnival and NCL, and Carnival's red funnel is a high-contrast mark
+   that survives exactly the silhouetting and distance the V2 rule relies on.
+
+**Unblocks available:**
+- A **Flickr API key** would reach substantial CC BY New Orleans riverfront work this sweep
+  could not: Unsplash's API, Openverse's API and openverse.org all returned 401/403 this session.
+- **Paid stock with a commercial release** for this one certificate.
+- **Relaxing the subject rule** to "the riverfront the cruise departs from" would make Pexels
+  39004104 usable today — golden hour from the Algiers bank, clean sky, open water for overlay,
+  berth visible, no legible ship name, only a faint "Westin". Its vessel is a paddlewheeler,
+  not an ocean ship, so it fails the rule as written.
 
 `CRU-FTL` and `CRU-MIA` are **RESOLVED** — see approvals above.
 
