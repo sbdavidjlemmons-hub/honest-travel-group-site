@@ -178,6 +178,26 @@ call could be made knowingly rather than silently. Same failure, worse, for 3695
 8000x12000. Holding the line — an unexplained round-number geometry with no capture chain is
 exactly what the screen exists to catch.
 
+## Cruise batch — CRU-TPA resolved
+
+| Code | Candidate | Verdict | Note |
+| --- | --- | --- | --- |
+| **CRU-TPA** | **"Bridge Ship 2458", Kenneth John Gill, CC BY-SA 4.0, 6016x4016** | **APPROVED — best cruise image in the set** | Double-verified. Sunshine Skyway Bridge in silhouette with a cruise ship passing beneath at sunset, ship at **8.3% of frame width**. The agent tiled the entire horizon band at native 1:1 in three 2000px tiles: **zero text anywhere in the frame**, no signage of any kind, transom smear does not resolve into letters at 3x, funnel an undifferentiated dark block. Delivery crop is a 0.417x downscale — no upscaling. Enormous red-orange sky and dark water for overlay. **Caution: CC BY-SA, share-alike attaches to the published crop.** |
+| CRU-TPA | "Florida-6", Ajay Suresh, CC BY 2.0, 3456x3456 | APPROVED (alternate, with caveat) | Tampa CBD skyline, Radiance-class ship outbound with tug, Port Tampa Bay berth. Ship 20.1% of width, no name on bow or hull, no funnel logo at 1.8x native. **Caveat: the distant skyline carries "SunTrust" (79px native, 37px at delivery) and a small PNC mark — legible at native, illegible at 1600x900.** Cannot be reframed away without pushing the ship to ~65% of width, which the agent tested and rejected. |
+| CRU-TPA | Pexels 10634522, Carnival Paradise under the Skyway | **REJECTED (coordinator call)** | The agent offered but did not nominate it: a left-weighted reframe drops both "Paradise" wordmarks and leaves the funnel as an unidentifiable red wedge between bridge piers. Best licence of the three. **Refused** — the whale-tail rule exists because that mark survives silhouetting, and the primary is clean, so there is no reason to take the risk. The agent was right not to make this call itself. |
+
+**Coverage:** 20 opened, 17 rejected on sight with native-crop reasons logged. Pexels holds exactly
+**one** Tampa-region cruise photo across four queries; Unsplash holds **zero** free (its only
+Tampa/Skyway results are Unsplash+). Commons produced both nominations — the first time Commons
+has beaten the commercial libraries, because the winning frame is a landscape photograph, not a
+ship photograph.
+
+## CRU-MIA re-confirmed at true native
+
+The earlier Miami check used a `?w=4000` fetch, which Pexels silently capped below the 6240x4160
+native. Re-fetched with no query string and re-cropped the bow at 3x of true native: the markings
+remain unresolvable dark smudges, no letterforms. **Approval stands.**
+
 ## Not yet verified
 
 All remaining 37 certificates. Wave-1 agents nominated their candidates under the original

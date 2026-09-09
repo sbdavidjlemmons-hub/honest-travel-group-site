@@ -95,13 +95,20 @@ defeat. Their **image CDNs** do not. The working method is a two-step:
 | `www.pexels.com/search/...` | 403 Cloudflare interstitial | **WebFetch** renders it fully |
 | `unsplash.com/s/photos/...` | 401 Anubis bot wall | **WebFetch** renders it fully |
 | `unsplash.com/napi/search/photos` | 401 | — |
-| `images.pexels.com/photos/<ID>/pexels-photo-<ID>.jpeg?...&w=1920` | **200** | plain curl, any UA |
+| `images.pexels.com/photos/<ID>/pexels-photo-<ID>.jpeg` **(no query string)** | **200, TRUE NATIVE** | plain curl — **use this for brand checks** |
+| `images.pexels.com/...jpeg?...&w=1920` | 200 but **silently capped below native** | fine for triage, NEVER for the 100% rule |
 | `images.unsplash.com/photo-<HASH>?w=2400&q=85` | **200** | plain curl, any UA |
 | `source.unsplash.com/<id>/1920x1080` | 503, endpoint retired | do not use |
 | `www.flickr.com/search/` | 200 but thumbnails carry no titles or attribution | unusable for enumeration |
 
 **Method: WebFetch the search page to harvest photo IDs / `photo-<hash>` filenames, then curl the
 CDN directly.**
+
+**CRITICAL — strip the query string for the 100% check.** Both CDNs silently serve *less* than
+native when you pass a size parameter: `pexels-photo-<ID>.jpeg?w=4000` returned 4000x2667 where
+the true native is 6240x4160, and `images.unsplash.com/photo-<hash>?w=2400` destroys a small
+aircraft before you can brand-check it. Fetch **with no query string at all** before running the
+100% rule. Triage at a sized URL if you like; verify only at native.
 
 ### Flickr IS enumerable (corrects an earlier note)
 
