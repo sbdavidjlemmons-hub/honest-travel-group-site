@@ -221,6 +221,19 @@ Two data-quality warnings: Commons `High-view_Ocho_Rios_Jamaica.jpg` is **badly 
 
 Mechanics: Wikimedia's 429 now hits `upload.wikimedia.org` originals too — check `stat -c%s` before opening, since errors arrive as 2,256-byte HTML. `Special:MediaSearch` is near-useless where an `api.php` generator search filtered to >=2400px finds the same files in one call.
 
+| **CRU-LAX** | **"Quantum of the Seas Departs San Pedro (Dec 2025)", Jack Adamenko, CC0, 4032x2268** | **APPROVED — weakest of the approved cruise set aesthetically** | Double-verified. A **reframe recovery** and the cleanest licence in the project. `QUANTUM OF THE SEAS` sits at native x 1878-2118; the crop starts at **x = 2130, twelve pixels clear**. Delivery crop `(2130,330,3730,1230)` is **1600x900 at scale 1.000 — pure pixel-for-pixel, no resampling, no upscale.** Bare plating at the left edge, no funnel, no logo, no commercial signage; palms, port buildings, clean sky and water. Ship ~23% of frame width. Full iPhone 11 EXIF (4.25mm, f/1.8, ISO 32), so AI is positively ruled out. **Disclosed: "U. S. COAST GUARD" is legible on moored cutters** — federal rather than commercial, but the middle band reads partly as a Coast Guard station, and the frame sells a working harbour more than a vacation. Accepted because it is compliant, CC0, unresampled, and Los Angeles is genuinely hard. |
+| CRU-LAX | "Navigator of the Seas Departs San Pedro", Jack Adamenko, CC0, 4032x2268 | APPROVED (alternate, two deviations) | Best-looking travel frame in the sweep — passengers along the bow rail in golden light, wharf, palms. 0.941x downscale. **Two disclosed deviations:** a backlit container gantry bank across the right ~40% of width, and the ship at ~44% of frame width. Removing the gantries leaves only 1100px of clean region, needing a 1.45x upscale; reducing the ship reintroduces the wordmark. |
+
+**Hard limit on this certificate: both files cap at exactly 1600x900.** A 2x retina hero would need a 2.00x / 1.88x upscale, which is not recommended.
+
+**41 candidates opened, 39 rejected; 92 further Flickr results triaged on contact sheets.** Three 100%-rule reversals worth recording: a Pexels frame looked plausible until "Regatta" and the Oceania funnel mark resolved sharply; the best-composed Long Beach frame died when the Carnival whale-tail resolved as the brightest object; and a Lions Lighthouse frame with ideal structure carried a full-size Costa "C" on the funnel. A Ruby Princess bow-on frame was reframe-tested and rejected on arithmetic — every crop excluding the tank-farm domes pushed the ship to 63-74% of frame width.
+
+**Four structural reasons Los Angeles is hard:** the cruise berths sit inside a container complex; the homeport lines are Carnival, Princess and RCI; Long Beach's photogenic waterfront faces *away* from the cruise terminal; and the Queen Mary is a decoy that dissolves eight otherwise usable frames. The agent notes explicitly that **buying stock would not have helped — the gap is in what exists, not in what is free.**
+
+## CRU-TPA primary independently corroborated
+
+A stalled parallel fetch in the Tampa sweep had independently completed its download of the primary's source before dying. The two files are byte-identical (md5 `753b96d549ae8be3ab4c9b7c7f459511`, 9,118,310 bytes, 6016x4016), so every brand judgement on that primary rests on a native file confirmed by two independent fetches. The brief's "if you cannot fetch the original, the candidate is UNVERIFIED" clause is satisfied with room to spare.
+
 ## CRU-MIA re-confirmed at true native
 
 The earlier Miami check used a `?w=4000` fetch, which Pexels silently capped below the 6240x4160
