@@ -9,7 +9,7 @@ No certificate is combined, dropped, or shared between agents.
 | # | Code | Slug | Family | Status |
 |---:|---|---|---|---|
 | 1 | CRU-BAH | bahamas-cruise-region | Cruise | RUNNING |
-| 2 | CRU-CHA | charleston-cruise | Cruise | RUNNING |
+| 2 | CRU-CHA | charleston-cruise | Cruise | **DONE - BLOCKED** |
 | 3 | CRU-FTL | fort-lauderdale-cruise | Cruise | RUNNING |
 | 4 | CRU-GAL | galveston-cruise | Cruise | RUNNING |
 | 5 | CRU-JAX | jacksonville-cruise | Cruise | RUNNING |
@@ -35,7 +35,7 @@ No certificate is combined, dropped, or shared between agents.
 |---:|---|---|---|---|
 | 21 | CON-ARU (LAUNCHED) | aruba-condo | Condo | Aruba |
 | 22 | CON-BRA (LAUNCHED) | branson-condo | Condo | Branson MO |
-| 23 | CON-BRE | breckenridge-condo | Condo | **Peak ski season in window — report peak + shoulder** |
+| 23 | CON-BRE (LAUNCHED) | breckenridge-condo | Condo | **Peak ski season in window — report peak + shoulder** |
 | 24 | CON-CUN | cancun-condo | Condo | Cancun — **condo/room-only, NOT all-inclusive** |
 | 25 | CON-CAT | catskill-condo | Condo | Catskills NY |
 | 26 | CON-KTH | kitty-hawk-condo | Condo | Outer Banks NC — **deep off-season, thin inventory** |

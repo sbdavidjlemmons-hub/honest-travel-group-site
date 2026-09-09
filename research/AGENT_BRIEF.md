@@ -25,7 +25,19 @@ smaller savings claim).
 | All-inclusive (3) | $269 pp (top of range) x 2 = **$538** | $298 | 5 days / 4 nights, 2 adults |
 | Airfare (5) | $150 pp x 2 = **$300**, plus all base fare above $500 and all air taxes/fees | $240 | 5 days / 4 nights room-only, 2 adults, + $500 base-airfare credit |
 
-**Deposit treatment is unresolved.** Report savings BOTH ways: `charges only` and `charges + deposit`.
+**PAYMENT TIMING — CONFIRMED BY OWNER 2026-09-09:**
+
+- **$0 is collected at the presentation.** Nothing is paid to attend, and nothing is paid on the day.
+- The reservation deposit is taken **only at the time the traveler reserves their travel date**,
+  not at the presentation.
+- All traveler-paid charges land **at booking**, never before.
+
+This is a materially stronger and more honest claim than a savings figure, because it is
+verifiable and unconditional. Lead with it.
+
+**Still unresolved:** whether the deposit is *applied toward* the traveler charges, *additional
+to* them, or *refunded* at travel. Until an owner answers, report savings BOTH ways:
+`charges only` and `charges + deposit`.
 
 ## Comparable-pricing standard
 
@@ -121,10 +133,17 @@ Write exactly one file: `research/reports/[CODE]_RESEARCH.md`
 
 (primary + alternate)
 
-## Display output A — compliant reference framing
-Comparable public rates for a similar trip researched [date]: $X,XXX.
-Research context only — not the certificate charge, cash value, or guaranteed savings.
-Your certificate charges: $XXX plus a $XXX reservation deposit.
+## Display output A — compliant reference framing (owner-confirmed payment timing)
+**$0 today.** Nothing is collected at the presentation.
+
+Just 45-60 minutes of your time, with your spouse, while we show you the benefits of travel.
+
+When you are ready to reserve your travel date, you pay the stated reservation and booking
+costs — and not before: $XXX in charges plus a $XXX reservation deposit.
+
+Comparable public rates for a similar trip, researched [date]: $X,XXX. Research context only —
+not the certificate charge, cash value, or guaranteed savings.
+
 All terms, conditions, availability, taxes, and applicable fees apply.
 
 ## Display output B — requested savings framing
@@ -133,6 +152,8 @@ All terms, conditions, availability, taxes, and applicable fees apply.
 **ROUGHLY, A SAVINGS OF $X,XXX**
 
 **For just 45–60 minutes of your time, together with your spouse, while we show you the benefits of travel.**
+
+**$0 today — nothing is collected at the presentation.**
 
 **You pay the stated reservation and booking costs only when you are ready to select your travel dates.**
 
