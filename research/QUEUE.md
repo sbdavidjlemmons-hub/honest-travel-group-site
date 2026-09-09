@@ -8,7 +8,7 @@ No certificate is combined, dropped, or shared between agents.
 
 | # | Code | Slug | Family | Status |
 |---:|---|---|---|---|
-| 1 | CRU-BAH | bahamas-cruise-region | Cruise | RUNNING |
+| 1 | CRU-BAH | bahamas-cruise-region | Cruise | **DONE** |
 | 2 | CRU-CHA | charleston-cruise | Cruise | **DONE - BLOCKED** |
 | 3 | CRU-FTL | fort-lauderdale-cruise | Cruise | **DONE** |
 | 4 | CRU-GAL | galveston-cruise | Cruise | RUNNING |
@@ -39,7 +39,7 @@ No certificate is combined, dropped, or shared between agents.
 | 24 | CON-CUN (LAUNCHED) | cancun-condo | Condo | Cancun — **condo/room-only, NOT all-inclusive** |
 | 25 | CON-CAT (LAUNCHED) | catskill-condo | Condo | Catskills NY |
 | 26 | CON-KTH (LAUNCHED) | kitty-hawk-condo | Condo | Outer Banks NC — **deep off-season, thin inventory** |
-| 27 | CON-LOZ | lake-ozark-condo | Condo | Lake of the Ozarks MO — **off-season** |
+| 27 | CON-LOZ (LAUNCHED) | lake-ozark-condo | Condo | Lake of the Ozarks MO — **off-season** |
 | 28 | CON-MYR | myrtle-beach-condo | Condo | Myrtle Beach SC — **off-season** |
 | 29 | CON-ORL | orlando-condo | Condo | Orlando/Kissimmee — **no theme-park brands or landmarks** |
 | 30 | CON-PKC | park-city-condo | Condo | **Peak ski season in window — report peak + shoulder** |
