@@ -18,10 +18,15 @@ Standard: `research/IMAGE_BRIEF_V2.md`.
 | CRU-FTL | Aerial, Port Everglades (CC BY-SA 4.0) | REJECTED | "CARNIVAL CONQUEST" and "CARIBBEAN PRINCESS" both legible. |
 | CRU-NOL | Cruise ships Mississippi River (CC BY-SA 4.0) | REJECTED | "NORWEGIAN DAWN" + "CARNIVAL" + an Outlet Collection Riverwalk mall sign. |
 | CRU-NOL | Upper Algiers stroll (CC BY-SA 4.0) | REJECTED | Wheelie bins, razor wire, utility poles, parked cars. Unusable commercially. |
+| **CRU-FTL** | **Port Everglades — Alistair Cunningham (CC BY 3.0, 2048x1536)** | **APPROVED** | Double-verified: agent opened it, coordinator re-opened it. Three ships at berth at 15/30/21% frame width, terminal buildings, palms, tug, channel buoy, parking structure. No legible name or wordmark on any of the three ships. No third-party signage. Top ~35% clean sky, bottom ~40% clean water. Only limit is modest resolution — fine for a 1600x900 card hero, not a full-bleed 2560px one. |
+| CRU-FTL | Leaving the port before night falls (CC BY 3.0, 2304x1728) | APPROVED (alternate) | Agent-verified. Dusk at the inlet, ship backlit behind the jetty, no readable branding. Two disclosed deviations: ship at ~48% frame width (over the 40% target) and port evidence is a channel jetty rather than berth infrastructure. Neither affects the brand test. |
+| CRU-FTL | Sunset behind the cruiser (CC BY 3.0) | REJECTED | Previously approved on metadata as "low logo risk, backlit silhouette." Opened: "CONSTELLATION" legible in dark type across the hull, bow fills the frame. Backlighting did not wash it out. |
 
 ## Needs new candidates — zero usable artwork today
 
-`CRU-MIA`, `CRU-FTL`, `CRU-NOL` — every nominated candidate rejected on sight.
+`CRU-MIA`, `CRU-NOL` — every nominated candidate rejected on sight. Replacement agents running.
+
+`CRU-FTL` is **RESOLVED** — see the approved primary and alternate above.
 
 ## Not yet verified
 
