@@ -120,6 +120,26 @@ puerto rico airplane" query returns 23 results with zero aircraft exteriors. Fre
 Caribbean aviation photography is concentrated at Maho Beach, Sint Maarten — a genre built to
 show the airline; all three Maho frames opened carried a fully legible wordmark or registration.
 
+### AIR-SJU final — two verified options, designer picks
+
+43 further candidates opened under the destination-first rule. Destination-specific San Juan
+imagery **does** exist free-licensed, disproving the V2 conclusion. But every San Juan option
+trades away something, so both are recorded rather than one being forced:
+
+| Option | Destination | Aircraft | Sharpness | Verdict |
+| --- | --- | --- | --- | --- |
+| **V2 sunset silhouette** (Pexels 1076033) | Generic — reads Mediterranean | Prominent, full black silhouette, zero markings | Sharp, native 16:9 | **PRIMARY.** Best image; satisfies the standard as written ("real passenger air travel **or** an aircraft connected to the destination context"). |
+| **V3 San Juan tight** (Unsplash 1613845968442) | Unmistakable — Castillo San Cristobal, PR flag, Condado skyline | Visible airliner at 2.44% frame width, no titles/fin logo/registration at 22x | **Soft** — 1.62x upscale from a 990px native crop | **ALTERNATE.** Use where place-authenticity matters more than crispness. |
+| V3 San Juan wide (same source, full-width crop) | Superb — garita, La Perla, ramparts, surf | Reduced to a ~10px speck | Sharp, 0.42x downscale | Rejected as an *airfare* hero: it no longer communicates air travel. |
+| V3 alternate (Unsplash 1693878981296) | Not visible at 16:9 | Tiny Cessna | Sharp | Rejected. Flat grey overcast, no destination in frame, and a light single-engine aircraft does not read as airfare. |
+
+Both delivery crops are committed under `research/crops/`.
+
+**Mechanics learned:** `images.unsplash.com/photo-<hash>` with **no query string** returns the full
+native original — a `?w=` fetch destroys small subjects before you can brand-check them. Unsplash
+photo pages also expose stated location and camera make/model, so the camera half of the AI screen
+**can** be run on Unsplash files, unlike Pexels.
+
 **SUPERSEDED — the Honolulu sweep disproved this.** Both HNL approvals are unmistakably Oahu AND
 completely anonymous, achieved by shooting the *destination* and letting a jet be incidental in
 the sky. Destination-specificity is achievable; the San Juan sweep searched for aircraft rather
