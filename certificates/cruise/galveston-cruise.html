@@ -108,7 +108,8 @@ footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-si
 
 /* certificate-experience-v2: one shared kinetic contract for all 40 offers */
 .flip{position:relative;outline:none;--ease:cubic-bezier(.22,.8,.22,1)}
-.flip .card{height:var(--card-height,620px);min-height:0}
+/* A filter on the rotating parent flattens its 3D faces, including on hover. */
+.flip .card{height:var(--card-height,620px);min-height:0;filter:none!important}
 .stage-control{position:absolute;inset:0;z-index:8;width:100%;border:0;border-radius:28px;background:transparent;color:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .stage-control:focus-visible{outline:4px solid #b7a568;outline-offset:6px}
 .flip[data-stage="1"] .card{transform:translateY(-16px) scale(1.012);filter:drop-shadow(0 30px 34px rgba(9,45,34,.24))}
