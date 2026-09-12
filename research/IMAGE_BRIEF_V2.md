@@ -266,6 +266,13 @@ unexamined pass.
   - **NEVER "condo" or "vacation rental"** — listing-site vocabulary, not photographer vocabulary.
   - **Never search interiors.** They could be anywhere and prove no destination.
 
+  **C6a. TWO-WORD PLACE NAMES ARE DESTINATION SOLVENTS ON PEXELS.** "Virginia Beach" splits into
+  `virginia` + `beach` and returned **zero usable frames in 24 results** — Ocean City MD, Richmond,
+  Warnemunde, Daytona, Miami Beach, Chincoteague. Worse, three Ocean City frames are *titled*
+  "Virginia Beach", so the human-written titles that make Pexels best for Sedona actively mislead
+  here. **Unsplash's per-photo Location field is the fix.** Expect the same on Panama City Beach,
+  Ocean City, Palm Springs, Long Beach, Gulf Shores, Myrtle Beach.
+
   **C6b. VERIFY THE STATED LOCATION BEFORE DOWNLOADING, NOT AFTER.** Destination queries pull
   neighbouring places constantly: an "outer banks" search returned Holden Beach (250 mi away) and
   Wrightsville Beach; a Pexels "aruba hotel" set was heavily contaminated with Curacao and Bonaire,
