@@ -14,7 +14,7 @@
 
 | Slot | Asset | Source | Licence | Native | Visually verified |
 | --- | --- | --- | --- | --- | --- |
-| **PRIMARY** | `photo-1609184889233-eff6dd93def4` | Unsplash — Mick Haupt | Unsplash License | 6720 x 4480 | **YES — visually verified.** 100% rule run at native, plus 1.4x / 3x scans and a 6x check on the delivered file. **Recovered by reframe.** |
+| **PRIMARY** | `photo-1609184889233-eff6dd93def4` (page slug `Tyn3-Cljx-A`) | Unsplash — Mick Haupt | Unsplash License | 6720 x 4480 | **YES — visually verified.** 100% rule run at native, plus 1.4x / 3x scans and a 6x check on the delivered file. **Recovered by reframe.** Location stated at source as *Lake Eola, Orlando, FL*; camera on the photo page is a Canon EOS 5D Mark IV. |
 | **ALTERNATE** | Pexels photo **261101** | Pexels — Pixabay | Pexels License | 7205 x 4038 | **YES — visually verified.** 100% rule run at native, plus 2x / 2.4x scans across every facade, fence and deck marking. |
 
 Fetch URLs — **no query string**. These are the exact files that were brand-checked and the exact
@@ -170,6 +170,26 @@ Disclosures:
 The primary is the **compliance-strongest** frame available for this destination. The alternate is
 the **sales-strongest**. Nominating both, in that order, is the honest split.
 
+### C4b — lodging is in frame, checked deliberately
+
+The brief's new rule warns that optimising hard for "no branding" drifts into pure landscape:
+attractive, unbranded, correctly-located frames with **no lodging in them at all**. Checked
+explicitly, before the logo pass rather than after:
+
+- **PRIMARY: lodging is the entire subject.** Eight-plus residential condominium towers fill the
+  middle band of the frame — balcony stacks, curtain wall, a round glass tower. Not a landscape
+  with buildings incidentally in it; the buildings *are* the horizon.
+- **ALTERNATE: lodging is present but secondary.** The subject is an amenity deck; the tile-roofed
+  pavilion is in frame and a second resort building sits behind the hedge on the right. This is the
+  weaker of the two on C4b — it proves a *resort*, not a *unit*. Acceptable for a condo certificate,
+  where the amenity is a large part of what is being sold, but it is the reason this frame is the
+  alternate and not the primary.
+
+The drift C4b describes was real here and was caught: candidates **#32** (Florida wetland with
+cabbage palms) and **#33** (palm crowns against sky) are both attractive, entirely unbranded and
+plausibly Floridian — and both were rejected precisely because **no lodging appears in either**.
+They would have passed every compliance test and failed the product.
+
 ---
 
 ## 6. The Orlando hard constraint — the failure mode, confirmed
@@ -317,18 +337,40 @@ accounted for 8. Wrong destination for 3.
 
 ### AI / pre-generative screen
 
-**PRIMARY.** Unsplash strips EXIF (confirmed: `getexif()` returns 0 keys). The brief's free
-substitute applies — the numeric prefix of `photo-<n>-<hash>` is a Unix upload timestamp:
+**PRIMARY — passes on three independent signals.**
+
+The served file carries no EXIF (confirmed: `getexif()` returns 0 keys). But per the brief's
+amended rule, **Unsplash strips EXIF from the file and publishes the camera on the photo page.**
+Read the page, not the file:
 
 ```
-1609184889  →  2020-12-28 19:48:09 UTC
+https://unsplash.com/photos/city-skyline-across-body-of-water-during-daytime-Tyn3-Cljx-A
+
+Camera:    Canon, EOS 5D Mark IV
+Published: December 28, 2020 (UTC)
+Location:  Lake Eola, Orlando, FL, USA
+Licence:   Free to use under the Unsplash License   (not Unsplash+)
 ```
 
-December 2020. **Comfortably pre-generative**, and it independently corroborates the seasonal
-reading of the frame (holiday ornaments on the shore, December fountain colours, bare cypress) —
-two independent signals agreeing is a stronger provenance check than either alone. The sibling file
-#12 carries the same timestamp to the second, consistent with two frames from one shoot uploaded
-together.
+1. **Camera recovered.** A Canon EOS 5D Mark IV is a real 2016 full-frame DSLR. The camera half of
+   the AI screen is satisfied on positive evidence, not on absence.
+2. **Timestamp method cross-validates.** The filename prefix decodes as
+   `1609184889 → 2020-12-28 19:48:09 UTC`, which matches the page's stated publish date of
+   **December 28, 2020** exactly. The two methods agree independently.
+3. **The frame's own content agrees.** Holiday ornaments on the shore, the fountain in its December
+   colours, bare cypress on the bank — a late-December scene, consistent with both dates.
+
+December 2020 is **comfortably pre-generative**. The sibling file #12 carries the same filename
+timestamp to the second, consistent with two frames from one shoot uploaded together.
+
+**Bonus — destination proof is now documentary, not inferential.** The photo page states the
+location as **"Lake Eola, Orlando, FL, USA"** in the photographer's own metadata. The primary is
+not merely *identifiable* as Orlando from the fountain; it is *stated* as Orlando at source. That
+removes the last soft spot in the primary's case.
+
+**C1 note:** this location string is source metadata like any other. It names a **public park**,
+not a lodging property, so it implies no guarantee and is benign — but it still must not be carried
+through as alt text or a filename. Use the generic re-caption in §3.
 
 **ALTERNATE.** Per the brief's Pexels exception, the camera-metadata half of the screen cannot be
 run — Pexels strips EXIF from everything, and what survives here is only orientation, resolution
