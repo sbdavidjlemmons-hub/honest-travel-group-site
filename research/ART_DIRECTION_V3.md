@@ -90,3 +90,60 @@ the art is held until the certificate is retired or re-pointed.
 2. All-inclusive (S4) — three, highest signage risk of any family.
 3. Cruise replacements (S5).
 4. Condo interiors (S3) — twenty, plus the one shared template edit.
+
+---
+
+# Second pass — Jacksonville through Scottsdale
+
+Same review, continuing alphabetically.
+
+| Code | Certificate | His call | Action |
+|---|---|---|---|
+| CRU-JAX | Jacksonville cruise | "out. The ship gone. Leave the certificate." | **Replace** — port/waterfront, **no ship in frame**. Certificate stays |
+| AIR-HNL | Honolulu airfare | "an airplane in there and a better picture of Honolulu" | **Replace** — was the reference frame, now superseded |
+| CON-KTH | Kitty Hawk condo | "terrible. Condos are okay, but closer to the water" | **Replace** — oceanfront, buildings nearer the shoreline |
+| CON-LOZ | Lake of the Ozarks | "looks great" | **Keep** |
+| CRU-LAX | Los Angeles cruise | "fine" | **Keep** |
+| CRU-MEX | Mexico cruise region | "get rid of it. Get a real ship in there" | **Replace** — see reversal below |
+| CRU-MIA | Miami cruise | "great, perfect" | **Keep** |
+| AIN-MBJ | Montego Bay all-inclusive | "actual resort and all-inclusive amenities" | **Replace** — S4 |
+| CON-MYR | Myrtle Beach condo | "looks great" | **Keep** |
+| CRU-NOL | New Orleans cruise | "horrible" | **Replace** |
+| CON-ORL | Orlando condo | "great" | **Keep** |
+| CON-PKC | Park City condo | "great" | **Keep** |
+| CON-PFG | Pigeon Forge condo | "great" | **Keep** |
+| CRU-PCV | Port Canaveral cruise | "great" | **Keep** |
+| AIR-SJU | San Juan airfare | "horrible. Needs better landscape and a small airplane more visible" | **Replace** |
+| CON-SCO | Scottsdale condo | "great" | **Keep** |
+
+## S2 refined
+
+"A small airplane **more visible**." The aircraft stays small in the frame — it is never the
+subject — but it must read unmistakably as an aircraft at shipped size, not as a speck the
+eye skips. Both airfare frames he rejected failed on that: one is a generic silhouette with
+no destination, the other buries the aircraft. All five airfare certificates are now
+replacements, the family's reference frame included.
+
+## Reversal on CRU-MEX
+
+"Get a real ship in there" reverses **shoot the port, not the ship** for Mexico. That rule
+was not aesthetic — it is what kept hull wordmarks out of frame, and it held across roughly
+600 candidates. Mexico specifically failed twice on exactly this: "FREEDOM OF THE SEAS"
+legible across the bow, and a reframe that put "CARNIVAL DREAM" in twice.
+
+Taking the instruction: a ship in frame, with the name not legible at shipped size. That
+narrows the qualifying frame to distance, stern-on or bow-on angle, heavy backlight, or a
+ship small enough in frame that letterforms collapse. It is a real constraint, not a refusal
+— contrast decides survival, not pixel span, so a backlit hull at 20% frame width can pass
+where a lit one at 8% does not.
+
+CRU-JAX takes the opposite instruction — no ship at all — which is the easier of the two.
+
+## Running tally after both passes
+
+| | Count |
+|---|---:|
+| Keep as-is | 11 |
+| Hero replacements | 17 |
+| Condo interiors to add | 20 |
+| Not yet reviewed (Sedona through Wisconsin Dells) | 9 |
