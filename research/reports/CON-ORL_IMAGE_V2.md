@@ -149,7 +149,16 @@ Residual disclosures, both measured in the **delivered** file per C3c:
 Disclosures:
 
 - **Depth markers** (`3 FT`, `3 FT 6 IN`, `4 FT`) are cast into the pool coping. These are safety
-  markings, not brands or property names; at the 0.2229x delivery scale each is ~14 px.
+  markings, not brands and not property names, so they carry no compliance weight.
+  **Correction, and it matters:** an earlier draft of this report called them "~14 px, unreadable".
+  That was wrong, and the brief's newest lesson — *letterforms survive downscaling where shapes do
+  not* — is why. Re-cropping the region `(700, 580) → (1500, 640)` **out of the delivered
+  1600 x 900 file** and magnifying it **8x** renders `3 FT 6 IN` and `4 FT` **fully and
+  unambiguously legible**. At 1:1 they read as dark ticks on the tile band, but the letterforms are
+  genuinely there in the shipped pixels. Nothing is retracted — these are not marks the brief
+  prohibits — but the *reasoning* is corrected: this frame does not pass because its text is
+  destroyed by the downscale. It passes because **the only text in it is safety text.**
+  Do not reuse the "it's small, so it's gone" argument on a letterform.
 - **Three people are present** — two adults mid-stride in the left third, and a child's head in the
   pool. At delivery scale each head is **≈ 15 px**; none is identifiable, none is the subject, none
   is facing camera square-on. The Pexels License permits this, but flagged so it is a **decision

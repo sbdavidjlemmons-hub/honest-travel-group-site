@@ -272,6 +272,12 @@ unexamined pass.
     A St Maarten sweep pulled Trunk Bay USVI, Marigot Bay St Lucia, Martinique, Puerto Rico and
     St Kitts — 8 wrong islands in 34. **Run both spellings**: the approved St Maarten frame appears
     under `sint maarten` but NOT under `st maarten`.
+  - **WHEN THE PLACE NAME FAILS, SEARCH A NAMED PHYSICAL LANDMARK INSIDE IT.** The Catskills is a
+    dispersed region with no single town name that works: "hunter" returns Mongolian eagle hunters
+    on both platforms, "ski resort village" returns the Alps and Carpathians. What worked was
+    `ashokan reservoir` — a named feature *within* the destination. This is the dispersed-region
+    analogue of bare "myrtle beach" beating every amenity phrasing, and it should be the third
+    query tried everywhere: place name, then place + hotel, then a landmark inside the place.
   - **START WITH THE BARE PLACE NAME ON UNSPLASH, EVERYWHERE.** Three destinations have now
     inverted the Pexels-first guidance: `sevierville hotel` returned hotel signage from Spain and
     Germany, `park city hotel` returned Ballarat, Merida, Astana and Amsterdam with zero Park City,
