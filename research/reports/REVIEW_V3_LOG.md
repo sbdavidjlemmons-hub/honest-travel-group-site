@@ -107,3 +107,28 @@ live geometry, alt text updated on `cruise.html` (both instances), `condo.html`,
 - **hawaii-waikiki-sunset** — needs a new candidate, Royal Hawaiian rejected
 - **CON-SLT interior, cabo-bluehour** — confirmed unresolved, no action pending
 - Awaiting: New Orleans alt (superseded — main NOL already approved), Cancun-aircraft alt for AIR-CUN, final airfare family report (AIR-HNL/SJU/CUN/SJD/CRI)
+
+## Airfare family — final results
+
+| Code | Verdict | Note |
+|---|---|---|
+| AIR-SJU | **APPROVED — full S2 standard met** | Real San Juan beach, aircraft small but readable, zero legible livery. The one airfare cert to satisfy destination + aircraft + no-livery all at once. |
+| AIR-SJD | **APPROVED — destination-only** | El Arco/Land's End, Cabo. No free aircraft-plus-Cabo combo exists without legible livery. Strict upgrade over an owner-rejected image. |
+| AIR-CRI | **APPROVED — destination-only** | Arenal volcano at dusk. The one aircraft-present alternate (SJO tarmac) fails "destination not airport" harder than going without a plane. |
+| AIR-CUN | **APPROVED — destination-only, confirmed exhaustive** | 1,367 candidates across two agents, zero with both Cancun and a visible aircraft. Real Cancun landscape ships in place of a non-Cancun placeholder. |
+| AIR-HNL | **No change** | Only aircraft-present candidate has "DELTA" legible. A clean no-aircraft reframe was tested (after catching a second Royal Hawaiian Hotel intrusion on zoom) but was judged not a net improvement against the owner's actual ask, so the current Tantalus Heights image — which already has a clean aircraft — stands. |
+
+**Second Royal Hawaiian catch:** the AIR-HNL fallback candidate also contained the Royal
+Hawaiian Hotel, cropped out and re-verified clean before being set aside (unused, since HNL
+wasn't swapped). Two independent candidates in two different families both defaulted to this
+landmark — worth remembering as a specific Honolulu risk going forward.
+
+## Session total
+
+**19 of 19 flagged replacements resolved** — 15 approved and shipped as full or partial wins,
+1 approved-then-reversed-then-reapproved (AIR-CUN, twice), 1 deliberately left unchanged after
+testing an alternative (AIR-HNL), plus AIN-MBJ and CRU-MEX each took two candidate rounds.
+Every image composited to production was opened and judged by eye at 1600x900 before shipping;
+several agent self-reports (CRU-MEX Princess logo, AIN-MBJ single-property framing without
+noting the CON-SED precedent, this session's own initial AIR-HNL Royal Hawaiian miss) were
+caught or corrected on independent review rather than taken at face value.

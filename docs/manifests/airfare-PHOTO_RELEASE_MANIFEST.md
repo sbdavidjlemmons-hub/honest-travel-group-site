@@ -4,9 +4,9 @@
 > licensing history on the original shared photo only; it is **not** an accurate description
 > of what ships today.
 >
-> Current source of truth: `research/IMAGE_STATUS.md` (per-certificate verdict and reasoning)
-> and `research/reports/AIRFARE_V3.md` where a V3 pass exists for this family. Per-image
-> source, photographer, and licence are cited in `research/IMAGE_STATUS.md`.
+> Current source of truth: `research/IMAGE_STATUS.md` (per-certificate verdict and reasoning),
+> `research/reports/AIRFARE_V3.md`, and `research/reports/AIRFARE_CUN_ALT_V3.md` for this
+> family. Per-image source, photographer, and licence are cited in `research/IMAGE_STATUS.md`.
 
 ---
 
