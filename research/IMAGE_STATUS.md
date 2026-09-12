@@ -6,6 +6,41 @@ its metadata says.
 
 Standard: `research/IMAGE_BRIEF_V2.md`.
 
+## V3 supersessions (2026-09-12) — READ THIS FIRST for these 11 codes
+
+Everything below this section is historical record — what was tried, what failed, and why.
+For the 11 codes in this table, the verdict here is current; older entries further down for
+the same code describe a prior candidate that this V3 pass replaced. Full review reasoning:
+`research/reports/REVIEW_V3_LOG.md`. Art direction driving this pass: `research/ART_DIRECTION_V3.md`.
+
+| Code | Verdict | Source | Note |
+| --- | --- | --- | --- |
+| CRU-BAH | **APPROVED (V3)** | Pexels 27011618, Simon Hurry | Hog Island lighthouse, ship <3% width on the horizon, fully backlit. Zero legible marks. |
+| CRU-FTL | **APPROVED (V3) — resolution upgrade** | Pexels 9867744, Blue Arauz | Golden-hour Las Olas bridge + marina, 2.5x the resolution of the prior approval. Dockside mural verified by zoom as civic sailfish art, not a brand. |
+| CRU-JAX | **APPROVED (V3) — reframe** | Pexels 10788521, Mike Jones | Full frame had "WELLS FARGO" legible; reframe drops it. Ship absent by design — owner's instruction, not a compliance workaround. |
+| CRU-MEX | **APPROVED (V3) — second candidate** | Unsplash `YYSKPYHOq4E`, Alonso Reyes | First candidate (Cabo, Pexels 17415444) rejected on independent zoom — a legible Princess Cruises funnel logo the sourcing agent's own report missed. This candidate (Holland America's Maasdam, Puerto Vallarta, sunset) passes: stern text invisible at delivered size, only a soft smudge under heavy zoom. |
+| CRU-NOL | **APPROVED (V3)** | Pexels 25003118 | St. Louis Cathedral silhouette across the river at sunset. First clean frame after 88 candidates across three sweeps — see the escalation history below, now resolved. |
+| AIN-CUN | **APPROVED (V3)** | Pexels 20210509, israwmx | Multi-property pool strip, 3 properties in frame, beach, palapas. Zero text. |
+| AIN-DOM | **APPROVED (V3) — reframe** | Pexels 11227594, Antonio Florentini | Full frame had a "Royalton" pool-floor wordmark; crop stops well short of it, verified by independent zoom on the crop boundary. |
+| AIN-MBJ | **UNRESOLVED — a prior candidate was rejected** | — | A single-property frame (Iberostar Rose Hall) was nominated and rejected: one building, one pool, one view — the exact failure mode the multi-property rule exists to prevent. Awaiting a specialist search. |
+| CON-KTH | **APPROVED (V3)** | Pexels 5345349, Tangie Bodden | Cottages directly on the dune line, ocean immediately behind — the literal fix for "closer to the water." |
+| CON-SEV | **APPROVED (V3)** | Unsplash `photo-1708290178777-55f92dea1355` | 9-12 cabins on a ridge, Smoky Mountains backdrop. Minor seasonal snow dusting noted, not disqualifying. |
+| CRU-GAL | **No change — confirmed no upgrade exists** | (unchanged) | Specialist search triaged ~90 candidates; best challenger has no ship and no berth (fails the cruise-family rule) plus a legible Bubba Gump roundel. Current Unsplash Gower Brown frame stands. |
+
+Also this pass: condo interiors added (second image, card back) for `branson-condo`,
+`cancun-condo`, `catskill-condo`, `wisconsin-dells-condo` — all four APPROVED, sourced and
+verified in `research/reports/CONDO_INTERIORS_V3.md`. `south-lake-tahoe-condo` interior stays
+**UNRESOLVED** (best candidate carries a legible SAMSUNG mark and shows no kitchen).
+
+Two landing-page (non-certificate) subjects were also replaced: `img/cruise-sunset*` and
+`img/hawaii-condo-resort*`. The outgoing `cruise-sunset` was carrying a live compliance defect
+— "REGAL PRIN…" and "HAMILT…" legible at delivered size — independent of this project's scope
+but caught and fixed in the same pass. `img/hawaii-waikiki-sunset*` was also reviewed and
+**rejected**: the candidate is unmistakably the Royal Hawaiian Hotel, identifiable by
+architecture and color alone. The current image stands until a replacement is found.
+`img/cabo-bluehour*` stays **UNRESOLVED** — no free source exists at the required 3:4 portrait
+geometry.
+
 ## Verified by eye
 
 | Code | Candidate | Verdict | Note |
