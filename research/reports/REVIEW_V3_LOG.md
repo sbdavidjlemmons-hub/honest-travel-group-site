@@ -78,3 +78,32 @@ hawaii-condo-resort (landing).
 hawaii-waikiki-sunset (named landmark).
 
 **Honestly unresolved, no free source exists: 2** — cabo-bluehour, CON-SLT.
+
+## CRU-MEX resolved — second candidate approved, CRU-GAL confirmed no upgrade
+
+| Code | Verdict | Note |
+|---|---|---|
+| CRU-MEX | **APPROVED (supersedes the earlier rejection)** | Unsplash `YYSKPYHOq4E`, Alonso Reyes — Holland America's Maasdam at sea in Banderas Bay, Puerto Vallarta, sunset silhouette. Zoomed the stern nameplate myself at both LANCZOS and NEAREST: at delivered 1600x900, unzoomed, the text is not visible at all — it reads as hull texture. Only under ~6x artificial magnification does a soft, low-contrast smudge emerge, and even then it does not resolve into confidently legible letters. This matches this project's own established PASS precedent (Miami, Fort Lauderdale: "readable only under 3x magnification" was explicitly approved), not the Princess-logo FAIL precedent (an obvious colored shape visible at a glance, no zoom needed). Composited and live. |
+| CRU-GAL | **No upgrade — Seawolf Park stays** | Specialist agent exhausted the free pool (~90 candidates triaged, 8 native). Best challenger (Pleasure Pier dusk) has no ship and no berth — fails the cruise-family rule outright, plus a legible Bubba Gump roundel. Current image is confirmed the strongest free option. |
+
+## Composited to production this session (9 certificates + 4 interiors + 2 landing subjects)
+
+`bahamas-cruise-region`, `fort-lauderdale-cruise`, `jacksonville-cruise`, `mexico-cruise-region`,
+`new-orleans-cruise`, `cancun-all-inclusive`, `dominican-republic-all-inclusive`,
+`kitty-hawk-condo`, `sevierville-condo` — all 1600x900, badge matches family colour/label.
+
+`branson-condo`, `cancun-condo`, `catskill-condo`, `wisconsin-dells-condo` — interior added to
+card back, one shared CSS rule (`.back-shot`, `.back-shot-note`), representative-photography
+disclosure text included. `south-lake-tahoe-condo` deliberately left untouched (UNRESOLVED).
+
+`img/cruise-sunset*` (6 files) and `img/hawaii-condo-resort*` (6 files) re-rendered at exact
+live geometry, alt text updated on `cruise.html` (both instances), `condo.html`, `partners.html`.
+`img/hawaii-waikiki-sunset*` and `img/cabo-bluehour*` left untouched (rejected / unresolved).
+
+## Still open
+
+- **CRU-CHA** — held, commercial decision not artwork
+- **AIN-MBJ** — awaiting Montego Bay specialist agent
+- **hawaii-waikiki-sunset** — needs a new candidate, Royal Hawaiian rejected
+- **CON-SLT interior, cabo-bluehour** — confirmed unresolved, no action pending
+- Awaiting: New Orleans alt (superseded — main NOL already approved), Cancun-aircraft alt for AIR-CUN, final airfare family report (AIR-HNL/SJU/CUN/SJD/CRI)
