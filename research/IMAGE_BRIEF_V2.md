@@ -159,6 +159,11 @@ Plain CC BY, CC0, public domain, or Unsplash License. Flag CC BY-SA as a caution
 attaches to any crop you publish. Never approve a file whose EXIF carries no camera make, model,
 or exposure data on a suspiciously round pixel dimension: AI cannot be positively ruled out.
 
+**Pexels does not strip ALL EXIF** — natives retain a `Copyright` tag; what it strips is the
+camera make/model/exposure block. **Watch for precise power-of-two multiples of handset geometry**
+(16320x12240 and 13056x9792 are exact 4x upscales) with zero EXIF — six files in one photographer's
+set showed this pattern and were flagged rather than nominated.
+
 **Unsplash strips EXIF from the FILE but PUBLISHES the camera on the photo PAGE.** Confirmed
 repeatedly: "Hasselblad L1D-20c (DJI Mavic 2 Pro)", "DJI FC6310", "Canon EOS R5", each with a
 capture date. **This recovers the camera half of the AI screen at zero cost** — read the page, not
@@ -262,6 +267,11 @@ unexamined pass.
   panorama. Judge saleability first, branding second.
 
   **C6. Search vocabulary — this matters more than effort.**
+  - **PLACE-NAME COLLISIONS ARE AS STRONG A SOLVENT AS AMENITY WORDS, AND SPELLINGS DIVERGE.**
+    `philipsburg` on Unsplash returns Philipsburg **Montana and Pennsylvania** in 14 of 16 results.
+    A St Maarten sweep pulled Trunk Bay USVI, Marigot Bay St Lucia, Martinique, Puerto Rico and
+    St Kitts — 8 wrong islands in 34. **Run both spellings**: the approved St Maarten frame appears
+    under `sint maarten` but NOT under `st maarten`.
   - **START WITH THE BARE PLACE NAME ON UNSPLASH, EVERYWHERE.** Three destinations have now
     inverted the Pexels-first guidance: `sevierville hotel` returned hotel signage from Spain and
     Germany, `park city hotel` returned Ballarat, Merida, Astana and Amsterdam with zero Park City,
