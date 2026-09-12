@@ -320,6 +320,14 @@ unexamined pass.
   which share the same Dutch-Caribbean architecture and divi-divi trees. Read the source page's
   stated location field first — it costs nothing and saves multi-megabyte fetches.
 
+  **C8. SOME DESTINATIONS FAIL ON OWNERSHIP, NOT SIGNAGE.** In Orlando, signage fired only twice
+  in 31 files — but **eleven candidates were Disney- or Universal-owned property**. The trap: the
+  best resort aerial in that sweep is Disney's Caribbean Beach Resort, and the *same file* is
+  captioned "scenic resort in Lake Buena Vista" under one query and "Disney's Caribbean Beach
+  Resort" under another. Its Skyliner gondolas crop out cleanly — but a reframe fixes a landmark,
+  not an identity. **Cross-check every shortlisted frame against a second query's caption**; one
+  extra fetch catches it.
+
   **C7. Signage still gets magnified.** "LIVE AQUA" and "Occidental Costa Cancun" were both legible
   at 4x in Cancun hotel-zone frames. Check every facade — but expect C5 to reject the frame first.
 - **All-inclusive (3):** authentic destination-specific resort photography. No named resort.
