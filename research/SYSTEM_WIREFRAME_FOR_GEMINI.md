@@ -4,6 +4,21 @@ Purpose: paste this into Gemini so it understands what already exists before des
 parallel build — same 40 certificate offers, different operational methodology (different
 CRM, automation, or brand wrapper). Exported 2026-09-12.
 
+## Account structure
+
+Three accounts sit under the operator (FlipTheSwitch Marketing & Consulting):
+
+| Account | Role |
+|---|---|
+| **Elite Solutions** | Parent account for this new build |
+| → **Honest Vacation Offers** | **New sub-account, under Elite Solutions.** Reuses the 40 certificates below, under a different operational methodology than HVM's. This is what the rest of this document is scoped for. |
+| **Honest Vacation Marketing (HVM)** | The *existing*, currently-live brand and stack described below. Separate account. Its GHL instance, scoring script, and site are the "current stack" being referenced for reuse-vs-replace guidance — Honest Vacation Offers is not part of this account. |
+| **Show Up SB** | A third, separate account/brand. Not otherwise described here. |
+
+**So: the CONTENT layer (40 certificates) is copied from HVM into Honest Vacation Offers.
+Everything in "Current stack" below is HVM's own build, shown so Gemini can decide what to
+copy versus build differently for Honest Vacation Offers under Elite Solutions.**
+
 **Read this first: two layers, one portable, one not.**
 
 | Layer | Portable to a new methodology? | Why |
