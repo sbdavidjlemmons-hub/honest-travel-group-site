@@ -58,22 +58,19 @@ senior segment held at zero mail behind a hard guard · single-field kill switch
 
 ---
 
-## 4 — The one commercial problem
+## 4 — The one commercial problem — RESOLVED, retired
 
-**CRU-CHA is unfulfillable.** Charleston has no cruise service: Carnival's homeport contract
+**CRU-CHA was unfulfillable and has been retired**, per Dave's decision (2026-09-12): "Retire
+Charleston, don't re-point." Charleston has no cruise service: Carnival's homeport contract
 ended January 2025, Union Pier closed to cruise ships 30 June 2026, and the only Charleston
-departures are 8-night voyages at $5,990–$7,835 per person. The live page advertises an
-$800–$1,800 comparison for a product that cannot be delivered.
+departures are 8-night voyages at $5,990–$7,835 per person, against a live page that was
+advertising an $800–$1,800 comparison for a product that could not be delivered.
 
-Two options, both cheap:
-
-| Option | Effect |
-|---|---|
-| **Retire the certificate** | Page comes down. Cleanest. Recommended |
-| Re-point to Jacksonville | Keeps the SKU. Requires new artwork (CRU-JAX is unstarted anyway) and new comparison research |
-
-This is live on a public page today. It is the only item in this handoff with legal exposure
-attached to inaction.
+The page at `certificates/cruise/charleston-cruise.html` now shows a plain "this certificate
+has been retired" notice — no offer schema, no lead-capture form, no booking link, `noindex`.
+It was removed from every listing: `certificates/index.html`, `cruise.html`, the three
+snapshot landing pages (`snap-a/b/c.html`), and `sitemap.xml`. The SKU is not being reused for
+Jacksonville or any other port.
 
 ---
 
@@ -84,7 +81,7 @@ attached to inaction.
 | D1 | Sending subdomain: `go.` or `mail.` | All email | Nothing ships. Cannot be changed later without discarding the warm-up |
 | D2 | Senior segment (~2,958) — mailable or not, in writing | Tier 3+ volume | Highest legal exposure on the list |
 | D3 | Wave-1 count: 4,059 / 4,859 / 4,876 — reconcile | Tier 3+ | Every rate in the stop-line table has a wrong denominator until this resolves |
-| D4 | CRU-CHA: retire or re-point | Nothing technical | Live misrepresentation continues |
+| ~~D4~~ | ~~CRU-CHA: retire or re-point~~ | — | **Resolved 2026-09-12 — retired, not re-pointed.** See §4. |
 | D5 | V5 certificate-in-body template — load or hold | A/B at tier 3 | None. Safe to defer |
 
 D1 is the cheapest and unblocks the most. It is a single field in GHL plus two DNS records.

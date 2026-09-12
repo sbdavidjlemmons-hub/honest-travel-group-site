@@ -81,6 +81,10 @@ voyages at $5,990-$7,835 per person against a page advertising $800-$1,800. A be
 makes an undeliverable certificate more persuasive, which is worse, not better. Replacing
 the art is held until the certificate is retired or re-pointed.
 
+**RESOLVED 2026-09-12 — retired, not re-pointed.** Dave's decision. The page now carries a
+plain retirement notice with no offer content, and was pulled from every listing and the
+sitemap. No artwork was ever produced for this certificate.
+
 ---
 
 ## Order of work
