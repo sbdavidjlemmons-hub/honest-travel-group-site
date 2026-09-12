@@ -247,6 +247,12 @@ unexamined pass.
   false positives from downscaled looks AND false negatives from over-magnified ones. Measure in
   the shipped file.
 
+  **C3e. THE BALCONY VANTAGE — the single best condo framing found.** Shoot *from* a unit: the
+  shooter's own rail and eave frame the edges, other buildings fill the middle distance, and you
+  are physically above and behind every sign on your own property. It delivers the lodging cue that
+  C4b says is usually lost, while satisfying the no-single-building rule. Lake of the Ozarks
+  resolved this way. Look for it first on any waterfront or hillside destination.
+
   **C3d. Shoot the destination, not the building.** The condo analogue of "shoot the port, not the
   ship". Aerials and elevated vantages are the highest-yield framing: they put the destination's
   signature landscape behind the roofline and push any signage below resolution.
@@ -267,6 +273,10 @@ unexamined pass.
   panorama. Judge saleability first, branding second.
 
   **C6. Search vocabulary — this matters more than effort.**
+  - **HOMOGRAPH TRAPS.** Where a town name is also a common noun the bare-place-name rule inverts:
+    `pigeon forge` on Unsplash returned **photographs of pigeons in 13 of 20 results**, and every
+    usable frame for that certificate came from Pexels instead. Same class as "hunter" returning
+    Mongolian eagle hunters for the Catskills. Check the first page before trusting the query.
   - **PLACE-NAME COLLISIONS ARE AS STRONG A SOLVENT AS AMENITY WORDS, AND SPELLINGS DIVERGE.**
     `philipsburg` on Unsplash returns Philipsburg **Montana and Pennsylvania** in 14 of 16 results.
     A St Maarten sweep pulled Trunk Bay USVI, Marigot Bay St Lucia, Martinique, Puerto Rico and

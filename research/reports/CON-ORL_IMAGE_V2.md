@@ -328,6 +328,16 @@ which carries retail signage, while Orlando's tall buildings are downtown office
 crown branding by definition. Magnify **both**; on this destination the towers were where the marks
 actually were.
 
+**Place-name collisions fired here too**, per the brief's newest C6 clause. `orlando` is a common
+Spanish/Italian given name and a US surname, and it leaks: candidate **#27** is tagged "orlando" on
+Unsplash and is unmistakably **downtown Miami** across Biscayne Bay. `kissimmee` leaks harder and
+more locally — a single Pexels page of `kissimmee` results returned **Lakeland, The Villages,
+Daytona International Speedway, Lake Mary and Corpus Christi Texas**, five wrong places in
+24 results. Neither name is a two-common-noun compound, so the brief's state-name inversion does not
+apply and adding "Florida" would still have been waste. **The defence that worked was cheaper:
+open the file and look at it.** Every collision in this sweep was obvious on sight and invisible in
+the caption.
+
 **C5 confirmed emphatically.** "Not premium / not vacation-selling" was again the number-one
 rejection cause: **9 of 31** (car parks, arterial roads, drainage works, strip malls, overcast
 industrial, bare lots, wheelie bins). Branding proper accounted for only 2. Ownership/theme-park
@@ -382,8 +392,23 @@ not a lodging property, so it implies no guarantee and is benign — but it stil
 through as alt text or a filename. Use the generic re-caption in §3.
 
 **ALTERNATE.** Per the brief's Pexels exception, the camera-metadata half of the screen cannot be
-run — Pexels strips EXIF from everything, and what survives here is only orientation, resolution
-units and a 90-byte stub. The second half is run instead, as a reasoned call:
+run. Full EXIF dump of the native file, for the record:
+
+```
+ResolutionUnit = 2      Orientation = 1
+XResolution = 72.0      YResolution = 72.0      ExifOffset = 90
+```
+
+No camera make, no model, no exposure block — **and no `Copyright` tag either**, so the brief's
+note that Pexels natives retain one does not hold on this file. The geometry half of the screen is
+therefore the whole screen, and it is run explicitly against the brief's new synthetic-upscale
+flag (*"precise power-of-two multiples of handset geometry with zero EXIF"*):
+
+- **7205 x 4038 is not a power-of-two multiple of anything.** `7205 / 2 = 3602.5` and
+  `7205 / 4 = 1801.25` — neither is an integer, so the file cannot be a clean 2x or 4x upscale of a
+  smaller frame. It fails the synthetic-geometry pattern in the axis that matters.
+
+The remaining positive evidence:
 
 - Native geometry is **7205 x 4038**, aspect 1.7844 — not 3:2, not 4:3, not 16:9, and not a round
   number in either axis. Generator output clusters on round, power-of-two-friendly dimensions;
