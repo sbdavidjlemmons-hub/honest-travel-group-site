@@ -6,18 +6,19 @@ CRM, automation, or brand wrapper). Exported 2026-09-12.
 
 ## Account structure
 
-Three accounts sit under the operator (FlipTheSwitch Marketing & Consulting):
+**Elite Marketing Solutions LLC** (421 N Alisos St, Santa Barbara, CA 93103) is the master
+account. Three sub-accounts sit under it:
 
-| Account | Role |
+| Sub-account | Role |
 |---|---|
-| **Elite Solutions** | Parent account for this new build |
-| → **Honest Vacation Offers** | **New sub-account, under Elite Solutions.** Reuses the 40 certificates below, under a different operational methodology than HVM's. This is what the rest of this document is scoped for. |
-| **Honest Vacation Marketing (HVM)** | The *existing*, currently-live brand and stack described below. Separate account. Its GHL instance, scoring script, and site are the "current stack" being referenced for reuse-vs-replace guidance — Honest Vacation Offers is not part of this account. |
-| **Show Up SB** | A third, separate account/brand. Not otherwise described here. |
+| **Honest Vacation Marketing (HVM)** | The *existing*, currently-live brand and stack described below — its own GHL instance, scoring script, and site. |
+| **Show Up SB** | A separate sub-account/brand. Not otherwise described here. |
+| **Honest Vacation Offers** | **New sub-account.** Reuses the 40 certificates below, under a different operational methodology than HVM's. This is what the rest of this document is scoped for. |
 
 **So: the CONTENT layer (40 certificates) is copied from HVM into Honest Vacation Offers.
 Everything in "Current stack" below is HVM's own build, shown so Gemini can decide what to
-copy versus build differently for Honest Vacation Offers under Elite Solutions.**
+copy versus build differently for Honest Vacation Offers — a sibling sub-account under the
+same Elite Marketing Solutions master, not a child of HVM.**
 
 **Read this first: two layers, one portable, one not.**
 
