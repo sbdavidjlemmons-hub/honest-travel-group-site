@@ -29,3 +29,9 @@ Full rules: `research/IMAGE_BRIEF_V2.md`. The five that decide everything:
 - 4 cost structures, not 40. Condo $15/night/traveler + $150. Cruise $157pp + $150. All-inclusive $269pp + $298. Airfare $150pp + $240 + fare above $500.
 - Deposit treatment (applied / additional / refunded) is UNRESOLVED. Report savings both ways.
 - **CRU-CHA is retired** (2026-09-12) — Charleston has no cruise service. Page now shows a retirement notice, `noindex`, no offer/lead-capture content, removed from all listings and the sitemap. Not re-pointed to another port.
+
+## Site state (2026-09-12)
+- All 39 live certificates carry a QR code linking to their own family landing page (`cruise.html`/`condo.html`/`all-inclusive.html`/`resort-air.html`), `utm_source=qr`.
+- 12 hero images replaced this session, all eye-verified at shipped 1600x900. 4 condo interiors added (Branson, Cancun, Catskill, Wisconsin Dells).
+- Full account structure: **Elite Marketing Solutions LLC** is the master; Honest Vacation Marketing (this repo), Show Up SB, and Honest Vacation Offers (new, unbuilt) are sibling sub-accounts.
+- Full detail: `docs/SESSION_SUMMARY_2026-09-12.md`, `docs/HANDOFF_MASTER.md`.
