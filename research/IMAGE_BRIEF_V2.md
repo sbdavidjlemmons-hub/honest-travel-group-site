@@ -159,8 +159,10 @@ Plain CC BY, CC0, public domain, or Unsplash License. Flag CC BY-SA as a caution
 attaches to any crop you publish. Never approve a file whose EXIF carries no camera make, model,
 or exposure data on a suspiciously round pixel dimension: AI cannot be positively ruled out.
 
-**Unsplash strips EXIF too** — the exception below is not Pexels-only. But Unsplash gives you a
-free substitute: the numeric prefix of `photo-<n>-<hash>` is a **Unix upload timestamp**
+**Unsplash strips EXIF from the FILE but PUBLISHES the camera on the photo PAGE.** Confirmed
+repeatedly: "Hasselblad L1D-20c (DJI Mavic 2 Pro)", "DJI FC6310", "Canon EOS R5", each with a
+capture date. **This recovers the camera half of the AI screen at zero cost** — read the page, not
+the file. A second free substitute: the numeric prefix of `photo-<n>-<hash>` is a **Unix upload timestamp**
 (`1543511670` -> 2018-11-29, cross-checked against a third file's stated publish date). That is a
 positive, zero-cost pre-generative provenance check available on every Unsplash file.
 
@@ -247,6 +249,12 @@ unexamined pass.
   **C4. Reject identifiable private residences.** Not a trademark problem, so the checklist waved
   it through — and it cost the probe the best sky in its set. Add it.
 
+  **C4b. CHECK FOR LODGING BEFORE CHECKING FOR LOGOS.** A new failure class, seen on every
+  scenery-led destination: attractive, unbranded, correctly-located landscapes with **no lodging in
+  frame at all**. They pass every compliance test and fail the product. Optimising hard for "no
+  branding" drifts steadily into pure landscape. Wisconsin Dells, Sevierville, South Lake Tahoe and
+  Branson all landed here. It may be the right trade — but make it deliberately, not by drift.
+
   **C5. The dominant rejection cause is NOT branding.** Legible property names fired **once in
   fourteen**, and it was a third-party product brand, not a resort. The number-one cause is
   **"not premium / not vacation-selling"** — 6 of 13 rejections: car parks, abandoned houses,
@@ -254,6 +262,13 @@ unexamined pass.
   panorama. Judge saleability first, branding second.
 
   **C6. Search vocabulary — this matters more than effort.**
+  - **START WITH THE BARE PLACE NAME ON UNSPLASH, EVERYWHERE.** Three destinations have now
+    inverted the Pexels-first guidance: `sevierville hotel` returned hotel signage from Spain and
+    Germany, `park city hotel` returned Ballarat, Merida, Astana and Amsterdam with zero Park City,
+    and on Williamsburg the words `golf` and `aerial` destroyed the destination entirely. **The word
+    "hotel" is itself a destination solvent**, and so is any place name built from common nouns
+    (Park City, Virginia Beach, Long Beach). For a two-common-noun place, adding the state is
+    mandatory rather than waste — the opposite of the default rule.
   - **Destination-dependent — run both.** On a small inland destination, **`<destination> hotel`
     on Pexels** is best: it returns the human-written title, which is how the Sedona probe
     identified its primary as a resort rather than housing. On a dense resort strip,
