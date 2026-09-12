@@ -1,5 +1,13 @@
 # honest-travel-group-site — hard rules
 
+## Session discipline
+Every 5 prompts from Dave in a session, update this file with what changed. Non-negotiable.
+**"Shipped"/"done" means verified on `main` or the live deployed target — not "committed and
+pushed to a branch."** Before saying something is live, check the real deployed state
+(`git log origin/main`, the live URL). If a PR is open and unmerged, say that, not "done."
+Failure case this rule exists for: 2026-09-12, two rounds of certificate work sat unmerged
+on a branch while being reported as shipped. See `docs/VERIFICATION_PROMPT.md`.
+
 ## Response style
 5 lines max. Tables over prose. No red-team section, no next-action section, no preamble — unless asked.
 
