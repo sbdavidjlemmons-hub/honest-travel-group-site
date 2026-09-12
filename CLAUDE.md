@@ -20,4 +20,4 @@ Full rules: `research/IMAGE_BRIEF_V2.md`. The five that decide everything:
 ## Certificate facts
 - 4 cost structures, not 40. Condo $15/night/traveler + $150. Cruise $157pp + $150. All-inclusive $269pp + $298. Airfare $150pp + $240 + fare above $500.
 - Deposit treatment (applied / additional / refunded) is UNRESOLVED. Report savings both ways.
-- **CRU-CHA is unfulfillable** — Charleston has no cruise service. Commercial decision, not an artwork problem.
+- **CRU-CHA is retired** (2026-09-12) — Charleston has no cruise service. Page now shows a retirement notice, `noindex`, no offer/lead-capture content, removed from all listings and the sitemap. Not re-pointed to another port.

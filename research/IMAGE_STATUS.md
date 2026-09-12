@@ -6,6 +6,46 @@ its metadata says.
 
 Standard: `research/IMAGE_BRIEF_V2.md`.
 
+## V3 supersessions (2026-09-12) — READ THIS FIRST for these 11 codes
+
+Everything below this section is historical record — what was tried, what failed, and why.
+For the 11 codes in this table, the verdict here is current; older entries further down for
+the same code describe a prior candidate that this V3 pass replaced. Full review reasoning:
+`research/reports/REVIEW_V3_LOG.md`. Art direction driving this pass: `research/ART_DIRECTION_V3.md`.
+
+| Code | Verdict | Source | Note |
+| --- | --- | --- | --- |
+| CRU-BAH | **APPROVED (V3)** | Pexels 27011618, Simon Hurry | Hog Island lighthouse, ship <3% width on the horizon, fully backlit. Zero legible marks. |
+| CRU-FTL | **APPROVED (V3) — resolution upgrade** | Pexels 9867744, Blue Arauz | Golden-hour Las Olas bridge + marina, 2.5x the resolution of the prior approval. Dockside mural verified by zoom as civic sailfish art, not a brand. |
+| CRU-JAX | **APPROVED (V3) — reframe** | Pexels 10788521, Mike Jones | Full frame had "WELLS FARGO" legible; reframe drops it. Ship absent by design — owner's instruction, not a compliance workaround. |
+| CRU-MEX | **APPROVED (V3) — second candidate** | Unsplash `YYSKPYHOq4E`, Alonso Reyes | First candidate (Cabo, Pexels 17415444) rejected on independent zoom — a legible Princess Cruises funnel logo the sourcing agent's own report missed. This candidate (Holland America's Maasdam, Puerto Vallarta, sunset) passes: stern text invisible at delivered size, only a soft smudge under heavy zoom. |
+| CRU-NOL | **APPROVED (V3)** | Pexels 25003118 | St. Louis Cathedral silhouette across the river at sunset. First clean frame after 88 candidates across three sweeps — see the escalation history below, now resolved. |
+| AIN-CUN | **APPROVED (V3)** | Pexels 20210509, israwmx | Multi-property pool strip, 3 properties in frame, beach, palapas. Zero text. |
+| AIN-DOM | **APPROVED (V3) — reframe** | Pexels 11227594, Antonio Florentini | Full frame had a "Royalton" pool-floor wordmark; crop stops well short of it, verified by independent zoom on the crop boundary. |
+| AIN-MBJ | **APPROVED (V3) — reversal after exhaustive search** | Flickr/Commons "Panorama Montego Bay," Trevor Cameron, CC BY 2.0 | The specialist search (93 candidates total across both agents, all documented in `research/reports/ALLINC_MBJ_ALT_V3.md`) confirms no multi-property Montego Bay frame exists free. This is the same Iberostar Rose Hall photo rejected once already. Approved on reconsideration under the CON-SED precedent: a real single named property is acceptable provided the site never captions or alt-tags it by name — the certificate's own no-guarantee language does the rest. Two resort wings kept in frame (not one), zero legible text at shipped size. |
+| CON-KTH | **APPROVED (V3)** | Pexels 5345349, Tangie Bodden | Cottages directly on the dune line, ocean immediately behind — the literal fix for "closer to the water." |
+| CON-SEV | **APPROVED (V3)** | Unsplash `photo-1708290178777-55f92dea1355` | 9-12 cabins on a ridge, Smoky Mountains backdrop. Minor seasonal snow dusting noted, not disqualifying. |
+| CRU-GAL | **No change — confirmed no upgrade exists** | (unchanged) | Specialist search triaged ~90 candidates; best challenger has no ship and no berth (fails the cruise-family rule) plus a legible Bubba Gump roundel. Current Unsplash Gower Brown frame stands. |
+| AIR-CUN | **APPROVED (V3) — second candidate, again via specialist** | Pexels 4306931, Zachary DeBottis | 1,367 candidates opened across two agents; zero combine Cancun with a visible aircraft. Shipped a verified real Cancun hotel-zone landscape instead — a genuine upgrade, since the outgoing image was not Cancun at all and was deliberately un-captioned as such. One storefront sign checked under boosted contrast/brightness myself and confirmed unresolvable. No aircraft in this frame; the S2 standard is not fully met, but the destination-accuracy and premium-quality gain is real. |
+| AIR-SJU | **APPROVED (V3) — full brief met** | Flickr/CC "Isla Verde" frame | Real San Juan-area beach, aircraft small but readable as an aircraft, no legible livery even under zoom. Modest native resolution (1280px, ~1.25x upscale to 1600x900) — visually clean at shipped size, no softness that reads as an obvious defect. This is the one airfare replacement that satisfies the full S2 standard (destination + aircraft + no livery). |
+| AIR-SJD | **APPROVED (V3) — destination-only, no free aircraft combo exists** | Pexels — El Arco / Land's End, Cabo | Owner's prior verdict was "absolutely not" on the outgoing image; every free Cabo-plus-aircraft candidate had legible livery. Shipped the exhaustively-verified iconic Land's End sunset instead — no aircraft, but a strict upgrade over a rejected image. |
+| AIR-CRI | **APPROVED (V3) — destination-only** | Pexels — Arenal volcano at dusk | The one aircraft-present alternate found (SJO runway silhouette) is airport-tarmac-as-subject, which fails the family's own "destination not aeroplane" standard harder than a no-aircraft landscape does. Shipped Arenal instead: unmistakably Costa Rica, premium, zero signage. Note: Arenal sits near La Fortuna (Alajuela province); the certificate's pre-existing front-of-card label reads "Guanacaste, Costa Rica" — that label predates this session and is a broader destination convention already used site-wide, not a claim introduced here. |
+| AIR-HNL | **No change — reframe tested, not shipped** | (unchanged: Tantalus Heights, jet incidental) | The only Honolulu-plus-aircraft candidate found has "DELTA" legible at native. A no-aircraft skyline reframe (excluding a Royal Hawaiian Hotel intrusion I caught on zoom) was tested and looks clean, but trades away the one thing the current image already has — a real, brand-clean aircraft — for a picture that is arguably not a net improvement against the owner's actual ask ("an airplane in there **and** a better picture"). Left as-is rather than trade one deficiency for another. |
+
+Also this pass: condo interiors added (second image, card back) for `branson-condo`,
+`cancun-condo`, `catskill-condo`, `wisconsin-dells-condo` — all four APPROVED, sourced and
+verified in `research/reports/CONDO_INTERIORS_V3.md`. `south-lake-tahoe-condo` interior stays
+**UNRESOLVED** (best candidate carries a legible SAMSUNG mark and shows no kitchen).
+
+Two landing-page (non-certificate) subjects were also replaced: `img/cruise-sunset*` and
+`img/hawaii-condo-resort*`. The outgoing `cruise-sunset` was carrying a live compliance defect
+— "REGAL PRIN…" and "HAMILT…" legible at delivered size — independent of this project's scope
+but caught and fixed in the same pass. `img/hawaii-waikiki-sunset*` was also reviewed and
+**rejected**: the candidate is unmistakably the Royal Hawaiian Hotel, identifiable by
+architecture and color alone. The current image stands until a replacement is found.
+`img/cabo-bluehour*` stays **UNRESOLVED** — no free source exists at the required 3:4 portrait
+geometry.
+
 ## Verified by eye
 
 | Code | Candidate | Verdict | Note |
