@@ -228,6 +228,12 @@ unexamined pass.
   (DIRTY DON'S, FUN PLAZA, BOARDWALK Paradise, ATM, N.Y. STYLE PIZZA, plus the SkyWheel). An agent
   who magnifies the towers finds nothing and ships a frame branded along its bottom edge.
 
+  **C3c-bis. COLOUR CONTRAST DECIDES WHETHER A MARK SURVIVES THE DOWNSCALE, NOT SIZE ALONE.**
+  The Myrtle Beach SkyWheel vanished at 14 delivered pixels because it was low-contrast grey.
+  A red "RIU" rooftop sign in an Aruba frame measures only 12x6 delivered pixels and is **still
+  readable at 1:1** — saturated red on white survives resampling where grey-on-grey does not.
+  Measure in delivered pixels as C3c says, then judge contrast, not just span.
+
   **C3c. CONVERT A HIGH-ZOOM FIND INTO DELIVERED PIXELS BEFORE REJECTING ON IT.** The Myrtle Beach
   SkyWheel is 36px at native and found at 7x — but **14px in the delivered file, no colour, no
   wordmark, unresolvable as a ferris wheel at 1:1.** The 100% rule cuts both ways: it catches
@@ -259,6 +265,12 @@ unexamined pass.
   - **NEVER "villa"** — returns Turkiye and Egypt regardless of the place name.
   - **NEVER "condo" or "vacation rental"** — listing-site vocabulary, not photographer vocabulary.
   - **Never search interiors.** They could be anywhere and prove no destination.
+
+  **C6b. VERIFY THE STATED LOCATION BEFORE DOWNLOADING, NOT AFTER.** Destination queries pull
+  neighbouring places constantly: an "outer banks" search returned Holden Beach (250 mi away) and
+  Wrightsville Beach; a Pexels "aruba hotel" set was heavily contaminated with Curacao and Bonaire,
+  which share the same Dutch-Caribbean architecture and divi-divi trees. Read the source page's
+  stated location field first — it costs nothing and saves multi-megabyte fetches.
 
   **C7. Signage still gets magnified.** "LIVE AQUA" and "Occidental Costa Cancun" were both legible
   at 4x in Cancun hotel-zone frames. Check every facade — but expect C5 to reject the frame first.
