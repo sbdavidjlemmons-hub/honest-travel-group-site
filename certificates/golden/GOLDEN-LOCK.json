@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "lockedAt": "2026-09-19",
+  "sourceCommit": "35035f1a845386be00036152d6a2ab691ca5cb62",
+  "approvedSnapshotBranch": "golden-approved-2026-09-19",
+  "protected": {
+    "goldenFile": {
+      "path": "certificates/GOLDEN-CRUISE-CERTIFICATES.DEPLOY.html",
+      "blobSha": "15a7b7c702fd9726cb6a79df3524364082dd054e",
+      "sizeBytes": 18800441,
+      "rule": "visual/commercial content must remain unchanged unless David explicitly approves a visual change"
+    },
+    "calendarId": "B2QxN25XAnB9MaD4KukW",
+    "trackingScript": "js/golden-tracking.js",
+    "commercialRules": [
+      "preserve approved pricing and disclosures",
+      "preserve approved photography",
+      "preserve $0 today language and 45-60 minute presentation disclosure",
+      "do not infer booking completion from browser events"
+    ]
+  },
+  "requiredRoutes": {
+    "east": "certificates/golden/east.html",
+    "west": "certificates/golden/west.html"
+  },
+  "behaviorContract": {
+    "initialFace": "front",
+    "backHiddenUntilIntentionalFlip": true,
+    "autoFlip": false,
+    "continuousScan": false,
+    "continuousShimmer": false,
+    "flipDurationMs": {
+      "min": 450,
+      "max": 650
+    },
+    "desktopHoverLift": true,
+    "mobilePressFeedback": true,
+    "reducedMotionRequired": true
+  },
+  "releaseRules": [
+    "no direct repair edits on main",
+    "all repairs occur on golden-repair-2026-09-19",
+    "compare against golden-approved-2026-09-19 before merge",
+    "routes, calendar, tracking, device behavior and protected-content checks must pass before release"
+  ]
+}
