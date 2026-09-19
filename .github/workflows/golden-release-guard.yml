@@ -1,0 +1,24 @@
+name: Golden Release Guard
+
+on:
+  push:
+    branches:
+      - golden-repair-2026-09-19
+      - main
+  pull_request:
+    paths:
+      - 'certificates/GOLDEN-CRUISE-CERTIFICATES.DEPLOY.html'
+      - 'certificates/golden/**'
+      - 'js/golden-tracking.js'
+      - 'scripts/verify-golden-release.mjs'
+
+jobs:
+  verify-golden:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Verify Golden release contract
+        run: node scripts/verify-golden-release.mjs
