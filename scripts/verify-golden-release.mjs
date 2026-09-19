@@ -32,15 +32,19 @@ else {
 if (!exists(lock.protected.trackingScript)) fail('Golden tracking script is missing');
 
 const routeRules = [
-  [lock.requiredRoutes.east,'route=east','#miami'],
-  [lock.requiredRoutes.west,'route=west','#west']
+  [lock.requiredRoutes.east,'collection=miami#miami','east'],
+  [lock.requiredRoutes.west,'collection=west-coast-mexico#west','west']
 ];
-for (const [rel,route,hash] of routeRules) {
+for (const [rel,target,route] of routeRules) {
   if (!exists(rel)) { fail('missing route: '+rel); continue; }
   const html = read(rel);
   if (!html.includes('GOLDEN-CRUISE-CERTIFICATES.DEPLOY.html')) fail(rel+': does not target approved Golden deploy file');
-  if (!html.includes(route)) fail(rel+': regional route selector missing');
-  if (!html.includes(hash)) fail(rel+': regional anchor missing');
+  if (!html.includes(target)) fail(rel+': regional selector missing');
+  if (!html.includes("data-hvm-route','"+route+"'")) fail(rel+': route identity missing');
+  if (!html.includes('.stage.companion{display:none!important}')) fail(rel+': companion certificate suppression missing');
+  if (!html.includes('.stage.turning .paper-shadow{animation:none!important}')) fail(rel+': turn-shadow suppression missing');
+  if (!html.includes('transition:transform .58s')) fail(rel+': approved 580ms flip timing missing');
+  if (!html.includes('@media(prefers-reduced-motion:reduce)')) fail(rel+': reduced-motion guard missing');
 }
 
 if (failures.length) {
