@@ -42,7 +42,8 @@ for (const [rel,target,route] of routeRules) {
   if (!html.includes(target)) fail(rel+': regional selector missing');
   if (!html.includes("data-hvm-route','"+route+"'")) fail(rel+': route identity missing');
   if (!html.includes('.stage.companion{display:none!important}')) fail(rel+': companion certificate suppression missing');
-  if (!html.includes('.stage.turning .paper-shadow{animation:none!important}')) fail(rel+': turn-shadow suppression missing');
+  if (!html.includes('.stage.turning .paper-shadow,.paper-shadow{animation:none!important}')) fail(rel+': turn-shadow suppression missing');
+  if (!html.includes('.sheen{animation:none!important;transition:none!important}')) fail(rel+': repeating sheen/scan suppression missing');
   if (!html.includes('transition:transform .58s')) fail(rel+': approved 580ms flip timing missing');
   if (!html.includes('@media(prefers-reduced-motion:reduce)')) fail(rel+': reduced-motion guard missing');
 }
