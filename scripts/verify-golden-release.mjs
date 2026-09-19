@@ -19,36 +19,45 @@ function gitBlobSha(buffer){
   return crypto.createHash('sha1').update(Buffer.concat([header,buffer])).digest('hex');
 }
 
-const goldenRel = lock.protected.goldenFile.path;
-if (!exists(goldenRel)) fail('approved Golden deploy file is missing');
+const master = lock.protected.approvedMaster;
+if (!master || !master.path) fail('approvedMaster lock is missing');
+else if (!exists(master.path)) fail('approved Golden deploy file is missing');
 else {
-  const buf = fs.readFileSync(abs(goldenRel));
+  const buf = fs.readFileSync(abs(master.path));
   const actual = gitBlobSha(buf);
-  if (actual !== lock.protected.goldenFile.blobSha) {
-    fail('approved Golden deploy file changed outside explicit approval: ' + actual);
-  }
-  if (!buf.toString('utf8').includes(lock.protected.calendarId)) {
-    fail('approved presentation calendar ID is missing from Golden deploy file');
-  }
+  if (actual !== master.blobSha) fail('approved Golden master changed: ' + actual);
+  if (!buf.toString('utf8').includes(lock.protected.calendarId)) fail('approved presentation calendar ID is missing from Golden master');
 }
 
 if (!exists(lock.protected.trackingScript)) fail('Golden tracking script is missing');
 
+for (const [name,asset] of Object.entries(lock.protected.runtimeAssets || {})) {
+  if (!exists(asset.path)) { fail('missing runtime asset: '+name); continue; }
+  const actual = gitBlobSha(fs.readFileSync(abs(asset.path)));
+  if (actual !== asset.blobSha) fail('runtime asset hash changed: '+name);
+}
+
 const routeRules = [
-  [lock.requiredRoutes.east,'collection=miami#miami','east'],
-  [lock.requiredRoutes.west,'collection=west-coast-mexico#west','west']
+  [lock.requiredRoutes.east,'east','miami-front.png','miami-back.png','/certificates/golden/west.html'],
+  [lock.requiredRoutes.west,'west','west-front.png','west-back.png','/certificates/golden/east.html']
 ];
-for (const [rel,target,route] of routeRules) {
+
+for (const [rel,route,frontImg,backImg,crossRoute] of routeRules) {
   if (!exists(rel)) { fail('missing route: '+rel); continue; }
   const html = read(rel);
-  if (!html.includes('GOLDEN-CRUISE-CERTIFICATES.DEPLOY.html')) fail(rel+': does not target approved Golden deploy file');
-  if (!html.includes(target)) fail(rel+': regional selector missing');
-  if (!html.includes("data-hvm-route','"+route+"'")) fail(rel+': route identity missing');
-  if (!html.includes('.stage.companion{display:none!important}')) fail(rel+': companion certificate suppression missing');
-  if (!html.includes('.stage.turning .paper-shadow,.paper-shadow{animation:none!important}')) fail(rel+': turn-shadow suppression missing');
-  if (!html.includes('.sheen{animation:none!important;transition:none!important}')) fail(rel+': repeating sheen/scan suppression missing');
+  if (!html.includes('data-hvm-route="'+route+'"')) fail(rel+': route identity missing');
+  if (!html.includes(frontImg)) fail(rel+': approved front asset missing');
+  if (!html.includes(backImg)) fail(rel+': approved back asset missing');
+  if (!html.includes('data-src="/certificates/golden/assets/')) fail(rel+': lazy back-image loading missing');
+  if (!html.includes(crossRoute)) fail(rel+': cross-region route link missing');
+  if (!html.includes('B2QxN25XAnB9MaD4KukW')) fail(rel+': booking calendar missing');
+  if (!html.includes('.card{position:relative;aspect-ratio:3/5')) fail(rel+': certificate card structure missing');
+  if (!html.includes('.face.back{transform:rotateY(180deg)}')) fail(rel+': back-face containment missing');
   if (!html.includes('transition:transform .58s')) fail(rel+': approved 580ms flip timing missing');
+  if (!html.includes('let flipped=false')) fail(rel+': front-first state missing');
+  if (!html.includes('e.pointerType===\'touch\'')) fail(rel+': mobile tilt suppression missing');
   if (!html.includes('@media(prefers-reduced-motion:reduce)')) fail(rel+': reduced-motion guard missing');
+  if (/animation\s*:/i.test(html)) fail(rel+': unexpected CSS animation found');
 }
 
 if (failures.length) {
