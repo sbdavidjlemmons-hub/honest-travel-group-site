@@ -25,9 +25,10 @@ html,body{margin:0;min-height:100%;background:#101c24}
         '.certificate-window{display:block!important;max-width:600px!important;margin:auto!important;padding:5px 10px 25px!important}'+
         '.stage.companion{display:none!important}'+
         '.side-label{display:none!important}'+
-        '.stage.turning .paper-shadow{animation:none!important}'+
+        '.stage.turning .paper-shadow,.paper-shadow{animation:none!important}'+
+        '.sheen{animation:none!important;transition:none!important}'+
         '.card{transition:transform .58s cubic-bezier(.18,.82,.26,1.12)!important}'+
-        '.sheen{background:radial-gradient(ellipse at var(--mx,32%) var(--my,16%),rgba(255,252,232,.20),rgba(255,246,199,.05) 24%,transparent 54%)!important;mix-blend-mode:screen!important}'+
+        '.sheen{background:radial-gradient(ellipse at 32% 16%,rgba(255,252,232,.16),rgba(255,246,199,.04) 24%,transparent 54%)!important;mix-blend-mode:screen!important;transform:none!important;opacity:.55!important}'+
         '@media(prefers-reduced-motion:reduce){.card,.tilt{transition:none!important}.sheen{display:none!important}.tilt{transform:none!important}}';
       doc.head.appendChild(style);
       doc.documentElement.setAttribute('data-hvm-route','east');
