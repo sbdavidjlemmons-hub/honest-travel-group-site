@@ -4,39 +4,90 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,follow">
-<title>Golden Cruise Certificate — East / Miami</title>
+<title>Golden Cruise Certificate — Miami</title>
 <style>
-html,body{margin:0;min-height:100%;background:#101c24}
-#golden-frame{display:block;width:100%;height:100dvh;border:0;background:#101c24}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:radial-gradient(ellipse at 50% 25%,#34434c,#101c24 75%);color:#fff4d9;font:16px Arial,sans-serif}
+body{padding:0 0 28px}
+header{display:flex;justify-content:center;align-items:center;gap:8px;padding:12px;flex-wrap:wrap}
+header a,header button{font:inherit;color:#fff0c5;background:#163a4c;border:1px solid #d9b564;padding:9px 14px;border-radius:24px;text-decoration:none;cursor:pointer}
+header a[aria-current="page"]{background:linear-gradient(120deg,#a97a2f,#fff0bc,#c49640);color:#173044}
+.stage{width:min(600px,calc(100vw - 20px));margin:0 auto;perspective:1500px;touch-action:pan-y}
+.tilt{transform-style:preserve-3d;transition:transform .16s ease-out}
+.card{position:relative;aspect-ratio:3/5;transform-style:preserve-3d;transition:transform .58s cubic-bezier(.18,.82,.26,1.12);cursor:pointer}
+.card.flipped{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:18px;overflow:hidden;box-shadow:0 3px 6px #0009,0 15px 30px #0006,0 35px 65px #0005}
+.face.back{transform:rotateY(180deg)}
+.face img{display:block;width:100%;height:100%;object-fit:cover}
+.sheen{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at var(--mx,32%) var(--my,16%),rgba(255,252,232,.18),rgba(255,246,199,.04) 24%,transparent 54%);mix-blend-mode:screen}
+.booking-hotspot{position:absolute;left:6.6667%;top:89.3%;width:86.6667%;height:3.7%;z-index:4;color:transparent;background:transparent;border:0;border-radius:8px}
+.booking-hotspot:focus-visible,.booking-hotspot:hover{outline:2px solid #fffce8;background:#fffce814}
+.helper{text-align:center;font-size:12px;margin:3px 12px 12px;color:#e0d7bd}
+.live-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+@media(max-width:760px){header{gap:7px;padding:10px}header a,header button{font-size:12px;padding:8px 11px}.helper{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.card,.tilt{transition:none!important}.sheen{display:none!important}.tilt{transform:none!important}}
 </style>
+<script>
+window.HVM_PAGE={dest:"golden-miami-cruise"};
+</script>
 </head>
-<body>
-<iframe id="golden-frame" title="Golden Cruise Certificate" src="/certificates/GOLDEN-CRUISE-CERTIFICATES.DEPLOY.html?collection=miami#miami"></iframe>
+<body data-hvm-route="east">
+<header>
+<a id="miami" aria-current="page">Miami</a>
+<a href="/certificates/golden/west.html" id="west">West Coast & Mexico</a>
+<button id="turn" type="button">Turn certificate over</button>
+</header>
+<p class="helper">Tap or click the certificate to flip it. The booking button is on the back.</p>
+<main class="stage" id="stage">
+  <div class="tilt" id="tilt">
+    <div class="card" id="card" tabindex="0" role="group" aria-label="Golden cruise certificate. Press Enter or Space to flip.">
+      <section class="face front" aria-hidden="false">
+        <img src="/certificates/golden/assets/miami-front.png" alt="Golden Cruise Certificate front">
+        <div class="sheen"></div>
+      </section>
+      <section class="face back" aria-hidden="true">
+        <img id="back-image" data-src="/certificates/golden/assets/miami-back.png" alt="Golden Cruise Certificate back and travel terms">
+        <div class="sheen"></div>
+        <a class="booking-hotspot" aria-label="Book my presentation time" href="https://api.leadconnectorhq.com/widget/booking/B2QxN25XAnB9MaD4KukW">BOOK MY TIME</a>
+      </section>
+    </div>
+  </div>
+</main>
+<p id="flip-status" class="live-status" aria-live="polite">Certificate front.</p>
 <script>
 (function(){
-  var frame=document.getElementById('golden-frame');
-  frame.addEventListener('load',function(){
-    try{
-      var doc=frame.contentDocument;
-      if(!doc)return;
-      var style=doc.createElement('style');
-      style.id='hvm-golden-repair';
-      style.textContent=
-        '.certificate-window{display:block!important;max-width:600px!important;margin:auto!important;padding:5px 10px 25px!important}'+
-        '.stage.companion{display:none!important}'+
-        '.side-label{display:none!important}'+
-        '.stage.turning .paper-shadow,.paper-shadow{animation:none!important}'+
-        '.sheen{animation:none!important;transition:none!important}'+
-        '.card{transition:transform .58s cubic-bezier(.18,.82,.26,1.12)!important}'+
-        '.sheen{background:radial-gradient(ellipse at 32% 16%,rgba(255,252,232,.16),rgba(255,246,199,.04) 24%,transparent 54%)!important;mix-blend-mode:screen!important;transform:none!important;opacity:.55!important}'+
-        '@media(prefers-reduced-motion:reduce){.card,.tilt{transition:none!important}.sheen{display:none!important}.tilt{transform:none!important}}';
-      doc.head.appendChild(style);
-      doc.documentElement.setAttribute('data-hvm-route','east');
-    }catch(e){
-      console.error('Golden repair wrapper failed',e);
-    }
+  const card=document.getElementById('card');
+  const turn=document.getElementById('turn');
+  const stage=document.getElementById('stage');
+  const tilt=document.getElementById('tilt');
+  const front=card.querySelector('.front');
+  const back=card.querySelector('.back');
+  const backImg=document.getElementById('back-image');
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+  let flipped=false,raf=0;
+  function ensureBack(){if(!backImg.src)backImg.src=backImg.dataset.src}
+  function render(){
+    card.classList.toggle('flipped',flipped);
+    front.setAttribute('aria-hidden',String(flipped));
+    back.setAttribute('aria-hidden',String(!flipped));
+    turn.textContent=flipped?'Show certificate front':'Turn certificate over';
+    document.getElementById('flip-status').textContent=flipped?'Certificate back. Book my time is available.':'Certificate front.';
+  }
+  function flip(){if(!flipped)ensureBack();flipped=!flipped;render()}
+  turn.addEventListener('click',flip);
+  card.addEventListener('click',e=>{if(!e.target.closest('a,button'))flip()});
+  card.addEventListener('keydown',e=>{if(['Enter',' '].includes(e.key)){e.preventDefault();flip()}});
+  stage.addEventListener('pointermove',e=>{
+    if(reduced.matches||e.pointerType==='touch')return;
+    const r=stage.getBoundingClientRect(),x=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width)),y=Math.max(0,Math.min(1,(e.clientY-r.top)/r.height));
+    if(raf)cancelAnimationFrame(raf);
+    raf=requestAnimationFrame(()=>{tilt.style.transform=`rotateX(${(.5-y)*8}deg) rotateY(${(x-.5)*8}deg)`;stage.style.setProperty('--mx',x*100+'%');stage.style.setProperty('--my',y*100+'%')});
   });
+  stage.addEventListener('pointerleave',()=>{if(raf)cancelAnimationFrame(raf);raf=0;tilt.style.transform=''});
+  render();
 })();
 </script>
+<script src="/js/visit.js" defer></script>
+<script src="/js/golden-tracking.js" defer></script>
 </body>
 </html>
