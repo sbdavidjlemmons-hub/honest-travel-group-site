@@ -1,21 +1,40 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "lockedAt": "2026-09-19",
   "sourceCommit": "35035f1a845386be00036152d6a2ab691ca5cb62",
   "approvedSnapshotBranch": "golden-approved-2026-09-19",
+  "repairBranch": "golden-repair-2026-09-19",
   "protected": {
-    "goldenFile": {
+    "approvedMaster": {
       "path": "certificates/GOLDEN-CRUISE-CERTIFICATES.DEPLOY.html",
       "blobSha": "15a7b7c702fd9726cb6a79df3524364082dd054e",
       "sizeBytes": 18800441,
-      "rule": "visual/commercial content must remain unchanged unless David explicitly approves a visual change"
+      "rule": "preserve byte-for-byte as rollback/reference master unless David explicitly approves a master-content change"
     },
     "calendarId": "B2QxN25XAnB9MaD4KukW",
     "trackingScript": "js/golden-tracking.js",
+    "runtimeAssets": {
+      "miamiFront": {
+        "path": "certificates/golden/assets/miami-front.png",
+        "blobSha": "0f74b5aa1c520c8a0453bcb57b2feb0a8769e427"
+      },
+      "miamiBack": {
+        "path": "certificates/golden/assets/miami-back.png",
+        "blobSha": "ea0405d7c675bedc266028c7d8c1a121d0bfe8a9"
+      },
+      "westFront": {
+        "path": "certificates/golden/assets/west-front.png",
+        "blobSha": "0fd1103be6917821f07c20972a74012b4ca884e1"
+      },
+      "westBack": {
+        "path": "certificates/golden/assets/west-back.png",
+        "blobSha": "98e695008a54ce113edbd2ac0abc76ddc2869a6b"
+      }
+    },
     "commercialRules": [
-      "preserve approved pricing and disclosures",
+      "preserve approved pricing and disclosures in the approved artwork",
       "preserve approved photography",
-      "preserve $0 today language and 45-60 minute presentation disclosure",
+      "preserve $0 today and 45-60 minute presentation disclosure in campaign copy",
       "do not infer booking completion from browser events"
     ]
   },
@@ -31,16 +50,20 @@
     "continuousShimmer": false,
     "flipDurationMs": {
       "min": 450,
-      "max": 650
+      "max": 650,
+      "target": 580
     },
+    "singleCertificateAcrossDevices": true,
     "desktopHoverLift": true,
     "mobilePressFeedback": true,
-    "reducedMotionRequired": true
+    "reducedMotionRequired": true,
+    "lazyLoadBack": true
   },
   "releaseRules": [
     "no direct repair edits on main",
     "all repairs occur on golden-repair-2026-09-19",
     "compare against golden-approved-2026-09-19 before merge",
-    "routes, calendar, tracking, device behavior and protected-content checks must pass before release"
+    "approved master remains untouched",
+    "routes, runtime asset hashes, calendar, tracking and device behavior checks must pass before release"
   ]
 }
