@@ -48,7 +48,7 @@ window.HVM_PAGE={dest:"golden-west-coast-mexico"};
       <section class="face back" aria-hidden="true">
         <img id="back-image" data-src="/certificates/golden/assets/west-back.png" alt="Golden Cruise Certificate back and travel terms">
         <div class="sheen"></div>
-        <a class="booking-hotspot" aria-label="Book my presentation time" href="https://api.leadconnectorhq.com/widget/booking/B2QxN25XAnB9MaD4KukW">BOOK MY TIME</a>
+        <a class="booking-hotspot" tabindex="-1" aria-label="Book my presentation time" href="https://api.leadconnectorhq.com/widget/booking/B2QxN25XAnB9MaD4KukW">BOOK MY TIME</a>
       </section>
     </div>
   </div>
@@ -66,10 +66,17 @@ window.HVM_PAGE={dest:"golden-west-coast-mexico"};
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
   let flipped=false,raf=0;
   function ensureBack(){if(!backImg.src)backImg.src=backImg.dataset.src}
+  function setFaceFocusable(face,focusable){
+    face.querySelectorAll('a,button,input,select,textarea,[tabindex]').forEach(el=>{
+      if(focusable)el.removeAttribute('tabindex');else el.setAttribute('tabindex','-1');
+    });
+  }
   function render(){
     card.classList.toggle('flipped',flipped);
     front.setAttribute('aria-hidden',String(flipped));
     back.setAttribute('aria-hidden',String(!flipped));
+    setFaceFocusable(front,!flipped);
+    setFaceFocusable(back,flipped);
     turn.textContent=flipped?'Show certificate front':'Turn certificate over';
     document.getElementById('flip-status').textContent=flipped?'Certificate back. Book my time is available.':'Certificate front.';
   }
