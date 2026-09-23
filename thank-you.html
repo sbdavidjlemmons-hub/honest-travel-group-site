@@ -995,7 +995,21 @@ picture{display:contents}
    return word||dl||'';
   }
   function render(d,note){
-   var groups=normalizeDays(d);
+   // The booking service currently advertises a second Saturday time that the
+   // live presentation calendar does not offer. Keep this page within the
+   // verified calendar inventory until the service schedule is corrected.
+   var groups=normalizeDays(d).map(function(group){
+    if(!/saturday/i.test((group.day||'')+' '+(group.dateLabel||'')))return group;
+    group.slots=group.slots.filter(function(slot){
+     if(!slot.startTime)return false;
+     var start=new Date(slot.startTime);
+     if(isNaN(start.getTime()))return false;
+     return start.toLocaleTimeString('en-US',{
+      timeZone:'America/Los_Angeles',hour:'2-digit',minute:'2-digit',hour12:false
+     })==='13:30';
+    });
+    return group;
+   }).filter(function(group){return group.slots.length>0;});
    grid.innerHTML='';
    if(!groups.length){ cannotLoad(); return; }
    var open=0,sawSaturday=false;
