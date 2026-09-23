@@ -261,7 +261,7 @@ if(token){fetch('https://hvm-lead-intake.lead-intake.workers.dev/journey/'+encod
 <label class="sel"><span>When are you hoping to travel?</span><select name="timeframe" required><option value="" disabled selected>Select one&hellip;</option><option value="next-3-months">Within the next 3 months</option><option value="3-6-months">3&ndash;6 months</option><option value="6-12-months">6&ndash;12 months</option><option value="just-dreaming">Just dreaming for now</option></select></label>
 <label class="sel"><span>Who's traveling?</span><select name="party" required><option value="" disabled selected>Select one&hellip;</option><option value="two-adults">Two adults</option><option value="couple-kids">Couple + kids</option><option value="group">A group</option></select></label>
 <input name="mobile" type="tel" autocomplete="tel" placeholder="Mobile number (optional)">
-<label class="consent"><input type="checkbox" name="consent" onchange="consentPhone(this)"><span><b>Yes &mdash; I'm serious about travel.</b>I'm interested in membership benefits, and I want you to reach out.<span class="fine">By checking this box I agree to receive marketing and transactional calls and texts from Honest Vacation Marketing, a brand of Elite Marketing Solutions LLC, on behalf of Gateways Unlimited, at the number provided. Consent is not a condition of purchase and this box is optional &mdash; you get your certificate either way. Message frequency varies; message &amp; data rates may apply. Reply HELP for help, STOP to opt out. See our <a href="../../privacy.html" target="_blank">Privacy Policy</a> and <a href="../../terms.html" target="_blank">Terms</a>.</span></span></label>
+<label class="consent"><input type="checkbox" name="consent" onchange="consentPhone(this)"><span><b>Yes &mdash; I'm serious about travel.</b>I'm interested in membership benefits, and I want you to reach out.<span class="fine">By checking this box I agree to receive marketing and transactional calls and texts from Honest Vacation Marketing, a brand of Elite Marketing Solutions LLC, at the number provided. Consent is not a condition of purchase and this box is optional &mdash; you get your certificate either way. Message frequency varies; message &amp; data rates may apply. Reply HELP for help, STOP to opt out. See our <a href="../../privacy.html" target="_blank">Privacy Policy</a> and <a href="../../terms.html" target="_blank">Terms</a>.</span></span></label>
 <input type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
 <button type="submit">KEEP ME IN THE LOOP</button>
 <p class="err" hidden></p>
@@ -312,11 +312,11 @@ function certIntent(e){e.preventDefault();var f=e.target;
   firstName:f.firstName.value,email:f.email.value,mobile:MOBILE,needsPhone:!HASPHONE,
   qualified:true,qualifyAttestation:'married-or-cohabiting|hhi-at-least-75000|major-credit-card|travels-at-least-twice-yearly',qualifyAnswers:{marriedCohabitingIncome:true,creditCardFrequentTravel:true},
   miniVac:{destination:DEST,timeframe:f.timeframe.value,party:f.party.value},
-  consent:CONSENTED,consentTimestamp:CONSENTED?new Date().toISOString():'',consentVersion:'gateways-v1',
+  consent:CONSENTED,consentTimestamp:CONSENTED?new Date().toISOString():'',consentVersion:'hvm-v2',
   retarget:!CONSENTED,emailPermission:'form-submitted',
   smsPermission:(CONSENTED&&HASPHONE)?'express-written':'none',
   callPermission:(CONSENTED&&HASPHONE)?'express-written':'none',
-  source:'gateways-unlimited',campaign:'certificates-intent',sourceUrl:location.href,attribution:hvmAttr()};
+  source:'honest-vacation-marketing',campaign:'certificates-intent',sourceUrl:location.href,attribution:hvmAttr()};
  // A lead is money: persist BEFORE the network call so a failed POST never
  // loses it. Same hvm_pending_ prefix the funnel pages' retryPending() re-sends.
  var KEY='hvm_pending_cert-'+DEST+'-'+Date.now();
