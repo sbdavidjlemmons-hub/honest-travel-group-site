@@ -23,6 +23,25 @@ header a[aria-current="page"]{background:linear-gradient(120deg,#a97a2f,#fff0bc,
 .booking-hotspot{position:absolute;left:6.6667%;top:89.3%;width:86.6667%;height:3.7%;z-index:4;color:transparent;background:transparent;border:0;border-radius:8px}
 .booking-hotspot:focus-visible,.booking-hotspot:hover{outline:2px solid #fffce8;background:#fffce814}
 .helper{text-align:center;font-size:12px;margin:3px 12px 12px;color:#e0d7bd}
+/* qualification-gate-v2: the two approved questions, before the calendar */
+.booking-gate{position:absolute;left:6.6667%;top:89.3%;width:86.6667%;height:3.7%;z-index:4;padding:0;color:transparent;background:transparent;border:0;border-radius:8px;cursor:pointer}
+.booking-gate:focus-visible,.booking-gate:hover{outline:2px solid #fffce8;background:#fffce814}
+.qualify{width:min(600px,calc(100vw - 20px));margin:18px auto 0;padding:18px;border:1px solid #d9b564;border-radius:18px;background:#163a4c;scroll-margin-top:12px}
+.qualify[hidden],.qualify [hidden]{display:none!important}
+.qualify form{margin:0}
+.qualification-stage{display:grid;gap:16px}
+.qualification-stage fieldset{display:grid;gap:12px;border:0;padding:0;margin:0;min-width:0}
+.qualification-stage legend{color:#fff0c5;font-size:20px;font-weight:700;line-height:1.25;margin-bottom:4px}
+.qualification-question{display:grid;gap:9px;padding:14px;border:1px solid #d9b56473;border-radius:14px;background:#ffffff0d}
+.qualification-question>span{font-size:14px;font-weight:700;line-height:1.5}
+.qualification-options{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.qualification-options label{display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;border:1px solid #d9b564;border-radius:999px;color:#fff0c5;font-size:14px;font-weight:800;cursor:pointer}
+.qualification-options label:has(input:checked){background:linear-gradient(120deg,#a97a2f,#fff0bc,#c49640);color:#173044}
+.qualification-options input{width:20px;height:20px;margin:0;accent-color:#c49640;flex:none}
+.qualification-continue,.qualified a,.not-qualified a{display:flex;align-items:center;justify-content:center;width:100%;min-height:50px;margin-top:12px;border:0;border-radius:999px;background:linear-gradient(120deg,#a97a2f,#fff0bc,#c49640);color:#173044;font:800 16px Arial,sans-serif;text-decoration:none;cursor:pointer}
+.qualification-continue{margin-top:0}
+.not-qualified,.qualified{padding:18px;border-radius:14px;background:#fff4d9;color:#173044;font-size:14px;line-height:1.6;outline:0}
+.not-qualified strong,.qualified strong{display:block;font-size:20px;margin-bottom:7px}
 .live-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
 @media(max-width:760px){header{gap:7px;padding:10px}header a,header button{font-size:12px;padding:8px 11px}.helper{font-size:11px}}
 @media(prefers-reduced-motion:reduce){.card,.tilt{transition:none!important}.sheen{display:none!important}.tilt{transform:none!important}}
@@ -48,11 +67,23 @@ window.HVM_PAGE={kind:"cert",family:"golden",dest:"golden-west-coast-mexico"};
       <section class="face back" aria-hidden="true">
         <img id="back-image" data-src="/certificates/golden/assets/west-back.png" alt="Golden Cruise Certificate back and travel terms">
         <div class="sheen"></div>
-        <a class="booking-hotspot" tabindex="-1" aria-label="Book my presentation time" href="https://api.leadconnectorhq.com/widget/booking/B2QxN25XAnB9MaD4KukW">BOOK MY TIME</a>
+        <button class="booking-gate" type="button" tabindex="-1" aria-label="Book my presentation time. Two quick questions first." aria-controls="qualify">BOOK MY TIME</button>
+        <a class="booking-hotspot" tabindex="-1" aria-label="Book my presentation time" data-booking-href="https://api.leadconnectorhq.com/widget/booking/B2QxN25XAnB9MaD4KukW" hidden>BOOK MY TIME</a>
       </section>
     </div>
   </div>
 </main>
+<section class="qualify" id="qualify" hidden aria-label="Presentation qualification">
+<form onsubmit="return false"><div class="qualification-stage">
+<fieldset><legend>Two quick questions. Both answers must be Yes.</legend>
+<div class="qualification-question"><span>Are you married, cohabiting, or in a consistent partnership, both between ages 35 and 72, with a combined household income of at least $75,000?</span><div class="qualification-options"><label><input type="radio" name="q1" value="yes" required> Yes</label><label><input type="radio" name="q1" value="no"> No</label></div></div>
+<div class="qualification-question"><span>Do you have a major credit card for travel incidentals and travel at least twice a year?</span><div class="qualification-options"><label><input type="radio" name="q2" value="yes" required> Yes</label><label><input type="radio" name="q2" value="no"> No</label></div></div>
+</fieldset>
+<button class="qualification-continue" type="button">See My Available Times</button>
+</div></form>
+<div class="not-qualified" tabindex="-1" hidden><strong>This certificate is not the right match today.</strong>Thank you for answering honestly. We will not open a qualified booking calendar for this certificate, but you can explore the other existing offers.<br><a href="/index.html">See Other Offers</a></div>
+<div class="qualified" tabindex="-1" hidden><strong>You qualify for this certificate.</strong>Both travelers attend one live presentation together for 45&ndash;60 minutes. There is no charge to attend. Choose your time with BOOK MY TIME here or on the back of your certificate.<a id="join">BOOK MY TIME</a></div>
+</section>
 <p id="flip-status" class="live-status" aria-live="polite">Certificate front.</p>
 <script>
 (function(){
@@ -92,6 +123,41 @@ window.HVM_PAGE={kind:"cert",family:"golden",dest:"golden-west-coast-mexico"};
   });
   stage.addEventListener('pointerleave',()=>{if(raf)cancelAnimationFrame(raf);raf=0;tilt.style.transform=''});
   render();
+})();
+</script>
+<script data-qualification-gate-v2>
+(function(){
+  "use strict";
+  var card=document.getElementById('card'),panel=document.getElementById('qualify');
+  if(!card||!panel)return;
+  var form=panel.querySelector('form'),noMatch=panel.querySelector('.not-qualified'),yes=panel.querySelector('.qualified');
+  var gate=card.querySelector('.booking-gate'),hotspot=card.querySelector('.booking-hotspot'),join=document.getElementById('join');
+  var calendar=hotspot&&hotspot.getAttribute('data-booking-href');
+  var reduced=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
+  function buzz(){if(reduced)return;try{if(navigator.vibrate)navigator.vibrate(18)}catch(_){}}
+  function reveal(){if(panel.hidden)panel.hidden=false}
+  if(card.classList.contains('flipped'))reveal();
+  new MutationObserver(function(){if(card.classList.contains('flipped'))reveal()}).observe(card,{attributes:true,attributeFilter:['class']});
+  [gate,hotspot].forEach(function(el){if(el)el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')e.stopPropagation()})});
+  if(gate)gate.addEventListener('click',function(){
+    reveal();
+    panel.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});
+    var next=!form.hidden?form.querySelector('input[name="q1"]'):(!noMatch.hidden?noMatch:yes);
+    if(next)setTimeout(function(){next.focus({preventScroll:true})},reduced?0:380);
+  });
+  panel.addEventListener('change',function(e){if(e.target&&e.target.closest&&e.target.closest('.qualification-stage'))buzz()});
+  panel.addEventListener('click',function(e){
+    var button=e.target&&e.target.closest&&e.target.closest('.qualification-continue');if(!button)return;
+    var q1=form.querySelector('input[name="q1"]:checked'),q2=form.querySelector('input[name="q2"]:checked');
+    if(!q1||!q2){form.reportValidity();return}buzz();
+    if(q1.value!=='yes'||q2.value!=='yes'){form.hidden=true;noMatch.hidden=false;noMatch.focus();return}
+    if(!calendar)return;
+    form.hidden=true;
+    if(gate)gate.hidden=true;
+    if(hotspot){hotspot.href=calendar;hotspot.hidden=false}
+    if(join)join.href=calendar;
+    yes.hidden=false;yes.focus();
+  });
 })();
 </script>
 <script src="/js/visit.js" defer></script>
