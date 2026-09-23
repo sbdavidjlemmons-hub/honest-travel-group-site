@@ -473,11 +473,10 @@ picture{display:contents}
 <div id="ty-slots"></div>
 <div id="ty-slots-status" class="slots-status" role="status" aria-live="polite"><p class="msg">Loading the session times&hellip;</p></div>
 </div>
-<!-- Hidden unless the slot list genuinely cannot be loaded or a booking fails.
-     In that state the visitor is one step from the end of the funnel with no
-     way through, so they get the phone number first and the old third-party
-     widget second — never a blank box and never a dead end. -->
-<p id="ty-booking-fallback" style="display:none;text-align:center;margin:14px 0 0;font-size:13.5px;color:var(--muted)">Call <a href="tel:+18554186714" style="color:var(--brand);font-weight:800">(855) 418-6714</a> and we'll book it with you in a minute &mdash; or <a id="ty-booking-link" href="https://api.leadconnectorhq.com/widget/booking/B2QxN25XAnB9MaD4KukW" target="_blank" rel="noopener" style="color:var(--brand);font-weight:800">open the booking page in a new tab</a>.</p></div>
+<!-- Hidden unless the controlled slot list cannot be loaded or a booking fails.
+     The raw GHL widget is intentionally not exposed because it can show dates
+     outside the approved three-date prospect window. -->
+<p id="ty-booking-fallback" style="display:none;text-align:center;margin:14px 0 0;font-size:13.5px;color:var(--muted)">Call <a href="tel:+18554186714" style="color:var(--brand);font-weight:800">(855) 418-6714</a> and we'll book it with you in a minute. We will use the same approved booking window shown on this page.</p></div>
 <p id="ty-cant-pick" style="color:var(--muted);font-size:13px;margin-top:16px;max-width:640px">None of those work? Call <a href="tel:+18554186714" style="color:var(--brand);font-weight:800">(855) 418-6714</a> and we'll find you a day that does. Either way, bookmark this page: your certificate number is on it.</p></section>
 
 <section class="wrap" id="ty-sequence"><div class="sec-head"><span class="eyebrow">What happens next</span><h2>No surprises. <em>Here's the whole sequence.</em></h2></div>
@@ -572,10 +571,8 @@ picture{display:contents}
  // reintroduce a weekday list here; that is exactly the duplicate rule that
  // goes stale the next time Dave changes the schedule.
  var BOOK_API="https://hvm-lead-intake.lead-intake.workers.dev";
- // Kept only as the emergency route when /book/slots or /book cannot be
- // reached. It is the old multi-step GHL widget: never shown while one-click
- // is working, and never offered as a way to shop for a different day.
- var GHL_WIDGET="https://api.leadconnectorhq.com/widget/booking/B2QxN25XAnB9MaD4KukW";
+ // The raw GHL widget is deliberately not exposed to prospects here. It has a
+ // broader calendar window than the approved three-date offer.
  var p=window.__hvmParams?new URLSearchParams(window.__hvmParams):new URLSearchParams(location.search);
  var cert=p.get('cert')||'', first=(p.get('first_name')||'').trim();
  var email=p.get('email')||'', phone=p.get('phone')||'';
@@ -769,10 +766,6 @@ picture{display:contents}
     'So we\'ll find a time that actually works for the two of you. Your certificate number is saved either way.']);
   return;
  }
- // Carry the same prefill onto the emergency link, so the new-tab path is not a
- // worse experience than the one-click panel on the rare occasion it is needed.
- var bl=document.getElementById('ty-booking-link');
- if(bl)bl.href=GHL_WIDGET+q;
  // A DEAD END IS THE ONLY OUTCOME THAT CANNOT SHIP.
  // This is the last step of the funnel. If anything in the booking module
  // throws — a DOM node that moved, a browser without something it expects, a

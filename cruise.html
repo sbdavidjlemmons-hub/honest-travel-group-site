@@ -451,10 +451,6 @@ picture{display:contents}
   .tapflow .tf-splash b{animation:splashword .5s cubic-bezier(.2,.8,.2,1) both}
   @keyframes splashword{from{opacity:0;transform:translateY(.4em) scale(.96)}to{opacity:1;transform:none}}
 }
-/* Inline booking calendar (screen 6). White ground because the GHL widget is
-   a light theme and a dark frame around a flash of white reads as broken. */
-.tapflow .tf-calwrap{margin-top:14px;border-radius:16px;overflow:hidden;background:#fff;border:1px solid rgba(200,212,224,.3)}
-.tapflow .tf-calwrap iframe{display:block;width:100%;border:0;height:min(700px,85vh)}
 </style>
 <div class="tf-card">
 <div data-screen="1">
@@ -463,7 +459,7 @@ picture{display:contents}
 <p style="font-size:15px;color:#c2d0e0;line-height:1.6;margin:0">3–5 nights · 9 US ports</p>
 <div class="tf-price"><b>Approximately $290–$314</b><span>certificate charges for two; extras additional &middot; <b style="font-size:inherit;color:#fff">$0</b> today</span></div>
 <a class="tf-btn" href="#reserve" id="tf-start">Start &rarr;</a>
-<p class="tf-note">One tap at a time &mdash; the terms come first, then you pick your session time. <a href="#reserve" style="color:#c8d4e0">Skip to the full page</a> if you'd rather read everything at once.</p>
+<p class="tf-note">One tap at a time &mdash; the terms come first, then the qualification form. If you qualify, the next screen shows the approved booking dates. <a href="#reserve" style="color:#c8d4e0">Skip to the full page</a> if you'd rather read everything at once.</p>
 </div>
 <div data-screen="2" hidden>
 <div class="tf-kicker">Before anything else &mdash; all four conditions</div>
@@ -487,18 +483,7 @@ picture{display:contents}
 <button type="button" class="tf-skip" data-next="5">Not lately &mdash; continue anyway</button>
 </div>
 <div data-screen="5" hidden>
-<div class="tf-splash"><b>You made it.</b><p style="color:#c2d0e0;font-size:14.5px;margin:10px 0 0">Now pick the session time that works for both of you.</p></div>
-</div>
-<div data-screen="6" hidden>
-<div class="tf-kicker">Last step &mdash; pick your session time</div>
-<h2>Choose the time that works for both of you.</h2>
-<!-- The calendar is GHL's own booking widget, inline. It is THEIR form, not
-     one of ours: check-site counts exactly 2 forms per offer page and this
-     iframe adds none to the document. src is assigned only when this screen is
-     reached (see show('6')), so the third-party widget costs nothing — bytes
-     or tracking noise — for the majority who never get here. -->
-<div class="tf-calwrap"><iframe id="tf-cal" title="Session booking calendar" data-cal-src="https://api.leadconnectorhq.com/widget/booking/B2QxN25XAnB9MaD4KukW" loading="lazy"></iframe></div>
-<p class="tf-note">Calendar not loading? <a id="tf-cal-link" href="https://api.leadconnectorhq.com/widget/booking/B2QxN25XAnB9MaD4KukW" target="_blank" rel="noopener" style="color:#c8d4e0">Open it here</a> in a new tab &mdash; same calendar. Prefer to read everything first? <a href="#reserve" style="color:#c8d4e0">The full page is below</a>, every cost itemized.</p>
+<div class="tf-splash"><b>Almost there.</b><p style="color:#c2d0e0;font-size:14.5px;margin:10px 0 16px">Finish the qualification form below. If you qualify, your next screen shows only the approved three-date booking window.</p><a class="tf-btn" href="#reserve">Finish qualification &rarr;</a></div>
 </div>
 </div>
 <script>
@@ -518,32 +503,10 @@ function show(n){for(var k in screens)screens[k].hidden=(k!==n);
  // 55ms stagger is visible. Reduced-motion CSS ignores all of this.
  if(n==='2'){var d=flow.querySelector('.tf-drop');
   requestAnimationFrame(function(){requestAnimationFrame(function(){d.className='tf-drop on';});});}
- if(n==='5'){setTimeout(function(){show('6');},500);}
- if(n==='6'){book();}}
+}
 function tick(names){var parts=names.split(','),forms=document.querySelectorAll('form'),i,j;
  for(i=0;i<parts.length;i++)for(j=0;j<forms.length;j++){var el=forms[j][parts[i]];
   if(el&&el.type==='checkbox')el.checked=true;}}
-// The calendar iframe gets its src ONLY here, when the person actually reaches
-// the booking screen. Loading it earlier would pull GHL's whole widget for
-// every visitor who bounces off screen 1, and would log a calendar view for
-// people who never saw a calendar — the same tracking-cleanliness rule as the
-// beacon. The URL carries the same first-touch attribution the forms send
-// (hvmAttr(), a function declaration in the page script below, so it is live
-// before any tap can happen), because a booking made in this iframe
-// bypasses our forms and this query string is the only place the campaign can
-// travel. PII is never appended — there is none to append; nothing has been
-// typed yet.
-function calUrl(){var base="https://api.leadconnectorhq.com/widget/booking/B2QxN25XAnB9MaD4KukW";
- try{var a=(typeof hvmAttr==='function')?hvmAttr():{},s=[],k;
-  for(k in a)if(a[k])s.push(encodeURIComponent(k)+'='+encodeURIComponent(a[k]));
-  var dp=new URLSearchParams(window.__hvmParams||location.search),dest=dp.get('dest');
-  if(dest)s.push('dest='+encodeURIComponent(dest));
-  return s.length?base+(base.indexOf('?')<0?'?':'&')+s.join('&'):base;
- }catch(e){return base;}}
-function book(){var f=document.getElementById('tf-cal');
- var u=calUrl();
- if(f&&!f.src)f.src=u;
- var l=document.getElementById('tf-cal-link'); if(l)l.href=u;}
 var start=document.getElementById('tf-start');
 start.addEventListener('click',function(e){e.preventDefault();show('2');});
 flow.addEventListener('click',function(e){
