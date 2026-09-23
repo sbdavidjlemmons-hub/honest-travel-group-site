@@ -271,7 +271,7 @@ form.addEventListener('submit',function(e){
   if(!attended||!interest||!again){alert('Please answer questions 1, 7 and 8 so we can show the right result.');return}
   var data={
     attended:attended,brand:val('brand'),offered:val('offered'),transparent:val('transparent'),
-    promisedTime:val('promised_time'),actualTime:val('actual_time'),interest:interest,again:again
+    surprised:val('surprised'),promisedTime:val('promised_time'),actualTime:val('actual_time'),interest:interest,again:again
   };
   event('poll-complete',data);
   form.hidden=true;
