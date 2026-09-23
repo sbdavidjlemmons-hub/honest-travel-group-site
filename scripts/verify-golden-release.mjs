@@ -30,6 +30,10 @@ else {
 }
 
 if (!exists(lock.protected.trackingScript)) fail('Golden tracking script is missing');
+else {
+  const tracking = read(lock.protected.trackingScript);
+  if (!tracking.includes("kind: 'cert', family: 'golden'")) fail('Golden journey events are not classified as family=golden');
+}
 
 for (const [name,asset] of Object.entries(lock.protected.runtimeAssets || {})) {
   if (!exists(asset.path)) { fail('missing runtime asset: '+name); continue; }
@@ -57,6 +61,9 @@ for (const [rel,route,frontImg,backImg,crossRoute] of routeRules) {
   if (!html.includes('let flipped=false')) fail(rel+': front-first state missing');
   if (!html.includes('e.pointerType===\'touch\'')) fail(rel+': mobile tilt suppression missing');
   if (!html.includes('@media(prefers-reduced-motion:reduce)')) fail(rel+': reduced-motion guard missing');
+  if (!html.includes('1284937561029384')) fail(rel+': Meta Pixel missing');
+  if (!html.includes('G-8XR4QN2LMP')) fail(rel+': GA4 missing');
+  if (!html.includes('kind:\"cert\",family:\"golden\"')) fail(rel+': Golden HVM page identity missing');
   if (/animation\s*:/i.test(html)) fail(rel+': unexpected CSS animation found');
 }
 

@@ -27,7 +27,7 @@
     var body = {
       net: 'net1', bucket: 'visit', event: eventName,
       visitorId: window.HVM_VID || 'v_anon', visitNo: 1,
-      ts: new Date().toISOString(), kind: 'cert', family: 'cruise', dest: current,
+      ts: new Date().toISOString(), kind: 'cert', family: 'golden', dest: current,
       page: location.pathname + '#' + eventName,
       dwellMs: 0, scrollPct: 0,
       reachedPrice: price, reachedForm: booking, formStarted: false,
