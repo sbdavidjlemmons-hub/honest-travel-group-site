@@ -1,0 +1,28 @@
+name: Acquisition Funnel Guard
+on:
+  pull_request:
+    paths:
+      - 'cruise.html'
+      - 'all-inclusive.html'
+      - 'condo.html'
+      - 'resort-air.html'
+      - 'scripts/verify-acquisition-funnel.mjs'
+      - '.github/workflows/acquisition-funnel-guard.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'cruise.html'
+      - 'all-inclusive.html'
+      - 'condo.html'
+      - 'resort-air.html'
+      - 'scripts/verify-acquisition-funnel.mjs'
+      - '.github/workflows/acquisition-funnel-guard.yml'
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: node scripts/verify-acquisition-funnel.mjs
