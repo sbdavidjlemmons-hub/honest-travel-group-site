@@ -56,6 +56,16 @@ traffic -> certificate engagement -> qualification -> booking -> show -> present
 
 Do not fabricate missing stages. UNKNOWN stays UNKNOWN until verified.
 
+## Certificate visual source lock
+
+The marketplace MUST use the elegant, polished certificate generation selected by David, not any "ferocious"/aggressive design generation.
+
+Do not equate "currently live" with "approved elegant." Before any certificate is surfaced in the marketplace carousel, visually verify that it belongs to the elegant set.
+
+Repository evidence available today identifies a verified real-photography replacement set and later hero-image work, but does not itself label a generation "elegant" or "ferocious." Therefore visual identity remains a required verification gate; do not guess from filenames or chronology.
+
+Charleston cruise is retired and excluded.
+
 ## Preservation / release guard
 
 1. Do not rebuild or alter the 41 protected certificate assets merely to create the marketplace.
